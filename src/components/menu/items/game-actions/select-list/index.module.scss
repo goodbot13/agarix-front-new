@@ -1,0 +1,55 @@
+.wrap {
+  position: absolute;
+  top: 6px;
+  padding: 13px 10px;
+  background: rgba(50, 50, 50, .5);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  width: 0;
+  transition: .15s ease-in-out;
+  white-space: nowrap;
+  transform: scale(0);
+
+  &.left {
+    left: -16px;
+  }
+
+  &.right {
+    right: -16px;
+  }
+
+  &.left.shown {
+    width: 160px;
+    left: -186px;
+  }
+
+  &.right.shown {
+    width: 240px;
+    right: -264px;
+  }
+
+  &.shown {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  button {
+    background: transparent;
+    border-radius: 2px;
+    transition: .15s linear;
+    border: none;
+    transform: scale(1) !important;
+    font-size: 17px !important;
+    cursor: pointer;
+    color: #ddd !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, .07);
+    }
+
+    &.selected {
+      background: rgba(255, 255, 255, .15);
+    }
+  }
+}

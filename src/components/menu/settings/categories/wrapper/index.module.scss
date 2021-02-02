@@ -1,0 +1,22 @@
+.wrap {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  opacity: 1;
+  transition: .15s;
+  visibility: visible;
+
+  &.hidden {
+    opacity: 0;
+    animation: animateVisibilityHidden 0s;
+    animation-fill-mode: forwards;
+    animation-delay: .15s;
+  }
+}
+
+@keyframes animateVisibilityHidden {
+  from { }
+  to { 
+    visibility: hidden; 
+  }
+}

@@ -1,0 +1,25 @@
+.middle {
+  display: flex;
+  justify-content: center;
+}
+
+.wrap {
+  button {
+    border: none;
+    color: #ccc;
+    font-size: 15px;
+    transform: scale(0.9);
+    font-size: 19px;
+  }
+
+  .top {
+    margin-bottom: -4px;
+    position: relative;
+  }
+
+  .bottom {
+    margin-top: -4px;
+    position: relative;
+    display: flex;
+  }
+}

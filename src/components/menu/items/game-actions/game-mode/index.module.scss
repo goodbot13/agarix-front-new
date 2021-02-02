@@ -1,0 +1,18 @@
+.gameMode {
+  background: url(../../../../../assets/menu/mode.png);
+  width: 105px;
+  height: 105px;
+  margin-right: 59px;
+  margin-left: -2px;
+  transition: .15s linear;
+  cursor: pointer;
+  padding: 0 30px 16px 14px;
+  word-wrap: break-word;
+  font-weight: 500;
+
+  &:hover,
+  &.active {
+    opacity: .6;
+    color: white
+  }
+}

@@ -1,0 +1,22 @@
+.token {
+  background: transparent;
+  border: 3px solid rgba(255, 255, 255, .3);
+  border-radius: 2px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 70px;
+  padding: 1px;
+  padding-bottom: 0px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #aaa;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  transition: .2s linear;
+
+  &:not(:placeholder-shown).blured {
+    color: transparent !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, .5);
+    pointer-events: none;
+  }
+}

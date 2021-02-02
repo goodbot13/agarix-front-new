@@ -1,0 +1,32 @@
+.gameServer {
+  background: url(../../../../../assets/menu/server.png);
+  width: 104px;
+  height: 105px;
+  transition: .15s linear;
+  cursor: pointer;
+  padding: 0 2px 16px 16px;
+  word-wrap: break-word;
+
+  &:hover,
+  &.active {
+    opacity: .6;
+    color: white
+  }
+
+  svg {
+    margin-right: 4px;
+    font-weight: 400;
+    color: #bfbfbf;
+  }
+
+  .serverName {
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 3px;
+  }
+
+  .playersAmount {
+    font-weight: 300;
+    font-size: 16px;
+  }
+}

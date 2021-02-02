@@ -1,0 +1,67 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, .09);
+  padding: 16px 0;
+  font-size: 17px;
+  color: #eee;
+  transition: .5s;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: .33;
+  }
+
+  .hint {
+    font-size: 15px;
+    margin-left: 8px;
+    color: #797979;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #eee;
+    cursor: pointer;
+    
+
+    svg {
+      transition: .15s;
+    }
+
+    &:hover {
+      svg {
+        transform: scale(1.15);
+        opacity: .7;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    justify-content: center;
+
+    .valuesWrap {
+      overflow: hidden;
+      width: 125px;
+      text-align: center;
+
+      .values {
+        position: relative;
+        transition: .33s;
+
+        .value {
+          width: 125px;
+          position: absolute;
+          transition: .15s;
+        }
+      }
+    }
+  }
+}

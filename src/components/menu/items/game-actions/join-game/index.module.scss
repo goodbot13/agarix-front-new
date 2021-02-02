@@ -1,0 +1,16 @@
+.wrap {
+  .joinGame {
+    background: url(../../../../../assets/menu/join.png);
+    width: 104px;
+    height: 103px;
+    font-weight: 500;
+    padding: 16px 0 0 14px;
+    transition: .15s linear;
+    cursor: pointer;
+  
+    &:hover {
+      opacity: .6;
+      color: white
+    }
+  }
+}

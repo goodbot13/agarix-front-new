@@ -1,0 +1,43 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+
+  button {
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    width: 93px;
+    height: 93px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, .3);
+    transition: .15s linear;
+    cursor: pointer;
+
+    &:first-of-type {
+      margin-right: 32px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 6px rgba(255, 255, 255, .8);
+    }
+
+    &.active {
+      animation: active 2s linear infinite;
+      pointer-events: none;
+    }
+  }
+
+  .play {
+    background: url(../../../../assets/menu/play.png);
+  }
+
+  .spectate {
+    background: url(../../../../assets/menu/spectate.png);
+  }
+}
+
+@keyframes active {
+  from { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  to { transform: scale(1); }
+}

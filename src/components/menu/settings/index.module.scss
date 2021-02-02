@@ -1,0 +1,41 @@
+.wrap {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: .2s ease-in-out opacity;
+  display: inline;
+  background: rgba(18, 18, 18, .9);
+  border-radius: 6px;
+  width: 1100px;
+  height: 100%;
+  margin-left: -75px;
+  animation: onHidden 0s;
+  animation-delay: .2s;
+  animation-fill-mode: forwards;
+  overflow: hidden;
+
+  &.shown {
+    opacity: 1;
+    animation: none;
+  }
+
+  .content {
+    display: flex;
+    height: 637px;
+  }
+
+  .version {
+    background: rgba(10, 10, 10, .5);
+    padding: 8px;
+    text-align: center;
+  }
+}
+
+@keyframes onHidden {
+  from { }
+  to { 
+    visibility: hidden; 
+  }
+}

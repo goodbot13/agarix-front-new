@@ -1,0 +1,78 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  button {
+    outline: none;
+    border: none;
+    transition: .15s linear;
+    cursor: pointer;
+    background: transparent;
+    color: rgba(255, 255, 255, .3);
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  .settings {
+    background: url(../../../../assets/menu/settings.png) no-repeat;
+    width: 37px;
+    height: 36px;
+    border-radius: 40%;
+
+    &:hover {
+      transform: rotate(90deg) scale(1.15);
+    }
+  }
+
+  .hotkeys {
+    background: url(../../../../assets/menu/hotkeys.png) no-repeat;
+    width: 38px;
+    height: 23px;
+    margin-left: 22px;
+    margin-top: 40px;
+    margin-right: 16px;
+  }
+
+  .theming {
+    background: url(../../../../assets/menu/theming.png) no-repeat;
+    width: 46px;
+    height: 46px;
+    margin-top: -4px;
+  }
+
+  .blur {
+    font-size: 28px;
+    position: absolute;
+    top: -12px;
+    margin-left: -4px;
+
+    &.active {
+      animation: blurActive 1.85s ease-in-out infinite;
+    }
+
+    &:hover {
+      color: rgba(255, 255, 255, .5);
+    }
+  }
+}
+
+@keyframes blurActive {
+  from { 
+    transform: scale(1);
+    color: rgba(255, 255, 255, .3);
+  }
+
+  50% {
+    transform: scale(1.15);
+    color: rgba(255, 255, 255, .75);
+  }
+
+  to {
+    transform: scale(1);
+    color: rgba(255, 255, 255, .3);
+  }
+}

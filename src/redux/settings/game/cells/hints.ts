@@ -1,0 +1,1 @@
+export const AUTO_HIDE_MASS_AND_NICKS_HINT = 'enabling causes higher FPS';

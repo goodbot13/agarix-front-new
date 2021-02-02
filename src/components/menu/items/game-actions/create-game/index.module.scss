@@ -1,0 +1,19 @@
+.wrap {
+  .create {
+    background: url(../../../../../assets/menu/create.png);
+    width: 105px;
+    height: 103px;
+    margin-right: 59px;
+    margin-left: -2px;
+    font-weight: 500;
+    padding: 16px 10px 0 0;
+    transition: .15s linear;
+    cursor: pointer;
+  
+    &:hover,
+    &.active {
+      opacity: .6;
+      color: white
+    }
+  }
+}

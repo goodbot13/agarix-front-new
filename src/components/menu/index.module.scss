@@ -1,0 +1,19 @@
+.wrap {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: rgba(12, 12, 12, .975);
+
+  .innerWrap {
+    transform: scale(0.91) translateZ(0);
+    backface-visibility: hidden;;
+  }
+}
+
+@media screen and (max-height: 720px) {
+  .wrap .innerWrap {
+    transform: scale(0.82);
+  }
+}
