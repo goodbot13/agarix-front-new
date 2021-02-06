@@ -5,11 +5,13 @@ import {
   MULTIBOX_CHANGE_RING_COLOR, 
   MULTIBOX_CHANGE_CELL_COLOR, 
   MULTIBOX_HIDE_OWN_SKINS, 
-  MULTIBOX_STATIC_COLOR 
+  MULTIBOX_STATIC_COLOR, 
+  MULTIBOX_RING
 } from "./types";
 
 const initState: IGameMultiboxState = {
   enabled: false,
+  ring: true,
   changeRingColor: true,
   changeCellColor: false,
   hideOwnSkins: true,
@@ -22,6 +24,12 @@ export const gameMultiboxReducer = (state = initState, action: GameMultiboxActio
       return {
         ...state,
         enabled: action.enabled
+      }
+
+    case MULTIBOX_RING:
+      return {
+        ...state,
+        ring: action.ring
       }
 
     case MULTIBOX_CHANGE_RING_COLOR:

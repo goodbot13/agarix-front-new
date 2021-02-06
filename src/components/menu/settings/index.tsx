@@ -11,6 +11,7 @@ import { SettingsType } from 'redux/UI/types';
 
 import classNames from 'classnames';
 import Game from './categories/game';
+import Theming from './categories/theming';
 
 const Settings: FC<SettingsComponentType> = ({ shown, settingsType, setSettingsType }) => {
   return (
@@ -18,6 +19,7 @@ const Settings: FC<SettingsComponentType> = ({ shown, settingsType, setSettingsT
       <SettingsHeader />
       <div className={css.content}>
         {settingsType === 'GAME' && <Game />}
+        {settingsType === 'THEMING' && <Theming />}
       </div>
     </div>
   )

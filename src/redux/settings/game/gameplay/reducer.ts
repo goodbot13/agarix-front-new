@@ -5,6 +5,7 @@ import {
   SET_CAMERA_SPEED, 
   SET_CAMERA_STYLE, 
   SET_SPECTATOR_MODE, 
+  SET_VIEWPORT, 
   SET_ZOOM_SPEED 
 } from "./types";
 
@@ -13,7 +14,8 @@ const initState: IGameGameplayState = {
   zoomSpeed: 5,
   cameraSpeed: 5,
   cameraStyle: 'Default',
-  spectatorMode: 'Disabled'
+  spectatorMode: 'Disabled',
+  viewport: 'Disabled'
 }
 
 export const gameGameplayReducer = (state = initState, action: GameGameplayActionTypes): IGameGameplayState => {
@@ -46,6 +48,12 @@ export const gameGameplayReducer = (state = initState, action: GameGameplayActio
       return {
         ...state,
         spectatorMode: action.spectatorMode
+      }
+
+    case SET_VIEWPORT:
+      return {
+        ...state,
+        viewport: action.viewport
       }
 
     default: return state;

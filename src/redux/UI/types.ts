@@ -1,5 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { SettingsGameType } from "redux/settings/game/types";
+import { SettingsThemingType } from "redux/settings/theming/types";
 import { AppStateType } from "redux/store";
 
 export const SET_GAME_LOADED = 'SET_GAME_LOADED';
@@ -7,11 +8,11 @@ export const SET_MENU_SHOWN = 'SET_MENU_SHOWN';
 export const SET_UI_BLURED = 'SET_UI_BLURED';
 export const SET_SETTINGS_SHOWN = 'SET_SETTINGS_SHOWN';
 export const SET_SETTINGS_TYPE = 'SET_SETTINGS_TYPE';
-export const SET_SETTINGS_SUBMENU = 'SET_SETTINGS_SUBMENU'; 
+export const SET_GAME_SETTINGS_SUBMENU = 'SET_GAME_SETTINGS_SUBMENU'; 
+export const SET_THEMING_SETTINGS_SUBMENU = 'SET_THEMING_SETTINGS_SUBMENU';
 export const SET_ADDITIONAL_PROFILES_LIST_SHOWN = 'SET_ADDITIONAL_PROFILES_LIST_SHOWN';
 
 export type SettingsType = 'GAME' | 'HOTKEYS' | 'THEMING' | 'UI';
-export type SettingsSubmenuType = SettingsGameType;
 
 export interface IUIState {
   gameLoaded: boolean,
@@ -19,7 +20,8 @@ export interface IUIState {
   blured: boolean,
   settingsShown: boolean,
   settingsType: SettingsType,
-  settingsSubmenu: SettingsSubmenuType,
+  gameSettingsSubmenu: SettingsGameType,
+  themingSettingsSubmenu: SettingsThemingType,
   additionalProfilesListShown: boolean,
 }
 
@@ -48,9 +50,14 @@ interface SetSettingsTypeAction {
   settingsType: SettingsType
 }
 
-interface SetSettingsSubmenuAction {
-  type: typeof SET_SETTINGS_SUBMENU,
-  settingsSubmenu: SettingsSubmenuType,
+interface SetGameSettingsSubmenuAction {
+  type: typeof SET_GAME_SETTINGS_SUBMENU,
+  gameSettingsSubmenu: SettingsGameType,
+}
+
+interface SetThemingSettingsSubmenuAction {
+  type: typeof SET_THEMING_SETTINGS_SUBMENU,
+  themingSettingsSubmenu: SettingsThemingType,
 }
 
 interface SetAdditionalProfilesListShownAction {
@@ -60,7 +67,7 @@ interface SetAdditionalProfilesListShownAction {
 
 
 export type UIActionTypes = SetGameLoadedAction | SetMenuShownAction | SetUIBluredAction | 
-                            SetSettingsShownAction | SetSettingsTypeAction | SetSettingsSubmenuAction |
-                            SetAdditionalProfilesListShownAction;
+                            SetSettingsShownAction | SetSettingsTypeAction | SetGameSettingsSubmenuAction |
+                            SetThemingSettingsSubmenuAction | SetAdditionalProfilesListShownAction;
 
 export type UIThunkType = ThunkAction<void, AppStateType, unknown, UIActionTypes>; 

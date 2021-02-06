@@ -1,23 +1,23 @@
 import { 
   GameMinimapActionTypes, 
   IGameMinimapState, 
+  SET_DRAW_PLAYER_POSITION, 
   SET_GHOST_CELLS, 
   SET_MASS, 
   SET_MINIMAP_ENABLED, 
   SET_NICKS, 
-  SET_PLAYER_VIEWPORT, 
-  SET_REAL_PLAYERS_CELLS, 
-  SET_TOP_ONE_VIEWPORT 
+  SET_REAL_PLAYERS_CELLS,
+  SET_VIEWPORT, 
 } from "./types";
 
 const initState: IGameMinimapState = {
   enabled: true,
-  playerViewport: false,
-  topOneViewport: true,
+  viewport: 'Disabled',
   ghostCells: true,
   realPlayersCells: false,
   mass: false,
-  nicks: true
+  nicks: true,
+  playerPosition: true
 }
 
 export const gameMinimapReducer = (state = initState, action: GameMinimapActionTypes): IGameMinimapState => {
@@ -28,16 +28,10 @@ export const gameMinimapReducer = (state = initState, action: GameMinimapActionT
         enabled: action.enabled
       }
 
-    case SET_PLAYER_VIEWPORT:
+    case SET_VIEWPORT:
       return {
         ...state,
-        playerViewport: action.playerViewport
-      }
-
-    case SET_TOP_ONE_VIEWPORT:
-      return {
-        ...state,
-        topOneViewport: action.topOneViewport
+        viewport: action.viewport
       }
 
     case SET_GHOST_CELLS:
@@ -62,6 +56,12 @@ export const gameMinimapReducer = (state = initState, action: GameMinimapActionT
       return {
         ...state,
         nicks: action.nicks
+      }
+
+    case SET_DRAW_PLAYER_POSITION:
+      return {
+        ...state,
+        playerPosition: action.playerPosition
       }
 
     default: return state;

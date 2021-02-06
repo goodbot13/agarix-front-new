@@ -1,16 +1,34 @@
 .wrap {
   position: absolute;
-  left: 40px;
-  right: 40px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
   opacity: 1;
-  transition: .15s;
+  transition: .1s;
   visibility: visible;
+  padding: 40px;
 
   &.hidden {
     opacity: 0;
     animation: animateVisibilityHidden 0s;
     animation-fill-mode: forwards;
-    animation-delay: .15s;
+    animation-delay: .1s;
+  }
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(27, 27, 27, 0.9);  
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(20, 20, 20, .9);
+    border-radius: 8px;
+    border: 2px solid rgba(32, 32, 32, .9);
   }
 }
 

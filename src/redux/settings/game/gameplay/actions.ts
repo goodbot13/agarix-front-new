@@ -5,8 +5,10 @@ import {
   SET_CAMERA_SPEED,
   SET_CAMERA_STYLE,
   SET_SPECTATOR_MODE,
+  SET_VIEWPORT,
   SET_ZOOM_SPEED,
-  SpectatorModeType
+  SpectatorModeType,
+  ViewportType
 } from "./types";
 
 export const setAnimationSpeed = (animationSpeed: number): GameGameplayActionTypes => ({
@@ -33,3 +35,8 @@ export const setSpectatorMode = (spectatorMode: SpectatorModeType): GameGameplay
   type: SET_SPECTATOR_MODE,
   spectatorMode
 });
+
+export const setViewport = (viewport: ViewportType): GameGameplayActionTypes => ({
+  type: SET_VIEWPORT,
+  viewport
+})

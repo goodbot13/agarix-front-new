@@ -3,16 +3,18 @@ import {
   GameCellsActionTypes,
   RingsType,
   SET_AUTO_HIDE_MASS_AND_NICKS,
-  SET_COLOR_WASH,
   SET_FADE_SPEED,
+  SET_ONE_COLORED,
   SET_RINGS_SPINNING,
   SET_RINGS_TYPE,
+  SET_SHADOW,
   SET_SHOW_MASS,
   SET_SHOW_MASS_MY_CELL,
   SET_SHOW_NICKS,
   SET_SHOW_NICK_MY_CELL,
   SET_SKINS_TYPE,
   SET_SOAK_SPEED,
+  ShadowType,
   SkinsType,
   SoakSpeedType
 } from "./types";
@@ -67,7 +69,12 @@ export const setFadeSpeed = (fadeSpeed: FadeSpeedType): GameCellsActionTypes => 
   fadeSpeed
 });
 
-export const setColorWash = (colorWash: number): GameCellsActionTypes => ({
-  type: SET_COLOR_WASH,
-  colorWash
+export const setOneColored = (oneColored: boolean): GameCellsActionTypes => ({
+  type: SET_ONE_COLORED,
+  oneColored
+});
+
+export const setShadow = (shadow: ShadowType): GameCellsActionTypes => ({
+  type: SET_SHADOW,
+  shadow
 });

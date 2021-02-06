@@ -1,9 +1,10 @@
 import {
   setAutoHideMassAndNicks,
-  setColorWash,
   setFadeSpeed,
+  setOneColored,
   setRingsSpinning,
   setRingsType,
+  setShadow,
   setShowMass,
   setShowMassMyCell,
   setShowNickMyCell,
@@ -12,7 +13,7 @@ import {
   setSoakSpeed
 } from "./actions";
 
-import { FadeSpeedType, GameCellsThunkActionTypes, RingsType, SkinsType, SoakSpeedType } from "./types";
+import { FadeSpeedType, GameCellsThunkActionTypes, RingsType, ShadowType, SkinsType, SoakSpeedType } from "./types";
 
 export const thunkSetShowMass = (mass: boolean): GameCellsThunkActionTypes => (dispatch) => {
   dispatch(setShowMass(mass));
@@ -54,6 +55,10 @@ export const thunkSetFadeSpeed = (fadeSpeed: FadeSpeedType): GameCellsThunkActio
   dispatch(setFadeSpeed(fadeSpeed));
 }
 
-export const thunkSetColorWash = (colorWash: number): GameCellsThunkActionTypes => (dispatch) => {
-  dispatch(setColorWash(colorWash))
+export const thunkSetOneColored = (oneColored: boolean): GameCellsThunkActionTypes => (dispatch) => {
+  dispatch(setOneColored(oneColored));
+}
+
+export const thunkSetShadow = (shadow: ShadowType): GameCellsThunkActionTypes => (dispatch) => {
+  dispatch(setShadow(shadow));
 }

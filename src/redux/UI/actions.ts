@@ -1,12 +1,14 @@
+import { SettingsGameType } from "redux/settings/game/types";
+import { SettingsThemingType } from "redux/settings/theming/types";
 import { 
-  SettingsSubmenuType,
   SettingsType, 
   SET_ADDITIONAL_PROFILES_LIST_SHOWN, 
   SET_GAME_LOADED, 
+  SET_GAME_SETTINGS_SUBMENU, 
   SET_MENU_SHOWN, 
   SET_SETTINGS_SHOWN, 
-  SET_SETTINGS_SUBMENU, 
   SET_SETTINGS_TYPE, 
+  SET_THEMING_SETTINGS_SUBMENU, 
   SET_UI_BLURED, 
   UIActionTypes 
 } from "./types";
@@ -36,10 +38,15 @@ export const setSettingsType = (settingsType: SettingsType): UIActionTypes => ({
   settingsType
 });
 
-export const setSettingsSubmenu = (settingsSubmenu: SettingsSubmenuType): UIActionTypes => ({
-  type: SET_SETTINGS_SUBMENU,
-  settingsSubmenu
-}) 
+export const setGameSettingsSubmenu = (gameSettingsSubmenu: SettingsGameType): UIActionTypes => ({
+  type: SET_GAME_SETTINGS_SUBMENU,
+  gameSettingsSubmenu
+});
+
+export const setThemingSettingsSubmenu = (themingSettingsSubmenu: SettingsThemingType): UIActionTypes => ({
+  type: SET_THEMING_SETTINGS_SUBMENU,
+  themingSettingsSubmenu
+});
 
 export const setAdditionalProfilesListShown = (additionalProfilesListShown: boolean): UIActionTypes => ({
   type: SET_ADDITIONAL_PROFILES_LIST_SHOWN,

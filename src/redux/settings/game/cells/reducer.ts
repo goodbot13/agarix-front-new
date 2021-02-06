@@ -3,8 +3,10 @@ import {
   IGameCellsState, 
   SET_AUTO_HIDE_MASS_AND_NICKS, 
   SET_FADE_SPEED, 
+  SET_ONE_COLORED, 
   SET_RINGS_SPINNING, 
   SET_RINGS_TYPE, 
+  SET_SHADOW, 
   SET_SHOW_MASS, 
   SET_SHOW_MASS_MY_CELL, 
   SET_SHOW_NICKS, 
@@ -24,7 +26,8 @@ const initState: IGameCellsState = {
   ringsSpinning: true,
   soakSpeed: '1',
   fadeSpeed: '2',
-  colorWash: 110
+  oneColored: false,
+  shadow: 'All'
 }
 
 export const gameCellsReducer = (state = initState, action: GameCellsActionTypes): IGameCellsState => {
@@ -87,6 +90,18 @@ export const gameCellsReducer = (state = initState, action: GameCellsActionTypes
       return {
         ...state,
         fadeSpeed: action.fadeSpeed
+      }
+
+    case SET_ONE_COLORED:
+      return {
+        ...state,
+        oneColored: action.oneColored
+      }
+
+    case SET_SHADOW: 
+      return {
+        ...state,
+        shadow: action.shadow
       }
 
     default: return state;

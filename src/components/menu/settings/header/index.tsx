@@ -24,16 +24,16 @@ const SettingsHeader: FC<SettingsHeaderType> = ({ settingsType, setSettingsType 
           <FontAwesomeIcon icon={faGamepad}/> Game
         </button>
         <button 
-          className={classNames({ [css.selected]: settingsType === 'HOTKEYS' })}
-          onClick={() => setSettingsType('HOTKEYS')}
-        >
-          <FontAwesomeIcon icon={faKeyboard}/> Hotkeys
-        </button>
-        <button 
           className={classNames({ [css.selected]: settingsType === 'THEMING' })}
           onClick={() => setSettingsType('THEMING')}
         >
           <FontAwesomeIcon icon={faPalette}/> Theming
+        </button>
+        <button 
+          className={classNames({ [css.selected]: settingsType === 'HOTKEYS' })}
+          onClick={() => setSettingsType('HOTKEYS')}
+        >
+          <FontAwesomeIcon icon={faKeyboard}/> Hotkeys
         </button>
         <button 
           className={classNames({ [css.selected]: settingsType === 'UI' })}

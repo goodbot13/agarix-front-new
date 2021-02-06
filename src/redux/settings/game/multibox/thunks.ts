@@ -4,11 +4,16 @@ import {
   setMultiboxChangeRingColor,
   setMultiboxEnabled,
   setMultiboxHideOwnSkins,
-  setMultiboxStaticColor
+  setMultiboxStaticColor,
+  setMultiboxRing
 } from "./actions";
 
 export const thunkSetMultiboxEnabled = (enabled: boolean): GameMultiboxThunkActionTypes => (dispatch) => {
   dispatch(setMultiboxEnabled(enabled));
+}
+
+export const thunkSetMultiboxRing = (ring: boolean): GameMultiboxThunkActionTypes => (dispatch) => {
+  dispatch(setMultiboxRing(ring));
 }
 
 export const thunkSetMultiboxChangeRingColor = (changeRingColor: boolean): GameMultiboxThunkActionTypes => (dispatch) => {

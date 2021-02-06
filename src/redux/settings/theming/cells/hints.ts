@@ -1,0 +1,1 @@
+export const ONE_COLORED_STATS_COLOR_HINT = '(mass and nicks)';

@@ -8,6 +8,7 @@ import {
   thunkSetMultiboxChangeRingColor, 
   thunkSetMultiboxEnabled, 
   thunkSetMultiboxHideOwnSkins, 
+  thunkSetMultiboxRing, 
   thunkSetMultiboxStaticColor 
 } from "redux/settings/game/multibox/thunks";
 
@@ -15,11 +16,13 @@ import Switch from "components/menu/settings/basic/switch";
 
 const Multibox: FC<MultiboxType> = ({
   enabled,
+  ring,
   changeRingColor,
   changeCellColor,
   hideOwnSkins,
   staticColor,
   setEnabled,
+  setRing,
   setChangeRingColor,
   setChangeCellColor,
   setHideOwnSkins,
@@ -32,6 +35,12 @@ const Multibox: FC<MultiboxType> = ({
         enabled={enabled}
         onChange={setEnabled}
         main
+      />
+      <Switch
+        text="Use ring"
+        enabled={ring}
+        onChange={setRing}
+        disabled={!enabled}
       />
       <Switch
         text="Change ring color on focus"
@@ -67,6 +76,7 @@ const mapStateToProps = ({ settings }: AppStateType) => ({
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setEnabled: (value: boolean) => dispatch(thunkSetMultiboxEnabled(value)),
+  setRing: (value: boolean) => dispatch(thunkSetMultiboxRing(value)),
   setChangeRingColor: (value: boolean) => dispatch(thunkSetMultiboxChangeRingColor(value)),
   setChangeCellColor: (value: boolean) => dispatch(thunkSetMultiboxChangeCellColor(value)),
   setHideOwnSkins: (value: boolean) => dispatch(thunkSetMultiboxHideOwnSkins(value)),

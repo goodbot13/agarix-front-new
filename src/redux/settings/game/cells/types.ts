@@ -11,12 +11,14 @@ export const SET_RINGS_TYPE = 'SET_RINGS_TYPE';
 export const SET_RINGS_SPINNING = 'SET_RINGS_SPINNING';
 export const SET_SOAK_SPEED = 'SET_SOAK_SPEED';
 export const SET_FADE_SPEED = 'SET_FADE_SPEED';
-export const SET_COLOR_WASH = 'SET_COLOR_WASH';
+export const SET_ONE_COLORED = ''; // todo
+export const SET_SHADOW = 'SET_SHADOW';
 
 export type SkinsType = 'Disabled' | 'Custom' | 'Vanilla' | 'All';
 export type RingsType = 'Disabled' | '2CL' | 'Acimazis' | 'Yue';
 export type SoakSpeedType = 'Disabled' | '1' | '2' | '3' | '4' | '5';
 export type FadeSpeedType = 'Disabled' | '1' | '2' | '3' | '4' | '5';
+export type ShadowType = 'Disabled' | 'Only me' | 'All';
 
 export interface IGameCellsState {
   mass: boolean,
@@ -29,7 +31,8 @@ export interface IGameCellsState {
   ringsSpinning: boolean,
   soakSpeed: SoakSpeedType,
   fadeSpeed: FadeSpeedType,
-  colorWash: number
+  oneColored: boolean,
+  shadow: ShadowType
 }
 
 interface SetShowMassAction {
@@ -82,14 +85,19 @@ interface SetFadeSpeedAction {
   fadeSpeed: FadeSpeedType
 }
 
-interface SetColorWashAction {
-  type: typeof SET_COLOR_WASH,
-  colorWash: number
+interface SetOneColoredAction {
+  type: typeof SET_ONE_COLORED,
+  oneColored: boolean
+}
+
+interface SetShadowAction {
+  type: typeof SET_SHADOW,
+  shadow: ShadowType
 }
 
 export type GameCellsActionTypes = SetShowMassAction | SetShowNicksAction | SetShowMassMyCellAction |
                                    SetShowNickMyCellAction | SetAutoHideMassAndNicksAction | SetSkinsTypeAction |
                                    SetRingsTypeAction | SetRingsSpinningAction | SetSoakSpeedAction | SetFadeSpeedAction |
-                                   SetColorWashAction;
+                                   SetOneColoredAction | SetShadowAction;
 
 export type GameCellsThunkActionTypes = ThunkAction<void, AppStateType, unknown, GameCellsActionTypes>;

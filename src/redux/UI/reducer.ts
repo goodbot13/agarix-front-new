@@ -6,8 +6,9 @@ import {
   SET_SETTINGS_TYPE, 
   SET_UI_BLURED, 
   UIActionTypes, 
-  IUIState, 
-  SET_SETTINGS_SUBMENU
+  IUIState,
+  SET_GAME_SETTINGS_SUBMENU,
+  SET_THEMING_SETTINGS_SUBMENU, 
 } from "./types";
 
 const initState: IUIState = {
@@ -15,8 +16,9 @@ const initState: IUIState = {
   menuShown: true,
   blured: false,
   settingsShown: true,
-  settingsType: 'GAME',
-  settingsSubmenu: 'GAME_GAMEPLAY',
+  settingsType: 'THEMING',
+  gameSettingsSubmenu: 'GAME_GAMEPLAY',
+  themingSettingsSubmenu: 'THEMING_CELLS',
   additionalProfilesListShown: false
 }
 
@@ -53,10 +55,16 @@ export const UIReducer = (state = initState, action: UIActionTypes): IUIState =>
         settingsType: action.settingsType
       }
 
-    case SET_SETTINGS_SUBMENU:
+    case SET_GAME_SETTINGS_SUBMENU:
       return {
         ...state,
-        settingsSubmenu: action.settingsSubmenu
+        gameSettingsSubmenu: action.gameSettingsSubmenu
+      }
+
+    case SET_THEMING_SETTINGS_SUBMENU:
+      return {
+        ...state,
+        themingSettingsSubmenu: action.themingSettingsSubmenu
       }
 
     case SET_ADDITIONAL_PROFILES_LIST_SHOWN:

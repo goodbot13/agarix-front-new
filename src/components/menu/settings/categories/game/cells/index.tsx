@@ -1,13 +1,18 @@
 import { FC } from "react";
 
 import { connect } from "react-redux";
-import { FadeSpeedType, RingsType, SkinsType, SoakSpeedType } from "redux/settings/game/cells/types";
+
+import { AUTO_HIDE_MASS_AND_NICKS_HINT } from "redux/settings/game/cells/hints";
+
+import { FadeSpeedType, RingsType, ShadowType, SkinsType, SoakSpeedType } from "redux/settings/game/cells/types";
 import { AppStateType, ThunkRootDispatchType } from "redux/store";
 import { 
   thunkSetAutoHideMassAndNicks, 
   thunkSetFadeSpeed, 
+  thunkSetOneColored, 
   thunkSetRingsSpinning, 
   thunkSetRingsType, 
+  thunkSetShadow, 
   thunkSetShowMass, 
   thunkSetShowMassMyCell, 
   thunkSetShowNickMyCell, 
@@ -17,8 +22,6 @@ import {
 } from "redux/settings/game/cells/thunks";
 
 import Switch from "components/menu/settings/basic/switch";
-
-import { AUTO_HIDE_MASS_AND_NICKS_HINT } from "redux/settings/game/cells/hints";
 
 import Select from "components/menu/settings/basic/select";
 
@@ -33,6 +36,8 @@ const Cells: FC<CellsType> = ({
   ringsSpinning,
   soakSpeed,
   fadeSpeed,
+  oneColored,
+  shadow,
   setShowMass,
   setShowNicks,
   setShowMassMyCell,
@@ -42,7 +47,9 @@ const Cells: FC<CellsType> = ({
   setRingsType,
   setRingsSpinning,
   setSoakSpeed,
-  setFadeSpeed
+  setFadeSpeed,
+  setOneColored,
+  setShadow
 }) => {
   return (
     <>
@@ -62,12 +69,12 @@ const Cells: FC<CellsType> = ({
         onChange={setShowNicks}
       />
       <Switch 
-        text="Show nicks my cell" 
+        text="Show nick my cell" 
         enabled={myNick} 
         onChange={setShowNickMyCell}
       />
       <Switch 
-        text="Auto hide mass and nicks" 
+        text="Auto-hide mass and nicks" 
         hint={AUTO_HIDE_MASS_AND_NICKS_HINT}
         enabled={autoHideMassAndNicks} 
         onChange={setAutoHideMassAndNicks}
@@ -101,6 +108,17 @@ const Cells: FC<CellsType> = ({
         selectedItem={fadeSpeed}
         onChange={setFadeSpeed}
       />
+      <Switch 
+        text="One-colored" 
+        enabled={oneColored} 
+        onChange={setOneColored}
+      />
+      <Select 
+        text="Shadow"
+        items={['Disabled', 'Only me', 'All'] as Array<ShadowType>}
+        selectedItem={shadow}
+        onChange={setShadow}
+      />
     </>
   )
 }
@@ -119,7 +137,9 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setRingsType: (type: RingsType) => dispatch(thunkSetRingsType(type)),
   setRingsSpinning: (value: boolean) => dispatch(thunkSetRingsSpinning(value)),
   setSoakSpeed: (type: SoakSpeedType) => dispatch(thunkSetSoakSpeed(type)),
-  setFadeSpeed: (type: FadeSpeedType) => dispatch(thunkSetFadeSpeed(type))
+  setFadeSpeed: (type: FadeSpeedType) => dispatch(thunkSetFadeSpeed(type)),
+  setOneColored: (value: boolean) => dispatch(thunkSetOneColored(value)),
+  setShadow: (shadow: ShadowType) => dispatch(thunkSetShadow(shadow))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cells);

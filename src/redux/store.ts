@@ -17,6 +17,13 @@ import { gameMultiboxReducer } from './settings/game/multibox/reducer';
 import { gameMinimapReducer } from './settings/game/minimap/reducer';
 import { gameEffectsReducer } from './settings/game/effects/reducer';
 
+import { themingCellsReducer } from './settings/theming/cells/reducer';
+import { themingFoodReducer } from './settings/theming/food/reducer';
+import { themingMapReducer } from './settings/theming/map/reducer';
+import { themingMinimapReducer } from './settings/theming/minimap/reducer';
+import { themingMultiboxReducer } from './settings/theming/multibox/reducer';
+import { themingVirusReducer } from './settings/theming/viruses/reducer';
+
 const rootReducer = combineReducers({
   UI: UIReducer,
   profiles: profilesReducer,
@@ -29,6 +36,14 @@ const rootReducer = combineReducers({
       multibox: gameMultiboxReducer,
       minimap: gameMinimapReducer,
       effects: gameEffectsReducer
+    }),
+    theming: combineReducers({
+      cells: themingCellsReducer,
+      food: themingFoodReducer,
+      map: themingMapReducer,
+      minimap: themingMinimapReducer,
+      multibox: themingMultiboxReducer,
+      viruses: themingVirusReducer
     })
   })
 });

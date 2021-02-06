@@ -6,8 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { connect } from 'react-redux';
 import { AppStateType, ThunkRootDispatchType } from 'redux/store';
-import { setSettingsSubmenu } from 'redux/UI/actions';
-import { SettingsSubmenuType } from 'redux/UI/types';
 
 import Left from '../../left';
 import Right from '../../right';
@@ -20,6 +18,8 @@ import Gameplay from './gameplay';
 import Multibox from './multibox';
 import Minimap from './minimap';
 import Effects from './effects';
+import { setGameSettingsSubmenu } from 'redux/UI/actions';
+import { SettingsGameType } from 'redux/settings/game/types';
 
 const Game: FC<GameType> = ({ settingsSubmenu, setSettingsSubmenu, settingsShown }) => {
   return (
@@ -87,12 +87,12 @@ const Game: FC<GameType> = ({ settingsSubmenu, setSettingsSubmenu, settingsShown
 }
 
 const mapStateToProps = ({ UI }: AppStateType) => ({
-  settingsSubmenu: UI.settingsSubmenu,
+  settingsSubmenu: UI.gameSettingsSubmenu,
   settingsShown: UI.settingsShown
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
-  setSettingsSubmenu: (submenu: SettingsSubmenuType) => dispatch(setSettingsSubmenu(submenu)),
+  setSettingsSubmenu: (submenu: SettingsGameType) => dispatch(setGameSettingsSubmenu(submenu)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

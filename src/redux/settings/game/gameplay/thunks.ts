@@ -3,13 +3,15 @@ import {
   setCameraSpeed,
   setCameraStyle,
   setSpectatorMode,
+  setViewport,
   zetZoomSpeed
 } from "./actions";
 
 import {
   CameraStyleType,
   GameGameplayThunkActionTypes,
-  SpectatorModeType
+  SpectatorModeType,
+  ViewportType
 } from "./types";
 
 export const thunkSetAnimationSpeed = (animationSpeed: number): GameGameplayThunkActionTypes => (dispatch) => {
@@ -30,4 +32,8 @@ export const thunkSetCameraStyle = (cameraStyle: CameraStyleType): GameGameplayT
 
 export const thunkSetSpectatorMode = (spectatorMode: SpectatorModeType): GameGameplayThunkActionTypes => (dispatch) => {
   dispatch(setSpectatorMode(spectatorMode));
+}
+
+export const thunkSetViewport = (viewport: ViewportType): GameGameplayThunkActionTypes => (dispatch) => {
+  dispatch(setViewport(viewport));
 }

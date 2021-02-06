@@ -1,12 +1,13 @@
 import { 
   GameMinimapActionTypes, 
+  SET_DRAW_PLAYER_POSITION, 
   SET_GHOST_CELLS, 
   SET_MASS, 
   SET_MINIMAP_ENABLED, 
   SET_NICKS, 
-  SET_PLAYER_VIEWPORT, 
-  SET_REAL_PLAYERS_CELLS, 
-  SET_TOP_ONE_VIEWPORT 
+  SET_REAL_PLAYERS_CELLS,
+  SET_VIEWPORT,
+  ViewportType, 
 } from "./types";
 
 export const setMinimaEnabled = (enabled: boolean): GameMinimapActionTypes => ({
@@ -14,14 +15,9 @@ export const setMinimaEnabled = (enabled: boolean): GameMinimapActionTypes => ({
   enabled
 });
 
-export const setPlayerViewport = (playerViewport: boolean): GameMinimapActionTypes => ({
-  type: SET_PLAYER_VIEWPORT,
-  playerViewport
-});
-
-export const setTopOneViewport = (topOneViewport: boolean): GameMinimapActionTypes => ({
-  type: SET_TOP_ONE_VIEWPORT,
-  topOneViewport
+export const setViewport = (viewport: ViewportType): GameMinimapActionTypes => ({
+  type: SET_VIEWPORT,
+  viewport
 });
 
 export const setGhostCells = (ghostCells: boolean): GameMinimapActionTypes => ({
@@ -42,4 +38,9 @@ export const setMass = (mass: boolean): GameMinimapActionTypes => ({
 export const setNicks = (nicks: boolean): GameMinimapActionTypes => ({
   type: SET_NICKS,
   nicks
+});
+
+export const setDrawPlayerPosition = (playerPosition: boolean): GameMinimapActionTypes => ({
+  type: SET_DRAW_PLAYER_POSITION,
+  playerPosition
 });

@@ -1,34 +1,36 @@
 import { FC } from "react";
 
+import { connect } from "react-redux";
 import { AppStateType, ThunkRootDispatchType } from "redux/store";
 import { 
   thunkSetGhostCells, 
   thunkSetMass, 
   thunkSetMinimapEnabled, 
   thunkSetNicks, 
-  thunkSetPlayerViewport, 
-  thunkSetRealPlayersCells, 
-  thunkSetTopOneViewport 
+  thunkSetViewport, 
+  thunkSetRealPlayersCells,
+  thunkSetDrawPlayerPosition, 
 } from "redux/settings/game/minimap/thunks";
 
 import Switch from "components/menu/settings/basic/switch";
-import { connect } from "react-redux";
+import Select from "components/menu/settings/basic/select";
+import { ViewportType } from "redux/settings/game/minimap/types";
 
 const Minimap: FC<MinimapType> = ({
   enabled,
-  playerViewport,
-  topOneViewport,
+  viewport,
   ghostCells,
   realPlayersCells,
   mass,
   nicks,
+  playerPosition,
   setEnabled,
-  setPlayerViewport,
-  setTopOneViewport,
+  setViewport,
   setGhostCells,
   setRealPlayersCells,
   setMass,
-  setNicks
+  setNicks,
+  setDrawPlayerPosition
 }) => {
   return (
     <>
@@ -38,16 +40,11 @@ const Minimap: FC<MinimapType> = ({
         onChange={setEnabled}
         main
       />
-      <Switch 
-        text="Show player viewport"
-        enabled={playerViewport}
-        onChange={setPlayerViewport}
-        disabled={!enabled}
-      />
-      <Switch 
-        text="Show top one viewport"
-        enabled={topOneViewport}
-        onChange={setTopOneViewport}
+      <Select 
+        text="Show viewport"
+        items={['Disabled', 'Main tab', 'Second tab', 'Top one tab', 'All'] as Array<ViewportType>}
+        selectedItem={viewport}
+        onChange={setViewport}
         disabled={!enabled}
       />
       <Switch 
@@ -74,6 +71,12 @@ const Minimap: FC<MinimapType> = ({
         onChange={setNicks}
         disabled={!enabled}
       />
+      <Switch 
+        text="Show player position"
+        enabled={playerPosition}
+        onChange={setDrawPlayerPosition}
+        disabled={!enabled}
+      />
     </>
   )
 }
@@ -84,12 +87,12 @@ const mapStateToProps = ({ settings }: AppStateType) => ({
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setEnabled: (value: boolean) => dispatch(thunkSetMinimapEnabled(value)),
-  setPlayerViewport: (value: boolean) => dispatch(thunkSetPlayerViewport(value)),
-  setTopOneViewport: (value: boolean) => dispatch(thunkSetTopOneViewport(value)),
+  setViewport: (viewport: ViewportType) => dispatch(thunkSetViewport(viewport)),
   setGhostCells: (value: boolean) => dispatch(thunkSetGhostCells(value)),
   setRealPlayersCells: (value: boolean) => dispatch(thunkSetRealPlayersCells(value)),
   setMass: (value: boolean) => dispatch(thunkSetMass(value)),
-  setNicks: (value: boolean) => dispatch(thunkSetNicks(value))
+  setNicks: (value: boolean) => dispatch(thunkSetNicks(value)),
+  setDrawPlayerPosition: (value: boolean) => dispatch(thunkSetDrawPlayerPosition(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Minimap);

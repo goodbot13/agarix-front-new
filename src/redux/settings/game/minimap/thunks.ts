@@ -1,16 +1,12 @@
-import { setGhostCells, setMass, setMinimaEnabled, setNicks, setPlayerViewport, setRealPlayersCells, setTopOneViewport } from "./actions";
-import { GameMinimapThunkActionTypes } from "./types";
+import { setDrawPlayerPosition, setGhostCells, setMass, setMinimaEnabled, setNicks, setRealPlayersCells, setViewport } from "./actions";
+import { GameMinimapThunkActionTypes, ViewportType } from "./types";
 
 export const thunkSetMinimapEnabled = (enabled: boolean): GameMinimapThunkActionTypes => (dispatch) => {
   dispatch(setMinimaEnabled(enabled));
 };
 
-export const thunkSetPlayerViewport = (playerViewport: boolean): GameMinimapThunkActionTypes => (dispatch) => {
-  dispatch(setPlayerViewport(playerViewport));
-}
-
-export const thunkSetTopOneViewport = (topOneViewport: boolean): GameMinimapThunkActionTypes => (disaptch) => {
-  disaptch(setTopOneViewport(topOneViewport));
+export const thunkSetViewport = (viewport: ViewportType): GameMinimapThunkActionTypes => (dispatch) => {
+  dispatch(setViewport(viewport));
 }
 
 export const thunkSetGhostCells = (ghostCells: boolean): GameMinimapThunkActionTypes => (dispatch) => {
@@ -27,4 +23,8 @@ export const thunkSetMass = (mass: boolean): GameMinimapThunkActionTypes => (dis
 
 export const thunkSetNicks = (nicks: boolean): GameMinimapThunkActionTypes => (dispatch) => {
   dispatch(setNicks(nicks));
+}
+
+export const thunkSetDrawPlayerPosition = (playerPosition: boolean): GameMinimapThunkActionTypes => (dispatch) => {
+  dispatch(setDrawPlayerPosition(playerPosition));
 }
