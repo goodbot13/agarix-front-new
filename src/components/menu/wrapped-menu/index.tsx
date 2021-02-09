@@ -8,18 +8,17 @@ import Customization from '../items/customization';
 
 import { connect } from 'react-redux';
 import { AppStateType, ThunkRootDispatchType } from 'redux/store';
-import { 
-  setLeftProfileNick, 
-  setLeftProfileSelectedIndex, 
-  setLeftProfileSkinUrl,
-  setRightProfileNick, 
-  setRightProfileSelectedIndex, 
-  setRightProfileSkinUrl, 
-  setTag 
-} from 'redux/profiles/actions'; 
 
 import classNames from 'classnames';
-import menu from '..';
+import { 
+  thunkSetLeftProfileNick, 
+  thunkSetLeftProfileSelectedIndex,
+   thunkSetLeftProfileSkinUrl, 
+   thunkSetRightProfileNick, 
+   thunkSetRightProfileSelectedIndex, 
+   thunkSetRightProfileSkinUrl, 
+   thunkSetTag
+  } from 'redux/profiles/thunks';
 
 const WrappedMenu: FC<WrappedMenuType> = ({
   setLeftProfileNick, 
@@ -95,13 +94,13 @@ const mapStateToProps = ({ UI, profiles }: AppStateType) => ({
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
-  setLeftProfileNick: (nick: string) => dispatch(setLeftProfileNick(nick)),
-  setLeftProfileSkinUrl: (skinUrl: string) => dispatch(setLeftProfileSkinUrl(skinUrl)),
-  setLeftProfileSelectedIndex: (index: number) => dispatch(setLeftProfileSelectedIndex(index)),
-  setRightProfileNick: (nick: string) => dispatch(setRightProfileNick(nick)),
-  setRightProfileSkinUrl: (skinUrl: string) => dispatch(setRightProfileSkinUrl(skinUrl)),
-  setRightProfileSelectedIndex: (index: number) => dispatch(setRightProfileSelectedIndex(index)),
-  setTag: (tag: string) => dispatch(setTag(tag)),
+  setLeftProfileNick: (nick: string) => dispatch(thunkSetLeftProfileNick(nick)),
+  setLeftProfileSkinUrl: (skinUrl: string) => dispatch(thunkSetLeftProfileSkinUrl(skinUrl)),
+  setLeftProfileSelectedIndex: (index: number) => dispatch(thunkSetLeftProfileSelectedIndex(index)),
+  setRightProfileNick: (nick: string) => dispatch(thunkSetRightProfileNick(nick)),
+  setRightProfileSkinUrl: (skinUrl: string) => dispatch(thunkSetRightProfileSkinUrl(skinUrl)),
+  setRightProfileSelectedIndex: (index: number) => dispatch(thunkSetRightProfileSelectedIndex(index)),
+  setTag: (tag: string) => dispatch(thunkSetTag(tag)),
 });
 
 type WrappedMenuType = ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>;

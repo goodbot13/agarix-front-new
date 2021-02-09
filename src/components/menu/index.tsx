@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import css from './index.module.scss';
 
 import Settings from './settings';
@@ -6,24 +6,19 @@ import WrappedMenu from './wrapped-menu';
 
 import { connect } from 'react-redux';
 import { AppStateType, ThunkRootDispatchType } from 'redux/store';
-import { setMenuShown, setSettingsShown } from 'redux/UI/actions';
 
 import classNames from 'classnames';
+import { thunkSetMenuShown, thunkSetSettingsShown } from 'redux/UI/thunks';
 
-const Menu: FC<MenuType> = ({ menuShown, setSettingsShown, setMenuShown }) => {
-  useEffect(() => {
-    (window as any).setSettingsShown = setSettingsShown;
-    (window as any).setMenuShown = setMenuShown;
-  }, []);
-
+const Menu: FC<MenuType> = ({ menuShown, settingsShown, setSettingsShown, setMenuShown }) => {
   return (
-    <div className={css.wrap}>
-      <div className={classNames({
-        [css.innerWrap]: true,
-        /* [css.shown]: menuShown */
-      })}>
-        <Settings />
+    <div className={classNames({ 
+      [css.wrap]: true,
+      [css.hidden]: !menuShown
+    })}>
+      <div className={classNames({ [css.innerWrap]: true })}>
         <WrappedMenu />
+        <Settings />
       </div>
     </div>
   )
@@ -31,11 +26,12 @@ const Menu: FC<MenuType> = ({ menuShown, setSettingsShown, setMenuShown }) => {
 
 const mapStateToProps = ({ UI }: AppStateType) => ({ 
   menuShown: UI.menuShown,
+  settingsShown: UI.settingsShown
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
-  setSettingsShown: (shown: boolean) => dispatch(setSettingsShown(shown)),
-  setMenuShown: (shown: boolean) => dispatch(setMenuShown(shown))
+  setSettingsShown: (shown: boolean) => dispatch(thunkSetSettingsShown(shown)),
+  setMenuShown: (shown: boolean) => dispatch(thunkSetMenuShown(shown))
 });
 
 type MenuType = ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>;

@@ -4,21 +4,21 @@
   transition: .2s;
   opacity: 0;
   transform: scale(1.5);
-  animation: delayVisibilityHidden 0;
+  animation: delayVisibilityHidden 0s;
   animation-fill-mode: forwards;
   animation-delay: .2s;
 
   &.menuShown {
     transform: scale(1);
     opacity: 1;
-    animation: delayVisibilityVisible 0;
+    animation: delayVisibilityVisible 0s;
     animation-fill-mode: forwards;
   }
 
   &.settingsShown {
     transform: scale(0.5);
     opacity: 0;
-    animation: delayVisibilityHidden 0;
+    animation: delayVisibilityHidden 0s;
     animation-fill-mode: forwards;
     animation-delay: .2s;
   }

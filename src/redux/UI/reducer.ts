@@ -8,7 +8,8 @@ import {
   UIActionTypes, 
   IUIState,
   SET_GAME_SETTINGS_SUBMENU,
-  SET_THEMING_SETTINGS_SUBMENU, 
+  SET_THEMING_SETTINGS_SUBMENU,
+  SET_HOTKEYS_SETTINGS_SUBMENU, 
 } from "./types";
 
 const initState: IUIState = {
@@ -16,9 +17,10 @@ const initState: IUIState = {
   menuShown: true,
   blured: false,
   settingsShown: true,
-  settingsType: 'THEMING',
+  settingsType: 'HOTKEYS',
   gameSettingsSubmenu: 'GAME_GAMEPLAY',
   themingSettingsSubmenu: 'THEMING_CELLS',
+  hotkeysSettingsSubmenu: 'HOTKEYS_KEYBOARD',
   additionalProfilesListShown: false
 }
 
@@ -65,6 +67,12 @@ export const UIReducer = (state = initState, action: UIActionTypes): IUIState =>
       return {
         ...state,
         themingSettingsSubmenu: action.themingSettingsSubmenu
+      }
+
+    case SET_HOTKEYS_SETTINGS_SUBMENU:
+      return {
+        ...state,
+        hotkeysSettingsSubmenu: action.hotkeysSettingsSubmenu
       }
 
     case SET_ADDITIONAL_PROFILES_LIST_SHOWN:

@@ -12,7 +12,6 @@ export const SET_VIRUS_GLOW_STRENGTH = 'SET_VIRUS_GLOW_STRENGTH';
 export const SET_VIRUS_TRANSPARENCY = 'SET_VIRUS_TRANSPARENCY';
 export const SET_VIRUS_MASS_TYPE = 'SET_VIRUS_MASS_TYPE';
 export const SET_FILL_CIRCLE_COLOR = 'SET_FILL_CIRCLE_COLOR';
-export const SET_FILL_CIRCLE_TRANSPARENCY = 'SET_FILL_CIRCLE_TRANSPARENCY';
 
 export type VirusMassType = 'Disabled' | 'Full mass' | 'Shots amount' | 'Fill circle';
 
@@ -27,7 +26,6 @@ export interface IThemingVirusesState {
   transparency: number,
   massType: VirusMassType,
   fillCircleColor: RGB,
-  fillCircleTransparency: number
 }
 
 interface SetVirusColorAction {
@@ -80,14 +78,9 @@ interface SetFillCircleColorAction {
   fillCircleColor: RGB
 }
 
-interface SetFillCircleTransparencyAction {
-  type: typeof SET_FILL_CIRCLE_TRANSPARENCY,
-  fillCircleTransparency: number
-}
-
 export type ThemingVirusesActionTypes = SetVirusColorAction | SetVirusBorderWidthAction | SetVirusBorderColorAction |
                                         SetVirusGlowAction | SetVirusGlowColorAction | SetVirusGlowDistanceAction |
                                         SetVirusGlowStrengthAction | SetVirusTransparencyAction | SetVirusMassTypeAction |
-                                        SetFillCircleColorAction | SetFillCircleTransparencyAction;
+                                        SetFillCircleColorAction;
 
 export type ThemingVirusesThunkActionTypes = ThunkAction<void, AppStateType, unknown, ThemingVirusesActionTypes>;

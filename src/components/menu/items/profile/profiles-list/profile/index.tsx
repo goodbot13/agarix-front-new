@@ -9,7 +9,7 @@ const Profile: FC<ProfileType> = ({ skinUrl, index, currentSelectedIndex, onSele
   return (
     <button
       key={index} 
-      onClick={() => onSelect()}
+      onClick={() => onSelect(index)}
       className={classNames({ 
         [css.profile]: true,
         [css.selected]: index === currentSelectedIndex,
@@ -35,5 +35,5 @@ type ProfileType = {
   skinUrl: string,
   index: number,
   currentSelectedIndex: number,
-  onSelect: () => void
+  onSelect: (index: number) => void
 }

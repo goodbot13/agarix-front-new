@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import css from './index.module.scss';
 
 import classNames from 'classnames';
@@ -7,7 +7,21 @@ import { IProfile } from 'redux/profiles/types';
 
 import Profile from './profile';
 
-const ProfilesList: FC<ProfileListType> = ({ left, items, currentSelectedIndex, onProfileSelect }) => {
+const ProfilesList: FC<ProfileListType> = ({ left, isMain, items, currentSelectedIndex, onProfileSelect }) => {
+  let offset = 0;
+
+  useEffect(() => {
+    if (isMain) {
+      if (!left) {
+        offset = 5;
+      }
+    } else {
+      if (left) {
+        offset = 5;
+      }
+    } 
+  });
+
   return (
     <div className={classNames({
       [css.wrap]: true,
@@ -17,11 +31,11 @@ const ProfilesList: FC<ProfileListType> = ({ left, items, currentSelectedIndex, 
       {items.map(({ skinUrl }, i) => {
         return (
           <Profile 
-            key={i}
-            index={i}
+            key={i + offset}
+            index={i + offset}
             currentSelectedIndex={currentSelectedIndex}
             skinUrl={skinUrl}
-            onSelect={() => onProfileSelect(i)}
+            onSelect={() => onProfileSelect(i + offset)}
           />
         )
       })}
@@ -33,6 +47,7 @@ export default ProfilesList;
 
 type ProfileListType = {
   left?: boolean,
+  isMain: boolean,
   items: Array<IProfile>,
   currentSelectedIndex: number,
   onProfileSelect: (index: number) => void

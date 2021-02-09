@@ -1,3 +1,4 @@
+import Storage from "api/storage/Storage";
 import { 
   IThemingCellsState, 
   SET_CELLS_TRANSPARENCY, 
@@ -10,15 +11,7 @@ import {
   ThemingCellsActionTypes 
 } from "./types";
 
-const initState: IThemingCellsState = {
-  oneColoredColor: { red: 240, green: 240, blue: 240 },
-  oneColoredStatsColor: { red: 0, green: 0, blue: 0 },
-  shadowColor: { red: 0, green: 0, blue: 0 },
-  myShadowColor: { red: 0, green: 0, blue: 0 },
-  shadowDistance: 10,
-  shadowStrength: 2,
-  transparency: 0.98
-}
+const initState: IThemingCellsState = Storage.get().settings.theming.cells;
 
 export const themingCellsReducer = (state = initState, action: ThemingCellsActionTypes): IThemingCellsState => {
   switch (action.type) {

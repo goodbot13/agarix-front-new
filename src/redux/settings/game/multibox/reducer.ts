@@ -1,3 +1,4 @@
+import Storage from "api/storage/Storage";
 import { 
   IGameMultiboxState, 
   GameMultiboxActionTypes, 
@@ -9,14 +10,7 @@ import {
   MULTIBOX_RING
 } from "./types";
 
-const initState: IGameMultiboxState = {
-  enabled: false,
-  ring: true,
-  changeRingColor: true,
-  changeCellColor: false,
-  hideOwnSkins: true,
-  staticColor: true
-}
+const initState: IGameMultiboxState = Storage.get().settings.game.multibox;
 
 export const gameMultiboxReducer = (state = initState, action: GameMultiboxActionTypes): IGameMultiboxState => {
   switch (action.type) {

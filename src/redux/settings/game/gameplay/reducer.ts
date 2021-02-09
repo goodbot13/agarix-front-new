@@ -1,3 +1,4 @@
+import Storage from "api/storage/Storage";
 import { 
   GameGameplayActionTypes, 
   IGameGameplayState, 
@@ -9,14 +10,8 @@ import {
   SET_ZOOM_SPEED 
 } from "./types";
 
-const initState: IGameGameplayState = {
-  animationSpeed: 3,
-  zoomSpeed: 5,
-  cameraSpeed: 5,
-  cameraStyle: 'Default',
-  spectatorMode: 'Disabled',
-  viewport: 'Disabled'
-}
+
+const initState: IGameGameplayState = Storage.get().settings.game.gameplay;
 
 export const gameGameplayReducer = (state = initState, action: GameGameplayActionTypes): IGameGameplayState => {
   switch (action.type) {

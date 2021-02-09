@@ -1,3 +1,6 @@
+import { ThunkAction } from "redux-thunk";
+import { AppStateType } from "redux/store";
+
 export const SET_LEFT_PROFILE_NICK = 'SET_LEFT_PROFILE_NICK';
 export const SET_LEFT_PROFILE_SKIN_URL = 'SET_LEFT_PROFILE_SKIN_URL';
 export const SET_LEFT_PROFILE_SELECTED_INDEX = 'SET_LEFT_PROFILE_SELECTED_INDEX';
@@ -57,3 +60,5 @@ interface SetTagAction {
 export type ProfilesActionTypes = SetLeftProfileNickAction | SetLeftProfileSkinUrlAction | SetLeftProfileSelectedIndexAction |
                                    SetRightProfileSkinUrlAction | SetRightProfileNickAction | SetRightProfileSelectedIndexAction |
                                    SetTagAction;
+
+export type ProfilesThunkActionTypes = ThunkAction<void, AppStateType, unknown, ProfilesActionTypes>;

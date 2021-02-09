@@ -29,35 +29,37 @@ const Profile: FC<ProfileType> = ({
       [css.main]: main,
       [css.notMain]: !main
     })}>
-      <ProfilesList 
-        left={main}
-        items={profilesList.slice(0, 5)}
-        currentSelectedIndex={currentSelectedIndex}
-        //@ts-ignore
-        onProfileSelect={onProfileChange}
-      />
-      {additionalProfilesListShown && (
+      <div className={css.top}>
         <ProfilesList 
-          left={!main}
-          items={profilesList.slice(5)}
+          isMain={main as boolean}
+          left={main}
+          items={profilesList.slice(0, 5)}
           currentSelectedIndex={currentSelectedIndex}
-          //@ts-ignore
           onProfileSelect={onProfileChange}
-        />)
-      }
-      <div className={classNames({ 
-        [css.profileWrap]: true, 
-        [css.errored]: loadingErrored 
-      })}>
-        <div className={css.imgWrap}>
-          <img 
-            src={skinUrl}
-            alt=""
-            onError={() => setLoadingErrored(true)}
-            onLoad={() => setLoadingErrored(false)}
-          ></img>
+        />
+        {additionalProfilesListShown && (
+          <ProfilesList 
+            isMain={main as boolean}
+            left={!main}
+            items={profilesList.slice(5)}
+            currentSelectedIndex={currentSelectedIndex}
+            onProfileSelect={onProfileChange}
+          />)
+        }
+        <div className={classNames({ 
+          [css.profileWrap]: true, 
+          [css.errored]: loadingErrored 
+        })}>
+          <div className={css.imgWrap}>
+            <img 
+              src={skinUrl}
+              alt=""
+              onError={() => setLoadingErrored(true)}
+              onLoad={() => setLoadingErrored(false)}
+            ></img>
+          </div>
+          <div className={css.errorMessage}>Could not load image.</div>
         </div>
-        <div className={css.errorMessage}>Could not load image.</div>
       </div>
       <div className={css.profileDataWrap}>
         <input 

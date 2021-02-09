@@ -1,3 +1,4 @@
+import Storage from "api/storage/Storage";
 import { 
   GameCellsActionTypes, 
   IGameCellsState, 
@@ -15,20 +16,7 @@ import {
   SET_SOAK_SPEED 
 } from "./types";
 
-const initState: IGameCellsState = {
-  mass: true,
-  nicks: true,
-  myMass: true,
-  myNick: true,
-  autoHideMassAndNicks: true,
-  skinsType: 'All',
-  ringsType: 'Disabled',
-  ringsSpinning: true,
-  soakSpeed: '1',
-  fadeSpeed: '2',
-  oneColored: false,
-  shadow: 'All'
-}
+const initState: IGameCellsState = Storage.get().settings.game.cells;
 
 export const gameCellsReducer = (state = initState, action: GameCellsActionTypes): IGameCellsState => {
   switch (action.type) {

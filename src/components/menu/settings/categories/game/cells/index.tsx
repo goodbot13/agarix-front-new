@@ -95,6 +95,7 @@ const Cells: FC<CellsType> = ({
         text="Spinning rings"
         enabled={ringsSpinning} 
         onChange={setRingsSpinning}
+        disabled={ringsType === 'Disabled'}
       />
       <Select 
         text="Soak animation speed"

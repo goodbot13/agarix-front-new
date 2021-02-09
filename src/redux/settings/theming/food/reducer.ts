@@ -1,3 +1,4 @@
+import Storage from "api/storage/Storage";
 import { 
   IThemingFoodState, 
   SET_FOOD_COLOR, 
@@ -10,15 +11,7 @@ import {
   ThemingFoodActionTypes 
 } from "./types";
 
-const initState: IThemingFoodState = {
-  size: 16,
-  color: { red: 255, green: 255, blue: 255 },
-  glow: true,
-  glowColor: { red: 0, green: 200, blue: 128 },
-  glowDistance: 90,
-  glowStrength: 9,
-  crisp: true
-}
+const initState: IThemingFoodState = Storage.get().settings.theming.food;
 
 export const themingFoodReducer = (state = initState, action: ThemingFoodActionTypes): IThemingFoodState => {
   switch (action.type) {

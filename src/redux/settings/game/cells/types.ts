@@ -11,7 +11,7 @@ export const SET_RINGS_TYPE = 'SET_RINGS_TYPE';
 export const SET_RINGS_SPINNING = 'SET_RINGS_SPINNING';
 export const SET_SOAK_SPEED = 'SET_SOAK_SPEED';
 export const SET_FADE_SPEED = 'SET_FADE_SPEED';
-export const SET_ONE_COLORED = ''; // todo
+export const SET_ONE_COLORED = 'SET_ONE_COLORED'; // todo
 export const SET_SHADOW = 'SET_SHADOW';
 
 export type SkinsType = 'Disabled' | 'Custom' | 'Vanilla' | 'All';

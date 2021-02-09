@@ -1,3 +1,4 @@
+import Storage from "api/storage/Storage";
 import { 
   IThemingMapState, 
   ThemingMapActionTypes,
@@ -19,24 +20,7 @@ import {
   SET_MAP_GLOBAL_BACKGROUND_IMAGE_URL, 
 } from "./types";
 
-const initState: IThemingMapState = {
-  borderType: 'Common',
-  borderRoundness: 60,
-  borderWidth: 25,
-  borderColor: { red: 0, green: 0, blue: 0 },
-  borderGlow: true,
-  borderGlowColor: { red: 0, green: 0, blue: 0 },
-  borderGlowDistance: 220,
-  borderGlowStrength: 11,
-  backgroundTint: { red: 0, green: 0, blue: 0 },
-  backgroundImage: true,
-  backgroundImageUrl: '',
-  backgroundImageLiveEffectStrength: '4',
-  globalBackgroundImage: true,
-  globalBackgroundImageUrl: '',
-  globalBackgroundImageTint: { red: 0, green: 0, blue: 0 },
-  globalBackgroundImageLiveEffectStrength: '4'
-}
+const initState: IThemingMapState = Storage.get().settings.theming.map;
 
 export const themingMapReducer = (state = initState, action: ThemingMapActionTypes): IThemingMapState => {
   switch (action.type) {

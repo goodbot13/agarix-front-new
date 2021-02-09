@@ -103,18 +103,21 @@ const MapComponent: FC<MapComponentType> = ({
         text="Border glow color"
         color={borderGlowColor}
         onChange={setMapBorderGlowColor} 
+        disabled={!borderGlow}
       />
       <Select
         text="Border glow distance"
         selectedItem={borderGlowDistance}
         items={MAP_BORDER_GLOW_DISTANCE_VALUES}
         onChange={setMapBorderGlowDistance}
+        disabled={!borderGlow}
       />
       <Select
         text="Border glow strength"
         selectedItem={borderGlowStrength}
         items={MAP_BORDER_GLOW_STRENGTH_VALUES}
         onChange={setMapBorderGlowStrength}
+        disabled={!borderGlow}
       />
       <Colorpick
         text="Background tint"
@@ -131,6 +134,7 @@ const MapComponent: FC<MapComponentType> = ({
         selectedItem={backgroundImageLiveEffectStrength}
         items={['Disabled', '1', '2', '3', '4', '5'] as Array<MapLiveEffectStrengthType>}
         onChange={setMapBackgroundImageLiveEffectStrength}
+        disabled={!backgroundImage}
       />
       <Switch
         text="Global background image"
@@ -141,12 +145,14 @@ const MapComponent: FC<MapComponentType> = ({
         text="Global background image tint"
         color={globalBackgroundImageTint}
         onChange={setMapGlobalBackgroundImageTint} 
+        disabled={!globalBackgroundImage}
       />
       <Select
         text="Global background image live effect strength"
         selectedItem={globalBackgroundImageLiveEffectStrength}
         items={['Disabled', '1', '2', '3', '4', '5'] as Array<MapLiveEffectStrengthType>}
         onChange={setMapGlobalBackgroundImageLiveEffectStrength}
+        disabled={!globalBackgroundImage}
       />
     </>
   )

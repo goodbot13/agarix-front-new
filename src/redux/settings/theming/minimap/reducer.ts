@@ -1,3 +1,4 @@
+import Storage from "api/storage/Storage";
 import { 
   IThemingMinimapState, 
   SET_MINIMAP_BACKGROUND_COLOR, 
@@ -10,15 +11,7 @@ import {
   ThemingMinimapActionTypes 
 } from "./types";
 
-const initState: IThemingMinimapState = {
-  backgroundColor: { red: 0, green: 0, blue: 0 },
-  size: 250,
-  myViewportColor: { red: 0, green: 0, blue: 0 },
-  topOneViewportColor: { red: 0, green: 0, blue: 0 },
-  playerSize: 10,
-  playerColor: { red: 0, green: 0, blue: 0 },
-  ghostCellsColor: { red: 0, green: 0, blue: 0 }
-}
+const initState: IThemingMinimapState = Storage.get().settings.theming.minimap;
 
 export const themingMinimapReducer = (state = initState, action: ThemingMinimapActionTypes): IThemingMinimapState => {
   switch (action.type) {

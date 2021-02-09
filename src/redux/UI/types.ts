@@ -1,5 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { SettingsGameType } from "redux/settings/game/types";
+import { SettingsHotkeysType } from "redux/settings/hotkeys/types";
 import { SettingsThemingType } from "redux/settings/theming/types";
 import { AppStateType } from "redux/store";
 
@@ -10,6 +11,7 @@ export const SET_SETTINGS_SHOWN = 'SET_SETTINGS_SHOWN';
 export const SET_SETTINGS_TYPE = 'SET_SETTINGS_TYPE';
 export const SET_GAME_SETTINGS_SUBMENU = 'SET_GAME_SETTINGS_SUBMENU'; 
 export const SET_THEMING_SETTINGS_SUBMENU = 'SET_THEMING_SETTINGS_SUBMENU';
+export const SET_HOTKEYS_SETTINGS_SUBMENU = 'SET_HOTKEYS_SETTINGS_SUBMENU';
 export const SET_ADDITIONAL_PROFILES_LIST_SHOWN = 'SET_ADDITIONAL_PROFILES_LIST_SHOWN';
 
 export type SettingsType = 'GAME' | 'HOTKEYS' | 'THEMING' | 'UI';
@@ -22,6 +24,7 @@ export interface IUIState {
   settingsType: SettingsType,
   gameSettingsSubmenu: SettingsGameType,
   themingSettingsSubmenu: SettingsThemingType,
+  hotkeysSettingsSubmenu: SettingsHotkeysType,
   additionalProfilesListShown: boolean,
 }
 
@@ -60,6 +63,11 @@ interface SetThemingSettingsSubmenuAction {
   themingSettingsSubmenu: SettingsThemingType,
 }
 
+interface SetHotkeysSettingsSubmenuAction {
+  type: typeof SET_HOTKEYS_SETTINGS_SUBMENU,
+  hotkeysSettingsSubmenu: SettingsHotkeysType
+}
+
 interface SetAdditionalProfilesListShownAction {
   type: typeof SET_ADDITIONAL_PROFILES_LIST_SHOWN,
   additionalProfilesListShown: boolean
@@ -68,6 +76,6 @@ interface SetAdditionalProfilesListShownAction {
 
 export type UIActionTypes = SetGameLoadedAction | SetMenuShownAction | SetUIBluredAction | 
                             SetSettingsShownAction | SetSettingsTypeAction | SetGameSettingsSubmenuAction |
-                            SetThemingSettingsSubmenuAction | SetAdditionalProfilesListShownAction;
+                            SetThemingSettingsSubmenuAction | SetAdditionalProfilesListShownAction | SetHotkeysSettingsSubmenuAction;
 
-export type UIThunkType = ThunkAction<void, AppStateType, unknown, UIActionTypes>; 
+export type UIThunkActionTypes = ThunkAction<void, AppStateType, unknown, UIActionTypes>; 

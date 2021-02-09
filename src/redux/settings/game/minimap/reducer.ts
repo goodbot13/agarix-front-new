@@ -1,3 +1,4 @@
+import Storage from "api/storage/Storage";
 import { 
   GameMinimapActionTypes, 
   IGameMinimapState, 
@@ -10,15 +11,7 @@ import {
   SET_VIEWPORT, 
 } from "./types";
 
-const initState: IGameMinimapState = {
-  enabled: true,
-  viewport: 'Disabled',
-  ghostCells: true,
-  realPlayersCells: false,
-  mass: false,
-  nicks: true,
-  playerPosition: true
-}
+const initState: IGameMinimapState = Storage.get().settings.game.minimap;
 
 export const gameMinimapReducer = (state = initState, action: GameMinimapActionTypes): IGameMinimapState => {
   switch (action.type) {

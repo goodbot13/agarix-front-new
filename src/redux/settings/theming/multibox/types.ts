@@ -1,4 +1,5 @@
 import { ThunkAction } from "redux-thunk";
+import { AppStateType } from "redux/store";
 import { RGB } from "../types";
 
 export const SET_MUTLIBOX_RING_STYLE = 'SET_MUTLIBOX_RING_STYLE';
@@ -52,4 +53,4 @@ interface SetMutltiboxFocusedStaticCellColor {
 export type ThemingMultiboxActionTypes = SetMutltiboxRingStyleAction | SetMultiboxLinedRingSizeAction | SetMultiboxFocusedRingColorAction |
                                          SetMultiboxInitialRingColorAction | SetMultiboxInitialStaticCellColorAction | SetMutltiboxFocusedStaticCellColor;
 
-export type ThemingMultiboxThunkActionTypes = ThunkAction<void, IThemingMultiboxState, unknown, ThemingMultiboxActionTypes>;
+export type ThemingMultiboxThunkActionTypes = ThunkAction<void, AppStateType, unknown, ThemingMultiboxActionTypes>;

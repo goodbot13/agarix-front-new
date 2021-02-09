@@ -1,5 +1,5 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunk, { ThunkDispatch } from 'redux-thunk';
+import { combineReducers } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 
 import { gameReducer } from './game/reducer';
 import { profilesReducer } from './profiles/reducer';
@@ -24,6 +24,10 @@ import { themingMinimapReducer } from './settings/theming/minimap/reducer';
 import { themingMultiboxReducer } from './settings/theming/multibox/reducer';
 import { themingVirusReducer } from './settings/theming/viruses/reducer';
 
+import { hotkeysKeyboardReducer } from './settings/hotkeys/keyboard/reducer';
+
+import { configureStore } from '@reduxjs/toolkit';
+
 const rootReducer = combineReducers({
   UI: UIReducer,
   profiles: profilesReducer,
@@ -44,13 +48,20 @@ const rootReducer = combineReducers({
       minimap: themingMinimapReducer,
       multibox: themingMultiboxReducer,
       viruses: themingVirusReducer
+    }),
+    hotkeys: combineReducers({
+      keyboard: hotkeysKeyboardReducer
     })
   })
 });
 
-export default createStore(rootReducer, applyMiddleware(thunk));
+const configuredStore = configureStore({
+  reducer: rootReducer
+});
 
+export default configuredStore;
+
+export type TStore = typeof configuredStore;
 export type AppStateType = ReturnType<typeof rootReducer>;
-
-type RootActionsType = UIActionTypes | ProfilesActionTypes | GameActionTypes | SettingsActionTypes;
+export type RootActionsType = UIActionTypes | ProfilesActionTypes | GameActionTypes | SettingsActionTypes;
 export type ThunkRootDispatchType = ThunkDispatch<AppStateType, unknown, RootActionsType>;

@@ -3,6 +3,7 @@ import { GameEffectsActionTypes } from "./game/effects/types";
 import { GameGameplayActionTypes } from "./game/gameplay/types";
 import { GameMultiboxActionTypes } from "./game/multibox/types";
 import { GamePerformanceActionTypes } from "./game/performance/types";
+import { HotkeysKeyboardActionTypes } from "./hotkeys/keyboard/types";
 
 import { ThemingCellsActionTypes } from "./theming/cells/types";
 import { ThemingFoodActionTypes } from "./theming/food/types";
@@ -12,4 +13,5 @@ import { ThemingMultiboxActionTypes } from "./theming/multibox/types";
 import { ThemingVirusesActionTypes } from "./theming/viruses/types";
 
 export type SettingsActionTypes = GamePerformanceActionTypes | GameCellsActionTypes | GameGameplayActionTypes | GameMultiboxActionTypes | GameEffectsActionTypes | 
-  ThemingCellsActionTypes | ThemingFoodActionTypes | ThemingVirusesActionTypes | ThemingMinimapActionTypes | ThemingMapActionTypes | ThemingMultiboxActionTypes;
+  ThemingCellsActionTypes | ThemingFoodActionTypes | ThemingVirusesActionTypes | ThemingMinimapActionTypes | ThemingMapActionTypes | ThemingMultiboxActionTypes  |
+  HotkeysKeyboardActionTypes;

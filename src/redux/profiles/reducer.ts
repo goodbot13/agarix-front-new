@@ -1,3 +1,4 @@
+import Storage from "api/storage/Storage";
 import { 
   IProfilesState, 
   ProfilesActionTypes, 
@@ -10,34 +11,7 @@ import {
   SET_TAG 
 } from "./types";
 
-const initState: IProfilesState = {
-  leftProfiles: [
-    { nick: 'Profile #1', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #2', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #3', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #4', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #5', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #6', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #7', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #8', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #9', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #10', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' }
-  ],
-  rightProfiles: [
-    { nick: 'Profile #11', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #12', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #13', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #14', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #15', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #16', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #17', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #18', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #19', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-    { nick: 'Profile #20', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' }
-  ],
-  leftSelectedIndex: 0,
-  rightSelectedIndex: 0,
-}
+const initState: IProfilesState = Storage.get().profiles;
 
 export const profilesReducer = (state = initState, action: ProfilesActionTypes): IProfilesState => {
   switch (action.type) {

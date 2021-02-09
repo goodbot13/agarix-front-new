@@ -2,20 +2,38 @@ import { FC, useState } from 'react';
 
 import css from './index.module.scss';
 
-import { ChromePicker } from 'react-color';
+import { ChromePicker, ColorResult } from 'react-color';
 
 import { RGB } from 'redux/settings/theming/types';
 
-import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
-const Colorpick: FC<ColorpickType> = ({ text, disabled, hint, color, onChange }) => {
+import classNames from 'classnames';
+
+const Colorpick: FC<ColorpickType> = ({ text, disabled, hint, color, onChange, useAlpha }) => {
   const [pickColor, setPickColor] = useState(false);
   const [localColor, setLocalColor] = useState(color);
 
+  const getColor = ({ rgb }: ColorResult): RGB => {
+    if (useAlpha) {
+      return {
+        red: rgb.r,
+        green: rgb.g,
+        blue: rgb.b,
+        alpha: rgb.a
+      }
+    } else {
+      return {
+        red: rgb.r,
+        green: rgb.g,
+        blue: rgb.b,
+      }
+    }
+  }
+
   return (
-    <div className={css.wrap}>
+    <div className={classNames({ [css.wrap]: true, [css.disabled]: disabled })}>
       <div className={css.text}>
         {text}
         {hint && <span className={css.hint}>{hint}</span>}
@@ -28,21 +46,18 @@ const Colorpick: FC<ColorpickType> = ({ text, disabled, hint, color, onChange })
         ></button>
         <div className={css.chromePickerWrapper}>
           <ChromePicker 
-            color={{
+            color={useAlpha ? {
+              r: localColor.red, 
+              g: localColor.green,  
+              b: localColor.blue,
+              a: localColor.alpha
+            } : {
               r: localColor.red, 
               g: localColor.green, 
               b: localColor.blue 
             }}
-            onChange={({ rgb: { r, g, b } }) => setLocalColor({
-              red: r,
-              green: g,
-              blue: b
-            })}
-            onChangeComplete={({ rgb: { r, g, b } }) => onChange({
-              red: r,
-              green: g,
-              blue: b
-            })}
+            onChange={(rgb) => setLocalColor(getColor(rgb))}
+            onChangeComplete={(rgb) => onChange(getColor(rgb))}
           />
           <button 
             className={css.pickerSave}
@@ -63,5 +78,6 @@ type ColorpickType = {
   disabled?: boolean,
   hint?: string,
   color: RGB,
+  useAlpha?: boolean,
   onChange: (color: RGB) => void
 }

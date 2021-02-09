@@ -4,11 +4,11 @@ import css from './index.module.scss';
 import { faArrowDown, faArrowUp, faCheck, faRedo, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Dispatch } from 'redux';
-import { setSettingsShown } from 'redux/UI/actions';
 import { connect } from 'react-redux';
 
 import classNames from 'classnames';
+import { thunkSetSettingsShown } from 'redux/UI/thunks';
+import { ThunkRootDispatchType } from 'redux/store';
 
 const SaveExportImportReset: FC<SaveExportImportResetType> = ({ setSettingsShown }) => {
   const [resetClicked, setResetClicked] = useState(false);
@@ -54,8 +54,8 @@ const SaveExportImportReset: FC<SaveExportImportResetType> = ({ setSettingsShown
   )
 }
 
-const mapDistpatchToProps = (dispatch: Dispatch) => ({
-  setSettingsShown: (shown: boolean) => dispatch(setSettingsShown(shown))
+const mapDistpatchToProps = (dispatch: ThunkRootDispatchType) => ({
+  setSettingsShown: (shown: boolean) => dispatch(thunkSetSettingsShown(shown))
 });
 
 export default connect(null, mapDistpatchToProps)(SaveExportImportReset);

@@ -5,13 +5,13 @@ import SaveExportImportReset from './save-export-import-reset';
 
 import { connect } from 'react-redux';
 import { AppStateType, ThunkRootDispatchType } from 'redux/store';
-import { setSettingsType } from 'redux/UI/actions';
 import { SettingsType } from 'redux/UI/types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGamepad, faKeyboard, faPalette, faPaw } from '@fortawesome/free-solid-svg-icons';
 
 import classNames from 'classnames';
+import { thunkSetSettingsType } from 'redux/UI/thunks';
 
 const SettingsHeader: FC<SettingsHeaderType> = ({ settingsType, setSettingsType }) => {
   return (
@@ -52,7 +52,7 @@ const mapStateToProps = ({ UI }: AppStateType) => ({
 });
 
 const mapDistpatchToProps = (dispatch: ThunkRootDispatchType) => ({
-  setSettingsType: (type: SettingsType) => dispatch(setSettingsType(type))
+  setSettingsType: (type: SettingsType) => dispatch(thunkSetSettingsType(type))
 });
 
 export default connect(mapStateToProps, mapDistpatchToProps)(SettingsHeader);

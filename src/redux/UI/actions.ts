@@ -1,10 +1,12 @@
 import { SettingsGameType } from "redux/settings/game/types";
+import { SettingsHotkeysType } from "redux/settings/hotkeys/types";
 import { SettingsThemingType } from "redux/settings/theming/types";
 import { 
   SettingsType, 
   SET_ADDITIONAL_PROFILES_LIST_SHOWN, 
   SET_GAME_LOADED, 
   SET_GAME_SETTINGS_SUBMENU, 
+  SET_HOTKEYS_SETTINGS_SUBMENU, 
   SET_MENU_SHOWN, 
   SET_SETTINGS_SHOWN, 
   SET_SETTINGS_TYPE, 
@@ -46,6 +48,11 @@ export const setGameSettingsSubmenu = (gameSettingsSubmenu: SettingsGameType): U
 export const setThemingSettingsSubmenu = (themingSettingsSubmenu: SettingsThemingType): UIActionTypes => ({
   type: SET_THEMING_SETTINGS_SUBMENU,
   themingSettingsSubmenu
+});
+
+export const setHotkeysSettingsSubmenu = (hotkeysSettingsSubmenu: SettingsHotkeysType): UIActionTypes => ({
+  type: SET_HOTKEYS_SETTINGS_SUBMENU,
+  hotkeysSettingsSubmenu
 });
 
 export const setAdditionalProfilesListShown = (additionalProfilesListShown: boolean): UIActionTypes => ({

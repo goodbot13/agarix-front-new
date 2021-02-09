@@ -1,7 +1,7 @@
+import Storage from "api/storage/Storage";
 import { 
   IThemingVirusesState, 
   SET_FILL_CIRCLE_COLOR, 
-  SET_FILL_CIRCLE_TRANSPARENCY, 
   SET_VIRUS_BORDER_COLOR, 
   SET_VIRUS_BORDER_WIDTH, 
   SET_VIRUS_COLOR, 
@@ -14,19 +14,7 @@ import {
   ThemingVirusesActionTypes 
 } from "./types";
 
-const initState: IThemingVirusesState = {
-  color: { red: 0, green: 0, blue: 0 },
-  borderWidth: 8,
-  borderColor: { red: 0, green: 0, blue: 0 },
-  glow: true,
-  glowColor: { red: 0, green: 0, blue: 0 },
-  glowDistance: 120,
-  glowStrength: 8,
-  transparency: 1,
-  massType: 'Fill circle',
-  fillCircleColor: { red: 0, green: 0, blue: 0 },
-  fillCircleTransparency: 0.9
-}
+const initState: IThemingVirusesState = Storage.get().settings.theming.viruses;
 
 export const themingVirusReducer = (state = initState, action: ThemingVirusesActionTypes): IThemingVirusesState => {
   switch (action.type) {
@@ -88,12 +76,6 @@ export const themingVirusReducer = (state = initState, action: ThemingVirusesAct
       return {
         ...state,
         fillCircleColor: action.fillCircleColor
-      }
-
-    case SET_FILL_CIRCLE_TRANSPARENCY: 
-      return {
-        ...state,
-        fillCircleTransparency: action.fillCircleTransparency
       }
 
     default: return state;

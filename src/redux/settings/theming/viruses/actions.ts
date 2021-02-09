@@ -1,7 +1,6 @@
 import { RGB } from "../types";
 import {
   SET_FILL_CIRCLE_COLOR,
-  SET_FILL_CIRCLE_TRANSPARENCY,
   SET_VIRUS_BORDER_COLOR,
   SET_VIRUS_BORDER_WIDTH,
   SET_VIRUS_COLOR,
@@ -63,9 +62,4 @@ export const setVirusMassType = (massType: VirusMassType): ThemingVirusesActionT
 export const setFillCircleColor = (fillCircleColor: RGB): ThemingVirusesActionTypes => ({
   type: SET_FILL_CIRCLE_COLOR,
   fillCircleColor
-});
-
-export const setFillCircleTransparency = (fillCircleTransparency: number): ThemingVirusesActionTypes => ({
-  type: SET_FILL_CIRCLE_TRANSPARENCY,
-  fillCircleTransparency
 });

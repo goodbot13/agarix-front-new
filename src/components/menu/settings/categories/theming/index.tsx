@@ -22,6 +22,8 @@ import Cells from './cells';
 import Food from './food';
 import Map from './map';
 import Minimap from './minimap';
+import Multibox from './multibox';
+import Viruses from './viruses';
 
 const Theming: FC<ThemingType> = ({ settingsShown, settingsSubmenu, setSettingsSubmenu }) => {
   return (
@@ -74,11 +76,17 @@ const Theming: FC<ThemingType> = ({ settingsShown, settingsSubmenu, setSettingsS
         <CategoryWrapper shown={settingsSubmenu === 'THEMING_CELLS' && settingsShown}>
           <Cells />
         </CategoryWrapper>
+        <CategoryWrapper shown={settingsSubmenu === 'THEMING_VIRUSES' && settingsShown}>
+          <Viruses />
+        </CategoryWrapper>
         <CategoryWrapper shown={settingsSubmenu === 'THEMING_FOOD' && settingsShown}>
           <Food />
         </CategoryWrapper>
         <CategoryWrapper shown={settingsSubmenu === 'THEMING_MAP' && settingsShown}>
           <Map />
+        </CategoryWrapper>
+        <CategoryWrapper shown={settingsSubmenu === 'THEMING_MULTIBOX' && settingsShown}>
+          <Multibox />
         </CategoryWrapper>
         <CategoryWrapper shown={settingsSubmenu === 'THEMING_MINIMAP' && settingsShown}>
           <Minimap />

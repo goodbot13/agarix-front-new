@@ -11,11 +11,14 @@ import {
   thunkSetCellsTransparency, 
   thunksetMyShadowColor, 
   thunkSetOneColoredColor, 
+  thunkSetOneColoredStatsColor, 
   thunkSetShadowColor, 
   thunksetShadowDistance, 
   thunksetShadowStrength 
 } from "redux/settings/theming/cells/thunks";
+
 import Select from "components/menu/settings/basic/select";
+
 import { ONE_COLORED_STATS_COLOR_HINT } from "redux/settings/theming/cells/hints";
 import { CELLS_SHADOW_DISTANCE_VALUES, CELLS_SHADOW_STRENGTH_VALUES, CELLS_TRANSPARENCY_VALUES } from "redux/settings/theming/cells/values";
 
@@ -86,7 +89,7 @@ const mapStateToProps = ({ settings }: AppStateType) => ({
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setOneColoredColor: (color: RGB) => dispatch(thunkSetOneColoredColor(color)),
-  setOneColoredStatsColor: (color: RGB) => dispatch(thunkSetOneColoredColor(color)),
+  setOneColoredStatsColor: (color: RGB) => dispatch(thunkSetOneColoredStatsColor(color)),
   setShadowColor: (color: RGB) => dispatch(thunkSetShadowColor(color)),
   setMyShadowColor: (color: RGB) => dispatch(thunksetMyShadowColor(color)),
   setShadowDistance: (value: number) => dispatch(thunksetShadowDistance(value)),

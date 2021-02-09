@@ -1,3 +1,4 @@
+import Storage from "api/storage/Storage";
 import {
   GamePerformanceActionTypes,
   IGamePerformanceState,
@@ -8,13 +9,7 @@ import {
   SET_RENDER_MODE
 } from "./types";
 
-const initState: IGamePerformanceState = {
-  renderMode: 'GPU (Pixi)',
-  antialiasing: false,
-  foodPerformanceMode: false,
-  glowFilterShaderType: 'GPU-1',
-  fpsLockType: 'Screen-hz'
-}
+const initState: IGamePerformanceState = Storage.get().settings.game.performance;
 
 export const gamePerformanceReducer = (state = initState, action: GamePerformanceActionTypes): IGamePerformanceState => {
   switch (action.type) {

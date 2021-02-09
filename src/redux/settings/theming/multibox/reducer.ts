@@ -1,3 +1,4 @@
+import Storage from "api/storage/Storage";
 import { 
   IThemingMultiboxState, 
   ThemingMultiboxActionTypes, 
@@ -9,14 +10,7 @@ import {
   SET_MULTIBOX_FOCUSED_STATIC_CELL_COLOR 
 } from "./types";
 
-const initState: IThemingMultiboxState = {
-  ringStyle: 'Line',
-  linedRingSize: 80,
-  initialRingColor: { red: 0, green: 0, blue: 0 },
-  focusedRingColor: { red: 0, green: 0, blue: 0 },
-  initialStaticCellColor: { red: 0, green: 0, blue: 0 },
-  focusedStaticCellColor: { red: 0, green: 0, blue: 0 }
-}
+const initState: IThemingMultiboxState = Storage.get().settings.theming.multibox;
 
 export const themingMultiboxReducer = (state = initState, action: ThemingMultiboxActionTypes): IThemingMultiboxState => {
   switch (action.type) {

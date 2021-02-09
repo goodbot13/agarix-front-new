@@ -59,18 +59,21 @@ const Food: FC<FoodType> = ({
         text="Glow color"
         color={glowColor}
         onChange={setFoodGlowColor}
+        disabled={!glow}
       />
       <Select 
         text="Glow distance"
         selectedItem={glowDistance}
         items={FOOD_GLOW_DISTANCE_VALUES}
         onChange={setFoodGlowDistance}
+        disabled={!glow}
       />
       <Select 
         text="Glow strength"
         selectedItem={glowStrength}
         items={FOOD_GLOW_STRENGTH_VALUES}
         onChange={setFoodGlowStrength}
+        disabled={!glow}
       />
       <Switch 
         text="Crispy"
