@@ -4,6 +4,7 @@ import {
   GlowFilterShaderType,
   RenderModeType,
   SET_ANTIALIASING,
+  SET_CULLING,
   SET_FOOD_PERFORMANCE_MODE,
   SET_FPS_LOCK_TYPE,
   SET_GLOW_FILTER_SHADER_TYPE,
@@ -18,6 +19,11 @@ export const setRenderMode = (renderMode: RenderModeType): GamePerformanceAction
 export const setAntialiasing = (antialiasing: boolean): GamePerformanceActionTypes => ({
   type: SET_ANTIALIASING,
   antialiasing
+});
+
+export const setCulling = (culling: boolean): GamePerformanceActionTypes => ({
+  type: SET_CULLING,
+  culling
 });
 
 export const setFoodPerformanceMode = (foodPerformanceMode: boolean): GamePerformanceActionTypes => ({

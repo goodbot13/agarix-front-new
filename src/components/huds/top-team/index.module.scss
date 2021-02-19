@@ -1,0 +1,32 @@
+.wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  padding: 12px;
+  border-bottom-right-radius: 4px;
+  font-size: 15px;
+  overflow: hidden;
+
+  .stats {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+    justify-content: space-between;
+  }
+
+  .players {
+    display: flex;
+    flex-direction: column;
+
+    .player {
+      display: flex;
+      white-space: nowrap;
+      
+      .mass {
+        margin-right: 8px;
+      }
+    }
+  }
+}

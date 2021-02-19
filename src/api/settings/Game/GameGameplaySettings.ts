@@ -2,26 +2,26 @@ import { CameraStyleType, SpectatorModeType, ViewportType } from "redux/settings
 
 export default class GameGameplaySettings {
   static setAnimationSpeed(value: number) {
-
+    window.GameSettings.all.settings.game.gameplay.animationSpeed = value;
   }
 
   static zetZoomSpeed(value: number) {
-
+    window.GameSettings.all.settings.game.gameplay.zoomSpeed = value;
   }
 
   static setCameraSpeed(value: number) {
-
+    window.GameSettings.all.settings.game.gameplay.cameraSpeed = value;
   }
 
   static setCameraStyle(value: CameraStyleType) {
-
+    window.GameSettings.all.settings.game.gameplay.cameraStyle = value;
   }
 
   static setSpectatorMode(value: SpectatorModeType) {
-
+    window.GameSettings.all.settings.game.gameplay.spectatorMode = value;
   }
 
   static setViewport(value: ViewportType) {
-    
+    window.GameSettings.all.settings.game.gameplay.viewport = value;
   }
 }

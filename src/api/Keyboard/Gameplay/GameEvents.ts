@@ -1,3 +1,6 @@
+import StoreLink from "api/StoreLink"
+import { setHudsShown } from "redux/UI/actions"
+
 export const feed = () => {
 
 }
@@ -59,5 +62,5 @@ export const toggleSpectatorMode = () => {
 }
 
 export const toggleHuds = () => {
-  
+  StoreLink.store.dispatch(setHudsShown(!StoreLink.store.getState().UI.hudsShown));
 }

@@ -1,25 +1,16 @@
 import css from './index.module.scss';
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 
 import { AppStateType } from 'redux/store';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 
 import DelayedRenderComponent from '../StandartComponents/DelayedRenderCompnent';
-import { setGameLoaded } from 'redux/UI/actions';
 
 import spinner from 'assets/loader-spinner.svg';
 
 import classNames from 'classnames';
 
-const GameLoader: FC<GameLoaderType> = ({ gameLoaded, setShown }) => {
-  const [status, setStatus] = useState('Receiving game version...');
-
-  useEffect(() => {
-    (window as any).setCurrentGameVersion = setStatus;
-    (window as any).setGameLoaderShown = setShown;
-  }, [gameLoaded, setShown]);
-
+const GameLoader: FC<GameLoaderType> = ({ gameLoaded, status }) => {
   return (
     <DelayedRenderComponent rendered={!gameLoaded} hideDelayMs={500}>
       <div className={classNames({
@@ -35,12 +26,11 @@ const GameLoader: FC<GameLoaderType> = ({ gameLoaded, setShown }) => {
   )
 }
 
-const mapStateToProps = ({ UI }: AppStateType) => ({ gameLoaded: UI.gameLoaded });
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({ 
-  setShown: (value: boolean) => dispatch(setGameLoaded(value))
+const mapStateToProps = ({ UI }: AppStateType) => ({ 
+  gameLoaded: UI.gameLoaded,
+  status: UI.gameLoaderStatus
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameLoader);
+export default connect(mapStateToProps)(GameLoader);
 
-type GameLoaderType = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
+type GameLoaderType = ReturnType<typeof mapStateToProps>;

@@ -1,0 +1,72 @@
+import { FC } from "react";
+import css from './index.module.scss';
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFire, faListOl, faListUl } from "@fortawesome/free-solid-svg-icons";
+
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { SettingsUIType } from "redux/settings/UI/types";
+import { AppStateType } from "redux/store";
+import { setUiSettingsSubmenu } from "redux/UI/actions";
+
+import Left from "../../left";
+import Right from "../../right";
+
+import CategoryWrapper from "../wrapper";
+import Leaderboard from "./leaderboard";
+import Stats from "./stats";
+
+import classNames from 'classnames';
+import TopTeam from "./top-team";
+
+const ThemingUI: FC<ThemingUIType> = ({ settingsSubmenu, settingsShown, setSettingsSubmenu }) => {
+  return (
+    <>
+      <Left>
+        <button 
+          className={classNames({ [css.selected]: settingsSubmenu === 'UI_LEADERBOARD' })}
+          onClick={() => setSettingsSubmenu('UI_LEADERBOARD')}
+        >
+          <FontAwesomeIcon icon={faListOl}/> Leaderboard
+        </button>
+        <button 
+          className={classNames({ [css.selected]: settingsSubmenu === 'UI_TOP_TEAM' })}
+          onClick={() => setSettingsSubmenu('UI_TOP_TEAM')}
+        >
+          <FontAwesomeIcon icon={faListUl}/> Top team
+        </button>
+        <button 
+          className={classNames({ [css.selected]: settingsSubmenu === 'UI_STATS' })}
+          onClick={() => setSettingsSubmenu('UI_STATS')}
+        >
+          <FontAwesomeIcon icon={faFire}/> Stats
+        </button>
+      </Left>
+      <Right>
+        <CategoryWrapper shown={settingsSubmenu === 'UI_LEADERBOARD' && settingsShown}>
+          <Leaderboard />
+        </CategoryWrapper>
+        <CategoryWrapper shown={settingsSubmenu === 'UI_TOP_TEAM' && settingsShown}>
+          <TopTeam />
+        </CategoryWrapper>
+        <CategoryWrapper shown={settingsSubmenu === 'UI_STATS' && settingsShown}>
+          <Stats />
+        </CategoryWrapper>
+      </Right>
+    </>
+  )
+} 
+
+const mapStateToProps = ({ UI }: AppStateType) => ({
+  settingsSubmenu: UI.uiSettingsSubmenu,
+  settingsShown: UI.settingsShown
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  setSettingsSubmenu: (submenu: SettingsUIType) => dispatch(setUiSettingsSubmenu(submenu)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ThemingUI);
+
+type ThemingUIType = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;

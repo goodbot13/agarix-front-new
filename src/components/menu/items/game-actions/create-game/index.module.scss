@@ -3,17 +3,38 @@
     background: url(../../../../../assets/menu/create.png);
     width: 105px;
     height: 103px;
-    margin-right: 59px;
+    margin-right: 65px;
     margin-left: -2px;
     font-weight: 500;
-    padding: 16px 10px 0 0;
     transition: .15s linear;
     cursor: pointer;
+    position: relative;
   
     &:hover,
     &.active {
-      opacity: .6;
+      opacity: .6 !important;
       color: white
+    }
+
+    div {
+      position: absolute;
+      left: 18px;
+      top: 49px;
+      transition: .15s transform;
+    }
+
+    .cancelText {
+      transform: scale(0);
+    }
+
+    &.creating {
+      .createText {
+        transform: scale(0);
+      }
+
+      .cancelText {
+        transform: scale(1);
+      }
     }
   }
 }

@@ -5,9 +5,13 @@
   align-items: center;
   background: rgba(12, 12, 12, .975);
   transition: .2s;
+  visibility: visible;
 
   &.hidden {
     opacity: 0;
+    animation: setVisibilityHidden 0s;
+    animation-fill-mode: forwards;
+    animation-delay: .2s;
   }
 
   .innerWrap {
@@ -17,8 +21,19 @@
   }
 }
 
+.hudsWrap {
+  transition: .2s;
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
 @media setVisibilityHidden {
-  to { visibility: hidden; }
+  to { 
+    visibility: hidden;
+    transform: scale(0); 
+  }
 }
 
 @media screen and (max-height: 720px) {

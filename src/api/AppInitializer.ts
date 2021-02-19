@@ -1,15 +1,28 @@
 
 import KeyboardGameplay from 'api/Keyboard/Gameplay/KeyboardGameplay';
-import Storage from 'api/storage/Storage';
+import Storage from 'api/Storage/Storage';
 import Keyboard from 'api/Keyboard/Keyboard';
-import { thunkSetMenuShown, thunkSetSettingsShown } from 'redux/UI/thunks';
+import { thunkSetMenuShown } from 'redux/UI/thunks';
 import { TStore } from 'redux/store';
+import { initFrontCommunicationService } from './FrontCommunicationService/FrontCommunicationService';
+import StoreLink from './StoreLink';
 
-const initializeApp = (store: TStore): void => {
-  const state = store.getState();
+export default (store: TStore): void => {
+  // init keyboard
+  initKeyboardIntercation(store);
 
-  // init keyboard 
-  const kb = state.settings.hotkeys.keyboard;
+  // init CLIENT -> FRONT communication
+  initFrontCommunicationService(store);
+
+  // save store to localStorage on every update
+  store.subscribe(() => Storage.save(store.getState()));
+
+  // set global store link
+  StoreLink.set(store);
+}
+
+const initKeyboardIntercation = (store: TStore) => {
+  const kb = store.getState().settings.hotkeys.keyboard;
 
   KeyboardGameplay.init({
     feedKey: kb.feed,
@@ -31,21 +44,6 @@ const initializeApp = (store: TStore): void => {
 
   // init menu intraction using keyboard
   Keyboard.bindFunctionToKey('press', 'Escape', () => {
-    const { settingsShown, menuShown } = store.getState().UI;
-
-    if (menuShown) {
-      if (settingsShown) {
-        store.dispatch(thunkSetSettingsShown(false));
-      } else {
-        store.dispatch(thunkSetMenuShown(false))
-      }
-    } else {
-      store.dispatch(thunkSetMenuShown(true))
-    }
+    store.dispatch(thunkSetMenuShown(!store.getState().UI.menuShown));
   });
-
-  // save store to localStorage on every update
-  store.subscribe(() => Storage.save(store.getState()));
 }
-
-export default initializeApp;

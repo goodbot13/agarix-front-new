@@ -1,23 +1,39 @@
 import { SettingsGameType } from "redux/settings/game/types";
 import { SettingsHotkeysType } from "redux/settings/hotkeys/types";
 import { SettingsThemingType } from "redux/settings/theming/types";
+import { SettingsUIType } from "redux/settings/UI/types";
 import { 
+  ILeaderboardPlayer,
+  IStats,
+  ITopTeamPlayer,
   SettingsType, 
   SET_ADDITIONAL_PROFILES_LIST_SHOWN, 
   SET_GAME_LOADED, 
+  SET_GAME_LOADER_STATUS, 
   SET_GAME_SETTINGS_SUBMENU, 
+  SET_GAME_SOCKET_CONNECTING, 
   SET_HOTKEYS_SETTINGS_SUBMENU, 
+  SET_HUDS_SHOWN, 
+  SET_LEADERBOARD_PLAYERS, 
   SET_MENU_SHOWN, 
   SET_SETTINGS_SHOWN, 
   SET_SETTINGS_TYPE, 
+  SET_STATS, 
   SET_THEMING_SETTINGS_SUBMENU, 
+  SET_TOP_TEAM_PLAYERS, 
   SET_UI_BLURED, 
+  SET_UI_SETTINGS_SUBMENU, 
   UIActionTypes 
 } from "./types";
 
 export const setGameLoaded = (gameLoaded: boolean): UIActionTypes => ({ 
   type: SET_GAME_LOADED, 
   gameLoaded 
+});
+
+export const setGameLoaderStatus = (gameLoaderStatus: string): UIActionTypes => ({
+  type: SET_GAME_LOADER_STATUS,
+  gameLoaderStatus
 });
 
 export const setMenuShown = (menuShown: boolean): UIActionTypes => ({ 
@@ -58,4 +74,34 @@ export const setHotkeysSettingsSubmenu = (hotkeysSettingsSubmenu: SettingsHotkey
 export const setAdditionalProfilesListShown = (additionalProfilesListShown: boolean): UIActionTypes => ({
   type: SET_ADDITIONAL_PROFILES_LIST_SHOWN,
   additionalProfilesListShown
+});
+
+export const setLeaderboardPlayers = (leaderboardPlayers: Array<ILeaderboardPlayer>): UIActionTypes => ({
+  type: SET_LEADERBOARD_PLAYERS,
+  leaderboardPlayers
+});
+
+export const setUiSettingsSubmenu = (uiSettingsSubmenu: SettingsUIType): UIActionTypes => ({
+  type: SET_UI_SETTINGS_SUBMENU,
+  uiSettingsSubmenu
+});
+
+export const setGameSocketConnecting = (gameSocketConnecting: boolean): UIActionTypes => ({
+  type: SET_GAME_SOCKET_CONNECTING,
+  gameSocketConnecting
+});
+
+export const setTopTeamPlayers = (topTeamPlayers: Array<ITopTeamPlayer>): UIActionTypes => ({
+  type: SET_TOP_TEAM_PLAYERS,
+  topTeamPlayers
+});
+
+export const setStats = (stats: IStats): UIActionTypes => ({
+  type: SET_STATS,
+  stats
+});
+
+export const setHudsShown = (hudsShown: boolean): UIActionTypes => ({
+  type: SET_HUDS_SHOWN,
+  hudsShown
 });

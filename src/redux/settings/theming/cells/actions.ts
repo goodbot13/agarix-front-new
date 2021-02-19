@@ -1,5 +1,6 @@
 import { RGB } from "../types";
 import { 
+  SET_CELLS_COLOR_LIGHTEN,
   SET_CELLS_TRANSPARENCY, 
   SET_MY_SHADOW_COLOR, 
   SET_ONE_COLORED_COLOR, 
@@ -43,4 +44,9 @@ export const setShadowStrength = (shadowStrength: number): ThemingCellsActionTyp
 export const setCellsTransparency = (transparency: number): ThemingCellsActionTypes => ({
   type: SET_CELLS_TRANSPARENCY,
   transparency
+});
+
+export const setCellsColorLighten = (colorLighten: number): ThemingCellsActionTypes => ({
+  type: SET_CELLS_COLOR_LIGHTEN,
+  colorLighten
 });

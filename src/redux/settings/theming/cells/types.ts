@@ -9,6 +9,7 @@ export const SET_MY_SHADOW_COLOR = 'SET_MY_SHADOW_COLOR';
 export const SET_SHADOW_DISTANCE = 'SET_SHADOW_DISTANCE';
 export const SET_SHADOW_STRENGTH = 'SET_SHADOW_STRENGTH';
 export const SET_CELLS_TRANSPARENCY = 'SET_CELLS_TRANSPARENCY';
+export const SET_CELLS_COLOR_LIGHTEN = 'SET_CELLS_COLOR_LIGHTEN';
 
 export interface IThemingCellsState {
   oneColoredColor: RGB,
@@ -17,7 +18,8 @@ export interface IThemingCellsState {
   myShadowColor: RGB,
   shadowDistance: number,
   shadowStrength: number,
-  transparency: number
+  transparency: number,
+  colorLighten: number
 }
 
 interface SetOneColoredColorAction {
@@ -55,8 +57,13 @@ interface SetCellsTransparencyAction {
   transparency: number
 }
 
+interface SetCellsColorLightenAction {
+  type: typeof SET_CELLS_COLOR_LIGHTEN,
+  colorLighten: number
+}
+
 export type ThemingCellsActionTypes = SetOneColoredColorAction | SetOneColoredStatsColorAction | SetShadowColorAction |
                                       SetMyShadowColorAction | SetShadowDistanceAction | SetShadowStrengthAction |
-                                      SetCellsTransparencyAction;
+                                      SetCellsTransparencyAction | SetCellsColorLightenAction;
 
 export type ThemingCellsThunkActionTypes = ThunkAction<void, AppStateType, unknown, ThemingCellsActionTypes>;

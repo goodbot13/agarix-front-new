@@ -1,6 +1,7 @@
-import Storage from "api/storage/Storage";
+import Storage from "api/Storage/Storage";
 import { 
   IThemingCellsState, 
+  SET_CELLS_COLOR_LIGHTEN, 
   SET_CELLS_TRANSPARENCY, 
   SET_MY_SHADOW_COLOR, 
   SET_ONE_COLORED_COLOR, 
@@ -57,6 +58,12 @@ export const themingCellsReducer = (state = initState, action: ThemingCellsActio
         transparency: action.transparency
       }
     
+    case SET_CELLS_COLOR_LIGHTEN:
+      return {
+        ...state,
+        colorLighten: action.colorLighten
+      }
+
     default: return state;
   }
 }

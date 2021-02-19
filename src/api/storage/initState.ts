@@ -51,6 +51,7 @@ const initStorage: TStorage = {
       performance: {
         renderMode: 'GPU (Pixi)',
         antialiasing: false,
+        culling: false,
         foodPerformanceMode: false,
         glowFilterShaderType: 'GPU-1',
         fpsLockType: 'Screen-hz'
@@ -83,7 +84,8 @@ const initStorage: TStorage = {
         myShadowColor: { red: 0, green: 0, blue: 0 },
         shadowDistance: 10,
         shadowStrength: 2,
-        transparency: 0.98
+        transparency: 0.98,
+        colorLighten: 110
       }, 
       food: {
         size: 16,
@@ -113,10 +115,10 @@ const initStorage: TStorage = {
         globalBackgroundImageLiveEffectStrength: '4'
       },
       minimap: {
-        backgroundColor: { red: 0, green: 0, blue: 0 },
+        backgroundColor: { red: 0, green: 0, blue: 0, alpha: .66 },
         size: 250,
-        myViewportColor: { red: 0, green: 0, blue: 0 },
-        topOneViewportColor: { red: 0, green: 0, blue: 0 },
+        myViewportColor: { red: 0, green: 0, blue: 0, alpha: .66 },
+        topOneViewportColor: { red: 0, green: 0, blue: 0, alpha: .66 },
         playerSize: 10,
         playerColor: { red: 0, green: 0, blue: 0 },
         ghostCellsColor: { red: 0, green: 0, blue: 0 }
@@ -141,6 +143,36 @@ const initStorage: TStorage = {
         massType: 'Fill circle',
         fillCircleColor: { red: 0, green: 0, blue: 0 },
       }
+    },
+    UI: {
+      leaderboard: {
+        shown: true,
+        displayAmount: 10,
+        displayPosition: true,
+        scale: 1,
+        showMass: true,
+        backdropBlur: false,
+        backgroundColor: { red: 0, green: 0, blue: 0, alpha: 0.66 },
+        meColor: { red: 200, green: 100, blue: 50 }
+      },
+      stats: {
+        shown: true,
+        fps: true,
+        loss: true,
+        backgroundColor: { red: 0, green: 0, blue: 0, alpha: 0.66 },
+        backdropBlur: false,
+        scale: 1
+      },
+      topTeam: {
+        shown: true,
+        displayAmount: 5,
+        totalMass: true,
+        shortMass: true,
+        displayPlayerMass: true,
+        totalPlayers: true,
+        backgroundColor: { red: 0, green: 0, blue: 0, alpha: 0.66 },
+        backdropBlur: false,
+      }
     }
   },
   game: {
@@ -155,9 +187,11 @@ const initStorage: TStorage = {
       { location: 'Turkey', playersAmount: 0 }
     ],
     currentServerIndex: 2,
-    mode: 'Party',
+    mode: ':party',
     tag: '',
-    token: ''
+    token: 'TF8XD1',
+    gameServerToken: 'fi7ylq1',
+    selectedGameTokenType: "PARTY"
   },
   profiles: {
     leftProfiles: [

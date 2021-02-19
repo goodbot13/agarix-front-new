@@ -27,6 +27,9 @@ import { themingVirusReducer } from './settings/theming/viruses/reducer';
 import { hotkeysKeyboardReducer } from './settings/hotkeys/keyboard/reducer';
 
 import { configureStore } from '@reduxjs/toolkit';
+import { settingsLeaderboardReducer } from './settings/UI/leaderboard/reducer';
+import { settingsStatsReducer } from './settings/UI/stats/reducer';
+import { settingsTopTeamReducer } from './settings/UI/top-team/reducer';
 
 const rootReducer = combineReducers({
   UI: UIReducer,
@@ -51,6 +54,11 @@ const rootReducer = combineReducers({
     }),
     hotkeys: combineReducers({
       keyboard: hotkeysKeyboardReducer
+    }),
+    UI: combineReducers({
+      leaderboard: settingsLeaderboardReducer,
+      stats: settingsStatsReducer,
+      topTeam: settingsTopTeamReducer
     })
   })
 });

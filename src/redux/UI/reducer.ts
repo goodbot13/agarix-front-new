@@ -9,19 +9,59 @@ import {
   IUIState,
   SET_GAME_SETTINGS_SUBMENU,
   SET_THEMING_SETTINGS_SUBMENU,
-  SET_HOTKEYS_SETTINGS_SUBMENU, 
+  SET_HOTKEYS_SETTINGS_SUBMENU,
+  SET_GAME_LOADER_STATUS,
+  SET_LEADERBOARD_PLAYERS,
+  SET_UI_SETTINGS_SUBMENU,
+  SET_GAME_SOCKET_CONNECTING,
+  SET_TOP_TEAM_PLAYERS,
+  SET_HUDS_SHOWN,
+  SET_STATS, 
 } from "./types";
 
 const initState: IUIState = {
-  gameLoaded: true,
-  menuShown: true,
+  gameLoaded: false,
+  gameLoaderStatus: 'Receiving game version...',
+  menuShown: false,
   blured: false,
-  settingsShown: true,
+  settingsShown: false,
   settingsType: 'HOTKEYS',
   gameSettingsSubmenu: 'GAME_GAMEPLAY',
   themingSettingsSubmenu: 'THEMING_CELLS',
   hotkeysSettingsSubmenu: 'HOTKEYS_KEYBOARD',
-  additionalProfilesListShown: false
+  uiSettingsSubmenu: 'UI_LEADERBOARD',
+  additionalProfilesListShown: false,
+  leaderboardPlayers: [
+/*     { nick: 'Player test #1', isMe: false, position: 1, accountId: 555 },
+    { nick: 'Player test #2', isMe: false, position: 2, accountId: 5512353 },
+    { nick: 'Player test #3', isMe: false, position: 3, accountId: 5534554 },
+    { nick: 'Player test #4', isMe: false, position: 4, accountId: 5546755 },
+    { nick: 'Player test #5', isMe: false, position: 5, accountId: 5513256 },
+    { nick: 'Player test #6', isMe: false, position: 6, accountId: 54557 },
+    { nick: 'Player meeee', isMe: true, position: 7, accountId: 5571355 },
+    { nick: 'Player test #8', isMe: false, position: 8, accountId: 55524353 },
+    { nick: 'Player test #9', isMe: false, position: 9, accountId: 55534534 },
+    { nick: 'Player test #10', isMe: false, position: 10, accountId: 55465455 },
+    { nick: 'Player test #11', isMe: false, position: 11, accountId: 5546456756 },
+    { nick: 'Player test #12', isMe: false, position: 12, accountId: 555645667 },
+    { nick: '!ME', isMe: false, position: 13, accountId: 5578454 },
+    { nick: 'Player test #14', isMe: false, position: 14, accountId: 559255 },
+    { nick: 'Player test #15', isMe: false, position: 15, accountId: 55156 },
+    { nick: 'Player test #16', isMe: false, position: 16, accountId: 55857 }, */
+  ],
+  topTeamPlayers: [
+/*     { nick: 'Player test abc', mass: 6498, isAlive: false },
+    { nick: 'Player test 1', mass: 4882, isAlive: false },
+    { nick: 'Some other player', mass: 8174, isAlive: false },
+    { nick: 'Very nice player', mass: 1630, isAlive: false },
+    { nick: 'Player jas', mass: 40, isAlive: false },
+    { nick: 'Sjhtka 81', mass: 639, isAlive: false },
+    { nick: 'Some player', mass: 10023, isAlive: false },
+    { nick: 'Very player', mass: 76, isAlive: false }, */
+  ],
+  gameSocketConnecting: false,
+  hudsShown: false,
+  stats: { fps: 0, loss: 0 }
 }
 
 export const UIReducer = (state = initState, action: UIActionTypes): IUIState => {
@@ -31,6 +71,12 @@ export const UIReducer = (state = initState, action: UIActionTypes): IUIState =>
       return {
         ...state,
         gameLoaded: action.gameLoaded
+      }
+
+    case SET_GAME_LOADER_STATUS:
+      return {
+        ...state,
+        gameLoaderStatus: action.gameLoaderStatus
       }
 
     case SET_MENU_SHOWN:
@@ -75,10 +121,46 @@ export const UIReducer = (state = initState, action: UIActionTypes): IUIState =>
         hotkeysSettingsSubmenu: action.hotkeysSettingsSubmenu
       }
 
+    case SET_UI_SETTINGS_SUBMENU:
+      return {
+        ...state,
+        uiSettingsSubmenu: action.uiSettingsSubmenu
+      }
+
     case SET_ADDITIONAL_PROFILES_LIST_SHOWN:
       return {
         ...state,
         additionalProfilesListShown: action.additionalProfilesListShown
+      }
+
+    case SET_LEADERBOARD_PLAYERS:
+      return {
+        ...state,
+        leaderboardPlayers: action.leaderboardPlayers
+      }
+
+    case SET_GAME_SOCKET_CONNECTING:
+      return {
+        ...state,
+        gameSocketConnecting: action.gameSocketConnecting
+      }
+
+    case SET_TOP_TEAM_PLAYERS:
+      return {
+        ...state,
+        topTeamPlayers: action.topTeamPlayers
+      }
+    
+    case SET_STATS:
+      return {
+        ...state,
+        stats: action.stats
+      }
+
+    case SET_HUDS_SHOWN:
+      return {
+        ...state,
+        hudsShown: action.hudsShown
       }
     
     default: return state;

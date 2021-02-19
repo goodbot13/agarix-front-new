@@ -1,8 +1,9 @@
-import Storage from "api/storage/Storage";
+import Storage from "api/Storage/Storage";
 import {
   GamePerformanceActionTypes,
   IGamePerformanceState,
   SET_ANTIALIASING,
+  SET_CULLING,
   SET_FOOD_PERFORMANCE_MODE,
   SET_FPS_LOCK_TYPE,
   SET_GLOW_FILTER_SHADER_TYPE,
@@ -23,6 +24,12 @@ export const gamePerformanceReducer = (state = initState, action: GamePerformanc
       return {
         ...state,
         antialiasing: action.antialiasing
+      }
+
+    case SET_CULLING:
+      return {
+        ...state,
+        culling: action.culling
       }
 
     case SET_FOOD_PERFORMANCE_MODE:

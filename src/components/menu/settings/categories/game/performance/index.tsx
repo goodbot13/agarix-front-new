@@ -6,10 +6,11 @@ import { AppStateType, ThunkRootDispatchType } from "redux/store";
 import { connect } from "react-redux";
 
 import Switch from "components/menu/settings/basic/switch";
-import { ANTIALIASING_HINT, FOOD_PERFORMANCE_MODE_HINT, RENDER_MODE_HINT } from "redux/settings/game/performance/hints";
+import { ANTIALIASING_HINT, CULLING_HINT, FOOD_PERFORMANCE_MODE_HINT, RENDER_MODE_HINT } from "redux/settings/game/performance/hints";
 import Select from "components/menu/settings/basic/select";
 import { 
   thunkSetAntialiasing, 
+  thunkSetCulling, 
   thunkSetFoodPerformanceMode, 
   thunkSetFpsLockType, 
   thunkSetGlowFilterShaderType, 
@@ -19,11 +20,13 @@ import {
 const Performance: FC<PerformanceType> = ({
   renderMode,
   antialiasing,
+  culling,
   foodPerformanceMode,
   glowFilterShaderType,
   fpsLockType,
   setRenderMode,
   setAntialiasing,
+  setCulling,
   setFoodPerformanceMode,
   setGlowFilterShaderType,
   setFpsLockType
@@ -42,6 +45,13 @@ const Performance: FC<PerformanceType> = ({
         hint={ANTIALIASING_HINT} 
         enabled={antialiasing} 
         onChange={setAntialiasing}
+        disabled={renderMode === 'Default (CPU)'}
+      />
+      <Switch 
+        text='Culling' 
+        hint={CULLING_HINT} 
+        enabled={culling} 
+        onChange={setCulling}
         disabled={renderMode === 'Default (CPU)'}
       />
       <Switch 
@@ -76,9 +86,10 @@ const mapStateToProps = ({ settings }: AppStateType) => ({
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setRenderMode: (type: RenderModeType) => dispatch(thunkSetRenderMode(type)),
   setAntialiasing: (value: boolean) => dispatch(thunkSetAntialiasing(value)),
+  setCulling: (value: boolean) => dispatch(thunkSetCulling(value)),
   setFoodPerformanceMode: (value: boolean) => dispatch(thunkSetFoodPerformanceMode(value)),
   setGlowFilterShaderType: (type: GlowFilterShaderType) => dispatch(thunkSetGlowFilterShaderType(type)),
-  setFpsLockType: (type: FpsLockType) => dispatch(thunkSetFpsLockType(type))
+  setFpsLockType: (type: FpsLockType) => dispatch(thunkSetFpsLockType(type)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Performance);

@@ -2,6 +2,7 @@ import { RGB } from "../types";
 
 import { ThemingCellsThunkActionTypes } from "./types";
 import { 
+  setCellsColorLighten,
   setCellsTransparency, 
   setMyShadowColor, 
   setOneColoredColor, 
@@ -47,4 +48,9 @@ export const thunksetShadowStrength = (shadowStrength: number): ThemingCellsThun
 export const thunkSetCellsTransparency = (transparency: number): ThemingCellsThunkActionTypes => (dispatch) => {
   dispatch(setCellsTransparency(transparency));
   ThemingSettingsCells.setCellsTransparency(transparency);
+}
+
+export const thunkSetCellsColorLighten = (colorLighten: number): ThemingCellsThunkActionTypes => (dispatch) => {
+  dispatch(setCellsColorLighten(colorLighten));
+  ThemingSettingsCells.setCellsColorLighten(colorLighten);
 }

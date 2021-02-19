@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import css from './index.module.scss';
 
@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import classNames from 'classnames';
+import { rgbToCssString } from 'api/utils';
 
 const Colorpick: FC<ColorpickType> = ({ text, disabled, hint, color, onChange, useAlpha }) => {
   const [pickColor, setPickColor] = useState(false);
@@ -32,6 +33,12 @@ const Colorpick: FC<ColorpickType> = ({ text, disabled, hint, color, onChange, u
     }
   }
 
+  useEffect(() => {
+    if (disabled) {
+      setPickColor(false);
+    }
+  }, [disabled]);
+
   return (
     <div className={classNames({ [css.wrap]: true, [css.disabled]: disabled })}>
       <div className={css.text}>
@@ -42,7 +49,7 @@ const Colorpick: FC<ColorpickType> = ({ text, disabled, hint, color, onChange, u
         <button 
           className={css.colorButton}
           onClick={() => setPickColor(true)}
-          style={{ backgroundColor: `rgb(${color.red}, ${color.green}, ${color.blue})`}}
+          style={{ backgroundColor: rgbToCssString(color)}}
         ></button>
         <div className={css.chromePickerWrapper}>
           <ChromePicker 

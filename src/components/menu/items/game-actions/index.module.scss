@@ -1,6 +1,8 @@
 .middle {
   display: flex;
   justify-content: center;
+  position: relative;
+  height: 29px;
 }
 
 .wrap {
@@ -13,12 +15,12 @@
   }
 
   .top {
-    margin-bottom: -4px;
+    margin-bottom: -3px;
     position: relative;
   }
 
   .bottom {
-    margin-top: -4px;
+    margin-top: -1px;
     position: relative;
     display: flex;
   }

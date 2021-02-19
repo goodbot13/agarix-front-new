@@ -7,6 +7,9 @@ import {
   GameModeTypes,
   IGameServer,
   CHANGE_GAME_TOKEN,
+  CHANGE_GAME_SERVER_TOKEN,
+  GameSelectedGameTokenTypes,
+  CHANGE_SELECTED_GAME_TOKEN_TYPE,
 } from "./types";
 
 export const updateGameServersList = (servers: Array<IGameServer>): GameActionTypes => ({
@@ -32,6 +35,14 @@ export const changeGameTag = (tag: string): GameActionTypes => ({
 export const changeGameToken = (token: string): GameActionTypes => ({
   type: CHANGE_GAME_TOKEN,
   token
-})
+});
 
+export const changeGameServerToken = (gameServerToken: string): GameActionTypes => ({
+  type: CHANGE_GAME_SERVER_TOKEN,
+  gameServerToken
+});
 
+export const changeSelectedGameTokenType = (selectedGameTokenType: GameSelectedGameTokenTypes): GameActionTypes => ({
+  type: CHANGE_SELECTED_GAME_TOKEN_TYPE,
+  selectedGameTokenType
+});

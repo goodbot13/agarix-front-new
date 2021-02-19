@@ -34,6 +34,7 @@ import {
 import Select from "components/menu/settings/basic/select";
 import Colorpick from "components/menu/settings/basic/colorpick";
 import Switch from "components/menu/settings/basic/switch";
+import Input from "components/menu/settings/basic/input";
 
 const MapComponent: FC<MapComponentType> = ({
   borderType,
@@ -129,6 +130,12 @@ const MapComponent: FC<MapComponentType> = ({
         enabled={backgroundImage}
         onChange={setMapBackgroundImage} 
       />
+      <Input
+        text="Background image URL"
+        value={backgroundImageUrl}
+        onChange={setMapBackgroundImageUrl} 
+        disabled={!backgroundImage}
+      />
       <Select
         text="Background image live effect strength"
         selectedItem={backgroundImageLiveEffectStrength}
@@ -140,6 +147,12 @@ const MapComponent: FC<MapComponentType> = ({
         text="Global background image"
         enabled={globalBackgroundImage}
         onChange={setMapGlobalBackgroundImage} 
+      />
+      <Input
+        text="Global background image URL"
+        value={globalBackgroundImageUrl}
+        onChange={setMapGlobalBackgroundImageUrl} 
+        disabled={!globalBackgroundImage}
       />
       <Colorpick
         text="Global background image tint"

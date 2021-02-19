@@ -26,7 +26,7 @@ export const thunkSetLeftProfileSelectedIndex = (i: number): ProfilesThunkAction
   dispatch(setLeftProfileSelectedIndex(i));
   
   const currentProfile = getState().profiles.leftProfiles[i];
-  ProfilesSettings.setLeftProfile(currentProfile.nick, currentProfile.skinUrl);
+  ProfilesSettings.setLeftProfile(currentProfile.nick, currentProfile.skinUrl, currentProfile.tag);
 }
 
 export const thunkSetRightProfileNick = (nick: string): ProfilesThunkActionTypes => (dispatch) => {
@@ -43,7 +43,7 @@ export const thunkSetRightProfileSelectedIndex = (i: number): ProfilesThunkActio
   dispatch(setRightProfileSelectedIndex(i));
 
   const currentProfile = getState().profiles.rightProfiles[i];
-  ProfilesSettings.setLeftProfile(currentProfile.nick, currentProfile.skinUrl);
+  ProfilesSettings.setRightProfile(currentProfile.nick, currentProfile.skinUrl);
 }
 
 export const thunkSetTag = (tag: string): ProfilesThunkActionTypes => (dispatch) => {

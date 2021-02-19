@@ -13,6 +13,7 @@
   animation: onHidden 0s;
   animation-delay: .2s;
   animation-fill-mode: forwards;
+  overflow: hidden;
 
   &.shown {
     opacity: 1;
@@ -51,5 +52,6 @@
   from { }
   to { 
     visibility: hidden; 
+    transform: scale(0);
   }
 }

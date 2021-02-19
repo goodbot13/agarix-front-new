@@ -1,6 +1,6 @@
 import GamePerformanceSettings from 'api/settings/Game/GamePerformanceSettings';
 
-import { setAntialiasing, setFoodPerformanceMode, setFpsLockType, setGlowFilterShaderType, setRenderMode } from './actions';
+import { setAntialiasing, setCulling, setFoodPerformanceMode, setFpsLockType, setGlowFilterShaderType, setRenderMode } from './actions';
 import { FpsLockType, GamePerformanceThunkActionTypes, GlowFilterShaderType, RenderModeType } from './types';
 
 export const thunkSetRenderMode = (renderMode: RenderModeType): GamePerformanceThunkActionTypes => (dispatch) => {
@@ -11,6 +11,11 @@ export const thunkSetRenderMode = (renderMode: RenderModeType): GamePerformanceT
 export const thunkSetAntialiasing = (enabled: boolean): GamePerformanceThunkActionTypes => (dispatch) => {
   dispatch(setAntialiasing(enabled));
   GamePerformanceSettings.setAntialiasing(enabled);
+}
+
+export const thunkSetCulling = (culling: boolean): GamePerformanceThunkActionTypes => (dispatch) => {
+  dispatch(setCulling(culling));
+  
 }
 
 export const thunkSetFoodPerformanceMode = (enabled: boolean): GamePerformanceThunkActionTypes => (dispatch) => {

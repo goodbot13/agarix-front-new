@@ -7,7 +7,7 @@ export default class ProfilesSettings {
 
   }
 
-  static setLeftProfile(nick: string, skinUrl: string) {
+  static setLeftProfile(nick: string, skinUrl: string, tag: string) {
     
   }
 

@@ -4,13 +4,35 @@
     width: 104px;
     height: 103px;
     font-weight: 500;
-    padding: 16px 0 0 14px;
     transition: .15s linear;
     cursor: pointer;
-  
+    position: relative;
+
     &:hover {
-      opacity: .6;
+      opacity: .6 !important;
       color: white
+    }
+
+    div {
+      position: absolute;
+      left: 43px;
+      top: 49px;
+      transition: .15s transform;
+    }
+
+    .cancelText {
+      transform: scale(0);
+      left: 31px;
+    }
+
+    &.joining {
+      .joinText {
+        transform: scale(0);
+      }
+
+      .cancelText {
+        transform: scale(1);
+      }
     }
   }
 }

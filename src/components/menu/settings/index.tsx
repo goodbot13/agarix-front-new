@@ -11,11 +11,12 @@ import classNames from 'classnames';
 import Game from './categories/game';
 import Theming from './categories/theming';
 import Hotkeys from './categories/hotkeys';
+import ThemingUI from './categories/UI';
 
-const Settings: FC<SettingsComponentType> = ({ shown, settingsType, additionalProfilesListShown }) => {
+const Settings: FC<SettingsComponentType> = ({ shown, settingsType, menuShown, additionalProfilesListShown }) => {
   return (
     <div 
-      className={classNames({ [css.wrap]: true, [css.shown]: shown })}
+      className={classNames({ [css.wrap]: true, [css.shown]: shown && menuShown })}
       style={{ 
         width: 1100,
         marginLeft: additionalProfilesListShown ? 10 : -110
@@ -41,6 +42,12 @@ const Settings: FC<SettingsComponentType> = ({ shown, settingsType, additionalPr
         })}>
           <Hotkeys />
         </div>
+        <div className={classNames({ 
+          [css.category]: true,
+          [css.hidden]: settingsType !== 'UI' 
+        })}>
+          <ThemingUI />
+        </div>
       </div>
     </div>
   )
@@ -49,6 +56,7 @@ const Settings: FC<SettingsComponentType> = ({ shown, settingsType, additionalPr
 const mapStateToProps = ({ UI }: AppStateType) => ({
   shown: UI.settingsShown,
   settingsType: UI.settingsType,
+  menuShown: UI.menuShown,
   additionalProfilesListShown: UI.additionalProfilesListShown
 });
 

@@ -42,6 +42,7 @@ const Minimap: FC<MinimapType> = ({
         text="Background color"
         color={backgroundColor}
         onChange={setMinimapBackgroundColor} 
+        useAlpha={true}
       />
       <Select 
         text="Size (width and height)"
@@ -53,11 +54,13 @@ const Minimap: FC<MinimapType> = ({
         text="My viewport color"
         color={myViewportColor}
         onChange={setMinimapMyViewportColor} 
+        useAlpha={true}
       />
       <Colorpick
         text="Top one viewport color"
         color={topOneViewportColor}
         onChange={setMinimapTopOneViewportColor} 
+        useAlpha={true}
       />
       <Select 
         text="Player size"

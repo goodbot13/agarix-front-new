@@ -40,16 +40,17 @@
     transition: .15s linear;
     border: none;
     transform: scale(1) !important;
-    font-size: 17px !important;
+    font-size: 16px !important;
     cursor: pointer;
     color: #ddd !important;
+    padding: 2px;
 
     &:hover {
-      background: rgba(255, 255, 255, .07);
+      background: rgba(255, 255, 255, .08);
     }
 
     &.selected {
-      background: rgba(255, 255, 255, .15);
+      background: rgba(255, 255, 255, .16);
     }
   }
 }

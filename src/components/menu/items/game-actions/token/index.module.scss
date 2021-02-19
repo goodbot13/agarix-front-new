@@ -1,22 +1,41 @@
-.token {
-  background: transparent;
-  border: 3px solid rgba(255, 255, 255, .3);
-  border-radius: 2px;
-  box-sizing: border-box;
-  text-align: center;
-  width: 70px;
-  padding: 1px;
-  padding-bottom: 0px;
-  font-size: 15px;
-  font-weight: 500;
-  color: #aaa;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  transition: .2s linear;
-
+.token, 
+.serverToken {
   &:not(:placeholder-shown).blured {
     color: transparent !important;
     text-shadow: 0 0 10px rgba(255, 255, 255, .5);
     pointer-events: none;
   }
+}
+
+.token,
+.serverToken {
+  position: absolute;
+  z-index: 1;
+  transition: .2s;
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  border: 3px solid rgba(255, 255, 255, 0);
+  border-radius: 2px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 76px;
+  color: #555;
+  top: 44px;
+  padding: 3px;
+  padding-left: 1px;
+  padding-right: 1px;
+  z-index: 1;
+  cursor: pointer;
+
+  &:hover {
+    color: #aaa;
+  }
+}
+
+.selected {
+  top: 0;
+  border: 3px solid rgba(255, 255, 255, .3);
+  color: #aaa;
+  cursor: auto;
 }

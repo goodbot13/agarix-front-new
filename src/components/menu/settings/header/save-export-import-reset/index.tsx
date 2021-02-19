@@ -7,11 +7,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 
 import classNames from 'classnames';
+
 import { thunkSetSettingsShown } from 'redux/UI/thunks';
 import { ThunkRootDispatchType } from 'redux/store';
+import Storage from 'api/Storage/Storage';
 
 const SaveExportImportReset: FC<SaveExportImportResetType> = ({ setSettingsShown }) => {
   const [resetClicked, setResetClicked] = useState(false);
+
+  
 
   return (
     <section className={css.wrap}>
@@ -21,10 +25,10 @@ const SaveExportImportReset: FC<SaveExportImportResetType> = ({ setSettingsShown
       >
         <FontAwesomeIcon icon={faCheck} /> Save
       </button>
-      <button>
+      <button style={{ opacity: 0.33, pointerEvents: 'none' }}>
         <FontAwesomeIcon icon={faArrowUp} /> Import
       </button>
-      <button>
+      <button style={{ opacity: 0.33, pointerEvents: 'none' }}>
         <FontAwesomeIcon icon={faArrowDown} /> Export
       </button>
       <div className={classNames({
@@ -41,7 +45,10 @@ const SaveExportImportReset: FC<SaveExportImportResetType> = ({ setSettingsShown
         ) : (
           <>
             <span>Reset?</span>
-            <button>
+            <button onClick={() => {
+              Storage.reset();
+              window.location.reload();
+            }}>
               <FontAwesomeIcon icon={faCheck}/>
             </button>
             <button onClick={() => setResetClicked(false)}>

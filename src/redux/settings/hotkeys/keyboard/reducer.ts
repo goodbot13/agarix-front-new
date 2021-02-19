@@ -1,4 +1,4 @@
-import Storage from "api/storage/Storage";
+import Storage from "api/Storage/Storage";
 import { 
   IHotkeysKeyboard, 
   HotkeysKeyboardActionTypes, 
@@ -22,6 +22,8 @@ import {
 const initState: IHotkeysKeyboard = Storage.get().settings.hotkeys.keyboard;
 
 const unsetExistingKey = (state: IHotkeysKeyboard, keybind: string) => {
+  state = { ...state };
+
   for (const prop in state) {
     // @ts-ignore
     if (state[prop] === keybind) {
@@ -29,127 +31,114 @@ const unsetExistingKey = (state: IHotkeysKeyboard, keybind: string) => {
       state[prop] = '';
     }
   }
+
+  return state;
 }
 
 export const hotkeysKeyboardReducer = (state = initState, action: HotkeysKeyboardActionTypes): IHotkeysKeyboard => {
   switch(action.type) {
     case SET_FEED:
-      unsetExistingKey(state, action.feed);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.feed),
         feed: action.feed
       }
 
     case SET_MACRO_FEED:
-      unsetExistingKey(state, action.macroFeed);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.macroFeed),        
         macroFeed: action.macroFeed
       }
 
     case SET_SPLIT:
-      unsetExistingKey(state, action.split);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.split),
         split: action.split
       }
 
     case SET_DOUBLE_SPLIT:
-      unsetExistingKey(state, action.doubleSplit);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.doubleSplit),
         doubleSplit: action.doubleSplit
       }
 
     case SET_TRIPLE_SPLIT:
-      unsetExistingKey(state, action.tripleSplit);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.tripleSplit),
         tripleSplit: action.tripleSplit
       }
 
     case SET_SPLIT_SIXTEEN:
-      unsetExistingKey(state, action.splitSixteen);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.splitSixteen),
         splitSixteen: action.splitSixteen
       }
 
     case SET_QUICK_RESPAWN:
-      unsetExistingKey(state, action.quickRespawn);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.quickRespawn),
         quickRespawn: action.quickRespawn
       }
 
     case SET_PAUSE_CELL:
-      unsetExistingKey(state, action.pauseCell);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.pauseCell),
         pauseCell: action.pauseCell
       }
 
     case SET_TOGGLE_CELL_HELPERS:
-      unsetExistingKey(state, action.toggleCellHelpers);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.toggleCellHelpers),
         toggleCellHelpers: action.toggleCellHelpers
       }
     
     case SET_TOGGLE_CELL_SKINS:
-      unsetExistingKey(state, action.toggleCellSkins);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.toggleCellSkins),
         toggleCellSkins: action.toggleCellSkins
       }
 
     case SET_TOGGLE_CELL_RINGS:
-      unsetExistingKey(state, action.toggleCellRings);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.toggleCellRings),
         toggleCellRings: action.toggleCellRings
       }
 
     case SET_SWITCH_TABS:
-      unsetExistingKey(state, action.switchTabs);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.switchTabs),
         switchTabs: action.switchTabs
       }
 
     case SET_TOGGLE_FOOD_RENDER:
-      unsetExistingKey(state, action.toggleFoodRender);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.toggleFoodRender),
         toggleFoodRender: action.toggleFoodRender
       }
 
     case SET_TOGGLE_SPECTATOR_MODE:
-      unsetExistingKey(state, action.toggleSpectatorMode);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.toggleSpectatorMode),
         toggleSpectatorMode: action.toggleSpectatorMode
       }
 
     case SET_TOGGLE_HUDS:
-      unsetExistingKey(state, action.toggleHuds);
-
       return {
         ...state,
+        ...unsetExistingKey(state, action.toggleHuds),
         toggleHuds: action.toggleHuds
       }
 

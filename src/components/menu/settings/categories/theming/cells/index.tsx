@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { AppStateType, ThunkRootDispatchType } from "redux/store";
 
 import { 
+  thunkSetCellsColorLighten,
   thunkSetCellsTransparency, 
   thunksetMyShadowColor, 
   thunkSetOneColoredColor, 
@@ -20,7 +21,7 @@ import {
 import Select from "components/menu/settings/basic/select";
 
 import { ONE_COLORED_STATS_COLOR_HINT } from "redux/settings/theming/cells/hints";
-import { CELLS_SHADOW_DISTANCE_VALUES, CELLS_SHADOW_STRENGTH_VALUES, CELLS_TRANSPARENCY_VALUES } from "redux/settings/theming/cells/values";
+import { CELLS_COLOR_LIGHTEN_VALUES, CELLS_SHADOW_DISTANCE_VALUES, CELLS_SHADOW_STRENGTH_VALUES, CELLS_TRANSPARENCY_VALUES } from "redux/settings/theming/cells/values";
 
 const Cells: FC<CellsType> = ({
   oneColoredColor,
@@ -30,13 +31,15 @@ const Cells: FC<CellsType> = ({
   shadowDistance,
   shadowStrength,
   transparency,
+  colorLighten,
   setOneColoredColor,
   setOneColoredStatsColor,
   setShadowColor,
   setMyShadowColor,
   setShadowDistance,
   setShadowStrength,
-  setCellsTransparency
+  setCellsTransparency,
+  setCellsColorLighten
 }) => {
   return (
     <>
@@ -79,6 +82,12 @@ const Cells: FC<CellsType> = ({
         selectedItem={transparency}
         onChange={setCellsTransparency}
       />
+      <Select
+        text="Color lighten"
+        items={CELLS_COLOR_LIGHTEN_VALUES}
+        selectedItem={colorLighten}
+        onChange={setCellsColorLighten} 
+      />
     </>
   )
 }
@@ -94,7 +103,8 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setMyShadowColor: (color: RGB) => dispatch(thunksetMyShadowColor(color)),
   setShadowDistance: (value: number) => dispatch(thunksetShadowDistance(value)),
   setShadowStrength: (value: number) => dispatch(thunksetShadowStrength(value)),
-  setCellsTransparency: (value: number) => dispatch(thunkSetCellsTransparency(value))
+  setCellsTransparency: (value: number) => dispatch(thunkSetCellsTransparency(value)),
+  setCellsColorLighten: (value: number) => dispatch(thunkSetCellsColorLighten(value)) 
 });
 
 
