@@ -1,9 +1,11 @@
+import FrametimeCalculator from "api/FrametimeCalculator/FrametimeCalculator";
 import { updateGameServersList } from "redux/game/actions";
 import { IGameServer } from "redux/game/types";
+import { setFacebookLoggedIn, setGoogleLoggedIn } from "redux/profiles/actions";
 import { TStore } from "redux/store";
-import { setGameLoaderStatus, setLeaderboardPlayers, setStats, setTopTeamPlayers } from "redux/UI/actions";
+import { addChatMessage, setGameLoaderStatus, setIsPlayerPlaying, setLeaderboardPlayers, setStats, setTopTeamPlayers } from "redux/UI/actions";
 import { thunkSetGameLoaderShown } from "redux/UI/thunks";
-import { ILeaderboardPlayer, ITopTeamPlayer } from "redux/UI/types";
+import { ILeaderboardPlayer, ITopTeamPlayer, TChatMessageType } from "redux/UI/types";
 
 export const initFrontCommunicationService = (store: TStore) => {
   // @ts-ignore
@@ -32,6 +34,26 @@ export const initFrontCommunicationService = (store: TStore) => {
   window.FrontAPI.setRegions = (regions) => {
     store.dispatch(updateGameServersList(regions));
   }
+
+  window.FrontAPI.setEllapsedFrametime = (ms) => {
+    FrametimeCalculator.updateElapsed(ms);
+  }
+
+  window.FrontAPI.setIsPlayerPlaying = (value) => {
+    store.dispatch(setIsPlayerPlaying(value));
+  }
+
+  window.FrontAPI.setFacebookLoggedIn = (value) => {
+    store.dispatch(setFacebookLoggedIn(value));
+  }
+
+  window.FrontAPI.setGoogleLoggedIn = (value) => {
+    store.dispatch(setGoogleLoggedIn(value));
+  }
+
+  window.FrontAPI.addChatMessage = (nick, message, type, key) => {
+    store.dispatch(addChatMessage({ nick, message, type, key }))
+  }
 }
 
 
@@ -45,6 +67,11 @@ declare global {
       updateLeaderboard: (leaderboard: Array<ILeaderboardPlayer>) => void,
       updateTopTeam: (players: Array<ITopTeamPlayer>) => void,
       setRegions: (regions: Array<IGameServer>) => void,
+      setEllapsedFrametime: (ms: number) => void,
+      setIsPlayerPlaying: (value: boolean) => void,
+      setGoogleLoggedIn: (value: boolean) => void,
+      setFacebookLoggedIn: (value: boolean) => void,
+      addChatMessage: (nick: string, message: string, type: TChatMessageType, key: number) => void
     }
   }
 }

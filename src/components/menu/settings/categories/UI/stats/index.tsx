@@ -8,18 +8,19 @@ import {
   setStatsBackdropBlur, 
   setStatsBackgroundColor, 
   setStatsFpsShown, 
+  setStatsFrametime, 
   setStatsLossShown, 
-  setStatsScale, 
+  setStatsPosition, 
   setStatsShown 
 } from "redux/settings/UI/stats/actions";
 
 import { AppStateType } from "redux/store";
 
-import Select from "components/menu/settings/basic/select";
 import Switch from "components/menu/settings/basic/switch";
-import { STATS_SCALE_VALUES } from "redux/settings/UI/stats/values";
 import Colorpick from "components/menu/settings/basic/colorpick";
 import { STATS_BACKDROP_BLUR_HINT } from "redux/settings/UI/stats/hints";
+import { TStatsPosition } from "redux/settings/UI/stats/types";
+import Select from "components/menu/settings/basic/select";
 
 const Stats: FC<StatsType> = ({
   shown,
@@ -27,13 +28,15 @@ const Stats: FC<StatsType> = ({
   loss,
   backgroundColor,
   backdropBlur,
-  scale,
+  frametime,
+  position,
   setShown,
   setFps,
   setLoss,
   setBackgroundColor,
   setBackdropBlur,
-  setScale
+  setFrametime,
+  setPosition
 }) => {
   return (
     <>
@@ -42,6 +45,13 @@ const Stats: FC<StatsType> = ({
         enabled={shown}
         onChange={setShown}
         main
+      />
+      <Select 
+        text="Position"
+        items={['BOTTOM LEFT', 'BOTTOM CENTER', 'LEADERBOARD'] as Array<TStatsPosition>}
+        selectedItem={position}
+        onChange={setPosition}
+        disabled={!shown}
       />
       <Colorpick 
         text="Background color"
@@ -57,17 +67,16 @@ const Stats: FC<StatsType> = ({
         onChange={setBackdropBlur}
         disabled={!shown}
       />
-      <Select 
-        text="Scale"
-        items={STATS_SCALE_VALUES}
-        selectedItem={scale}
-        onChange={setScale}
-        disabled={!shown}
-      />
       <Switch 
         text="Show FPS"
         enabled={fps}
         onChange={setFps}
+        disabled={!shown}
+      />
+      <Switch 
+        text="Show frametime"
+        enabled={frametime}
+        onChange={setFrametime}
         disabled={!shown}
       />
       <Switch 
@@ -90,7 +99,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   setLoss: (value: boolean) => dispatch(setStatsLossShown(value)),
   setBackgroundColor: (value: RGB) => dispatch(setStatsBackgroundColor(value)),
   setBackdropBlur: (value: boolean) => dispatch(setStatsBackdropBlur(value)),
-  setScale: (value: number) => dispatch(setStatsScale(value))
+  setFrametime: (value: boolean) => dispatch(setStatsFrametime(value)),
+  setPosition: (value: TStatsPosition) => dispatch(setStatsPosition(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stats);

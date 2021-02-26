@@ -30,6 +30,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import { settingsLeaderboardReducer } from './settings/UI/leaderboard/reducer';
 import { settingsStatsReducer } from './settings/UI/stats/reducer';
 import { settingsTopTeamReducer } from './settings/UI/top-team/reducer';
+import { settingsSpectateReducer } from './settings/UI/spectate/reducer';
+import { settingsChatReducer } from './settings/UI/chat/reducer';
 
 const rootReducer = combineReducers({
   UI: UIReducer,
@@ -58,7 +60,9 @@ const rootReducer = combineReducers({
     UI: combineReducers({
       leaderboard: settingsLeaderboardReducer,
       stats: settingsStatsReducer,
-      topTeam: settingsTopTeamReducer
+      topTeam: settingsTopTeamReducer,
+      spectate: settingsSpectateReducer,
+      chat: settingsChatReducer
     })
   })
 });

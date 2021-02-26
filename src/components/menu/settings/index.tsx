@@ -13,14 +13,10 @@ import Theming from './categories/theming';
 import Hotkeys from './categories/hotkeys';
 import ThemingUI from './categories/UI';
 
-const Settings: FC<SettingsComponentType> = ({ shown, settingsType, menuShown, additionalProfilesListShown }) => {
+const Settings: FC<SettingsComponentType> = ({ shown, settingsType, menuShown }) => {
   return (
     <div 
       className={classNames({ [css.wrap]: true, [css.shown]: shown && menuShown })}
-      style={{ 
-        width: 1100,
-        marginLeft: additionalProfilesListShown ? 10 : -110
-      }}
     >
       <SettingsHeader />
       <div className={css.content}>
@@ -57,7 +53,6 @@ const mapStateToProps = ({ UI }: AppStateType) => ({
   shown: UI.settingsShown,
   settingsType: UI.settingsType,
   menuShown: UI.menuShown,
-  additionalProfilesListShown: UI.additionalProfilesListShown
 });
 
 

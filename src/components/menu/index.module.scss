@@ -1,43 +1,45 @@
 .wrap {
   display: flex;
-  height: 100%;
   justify-content: center;
   align-items: center;
-  background: rgba(12, 12, 12, .975);
+  background-color: rgba(12, 12, 12, .975);
   transition: .2s;
-  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+
+  &.theming {
+    background-color: transparent;
+  }
 
   &.hidden {
     opacity: 0;
-    animation: setVisibilityHidden 0s;
-    animation-fill-mode: forwards;
-    animation-delay: .2s;
+    animation: hidden .2s;
+    z-index: 0;
   }
 
   .innerWrap {
-    transform: scale(0.91) translateZ(0);
-    backface-visibility: hidden;
-    position: relative;
+    transform: scale(0.88);
+    transition: .1s;
+    position: absolute;
   }
 }
 
-.hudsWrap {
-  transition: .2s;
-
-  &.hidden {
-    opacity: 0;
+@keyframes hidden {
+  from {
+    transform: scale(1);
   }
-}
 
-@media setVisibilityHidden {
-  to { 
-    visibility: hidden;
-    transform: scale(0); 
+  to {
+    transform: scale(1.33);
   }
 }
 
 @media screen and (max-height: 720px) {
   .wrap .innerWrap {
-    transform: scale(0.82);
+    transform: scale(0.75);
   }
 }

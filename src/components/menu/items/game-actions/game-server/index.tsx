@@ -3,10 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DelayedRenderComponent from 'components/StandartComponents/DelayedRenderCompnent';
 import { FC, useState } from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import { changeGameServer } from 'redux/game/actions';
+import { thunkChangeGameServer } from 'redux/game/thunks';
 import { GameServerLocationTypes, IGameServer } from 'redux/game/types';
-import { AppStateType } from 'redux/store';
+import { AppStateType, ThunkRootDispatchType } from 'redux/store';
 import SelectList from '../select-list';
 import css from './index.module.scss';
 
@@ -54,8 +53,8 @@ const mapStateToProps = ({ game }: AppStateType) => ({
   currentServerIndex: game.currentServerIndex
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  changeGameServer: (index: number) => dispatch(changeGameServer(index))
+const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
+  changeGameServer: (index: number) => dispatch(thunkChangeGameServer(index))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameServer);

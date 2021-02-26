@@ -1,9 +1,12 @@
 import Storage from "api/Storage/Storage";
 import { 
   IThemingCellsState, 
+  SET_ADAPTIVE_SHADOW, 
   SET_CELLS_COLOR_LIGHTEN, 
   SET_CELLS_TRANSPARENCY, 
   SET_MY_SHADOW_COLOR, 
+  SET_MY_SHADOW_DISTANCE, 
+  SET_MY_SHADOW_STRENGTH, 
   SET_ONE_COLORED_COLOR, 
   SET_ONE_COLORED_STATS_COLOR, 
   SET_SHADOW_COLOR, 
@@ -46,10 +49,22 @@ export const themingCellsReducer = (state = initState, action: ThemingCellsActio
         shadowDistance: action.shadowDistance
       }
 
+    case SET_MY_SHADOW_DISTANCE:
+      return {
+        ...state,
+        myShadowDistance: action.myShadowDistance
+      }
+
     case SET_SHADOW_STRENGTH:
       return {
         ...state,
         shadowStrength: action.shadowStrength
+      }
+
+    case SET_MY_SHADOW_STRENGTH:
+      return {
+        ...state,
+        myShadowStrength: action.myShadowStrength
       }
 
     case SET_CELLS_TRANSPARENCY:
@@ -62,6 +77,12 @@ export const themingCellsReducer = (state = initState, action: ThemingCellsActio
       return {
         ...state,
         colorLighten: action.colorLighten
+      }
+
+    case SET_ADAPTIVE_SHADOW:
+      return {
+        ...state,
+        adaptiveShadow: action.adaptiveShadow
       }
 
     default: return state;

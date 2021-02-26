@@ -3,6 +3,8 @@ import KeyboardEvents from "./Listener";
 class Keyboard {
   private events: KeyboardEvents;
   private binded: Map<string, () => void>;
+  private blockWhitelist = ['Escape', 'Enter'];
+  public block: boolean = true;
 
   constructor() {
     this.binded = new Map();
@@ -31,6 +33,10 @@ class Keyboard {
 
   private handleEvent(keyboardKey: string, preventDefault: () => void, event: TKeyBindEvent) {
     this.binded.forEach((funcToExecute, keyToUntransform) => {
+      if (this.block && !this.blockWhitelist.includes(this.untransformKey(keyToUntransform).key)) {
+        return;
+      }
+
       if (this.isValidUntransformedKey(keyToUntransform, event, keyboardKey, funcToExecute)) {
         funcToExecute();
         preventDefault();

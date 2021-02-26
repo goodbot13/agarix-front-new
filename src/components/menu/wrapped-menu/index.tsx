@@ -5,6 +5,7 @@ import Profile from '../items/profile';
 import GameActions from '../items/game-actions';
 import PlaySpectate from '../items/play-spectate';
 import Customization from '../items/customization';
+import Login from '../items/login';
 
 import { connect } from 'react-redux';
 import { AppStateType, ThunkRootDispatchType } from 'redux/store';
@@ -19,6 +20,8 @@ import {
    thunkSetRightProfileSkinUrl, 
    thunkSetTag
   } from 'redux/profiles/thunks';
+
+
 
 const WrappedMenu: FC<WrappedMenuType> = ({
   setLeftProfileNick, 
@@ -59,6 +62,9 @@ const WrappedMenu: FC<WrappedMenuType> = ({
           />
         </div>
         <div className={css.middle}>
+          <div className={css.login}>
+            <Login />
+          </div>
           <div className={css.playSpectate}>
             <PlaySpectate />
           </div>

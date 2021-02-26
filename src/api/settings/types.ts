@@ -1,4 +1,5 @@
 import { IGameState } from "redux/game/types";
+import { IProfilesState, TLoginType } from "redux/profiles/types";
 import { IGameCellsState } from "redux/settings/game/cells/types";
 import { IGameEffectsState } from "redux/settings/game/effects/types";
 import { IGameGameplayState } from "redux/settings/game/gameplay/types";
@@ -31,7 +32,18 @@ export interface IState {
       viruses: IThemingVirusesState
     }
   }, 
-  game: IGameState
+  game: IGameState,
+  profiles: IProfiles
+}
+
+interface IProfiles {
+  leftProfileNick: string,
+  leftProfileSkinUrl: string,
+  rightProfileNick: string,
+  rightProfileSkinUrl: string,
+  tag: string,
+  leftProfileLoginType: TLoginType,
+  rightProfileLoginType: TLoginType
 }
 
 declare global {
@@ -52,12 +64,12 @@ declare global {
       updateSystemGameplay(): void,
       updateSystemMinimap(): void,
       updateSystemMultibox(): void,
-      updateSystemPerformance(): void
+      updateSystemPerformance(): void,
     }
   }
 }
 
 export type TThemingMap = 'Border' | 'BgTint' | 'BgImgUrl' | 'GlobalBgImgUrl' | 'GlobalBgImgTint';
-export type TThemingCells = 'Shadow';
+export type TThemingCells = 'Shadow' | 'MyShadow';
 export type TThemingMultibox = 'LinedRing';
 export type TThemingMinimap = 'BgColor' | 'Size' | 'ViewportColors' | 'PlayerColor' | 'GhostCellsColor';

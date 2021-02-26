@@ -2,9 +2,12 @@ import { RGB } from "../types";
 
 import { ThemingCellsThunkActionTypes } from "./types";
 import { 
+  setAdaptiveShadow,
   setCellsColorLighten,
   setCellsTransparency, 
   setMyShadowColor, 
+  setMyShadowDistance, 
+  setMyShadowStrength, 
   setOneColoredColor, 
   setOneColoredStatsColor, 
   setShadowColor, 
@@ -30,19 +33,29 @@ export const thunkSetShadowColor = (shadowColor: RGB): ThemingCellsThunkActionTy
   ThemingSettingsCells.setShadowColor(shadowColor);
 }
 
-export const thunksetMyShadowColor = (myShadowColor: RGB): ThemingCellsThunkActionTypes => (dispatch) => {
+export const thunkSetMyShadowColor = (myShadowColor: RGB): ThemingCellsThunkActionTypes => (dispatch) => {
   dispatch(setMyShadowColor(myShadowColor));
   ThemingSettingsCells.setMyShadowColor(myShadowColor);
 }
 
-export const thunksetShadowDistance = (shadowDistance: number): ThemingCellsThunkActionTypes => (dispatch) => {
+export const thunkSetShadowDistance = (shadowDistance: number): ThemingCellsThunkActionTypes => (dispatch) => {
   dispatch(setShadowDistance(shadowDistance));
   ThemingSettingsCells.setShadowDistance(shadowDistance);
 }
 
-export const thunksetShadowStrength = (shadowStrength: number): ThemingCellsThunkActionTypes => (dispatch) => {
+export const thunkSetMyShadowDistance = (myShadowDistance: number): ThemingCellsThunkActionTypes => (dispatch) => {
+  dispatch(setMyShadowDistance(myShadowDistance));
+  ThemingSettingsCells.setMyShadowDistance(myShadowDistance);
+}
+
+export const thunkSetShadowStrength = (shadowStrength: number): ThemingCellsThunkActionTypes => (dispatch) => {
   dispatch(setShadowStrength(shadowStrength));
   ThemingSettingsCells.setShadowStrength(shadowStrength);
+}
+
+export const thunkSetMyShadowStrength = (myShadowStrength: number): ThemingCellsThunkActionTypes => (dispatch) => {
+  dispatch(setMyShadowStrength(myShadowStrength));
+  ThemingSettingsCells.setMyShadowStrength(myShadowStrength);
 }
 
 export const thunkSetCellsTransparency = (transparency: number): ThemingCellsThunkActionTypes => (dispatch) => {
@@ -53,4 +66,9 @@ export const thunkSetCellsTransparency = (transparency: number): ThemingCellsThu
 export const thunkSetCellsColorLighten = (colorLighten: number): ThemingCellsThunkActionTypes => (dispatch) => {
   dispatch(setCellsColorLighten(colorLighten));
   ThemingSettingsCells.setCellsColorLighten(colorLighten);
+}
+
+export const thunkSetAdaptiveShadow = (adaptiveShadow: boolean): ThemingCellsThunkActionTypes => (dispatch) => {
+  dispatch(setAdaptiveShadow(adaptiveShadow));
+  ThemingSettingsCells.setAdaptiveShadow(adaptiveShadow);
 }

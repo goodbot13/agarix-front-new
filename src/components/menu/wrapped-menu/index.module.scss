@@ -3,24 +3,15 @@
   flex-direction: column;
   transition: .2s;
   opacity: 0;
-  transform: scale(1.5);
-  animation: delayVisibilityHidden 0s;
-  animation-fill-mode: forwards;
-  animation-delay: .2s;
 
   &.menuShown {
-    transform: scale(1);
+    animation: animateMenuShown .2s;
     opacity: 1;
-    animation: delayVisibilityVisible 0s;
-    animation-fill-mode: forwards;
   }
 
   &.settingsShown {
-    transform: scale(0.5);
+    transform: scale(0.67);
     opacity: 0;
-    animation: delayVisibilityHidden 0s;
-    animation-fill-mode: forwards;
-    animation-delay: .2s;
   }
 
   .top {
@@ -40,22 +31,18 @@
   }
 
   .bottom {
-    margin-top: 60px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
   }
 }
 
-@keyframes delayVisibilityHidden {
-  from { }
-  to {
-    visibility: hidden;
+@keyframes animateMenuShown {
+  from { 
+    transform: scale(1.33);
   }
-}
 
-@keyframes delayVisibilityVisible {
-  from { }
-  to { 
-    visibility: visible;
+  to {
+    transform: scale(1);
   }
 }

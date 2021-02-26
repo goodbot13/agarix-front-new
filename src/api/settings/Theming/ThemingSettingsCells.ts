@@ -22,9 +22,19 @@ export default class ThemingSettingsCells {
     window.GameSettings.updateThemingCells('Shadow');
   }
 
+  static setMyShadowDistance(value: number) {
+    window.GameSettings.all.settings.theming.cells.myShadowDistance = value;
+    window.GameSettings.updateThemingCells('MyShadow');
+  }
+
   static setShadowStrength(value: number) {
     window.GameSettings.all.settings.theming.cells.shadowStrength = value;
     window.GameSettings.updateThemingCells('Shadow');
+  }
+
+  static setMyShadowStrength(value: number) {
+    window.GameSettings.all.settings.theming.cells.myShadowStrength = value;
+    window.GameSettings.updateThemingCells('MyShadow');
   }
 
   static setCellsTransparency(value: number) {
@@ -33,5 +43,9 @@ export default class ThemingSettingsCells {
   
   static setCellsColorLighten(value: number) {
     window.GameSettings.all.settings.theming.cells.colorLighten = value;
+  }
+
+  static setAdaptiveShadow(value: boolean) {
+    window.GameSettings.all.settings.theming.cells.adaptiveShadow = value;
   }
 }

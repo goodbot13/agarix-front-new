@@ -2,7 +2,6 @@ import Storage from "api/Storage/Storage";
 import { 
   IGameState,
   GameActionTypes, 
-  CHANGE_GAME_TAG, 
   CHANGE_GAME_MODE, 
   CHANGE_GAME_SERVER, 
   UPDATE_GAME_SERVERS_LIST, 
@@ -33,22 +32,16 @@ export const gameReducer = (state = initState, action: GameActionTypes): IGameSt
         mode: action.mode
       }
 
-    case CHANGE_GAME_TAG:
-      return {
-        ...state,
-        tag: action.tag
-      }
-
     case CHANGE_GAME_TOKEN:
       return {
         ...state,
-        token: action.token ? action.token : ''
+        token: action.token
       }
 
     case CHANGE_GAME_SERVER_TOKEN:
       return {
         ...state,
-        gameServerToken: action.gameServerToken ? action.gameServerToken : ''
+        gameServerToken: action.gameServerToken
       }
 
     case CHANGE_SELECTED_GAME_TOKEN_TYPE:

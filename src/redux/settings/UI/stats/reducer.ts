@@ -4,8 +4,9 @@ import {
   SET_STATS_BACKDROP_BLUR, 
   SET_STATS_BACKGROUND_COLOR, 
   SET_STATS_FPS_SHOWN, 
+  SET_STATS_FRAMETIME, 
   SET_STATS_LOSS_SHOWN, 
-  SET_STATS_SCALE, 
+  SET_STATS_POSITION, 
   SET_STATS_SHOWN, 
   UIStatusActionTypes 
 } from "./types";
@@ -44,10 +45,16 @@ export const settingsStatsReducer = (state = initState, action: UIStatusActionTy
         backdropBlur: action.backdropBlur
       }
 
-    case SET_STATS_SCALE:
+    case SET_STATS_FRAMETIME:
       return {
         ...state,
-        scale: action.scale
+        frametime: action.frametime
+      }
+
+    case SET_STATS_POSITION:
+      return {
+        ...state,
+        position: action.position
       }
 
     default: return state;

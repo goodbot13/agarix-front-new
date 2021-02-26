@@ -57,19 +57,24 @@ const TopTeam: FC<TopTeamType> = ({
           </div>
         )}
         <div className={css.players}>
-          {players.slice(0, displayAmount).map((player) => (
-            <div
-              className={css.player}
-              key={player.nick}
-            >
-              {displayPlayerMass && <div className={css.mass}>
-              <FontAwesomeIcon 
-                icon={faCookieBite}
-                style={{ marginRight: 2 }} 
-              /> [{shortMass ? numberToK(player.mass) : player.mass}]</div>} 
-              <div className={css.nick}>{player.nick}</div>
-            </div>
-          ))}
+          {players
+            .filter((player) => player.isAlive)
+            .slice(0, displayAmount)
+            .sort((a, b) => b.mass - a.mass)
+            .map((player) => (
+              <div
+                className={css.player}
+                key={player.id}
+              >
+                {displayPlayerMass && <div className={css.mass}>
+                <FontAwesomeIcon 
+                  icon={faCookieBite}
+                  style={{ marginRight: 2 }} 
+                /> [{shortMass ? numberToK(player.mass) : player.mass}]</div>} 
+                <div className={css.nick}>{player.nick}</div>
+              </div>
+            )
+          )}
         </div>
       </div>
     ) : null

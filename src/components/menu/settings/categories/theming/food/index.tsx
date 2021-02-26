@@ -9,11 +9,15 @@ import { AppStateType, ThunkRootDispatchType } from "redux/store";
 import { 
   thunkSetFoodColor, 
   thunkSetFoodCrisp, 
+  thunkSetFoodEnabled, 
+  thunkSetFoodFirstTabEnabled, 
   thunkSetFoodGlow, 
   thunkSetFoodGlowColor, 
   thunkSetFoodGlowDistance, 
   thunkSetFoodGlowStrength, 
-  thunkSetFoodSize 
+  thunkSetFoodSecondTabEnabled, 
+  thunkSetFoodSize, 
+  thunkSetFoodTopOneTabEnabled
 } from "redux/settings/theming/food/thunks";
 import Switch from "components/menu/settings/basic/switch";
 import Select from "components/menu/settings/basic/select";
@@ -22,6 +26,10 @@ import { FOOD_GLOW_DISTANCE_VALUES, FOOD_GLOW_STRENGTH_VALUES, FOOD_SIZE_VALUES 
 
 
 const Food: FC<FoodType> = ({
+  enabled,
+  firstTabEnabled,
+  secondTabEnabled,
+  topOneTabEnabled,
   size,
   color,
   glow,
@@ -29,6 +37,10 @@ const Food: FC<FoodType> = ({
   glowDistance,
   glowStrength,
   crisp,
+  setFoodEnabled,
+  setFoodFirstTabEnabled,
+  setFoodSecondTabEnabled,
+  setFoodTopOneTabEnabled,
   setFoodSize,
   setFoodColor,
   setFoodGlow,
@@ -39,46 +51,74 @@ const Food: FC<FoodType> = ({
 }) => {
   return (
     <>
+      <Switch 
+        text="Enabled"
+        enabled={enabled}
+        onChange={setFoodEnabled}
+        main
+      />
+      <Switch 
+        text="Enabled for main (first) player tab"
+        enabled={firstTabEnabled}
+        onChange={setFoodFirstTabEnabled}
+        disabled={!enabled}
+      />
+      <Switch 
+        text="Enabled for multibox (second) player tab"
+        enabled={secondTabEnabled}
+        onChange={setFoodSecondTabEnabled}
+        disabled={!enabled}
+      />
+      <Switch 
+        text="Enabled for top one (spectator) tab"
+        enabled={topOneTabEnabled}
+        onChange={setFoodTopOneTabEnabled}
+        disabled={!enabled}
+      />
       <Select 
         text="Food size"
         items={FOOD_SIZE_VALUES}
         selectedItem={size}
         onChange={setFoodSize}
+        disabled={!enabled}
       />
       <Colorpick 
         text="Color"
         color={color}
         onChange={setFoodColor}
+        disabled={!enabled}
       />
       <Switch 
         text="Glow"
         enabled={glow}
         onChange={setFoodGlow}
+        disabled={!enabled}
       />
       <Colorpick 
         text="Glow color"
         color={glowColor}
         onChange={setFoodGlowColor}
-        disabled={!glow}
+        disabled={!glow || !enabled}
       />
       <Select 
         text="Glow distance"
         selectedItem={glowDistance}
         items={FOOD_GLOW_DISTANCE_VALUES}
         onChange={setFoodGlowDistance}
-        disabled={!glow}
+        disabled={!glow || !enabled}
       />
       <Select 
         text="Glow strength"
         selectedItem={glowStrength}
         items={FOOD_GLOW_STRENGTH_VALUES}
         onChange={setFoodGlowStrength}
-        disabled={!glow}
+        disabled={!glow || !enabled}
       />
       <Switch 
         text="Crispy"
         enabled={crisp}
         onChange={setFoodCrisp}
+        disabled={!enabled}
       />
     </>
   )
@@ -89,6 +129,10 @@ const mapStateToProps = ({ settings }: AppStateType) => ({
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
+  setFoodEnabled: (value: boolean) => dispatch(thunkSetFoodEnabled(value)),
+  setFoodFirstTabEnabled: (value: boolean) => dispatch(thunkSetFoodFirstTabEnabled(value)),
+  setFoodSecondTabEnabled: (value: boolean) => dispatch(thunkSetFoodSecondTabEnabled(value)),
+  setFoodTopOneTabEnabled: (value: boolean) => dispatch(thunkSetFoodTopOneTabEnabled(value)),
   setFoodSize: (value: number) => dispatch(thunkSetFoodSize(value)),
   setFoodColor: (color: RGB) => dispatch(thunkSetFoodColor(color)),
   setFoodGlow: (value: boolean) => dispatch(thunkSetFoodGlow(value)),

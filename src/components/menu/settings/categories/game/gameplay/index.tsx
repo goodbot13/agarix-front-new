@@ -41,12 +41,14 @@ const Gameplay: FC<GameplayType> = ({
         items={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
         selectedItem={cameraSpeed}
         onChange={setCameraSpeed}
+        disabled
       />
       <Select 
         text="Camera style"
         items={['Default', 'Smooth'] as Array<CameraStyleType>}
         selectedItem={cameraStyle}
         onChange={setCameraStyle}
+        disabled
       />
       <Select 
         text="Spectator mode"
@@ -60,6 +62,7 @@ const Gameplay: FC<GameplayType> = ({
         items={['Disabled', 'Main tab', 'Second tab', 'Top one tab', 'All'] as Array<ViewportType>}
         selectedItem={viewport}
         onChange={setViewport}
+        disabled
       />
     </>
   )

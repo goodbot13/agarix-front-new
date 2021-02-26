@@ -1,6 +1,7 @@
 export default class GameMultiboxSettings {
   static setMultiboxEnabled(value: boolean) {
     window.GameSettings.all.settings.game.multibox.enabled = value;
+    window.GameAPI?.setMultiboxEnabled(value);
   }
   
   static setMultiboxRing(value: boolean) {

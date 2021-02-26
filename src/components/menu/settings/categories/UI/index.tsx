@@ -2,7 +2,7 @@ import { FC } from "react";
 import css from './index.module.scss';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFire, faListOl, faListUl } from "@fortawesome/free-solid-svg-icons";
+import { faComments, faEye, faFire, faListOl, faListUl } from "@fortawesome/free-solid-svg-icons";
 
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -19,6 +19,8 @@ import Stats from "./stats";
 
 import classNames from 'classnames';
 import TopTeam from "./top-team";
+import Spectate from "./spectate";
+import Chat from "./chat";
 
 const ThemingUI: FC<ThemingUIType> = ({ settingsSubmenu, settingsShown, setSettingsSubmenu }) => {
   return (
@@ -42,6 +44,18 @@ const ThemingUI: FC<ThemingUIType> = ({ settingsSubmenu, settingsShown, setSetti
         >
           <FontAwesomeIcon icon={faFire}/> Stats
         </button>
+        <button 
+          className={classNames({ [css.selected]: settingsSubmenu === 'UI_SPECTATE' })}
+          onClick={() => setSettingsSubmenu('UI_SPECTATE')}
+        >
+          <FontAwesomeIcon icon={faEye}/> Spectate
+        </button>
+        <button 
+          className={classNames({ [css.selected]: settingsSubmenu === 'UI_CHAT' })}
+          onClick={() => setSettingsSubmenu('UI_CHAT')}
+        >
+          <FontAwesomeIcon icon={faComments}/> Chat
+        </button>
       </Left>
       <Right>
         <CategoryWrapper shown={settingsSubmenu === 'UI_LEADERBOARD' && settingsShown}>
@@ -52,6 +66,12 @@ const ThemingUI: FC<ThemingUIType> = ({ settingsSubmenu, settingsShown, setSetti
         </CategoryWrapper>
         <CategoryWrapper shown={settingsSubmenu === 'UI_STATS' && settingsShown}>
           <Stats />
+        </CategoryWrapper>
+        <CategoryWrapper shown={settingsSubmenu === 'UI_SPECTATE' && settingsShown}>
+          <Spectate />
+        </CategoryWrapper>
+        <CategoryWrapper shown={settingsSubmenu === 'UI_CHAT' && settingsShown}>
+          <Chat />
         </CategoryWrapper>
       </Right>
     </>

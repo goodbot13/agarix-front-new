@@ -1,6 +1,22 @@
 import { RGB } from "redux/settings/theming/types";
 
 export default class ThemingSettingsFood {
+  static setFoodEnabled(value: boolean) {
+    window.GameSettings.all.settings.theming.food.enabled = value;
+  }
+
+  static setFoodFirstTabEnabled(value: boolean) {
+    window.GameSettings.all.settings.theming.food.firstTabEnabled = value;
+  }
+
+  static setFoodSecondTabEnabled(value: boolean) {
+    window.GameSettings.all.settings.theming.food.secondTabEnabled = value;
+  }
+
+  static setFoodTopOneTabEnabled(value: boolean) {
+    window.GameSettings.all.settings.theming.food.topOneTabEnabled = value;
+  }
+
   static setFoodSize(value: number) {
     window.GameSettings.all.settings.theming.food.size = value;
     window.GameSettings.updateThemingFood();

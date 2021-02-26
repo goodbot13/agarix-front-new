@@ -1,5 +1,4 @@
-import ClientCommunicationService from "api/ClientCommunicationService/ClientCommunicationService";
-import { changeGameMode, changeGameServer, changeGameTag, changeGameToken, updateGameServersList } from "./actions";
+import { changeGameMode, changeGameServer, updateGameServersList } from "./actions";
 import { GameModeTypes, GameThunkActionTypes, IGameServer } from "./types";
 
 export const thunkUpdateGameServerList = (list: Array<IGameServer>): GameThunkActionTypes => (dispatch) => {
@@ -8,19 +7,10 @@ export const thunkUpdateGameServerList = (list: Array<IGameServer>): GameThunkAc
 
 export const thunkChangeGameServer = (i: number): GameThunkActionTypes => (dispatch) => {
   dispatch(changeGameServer(i));
-  ClientCommunicationService.setRegion(i);
+  window.GameAPI.setRegion(i);
 }
 
 export const thunkChangeGameMode = (mode: GameModeTypes): GameThunkActionTypes => (dispatch) => {
   dispatch(changeGameMode(mode));
-  ClientCommunicationService.setMode(mode);
-}
-
-export const thunkChangeGameTag = (tag: string): GameThunkActionTypes => (dispatch) => {
-  dispatch(changeGameTag(tag)); 
-  ClientCommunicationService.setTag(tag);
-}
-
-export const thunkChangeGameToken = (token: string): GameThunkActionTypes => (dispatch) => {
-  dispatch(changeGameToken(token));
+  window.GameAPI.setMode(mode);
 }

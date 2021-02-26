@@ -15,27 +15,27 @@ const initStorage: TStorage = {
         soakSpeed: '1',
         fadeSpeed: '2',
         oneColored: false,
-        shadow: 'All'
+        shadow: 'Disabled'
       },
       effects: {
-        cellRemoveAnimation: 'Default',
+        cellRemoveAnimation: 'Disabled',
         cellRemoveAnimationForHiddenSpectator: false,
         spawnAnimation: 'Acimazis',
         wtfRgbMode: false
       },
       gameplay: {
-        animationSpeed: 3,
+        animationSpeed: 10,
         zoomSpeed: 5,
         cameraSpeed: 5,
         cameraStyle: 'Default',
-        spectatorMode: 'Disabled',
+        spectatorMode: 'Top one',
         viewport: 'Disabled'
       },
       minimap: {
         enabled: true,
         viewport: 'Disabled',
         ghostCells: true,
-        realPlayersCells: false,
+        realPlayersCells: true,
         mass: false,
         nicks: true,
         playerPosition: true
@@ -65,13 +65,13 @@ const initStorage: TStorage = {
         doubleSplit: '',
         tripleSplit: '',
         splitSixteen: '',
-        quickRespawn: '',
+        quickRespawn: 'Backquote',
         pauseCell: 'P',
         toggleCellHelpers: '',
         toggleCellSkins: '',
         toggleCellRings: '',
         switchTabs: 'Tab',
-        toggleFoodRender: '',
+        toggleFoodRender: 'F',
         toggleSpectatorMode: '',
         toggleHuds: ''
       }
@@ -79,69 +79,76 @@ const initStorage: TStorage = {
     theming: {
       cells: {
         oneColoredColor: { red: 240, green: 240, blue: 240 },
-        oneColoredStatsColor: { red: 0, green: 0, blue: 0 },
-        shadowColor: { red: 0, green: 0, blue: 0 },
-        myShadowColor: { red: 0, green: 0, blue: 0 },
-        shadowDistance: 10,
+        oneColoredStatsColor: { red: 32, green: 32, blue: 32 },
+        shadowColor: { red: 255, green: 255, blue: 255 },
+        myShadowColor: { red: 255, green: 255, blue: 255 },
+        shadowDistance: 15,
         shadowStrength: 2,
+        myShadowStrength: 5,
+        myShadowDistance: 50,
+        adaptiveShadow: true,
         transparency: 0.98,
-        colorLighten: 110
+        colorLighten: 130
       }, 
       food: {
+        enabled: true,
+        firstTabEnabled: true,
+        secondTabEnabled: true,
+        topOneTabEnabled: true,
         size: 16,
         color: { red: 255, green: 255, blue: 255 },
         glow: true,
-        glowColor: { red: 0, green: 200, blue: 128 },
-        glowDistance: 90,
-        glowStrength: 9,
+        glowColor: { red: 174, green: 192, blue: 255 },
+        glowDistance: 60,
+        glowStrength: 6,
         crisp: true
       },
       map: {
-        borderType: 'Common',
-        borderRoundness: 60,
+        borderType: 'RGB (anim)',
+        borderRoundness: 0,
         borderWidth: 25,
-        borderColor: { red: 0, green: 0, blue: 0 },
-        borderGlow: true,
-        borderGlowColor: { red: 0, green: 0, blue: 0 },
-        borderGlowDistance: 220,
-        borderGlowStrength: 11,
-        backgroundTint: { red: 0, green: 0, blue: 0 },
+        borderColor: { red: 255, green: 255, blue: 255 },
+        borderGlow: false,
+        borderGlowColor: { red: 174, green: 192, blue: 255 },
+        borderGlowDistance: 190,
+        borderGlowStrength: 9,
+        backgroundTint: { red: 51, green: 58, blue: 106 },
         backgroundImage: true,
-        backgroundImageUrl: '',
-        backgroundImageLiveEffectStrength: '4',
+        backgroundImageUrl: 'https://i.imgur.com/BlVisqX.jpg',
+        backgroundImageLiveEffectStrength: 'Disabled',
         globalBackgroundImage: true,
-        globalBackgroundImageUrl: '',
-        globalBackgroundImageTint: { red: 0, green: 0, blue: 0 },
-        globalBackgroundImageLiveEffectStrength: '4'
+        globalBackgroundImageUrl: 'https://i.imgur.com/BlVisqX.jpg',
+        globalBackgroundImageTint: { red: 13, green: 52, blue: 84 },
+        globalBackgroundImageLiveEffectStrength: 'Disabled'
       },
       minimap: {
-        backgroundColor: { red: 0, green: 0, blue: 0, alpha: .66 },
-        size: 250,
+        backgroundColor: { red: 35, green: 45, blue: 85, alpha: .25 },
+        size: 240,
         myViewportColor: { red: 0, green: 0, blue: 0, alpha: .66 },
         topOneViewportColor: { red: 0, green: 0, blue: 0, alpha: .66 },
         playerSize: 10,
-        playerColor: { red: 0, green: 0, blue: 0 },
-        ghostCellsColor: { red: 0, green: 0, blue: 0 }
+        playerColor: { red: 255, green: 255, blue: 255 },
+        ghostCellsColor: { red: 60, green: 80, blue: 170 }
       },
       multibox: {
         ringStyle: 'Line',
         linedRingSize: 80,
-        initialRingColor: { red: 0, green: 0, blue: 0 },
-        focusedRingColor: { red: 0, green: 0, blue: 0 },
-        initialStaticCellColor: { red: 0, green: 0, blue: 0 },
-        focusedStaticCellColor: { red: 0, green: 0, blue: 0 }
+        initialRingColor: { red: 255, green: 255, blue: 255 },
+        focusedRingColor: { red: 60, green: 80, blue: 170 },
+        initialStaticCellColor: { red: 255, green: 255, blue: 255 },
+        focusedStaticCellColor: { red: 255, green: 255, blue: 255 }
       },
       viruses: {
-        color: { red: 0, green: 0, blue: 0 },
-        borderWidth: 8,
-        borderColor: { red: 0, green: 0, blue: 0 },
+        color: { red: 85, green: 190, blue: 255 },
+        borderWidth: 10,
+        borderColor: { red: 255, green: 255, blue: 255 },
         glow: true,
-        glowColor: { red: 0, green: 0, blue: 0 },
-        glowDistance: 120,
-        glowStrength: 8,
+        glowColor: { red: 85, green: 190, blue: 255 },
+        glowDistance: 150,
+        glowStrength: 10,
         transparency: 1,
         massType: 'Fill circle',
-        fillCircleColor: { red: 0, green: 0, blue: 0 },
+        fillCircleColor: { red: 255, green: 255, blue: 255 },
       }
     },
     UI: {
@@ -152,16 +159,17 @@ const initStorage: TStorage = {
         scale: 1,
         showMass: true,
         backdropBlur: false,
-        backgroundColor: { red: 0, green: 0, blue: 0, alpha: 0.66 },
-        meColor: { red: 200, green: 100, blue: 50 }
+        backgroundColor: { red: 24, green: 24, blue: 24, alpha: 0.5 },
+        meColor: { red: 60, green: 80, blue: 170 },
       },
       stats: {
         shown: true,
+        position: 'BOTTOM CENTER',
         fps: true,
         loss: true,
-        backgroundColor: { red: 0, green: 0, blue: 0, alpha: 0.66 },
+        backgroundColor: { red: 24, green: 24, blue: 24, alpha: 0.5 },
         backdropBlur: false,
-        scale: 1
+        frametime: true
       },
       topTeam: {
         shown: true,
@@ -170,9 +178,25 @@ const initStorage: TStorage = {
         shortMass: true,
         displayPlayerMass: true,
         totalPlayers: true,
-        backgroundColor: { red: 0, green: 0, blue: 0, alpha: 0.66 },
+        backgroundColor: { red: 24, green: 24, blue: 24, alpha: 0.5 },
         backdropBlur: false,
-      }
+      },
+      spectate: {
+        shown: true,
+        backdropBlur: false,
+        backgroundColor: { red: 19, green: 19, blue: 19 },
+      },
+      chat: {
+        enabled: true,
+        height: 280,
+        chatType: 'CHATBOX',
+        backgroundColor: { red: 24, green: 24, blue: 24, alpha: 0.5 },
+        fontColor: { red: 255, green: 255, blue: 255 },
+        commandMessageBackgroundColor: { red: 255, green: 130, blue: 130, alpha: 0.9 },
+        commandMessageFontColor: { red: 255, green: 255, blue: 255 },
+        gameMessageBackgroundColor: { red: 255, green: 255, blue: 255, alpha: 0.9 },
+        gameMessageFontColor: { red: 0, green: 0, blue: 0 }
+      }  
     }
   },
   game: {
@@ -189,37 +213,41 @@ const initStorage: TStorage = {
     currentServerIndex: 2,
     mode: ':party',
     tag: '',
-    token: 'TF8XD1',
-    gameServerToken: 'fi7ylq1',
+    token: '',
+    gameServerToken: '',
     selectedGameTokenType: "PARTY"
   },
   profiles: {
     leftProfiles: [
-      { nick: 'Profile #1', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #2', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #3', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #4', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #5', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #6', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #7', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #8', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #9', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #10', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' }
+      { nick: 'Profile #1', skinUrl: '', tag: '' },
+      { nick: 'Profile #2', skinUrl: '', tag: '' },
+      { nick: 'Profile #3', skinUrl: '', tag: '' },
+      { nick: 'Profile #4', skinUrl: '', tag: '' },
+      { nick: 'Profile #5', skinUrl: '', tag: '' },
+      { nick: 'Profile #6', skinUrl: '', tag: '' },
+      { nick: 'Profile #7', skinUrl: '', tag: '' },
+      { nick: 'Profile #8', skinUrl: '', tag: '' },
+      { nick: 'Profile #9', skinUrl: '', tag: '' },
+      { nick: 'Profile #10', skinUrl: '', tag: '' }
     ],
     rightProfiles: [
-      { nick: 'Profile #11', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #12', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #13', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #14', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #15', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #16', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #17', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #18', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #19', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' },
-      { nick: 'Profile #20', skinUrl: 'https://i.imgur.com/YE4BNGV.jpg', tag: '' }
+      { nick: 'Profile #11', skinUrl: '', tag: '' },
+      { nick: 'Profile #12', skinUrl: '', tag: '' },
+      { nick: 'Profile #13', skinUrl: '', tag: '' },
+      { nick: 'Profile #14', skinUrl: '', tag: '' },
+      { nick: 'Profile #15', skinUrl: '', tag: '' },
+      { nick: 'Profile #16', skinUrl: '', tag: '' },
+      { nick: 'Profile #17', skinUrl: '', tag: '' },
+      { nick: 'Profile #18', skinUrl: '', tag: '' },
+      { nick: 'Profile #19', skinUrl: '', tag: '' },
+      { nick: 'Profile #20', skinUrl: '', tag: '' }
     ],
     leftSelectedIndex: 0,
     rightSelectedIndex: 0,
+    leftProfileLoginType: 'FACEBOOK',
+    rightProfileLoginType: 'GOOGLE',
+    googleLoggedIn: false,
+    facebookLoggedIn: false
   }
 };
 

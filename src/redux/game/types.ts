@@ -4,7 +4,6 @@ import { AppStateType } from "redux/store";
 export const UPDATE_GAME_SERVERS_LIST = 'UPDATE_GAME_SERVERS_LIST';
 export const CHANGE_GAME_SERVER = 'CHANGE_GAME_SERVER';
 export const CHANGE_GAME_MODE = 'CHANGE_GAME_MODE';
-export const CHANGE_GAME_TAG = 'CHANGE_GAME_TAG';
 export const CHANGE_GAME_TOKEN = 'CHANGE_GAME_TOKEN';
 export const CHANGE_GAME_SERVER_TOKEN = 'CHANGE_GAME_SERVER_TOKEN';
 export const CHANGE_SELECTED_GAME_TOKEN_TYPE = 'CHANGE_SELECTED_GAME_TOKEN_TYPE';
@@ -43,11 +42,6 @@ interface ChangeGameModeAction {
   mode: GameModeTypes
 }
 
-interface ChangeGameTagAction {
-  type: typeof CHANGE_GAME_TAG,
-  tag: string
-}
-
 interface ChangeGameTokenAction {
   type: typeof CHANGE_GAME_TOKEN,
   token: string
@@ -64,6 +58,6 @@ interface ChangeSelectedGameTokenTypeAction {
 }
 
 export type GameActionTypes = UpdateGameServersListAction | ChangeGameServerAction | ChangeGameServerToken |
-                              ChangeGameModeAction | ChangeGameTagAction | ChangeGameTokenAction | ChangeSelectedGameTokenTypeAction;
+                              ChangeGameModeAction | ChangeGameTokenAction | ChangeSelectedGameTokenTypeAction;
 
 export type GameThunkActionTypes = ThunkAction<void, AppStateType, unknown, GameActionTypes>;

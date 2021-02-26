@@ -12,6 +12,10 @@ const Input: FC<InputType> = ({ text, value, disabled, onChange }) => {
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        onPaste={(e) => {
+          e.preventDefault();
+          onChange(e.clipboardData.getData('Text'));
+        }}
       ></input>
     </div>
   )

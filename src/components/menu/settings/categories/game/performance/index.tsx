@@ -39,13 +39,14 @@ const Performance: FC<PerformanceType> = ({
         items={['Default (CPU)', 'GPU (Pixi)'] as Array<RenderModeType>} 
         selectedItem={renderMode} 
         onChange={setRenderMode}
+        disabled
       />
       <Switch 
         text='Antialiasing' 
         hint={ANTIALIASING_HINT} 
         enabled={antialiasing} 
         onChange={setAntialiasing}
-        disabled={renderMode === 'Default (CPU)'}
+        disabled={/* renderMode === 'Default (CPU)' */ true}
       />
       <Switch 
         text='Culling' 
@@ -63,7 +64,7 @@ const Performance: FC<PerformanceType> = ({
       />
       <Select 
         text='Glow filer shader'
-        items={['Canvas', 'GPU-1', 'GPU-2'] as Array<GlowFilterShaderType>}
+        items={['Canvas', 'GPU-1'/* , 'GPU-2' */] as Array<GlowFilterShaderType>}
         selectedItem={glowFilterShaderType}
         onChange={setGlowFilterShaderType}
         disabled={renderMode === 'Default (CPU)'}

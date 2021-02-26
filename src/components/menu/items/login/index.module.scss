@@ -1,0 +1,36 @@
+.wrap {
+  background: rgba(122, 122, 122, .5);
+  border: 3px solid rgba(58, 58, 58, 1);
+  border-radius: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(58, 58, 58, 1);
+  margin-bottom: -71px;
+
+  div {
+    display: flex;
+
+    button {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #eee;
+      padding: 6px;
+      font-size: 14px;
+      transition: .15s;
+      cursor: pointer;
+
+      &:nth-child(2) {
+        border-left: 3px solid rgba(58, 58, 58, 1);
+      }
+
+      &:hover {
+        background: rgba(58, 58, 58, 1);
+      }
+    }
+  }
+
+  .tabsLoginType {
+    border-top: 3px solid rgba(58, 58, 58, 1);
+  }
+}

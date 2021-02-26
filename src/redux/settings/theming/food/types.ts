@@ -9,15 +9,43 @@ export const SET_FOOD_GLOW_COLOR = 'SET_FOOD_GLOW_COLOR';
 export const SET_FOOD_GLOW_DISTANCE = 'SET_FOOD_GLOW_DISTANCE';
 export const SET_FOOD_GLOW_STRENGTH = 'SET_FOOD_GLOW_STRENGTH';
 export const SET_FOOD_CRISP = 'SET_FOOD_CRISP';
+export const SET_FOOD_ENABLED = 'SET_FOOD_ENABLED';
+export const SET_FOOD_FIRST_TAB_ENABLED = 'SET_FOOD_FIRST_TAB_ENABLED';
+export const SET_FOOD_SECOND_TAB_ENABLED = 'SET_FOOD_SECOND_TAB_ENABLED';
+export const SET_FOOD_TOP_ONE_TAB_ENABLED = 'SET_FOOD_TOP_ONE_TAB_ENABLED';
 
 export interface IThemingFoodState {
+  enabled: boolean,
+  firstTabEnabled: boolean,
+  secondTabEnabled: boolean,
+  topOneTabEnabled: boolean,
   size: number,
   color: RGB,
   glow: boolean,
   glowColor: RGB,
   glowDistance: number,
   glowStrength: number,
-  crisp: boolean
+  crisp: boolean,
+}
+
+interface SetFoodEnabledAction {
+  type: typeof SET_FOOD_ENABLED,
+  enabled: boolean
+}
+
+interface SetFoodFirstTabEnabledAction {
+  type: typeof SET_FOOD_FIRST_TAB_ENABLED,
+  firstTabEnabled: boolean 
+}
+
+interface SetFoodSecondTabEnabledAction {
+  type: typeof SET_FOOD_SECOND_TAB_ENABLED,
+  secondTabEnabled: boolean 
+}
+
+interface SetFoodTopOneTabEnabledAction {
+  type: typeof SET_FOOD_TOP_ONE_TAB_ENABLED,
+  topOneTabEnabled: boolean 
 }
 
 interface SetFoodSizeAction {
@@ -57,6 +85,7 @@ interface SetFoodCrispAction {
 
 export type ThemingFoodActionTypes = SetFoodSizeAction | SetFoodColorAction | SetFoodGlowAction |
                                      SetFoodGlowColorAction | SetFoodGlowDistanceAction | SetFoodCrispAction |
-                                     SetFoodGlowStrengthAction;
+                                     SetFoodGlowStrengthAction | SetFoodEnabledAction | SetFoodFirstTabEnabledAction | 
+                                     SetFoodSecondTabEnabledAction | SetFoodTopOneTabEnabledAction;
 
 export type ThemingFoodThunkActionTypes = ThunkAction<void, AppStateType, unknown, ThemingFoodActionTypes>;

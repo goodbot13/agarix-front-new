@@ -3,6 +3,8 @@ import { SettingsHotkeysType } from "redux/settings/hotkeys/types";
 import { SettingsThemingType } from "redux/settings/theming/types";
 import { SettingsUIType } from "redux/settings/UI/types";
 import { 
+  ADD_CHAT_MESSAGE,
+  IChatMessage,
   ILeaderboardPlayer,
   IStats,
   ITopTeamPlayer,
@@ -14,15 +16,19 @@ import {
   SET_GAME_SOCKET_CONNECTING, 
   SET_HOTKEYS_SETTINGS_SUBMENU, 
   SET_HUDS_SHOWN, 
+  SET_INPUT_MESSAGE_SHOWN, 
+  SET_IS_PLAYER_PLAYING, 
   SET_LEADERBOARD_PLAYERS, 
   SET_MENU_SHOWN, 
   SET_SETTINGS_SHOWN, 
   SET_SETTINGS_TYPE, 
+  SET_SPECTATE_TYPE, 
   SET_STATS, 
   SET_THEMING_SETTINGS_SUBMENU, 
   SET_TOP_TEAM_PLAYERS, 
   SET_UI_BLURED, 
   SET_UI_SETTINGS_SUBMENU, 
+  SpectateType, 
   UIActionTypes 
 } from "./types";
 
@@ -104,4 +110,24 @@ export const setStats = (stats: IStats): UIActionTypes => ({
 export const setHudsShown = (hudsShown: boolean): UIActionTypes => ({
   type: SET_HUDS_SHOWN,
   hudsShown
+});
+
+export const setSpectateType = (spectateType: SpectateType): UIActionTypes => ({
+  type: SET_SPECTATE_TYPE,
+  spectateType
+});
+
+export const setIsPlayerPlaying = (isPlayerPlaying: boolean): UIActionTypes => ({
+  type: SET_IS_PLAYER_PLAYING,
+  isPlayerPlaying
+});
+
+export const addChatMessage = (chatMessage: IChatMessage): UIActionTypes => ({
+  type: ADD_CHAT_MESSAGE,
+  chatMessage
+});
+
+export const setInputMessageShown = (inputMessageShown: boolean): UIActionTypes => ({
+  type: SET_INPUT_MESSAGE_SHOWN,
+  inputMessageShown
 });

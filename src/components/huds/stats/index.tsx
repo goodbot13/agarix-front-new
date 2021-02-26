@@ -2,27 +2,54 @@ import { rgbToCssString } from "api/utils";
 import { FC } from "react";
 import { connect } from "react-redux";
 import { AppStateType } from "redux/store";
+import { transform } from "typescript";
+import Frametime from "./frametime";
 import css from './index.module.scss';
 
 const Stats: FC<StatsType> = ({
   shown,
   fps,
+  frametime,
   loss,
   backgroundColor,
   backdropBlur,
-  scale,
+  position,
   statsValues
 }) => {
+
+  const pos = {
+    left: '0',
+    bottom: '0',
+    transform: '',
+    borderTopLeftRadius: '0',
+    borderTopRightRadius: '0',
+    borderBottomLeftRadius: '0',
+    borderBottomRightRadius: '0',
+  }
+
+  if (position === 'BOTTOM LEFT') {
+    pos.transform = '';
+    pos.borderTopRightRadius = '4px';
+  } else if (position === 'BOTTOM CENTER') {
+    pos.left = '50%';
+    pos.transform = 'translateX(-50%)';
+    pos.borderTopLeftRadius = '4px';
+    pos.borderTopRightRadius = '4px';
+  } else if (position === 'LEADERBOARD') {
+
+  }
+
   return (
     shown ? <div 
       className={css.wrap}
       style={{
         backgroundColor: rgbToCssString(backgroundColor),
         boxShadow: `0 0 4px ${rgbToCssString(backgroundColor)}`,
-        transform: `scale(${scale})`,
-        backdropFilter: backdropBlur ? `blur(7px)` : ''
+        backdropFilter: backdropBlur ? `blur(7px)` : '',
+        ...pos
       }}
     >
+      {frametime && <Frametime />}
       {fps && (
         <div 
           className={css.fps}

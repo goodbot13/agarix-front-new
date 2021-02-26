@@ -19,6 +19,22 @@ export default class GameGameplaySettings {
 
   static setSpectatorMode(value: SpectatorModeType) {
     window.GameSettings.all.settings.game.gameplay.spectatorMode = value;
+
+    switch (value) {
+      case 'Disabled':
+        window.GameAPI?.setTopOneView(false);
+        window.GameAPI?.setFullMapView(false);
+        break;
+
+      case 'Top one':
+        window.GameAPI?.setTopOneView(true);
+        window.GameAPI?.setFullMapView(false);
+        break;
+
+      case 'Full map':
+        window.GameAPI?.setFullMapView(true);
+        break;
+    }
   }
 
   static setViewport(value: ViewportType) {

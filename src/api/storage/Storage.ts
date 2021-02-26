@@ -1,4 +1,4 @@
-import { AppStateType } from "redux/store";
+import { AppStateType, TStore } from "redux/store";
 import initState from "./initState";
 
 export default new class Storage {
@@ -40,6 +40,16 @@ export default new class Storage {
   public reset() {
     localStorage.setItem(this.backupName, this.cache);
     localStorage.removeItem(this.name);
+  }
+
+  public init(state: AppStateType) {
+    if (!localStorage.getItem(this.name)) {
+      this.save(state);
+      return;
+    }
+
+    /* // recursive check for added (new) items in initState compared to saved (old) state
+    let saved = this.get(); */
   }
 }
 

@@ -6,8 +6,12 @@ import { thunkSetMenuShown } from 'redux/UI/thunks';
 import { TStore } from 'redux/store';
 import { initFrontCommunicationService } from './FrontCommunicationService/FrontCommunicationService';
 import StoreLink from './StoreLink';
+import { setInputMessageShown } from 'redux/UI/actions';
 
 export default (store: TStore): void => {
+  // check storage
+  Storage.init(store.getState());
+
   // init keyboard
   initKeyboardIntercation(store);
 
@@ -43,7 +47,18 @@ const initKeyboardIntercation = (store: TStore) => {
   });
 
   // init menu intraction using keyboard
-  Keyboard.bindFunctionToKey('press', 'Escape', () => {
+  Keyboard.bindFunctionToKey('down', 'Escape', () => {
     store.dispatch(thunkSetMenuShown(!store.getState().UI.menuShown));
+  });
+
+  Keyboard.bindFunctionToKey('down', 'Enter', () => {
+    if (store.getState().UI.menuShown) {
+      return;
+    }
+
+    const { inputMessageShown } = store.getState().UI
+
+    store.dispatch(setInputMessageShown(!inputMessageShown));
+    Keyboard.block = !inputMessageShown;
   });
 }

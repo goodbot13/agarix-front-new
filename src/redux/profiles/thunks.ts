@@ -1,16 +1,18 @@
 import ProfilesSettings from "api/settings/Profiles/ProfilesSettings";
 
 import { 
+  setLeftProfileLoginType,
   setLeftProfileNick, 
   setLeftProfileSelectedIndex, 
   setLeftProfileSkinUrl, 
+  setRightProfileLoginType, 
   setRightProfileNick, 
   setRightProfileSelectedIndex, 
   setRightProfileSkinUrl,
   setTag 
 } from "./actions";
 
-import { ProfilesThunkActionTypes } from "./types";
+import { ProfilesThunkActionTypes, TLoginType } from "./types";
 
 export const thunkSetLeftProfileNick = (nick: string): ProfilesThunkActionTypes => (dispatch) => {
   dispatch(setLeftProfileNick(nick));
@@ -49,4 +51,14 @@ export const thunkSetRightProfileSelectedIndex = (i: number): ProfilesThunkActio
 export const thunkSetTag = (tag: string): ProfilesThunkActionTypes => (dispatch) => {
   dispatch(setTag(tag));
   ProfilesSettings.setTag(tag);
+}
+
+export const thunkSetLeftProfileLoginType = (loginType: TLoginType): ProfilesThunkActionTypes => (dispatch) => {
+  dispatch(setLeftProfileLoginType(loginType));
+  ProfilesSettings.setLeftProfileLoginType(loginType);
+}
+
+export const thunkSetRightProfileLoginType = (loginType: TLoginType): ProfilesThunkActionTypes => (dispatch) => {
+  dispatch(setRightProfileLoginType(loginType));
+  ProfilesSettings.setRightProfileLoginType(loginType);
 }

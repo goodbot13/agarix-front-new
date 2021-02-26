@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import css from './index.module.scss';
 
 import Settings from './settings';
@@ -9,34 +9,28 @@ import { AppStateType, ThunkRootDispatchType } from 'redux/store';
 
 import classNames from 'classnames';
 import { thunkSetMenuShown, thunkSetSettingsShown } from 'redux/UI/thunks';
-import Huds from 'components/huds';
 
-const Menu: FC<MenuType> = ({ menuShown, settingsShown, hudsShown, setSettingsShown, setMenuShown }) => {
+const Menu: FC<MenuType> = ({ menuShown, settingsType, settingsShown }) => {
   return (
-    <>
-      <div className={classNames({ 
+    <div 
+      className={classNames({ 
         [css.wrap]: true,
-        [css.hidden]: !menuShown
-      })}>
-        <div className={classNames({ [css.innerWrap]: true })}>
-          <WrappedMenu />
-          <Settings />
-        </div>
+        [css.hidden]: !menuShown,
+        [css.theming]: settingsShown && (settingsType === 'THEMING' || settingsType === 'UI')
+      })}
+    >
+      <div className={classNames({ [css.innerWrap]: true })}>
+        <WrappedMenu />
+        <Settings />
       </div>
-      <div className={classNames({
-        [css.hudsWrap]: true,
-        [css.hidden]: menuShown ? true : hudsShown
-      })}>
-        <Huds />
-      </div>
-    </>
+    </div>
   )
 }
 
 const mapStateToProps = ({ UI }: AppStateType) => ({ 
   menuShown: UI.menuShown,
   settingsShown: UI.settingsShown,
-  hudsShown: UI.hudsShown
+  settingsType: UI.settingsType
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({

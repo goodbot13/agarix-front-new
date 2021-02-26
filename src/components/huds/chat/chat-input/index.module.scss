@@ -1,0 +1,27 @@
+.wrap {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: scale(0);
+  opacity: 0;
+  width: 0px;
+  transition: .125s;
+  box-shadow: 0 0 6px rgba(64, 64, 64, .9);;
+
+  input {
+    width: 280px;
+    background: rgba(64, 64, 64, .9);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 15px;
+    padding: 4px 6px;
+    box-sizing: border-box;
+  }
+
+  &.shown {
+    opacity: 1;
+    width: 280px;
+    transform: translateX(-50%) scale(1);
+  }
+}

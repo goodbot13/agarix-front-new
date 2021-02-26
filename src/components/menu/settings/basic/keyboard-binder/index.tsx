@@ -11,7 +11,7 @@ const KeyboardBinder: FC<KeyboardBinderType> = ({ text, hint, value, onChage }) 
     const value = transformCode(code, ctrlKey, altKey, shiftKey);
 
     // ignore 
-    if (code === 'Escape') {
+    if (code === 'Escape' || code === 'Enter') {
       return;
     }
 

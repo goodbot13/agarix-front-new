@@ -1,19 +1,15 @@
 .wrap {
-  position: relative;
   transition: .25s linear;
-
-  &.main.additionalProfilesListShown {
-    margin-right: 120px;
-  }
-
-  &.notMain.additionalProfilesListShown {
-    margin-left: 120px;
-  }
+  display: flex;
 
   &.blured input:not(:placeholder-shown) {
     color: transparent !important;
     text-shadow: 0 0 10px rgba(255, 255, 255, .5);
     pointer-events: none;
+  }
+
+  .top {
+    display: flex;
   }
 
   .profileWrap {

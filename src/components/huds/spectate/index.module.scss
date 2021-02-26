@@ -1,0 +1,81 @@
+.wrap {
+  width: 346px;
+  height: 56px;
+  padding: 13px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  position: absolute;
+  top: 24px;
+  left: calc(50% - 346px / 2);
+  overflow: hidden;
+  transition: .2s linear;
+}
+
+.wrap.hidden {
+  opacity: 0;
+  animation: setVisibilityHidden 0s;
+  animation-fill-mode: forwards;
+  animation-delay: .2s;
+}
+
+.wrap.targetMode {
+  height: 76px;
+}
+
+.wrap > .target {
+  opacity: 0;
+  transition: .4s;
+  margin-top: 8px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #dfdfdf;
+}
+
+.wrap.targetMode > .target {
+  opacity: 1;
+}
+
+.wrap button {
+  height: 30px;
+  width: 80px;
+  border: none;
+  border-right: 1px solid rgba(25, 25, 25, .5);
+  color: white;
+  transition: .2s;
+  outline: none;
+  cursor: pointer;
+}
+
+.wrap button svg {
+  font-size: 13px;
+}
+
+.wrap button:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.wrap button:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-right: none;
+}
+
+.wrap button:last-of-type svg {
+  margin-right: 3px;
+}
+
+.wrap button:not(.active):hover {
+  filter: invert(5%);
+}
+
+.wrap button.active {
+  filter: invert(10%);
+}
+
+@keyframes setVisibilityHidden {
+  to {
+    visibility: hidden;
+  }
+}

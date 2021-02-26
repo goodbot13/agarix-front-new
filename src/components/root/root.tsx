@@ -1,30 +1,28 @@
 import { FC, useEffect } from 'react';
 
-import './root.module.scss';
-
 import Menu from 'components/menu';
 import GameLoader from '../game-laoder';
 
 import { AppStateType } from 'redux/store';
 import { connect } from 'react-redux';
+import Huds from 'components/huds';
 
-import Keyboard from 'api/Keyboard/Keyboard';
-
-const Root: FC<RootType> = () => {
-  useEffect(() => {
-    
-  }, []);
-
+const Root: FC<RootType> = ({ gameLoaded }) => {
   return (
     <>
       <GameLoader />
-      <Menu />
+      {gameLoaded && 
+        <>
+          <Menu />
+          <Huds /> 
+        </>
+      }
     </>
   );
 }
 
-const mapStateToProps = (state: AppStateType) => ({
-
+const mapStateToProps = ({ UI }: AppStateType) => ({
+  gameLoaded: UI.gameLoaded
 });
 
 export default connect(mapStateToProps)(Root);

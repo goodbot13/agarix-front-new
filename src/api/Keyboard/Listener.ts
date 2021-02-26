@@ -25,6 +25,7 @@ export default class KeyboardEvents {
     window.addEventListener('keydown', (e) => {
       const { code, ctrlKey, altKey, shiftKey, preventDefault } = e;
 
+      console.log(e);
       this.onKeyDownSubscribers.forEach((subscriber) => {
         subscriber(
           transformCode(code, ctrlKey, altKey, shiftKey), 
@@ -52,7 +53,7 @@ export default class KeyboardEvents {
   public subscribeOnKeyPress(func: TSubscriber) {
     this.onKeyPressSubscribers.push(func);
 
-    window.addEventListener('keyup', (e) => {
+    window.addEventListener('keypress', (e) => {
       this.onKeyPressSubscribers.forEach((subscriber) => {
         const { code, ctrlKey, altKey, shiftKey, preventDefault } = e;
         

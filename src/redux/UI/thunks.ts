@@ -1,6 +1,6 @@
-import ClientCommunicationService from "api/ClientCommunicationService/ClientCommunicationService";
-import { setGameLoaded, setMenuShown, setSettingsShown, setSettingsType } from "./actions";
-import { SettingsType, UIThunkActionTypes } from "./types";
+import Keyboard from "api/Keyboard/Keyboard";
+import { setGameLoaded, setMenuShown, setSettingsShown, setSettingsType, setSpectateType } from "./actions";
+import { SettingsType, SpectateType, UIThunkActionTypes } from "./types";
 
 export const thunkSetSettingsShown = (shown: boolean, type?: SettingsType): UIThunkActionTypes => (dispatch) => {
   dispatch(setSettingsShown(shown));
@@ -10,35 +10,68 @@ export const thunkSetSettingsShown = (shown: boolean, type?: SettingsType): UITh
   }
 
   if (shown) {
-    if (type === 'THEMING') {
-      ClientCommunicationService.setSceneBlurred({ blurred: false, canMouseZoom: false });
+    if (type === 'THEMING' || type === 'UI') {
+      window.GameAPI?.setSceneBlurred(false, false);
     } else {
-      ClientCommunicationService.setSceneBlurred({ blurred: true, canMouseZoom: false });
+      window.GameAPI?.setSceneBlurred(true, false);
     }
   } else {
-    ClientCommunicationService.setSceneBlurred({ blurred: true, canMouseZoom: false });
+    window.GameAPI?.setSceneBlurred(true, false);
   }
 }
 
 export const thunkSetSettingsType = (type: SettingsType): UIThunkActionTypes => (dispatch) => {
   dispatch(setSettingsType(type));
 
-  if (type === 'THEMING') {
-    ClientCommunicationService.setSceneBlurred({ blurred: false, canMouseZoom: false });
+  if (type === 'THEMING' || type === 'UI') {
+    window.GameAPI?.setSceneBlurred(false, false);
   } else {
-    ClientCommunicationService.setSceneBlurred({ blurred: true, canMouseZoom: false });
+    window.GameAPI?.setSceneBlurred(true, false);
   }
 }
 
-export const thunkSetMenuShown = (shown: boolean): UIThunkActionTypes => (dispatch) => {
+export const thunkSetMenuShown = (shown: boolean): UIThunkActionTypes => (dispatch, getState) => {
   dispatch(setMenuShown(shown));
 
-  ClientCommunicationService.setSceneBlurred({ blurred: shown, canMouseZoom: !shown });
+  const { settingsType, settingsShown } = getState().UI;
+
+  if (shown) {
+    if (settingsShown && (settingsType === 'THEMING' || settingsType === 'UI')) {
+      window.GameAPI?.setSceneBlurred(false, false);
+    } else {
+      window.GameAPI?.setSceneBlurred(true, false);
+    }
+
+    Keyboard.block = true;
+  } else {
+    window.GameAPI?.setSceneBlurred(false, true);
+    Keyboard.block = false;
+  }
 }
 
 export const thunkSetGameLoaderShown = (loaderShown: boolean): UIThunkActionTypes => (dispatch) => {
-  setTimeout(() => {
-    dispatch(setMenuShown(!loaderShown));
-    dispatch(setGameLoaded(!loaderShown));
-  }, 100);
+  dispatch(setGameLoaded(!loaderShown));
+  dispatch(setMenuShown(!loaderShown));
+}
+
+export const thunkSetSpectateType = (spectateType: SpectateType): UIThunkActionTypes => (dispatch) => {
+  dispatch(setSpectateType(spectateType));
+  
+  switch (spectateType) {
+    case 'CENTER':
+      window.GameAPI?.spectateCenter();
+      break;
+
+    case 'FREE':
+      window.GameAPI?.spectateFree();
+      break;
+
+    case 'TARGET':
+      window.GameAPI?.spectateTarget();
+      break;
+
+    case 'TOP_ONE':
+      window.GameAPI?.spectateTopOne();
+      break;
+  }
 }
