@@ -27,7 +27,7 @@ const Stats: FC<TSpectate> = ({
         main
       />
       <Switch 
-        text="Backgrop blur"
+        text="Backdrop blur"
         enabled={backdropBlur}
         onChange={setSpectateBackdropBlur}
         disabled={!shown} 

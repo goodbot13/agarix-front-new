@@ -3,17 +3,14 @@ import { thunkSetFoodEnabled } from "redux/settings/theming/food/thunks";
 import { setHudsShown } from "redux/UI/actions";
 
 export const feed = () => {
-  console.log('feed');
   window.GameAPI?.hotkeys.feed();
 }
 
 export const macroFeed = () => {
-  console.log('macro feed');
   window.GameAPI?.hotkeys.macroFeed();
 }
 
 export const stopMacroFeed = () => {
-  console.log('stop macro feed');
   window.GameAPI?.hotkeys.stopFeed();
 }
 

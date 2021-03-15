@@ -6,7 +6,7 @@
   bottom: 0;
   z-index: 9999;
   opacity: 1;
-  transition: opacity .667s;
+  transition: .800s;
 
   &::before {
     content: '';
@@ -20,6 +20,7 @@
 
   &.hidden {
     opacity: 0;
+    transform: scale(1.5);
   }
 
   .status {

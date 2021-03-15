@@ -14,7 +14,7 @@ import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 const GameLoader: FC<GameLoaderType> = ({ gameLoaded, status }) => {
   return (
-    <DelayedRenderComponent rendered={!gameLoaded} hideDelayMs={667}>
+    <DelayedRenderComponent rendered={!gameLoaded} hideDelayMs={800}>
       <div className={classNames({
         [css.wrap]: true,
         [css.hidden]: gameLoaded

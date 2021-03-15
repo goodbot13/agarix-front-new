@@ -1,11 +1,13 @@
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { rgbToCssString } from "api/utils";
-import { FC, useEffect, useRef } from "react"
+import { FC, useCallback, useEffect, useRef } from "react"
 import { connect } from "react-redux";
+import { decreaseColors } from 'api/utils';
 import { AppStateType } from "redux/store";
 import { TChatMessageType } from "redux/UI/types";
 import css from './index.module.scss';
+import { RGB } from "redux/settings/theming/types";
 
 const ChatBox: FC<TChatBox> = ({ 
   menuShown,
@@ -21,29 +23,45 @@ const ChatBox: FC<TChatBox> = ({
   messages,
 }) => {
 
-  const getBackgroundColor = (type: TChatMessageType): string => {
+  const getBackgroundColor = useCallback((type: TChatMessageType): string => {
     switch (type) {
       case 'GAME': return rgbToCssString(gameMessageBackgroundColor);
       case 'COMMAND': return rgbToCssString(commandMessageBackgroundColor);
       case 'PLAYER': return 'transparent';
     }
-  }
+  }, [gameMessageBackgroundColor, commandMessageBackgroundColor]);
 
-  const getFontColor = (type: TChatMessageType): string => {
+  const getFontColor = useCallback((type: TChatMessageType): string => {
     switch (type) {
       case 'GAME': return rgbToCssString(gameMessageFontColor);
       case 'COMMAND': return rgbToCssString(commandMessageFontColor);
       case 'PLAYER': return rgbToCssString(fontColor);
     }
-  }
+  }, [gameMessageFontColor, commandMessageFontColor, fontColor]);
 
-  const getBorderBottomColor = (type: TChatMessageType): string => {
+  const getBorderBottomColor = useCallback((type: TChatMessageType): string => {
     switch (type) {
-      case 'GAME': return rgbToCssString({ ...gameMessageBackgroundColor, alpha: 0.1 });
-      case 'COMMAND': return rgbToCssString({ ...commandMessageBackgroundColor, alpha: 0.1 });
-      case 'PLAYER': return rgbToCssString({ ...backgroundColor, alpha: 0.1 });
+      case 'GAME': 
+        return rgbToCssString({ 
+          ...decreaseColors(gameMessageBackgroundColor, 24), 
+          alpha: 0.2 
+        });
+
+      case 'COMMAND': return rgbToCssString({ 
+        ...decreaseColors(commandMessageBackgroundColor, 24), 
+        alpha: 0.2 
+      });
+      
+      case 'PLAYER': return rgbToCssString({ 
+        ...decreaseColors(backgroundColor, 24), 
+        alpha: 0.2 
+      });
     }
-  }
+  }, [gameMessageBackgroundColor, commandMessageBackgroundColor, backgroundColor]);
+
+  const getChatBackgroundColor = useCallback((color: RGB): string =>{
+    return rgbToCssString(color);
+  }, [backgroundColor]);
 
   const endRef = useRef(null);
 
@@ -61,8 +79,8 @@ const ChatBox: FC<TChatBox> = ({
       style={{
         bottom: statsShown ? statsPosition === 'BOTTOM LEFT' ? 38 : 0 : 0,
         height,
-        backgroundColor: rgbToCssString(backgroundColor),
-        boxShadow: `0 0 4px ${rgbToCssString(backgroundColor)}`
+        backgroundColor: getChatBackgroundColor(backgroundColor),
+        boxShadow: `0 0 4px ${getChatBackgroundColor(backgroundColor)}`
       }}
     >
       <div className={css.content}>

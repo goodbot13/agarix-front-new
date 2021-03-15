@@ -38,7 +38,8 @@ const WrappedMenu: FC<WrappedMenuType> = ({
   additionalProfilesListShown,
   rightProfiles,
   rightSelectedIndex,
-  menuShown
+  menuShown,
+  multiboxEnabled
 }) => {
 
   return (
@@ -81,6 +82,7 @@ const WrappedMenu: FC<WrappedMenuType> = ({
             currentSelectedIndex={rightSelectedIndex}
             additionalProfilesListShown={additionalProfilesListShown}
             onProfileChange={setRightProfileSelectedIndex}
+            disabled={!multiboxEnabled}
           />
         </div>
       </div>
@@ -91,12 +93,13 @@ const WrappedMenu: FC<WrappedMenuType> = ({
   )
 }
 
-const mapStateToProps = ({ UI, profiles }: AppStateType) => ({
+const mapStateToProps = ({ UI, profiles, settings }: AppStateType) => ({
   ...profiles,
   blured: UI.blured,
   menuShown: UI.menuShown,
   settingsShown: UI.settingsShown,
   additionalProfilesListShown: UI.additionalProfilesListShown,
+  multiboxEnabled: settings.game.multibox.enabled
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({

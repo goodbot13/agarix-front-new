@@ -46,7 +46,7 @@ const Performance: FC<PerformanceType> = ({
         hint={ANTIALIASING_HINT} 
         enabled={antialiasing} 
         onChange={setAntialiasing}
-        disabled={/* renderMode === 'Default (CPU)' */ true}
+        disabled={renderMode === 'Default (CPU)'}
       />
       <Switch 
         text='Culling' 

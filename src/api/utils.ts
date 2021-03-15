@@ -22,6 +22,15 @@ export const rgbToCssString = (color: RGB): string => {
   return `rgb(${color.red}, ${color.green}, ${color.blue})`;
 }
 
+export const decreaseColors = ({ red, green, blue, alpha }: RGB, decreaseValue: number): RGB => {
+  return {
+    red: red - decreaseValue,
+    green: green - decreaseValue,
+    blue: blue - decreaseValue,
+    alpha
+  }
+}
+
 export const numberToK = (value: number): string | number => {
   return Math.abs(value) > 999 
     ? Math.sign(value) * +(Math.abs(value) / 1000).toFixed(1) + 'k' 

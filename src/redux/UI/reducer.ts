@@ -24,7 +24,7 @@ import {
 } from "./types";
 
 const initState: IUIState = {
-  gameLoaded: true,
+  gameLoaded: false,
   gameLoaderStatus: 'Receiving game version...',
   menuShown: false,
   blured: false,

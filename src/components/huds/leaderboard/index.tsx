@@ -9,7 +9,6 @@ const Leaderboard: FC<LeaderboardType> = ({
   shown, 
   displayAmount, 
   displayPosition,
-  scale, 
   showMass, 
   backdropBlur, 
   backgroundColor, 
@@ -43,7 +42,6 @@ const Leaderboard: FC<LeaderboardType> = ({
       style={{ 
         backgroundColor: rgbToCssString(backgroundColor),
         boxShadow: `0 0 4px ${rgbToCssString(backgroundColor)}`,
-        transform: `scale(${scale})`,
         backdropFilter: backdropBlur ? `blur(7px)` : ''
       }}
     >

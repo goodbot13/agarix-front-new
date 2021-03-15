@@ -14,7 +14,8 @@ const Profile: FC<ProfileType> = ({
   onNickChange, 
   onSkinUrlChange, 
   onTagChange,
-  onProfileChange
+  onProfileChange,
+  disabled
 }) => {
 
   const [loadingErrored, setLoadingErrored] = useState(false);
@@ -26,7 +27,8 @@ const Profile: FC<ProfileType> = ({
       [css.wrap]: true, 
       [css.blured]: blured,
       [css.main]: main,
-      [css.notMain]: !main
+      [css.notMain]: !main,
+      [css.disabled]: disabled
     })}>
       {main && <ProfilesList 
         isMain={main as boolean}
@@ -99,6 +101,7 @@ const Profile: FC<ProfileType> = ({
 type ProfileType = {
   main?: boolean,
   blured: boolean,
+  disabled?: boolean,
   profilesList: Array<IProfile>,
   currentSelectedIndex: number,
   additionalProfilesListShown: boolean,

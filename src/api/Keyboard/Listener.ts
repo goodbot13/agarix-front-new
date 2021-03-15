@@ -25,7 +25,6 @@ export default class KeyboardEvents {
     window.addEventListener('keydown', (e) => {
       const { code, ctrlKey, altKey, shiftKey, preventDefault } = e;
 
-      console.log(e);
       this.onKeyDownSubscribers.forEach((subscriber) => {
         subscriber(
           transformCode(code, ctrlKey, altKey, shiftKey), 
