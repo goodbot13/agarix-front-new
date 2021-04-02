@@ -1,3 +1,4 @@
+import React from 'react';
 import CreateGame from './create-game';
 import GameMode from './game-mode';
 import GameServer from './game-server';

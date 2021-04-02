@@ -1,4 +1,4 @@
-import Storage from "api/Storage/Storage";
+import Storage from "api/storage/Storage";
 import {
   GamePerformanceActionTypes,
   IGamePerformanceState,

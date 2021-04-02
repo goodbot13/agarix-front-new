@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 
 import Menu from 'components/menu';
 import GameLoader from '../game-laoder';

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import css from './index.module.scss';
 
 import { Dispatch } from 'redux';

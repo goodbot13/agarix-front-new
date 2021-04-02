@@ -47,9 +47,6 @@ export default new class Storage {
       this.save(state);
       return;
     }
-
-    /* // recursive check for added (new) items in initState compared to saved (old) state
-    let saved = this.get(); */
   }
 }
 

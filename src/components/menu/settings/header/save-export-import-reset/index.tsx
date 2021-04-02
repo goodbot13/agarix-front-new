@@ -10,7 +10,7 @@ import classNames from 'classnames';
 
 import { thunkSetSettingsShown } from 'redux/UI/thunks';
 import { ThunkRootDispatchType } from 'redux/store';
-import Storage from 'api/Storage/Storage';
+import Storage from 'api/storage/Storage';
 
 const SaveExportImportReset: FC<SaveExportImportResetType> = ({ setSettingsShown }) => {
   const [resetClicked, setResetClicked] = useState(false);

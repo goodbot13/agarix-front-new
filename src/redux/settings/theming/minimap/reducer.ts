@@ -1,4 +1,4 @@
-import Storage from "api/Storage/Storage";
+import Storage from "api/storage/Storage";
 import { 
   IThemingMinimapState, 
   SET_MINIMAP_BACKGROUND_COLOR, 

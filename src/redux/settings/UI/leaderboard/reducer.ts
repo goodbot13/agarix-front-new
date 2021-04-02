@@ -1,4 +1,4 @@
-import Storage from "api/Storage/Storage";
+import Storage from "api/storage/Storage";
 import { 
   IUILeaderboardState, 
   SET_LEADERBOARD_BACKDROP_BLUR, 

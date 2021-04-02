@@ -1,5 +1,5 @@
 import FrametimeCalculator from "api/FrametimeCalculator/FrametimeCalculator";
-import { FC, useEffect, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 
 const Frametime: FC = () => {
   const ref = useRef<HTMLCanvasElement | null>(null);

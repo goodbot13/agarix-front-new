@@ -1,4 +1,3 @@
-import { type } from "os";
 import { FC } from "react";
 import { connect } from "react-redux";
 import { AppStateType } from "redux/store";

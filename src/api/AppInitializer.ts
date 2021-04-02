@@ -1,6 +1,6 @@
 
 import KeyboardGameplay from 'api/Keyboard/Gameplay/KeyboardGameplay';
-import Storage from 'api/Storage/Storage';
+import Storage from 'api/storage/Storage';
 import Keyboard from 'api/Keyboard/Keyboard';
 import { thunkSetMenuShown } from 'redux/UI/thunks';
 import { TStore } from 'redux/store';
