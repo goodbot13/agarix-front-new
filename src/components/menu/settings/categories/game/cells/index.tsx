@@ -102,15 +102,15 @@ const Cells: FC<CellsType> = ({
         text="Soak animation speed"
         hint={RANGE_ZERO_HINT}
         from={0}
-        to={250}
+        to={215}
         value={soakSpeed}
         onChange={setSoakSpeed}
       />
       <Range 
-        text="Soak animation speed"
+        text="Fade animation speed"
         hint={RANGE_ZERO_HINT}
         from={0}
-        to={250}
+        to={215}
         value={fadeSpeed}
         onChange={setFadeSpeed}
       />

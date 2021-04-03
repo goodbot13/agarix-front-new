@@ -33,7 +33,7 @@ const Gameplay: FC<GameplayType> = ({
         onChange={setAnimationSpeed}
       />
       <Range
-        text="Animation speed"
+        text="Zoom speed"
         value={zoomSpeed} 
         from={1}
         to={25}
@@ -42,7 +42,7 @@ const Gameplay: FC<GameplayType> = ({
       <Range 
         text="Camera speed"
         from={1}
-        to={25}
+        to={21}
         value={cameraSpeed}
         onChange={setCameraSpeed}
       />

@@ -13,7 +13,7 @@ export default (store: TStore): void => {
   Storage.init(store.getState());
 
   // init keyboard
-  initKeyboardIntercation(store);
+  initKeyboardInteractions(store);
 
   // init CLIENT -> FRONT communication
   initFrontCommunicationService(store);
@@ -23,9 +23,12 @@ export default (store: TStore): void => {
 
   // set global store link
   StoreLink.set(store);
+
+  // start game client initialization
+  initGameClient();
 }
 
-const initKeyboardIntercation = (store: TStore) => {
+const initKeyboardInteractions = (store: TStore) => {
   const kb = store.getState().settings.hotkeys.keyboard;
 
   KeyboardGameplay.init({
@@ -56,9 +59,18 @@ const initKeyboardIntercation = (store: TStore) => {
       return;
     }
 
-    const { inputMessageShown } = store.getState().UI
+    const { inputMessageShown } = store.getState().UI;
 
     store.dispatch(setInputMessageShown(!inputMessageShown));
     Keyboard.block = !inputMessageShown;
   });
+}
+
+const initGameClient = () => {
+  const checker = setInterval(() => {
+    if (window.GameAPI && typeof window.GameAPI.init === 'function') {
+      clearInterval(checker);
+      window.GameAPI.init();
+    }
+  }, 100);
 }

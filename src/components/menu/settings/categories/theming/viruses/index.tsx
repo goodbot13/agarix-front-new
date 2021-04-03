@@ -81,16 +81,17 @@ const Viruses: FC<VirusesType> = ({
       />
       <Range 
         text="Glow distance"
-        from={2}
-        to={20}
+        from={20}
+        to={150}
         value={glowDistance}
         onChange={setVirusGlowDistance}
         disabled={!glow}
       />
-      <Select 
+      <Range 
         text="Glow strength"
-        items={FOOD_GLOW_STRENGTH_VALUES}
-        selectedItem={glowStrength}
+        from={2}
+        to={20}
+        value={glowStrength}
         onChange={setVirusGlowStrength}
         disabled={!glow}
       />

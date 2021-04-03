@@ -23,7 +23,7 @@ const Profile: FC<ProfileType> = ({ skinUrl, index, currentSelectedIndex, onSele
           onError={() => setErrored(true)}
           alt=""
         ></img>
-        <div className={css.errorMsg}>Error</div>
+        <div className={css.errorMsg}>No skin</div>
       </>
     </button>
   )

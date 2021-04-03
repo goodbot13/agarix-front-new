@@ -26,6 +26,8 @@ declare global {
       logOutWithFb(): void,
       logInWithGoogle(): void,
       logOutWithGoogle(): void,
+
+      init(): void,
       
       hotkeys: IGameAPIHotkeys
     }
