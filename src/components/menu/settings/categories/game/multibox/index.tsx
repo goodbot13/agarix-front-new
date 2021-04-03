@@ -9,6 +9,7 @@ import {
   thunkSetMultiboxEnabled, 
   thunkSetMultiboxHideOwnSkins, 
   thunkSetMultiboxRing, 
+  thunkSetMultiboxSmoothSwitch, 
   thunkSetMultiboxStaticColor 
 } from "redux/settings/game/multibox/thunks";
 
@@ -21,12 +22,14 @@ const Multibox: FC<MultiboxType> = ({
   changeCellColor,
   hideOwnSkins,
   staticColor,
+  smoothSwitch,
   setEnabled,
   setRing,
   setChangeRingColor,
   setChangeCellColor,
   setHideOwnSkins,
-  setStaticColor
+  setStaticColor,
+  setSmoothSwitch
 }) => {
   return (
     <>
@@ -47,6 +50,12 @@ const Multibox: FC<MultiboxType> = ({
         enabled={changeRingColor}
         onChange={setChangeRingColor}
         disabled={!enabled}
+      />
+      <Switch
+        text="Smooth tabs switch"
+        enabled={smoothSwitch}
+        onChange={setSmoothSwitch}
+        disabled={!changeRingColor || !enabled}
       />
       <Switch
         text="Change cell color on focus"
@@ -80,7 +89,8 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setChangeRingColor: (value: boolean) => dispatch(thunkSetMultiboxChangeRingColor(value)),
   setChangeCellColor: (value: boolean) => dispatch(thunkSetMultiboxChangeCellColor(value)),
   setHideOwnSkins: (value: boolean) => dispatch(thunkSetMultiboxHideOwnSkins(value)),
-  setStaticColor: (value: boolean) => dispatch(thunkSetMultiboxStaticColor(value))
+  setStaticColor: (value: boolean) => dispatch(thunkSetMultiboxStaticColor(value)),
+  setSmoothSwitch: (value: boolean) => dispatch(thunkSetMultiboxSmoothSwitch(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Multibox);

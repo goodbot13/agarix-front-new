@@ -15,7 +15,7 @@ import {
   setSoakSpeed
 } from "./actions";
 
-import { FadeSpeedType, GameCellsThunkActionTypes, RingsType, ShadowType, SkinsType, SoakSpeedType } from "./types";
+import { GameCellsThunkActionTypes, RingsType, ShadowType, SkinsType } from "./types";
 
 export const thunkSetShowMass = (mass: boolean): GameCellsThunkActionTypes => (dispatch) => {
   dispatch(setShowMass(mass));
@@ -57,12 +57,12 @@ export const thunkSetRingsSpinning = (ringsSpinning: boolean): GameCellsThunkAct
   GameCellsSettings.setRingsSpinning(ringsSpinning);
 }
 
-export const thunkSetSoakSpeed = (soakSpeed: SoakSpeedType): GameCellsThunkActionTypes => (dispatch) => {
+export const thunkSetSoakSpeed = (soakSpeed: number): GameCellsThunkActionTypes => (dispatch) => {
   dispatch(setSoakSpeed(soakSpeed));
   GameCellsSettings.setSoakSpeed(soakSpeed);
 }
 
-export const thunkSetFadeSpeed = (fadeSpeed: FadeSpeedType): GameCellsThunkActionTypes => (dispatch) => {
+export const thunkSetFadeSpeed = (fadeSpeed: number): GameCellsThunkActionTypes => (dispatch) => {
   dispatch(setFadeSpeed(fadeSpeed));
   GameCellsSettings.setFadeSpeed(fadeSpeed);
 }

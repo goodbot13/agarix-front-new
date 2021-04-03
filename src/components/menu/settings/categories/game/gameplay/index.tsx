@@ -7,6 +7,7 @@ import { thunkSetAnimationSpeed, thunkSetCameraSpeed, thunkSetCameraStyle, thunk
 import { CameraStyleType, SpectatorModeType, ViewportType } from "redux/settings/game/gameplay/types";
 import { AppStateType, ThunkRootDispatchType } from "redux/store";
 import { SPECTATOR_MODE_HINT } from "redux/settings/game/gameplay/hints";
+import Range from "components/menu/settings/basic/range";
 
 const Gameplay: FC<GameplayType> = ({
   animationSpeed,
@@ -24,22 +25,25 @@ const Gameplay: FC<GameplayType> = ({
 }) => {
   return (
     <>
-      <Select 
+      <Range
         text="Animation speed"
-        items={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]}
-        selectedItem={animationSpeed}
+        value={animationSpeed} 
+        from={25}
+        to={300}
         onChange={setAnimationSpeed}
       />
-      <Select 
-        text="Zoom speed"
-        items={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-        selectedItem={zoomSpeed}
+      <Range
+        text="Animation speed"
+        value={zoomSpeed} 
+        from={1}
+        to={25}
         onChange={setZoomSpeed}
       />
-      <Select 
+      <Range 
         text="Camera speed"
-        items={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-        selectedItem={cameraSpeed}
+        from={1}
+        to={25}
+        value={cameraSpeed}
         onChange={setCameraSpeed}
       />
       <Select 

@@ -12,8 +12,8 @@ const initStorage: TStorage = {
         skinsType: 'All',
         ringsType: 'Disabled',
         ringsSpinning: true,
-        soakSpeed: '1',
-        fadeSpeed: '2',
+        soakSpeed: 25,
+        fadeSpeed: 25,
         oneColored: false,
         shadow: 'Disabled'
       },
@@ -24,9 +24,9 @@ const initStorage: TStorage = {
         wtfRgbMode: false
       },
       gameplay: {
-        animationSpeed: 10,
-        zoomSpeed: 5,
-        cameraSpeed: 5,
+        animationSpeed: 140,
+        zoomSpeed: 10,
+        cameraSpeed: 10,
         cameraStyle: 'Default',
         spectatorMode: 'Top one',
         viewport: 'Disabled'
@@ -46,7 +46,8 @@ const initStorage: TStorage = {
         changeRingColor: true,
         changeCellColor: false,
         hideOwnSkins: true,
-        staticColor: true
+        staticColor: true,
+        smoothSwitch: true
       },
       performance: {
         renderMode: 'GPU (Pixi)',

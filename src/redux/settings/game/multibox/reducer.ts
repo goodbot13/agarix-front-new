@@ -7,7 +7,8 @@ import {
   MULTIBOX_CHANGE_CELL_COLOR, 
   MULTIBOX_HIDE_OWN_SKINS, 
   MULTIBOX_STATIC_COLOR, 
-  MULTIBOX_RING
+  MULTIBOX_RING,
+  MULTIBOX_SMOOTH_SWITCH
 } from "./types";
 
 const initState: IGameMultiboxState = Storage.get().settings.game.multibox;
@@ -48,6 +49,12 @@ export const gameMultiboxReducer = (state = initState, action: GameMultiboxActio
       return {
         ...state,
         staticColor: action.staticColor
+      }
+
+    case MULTIBOX_SMOOTH_SWITCH:
+      return {
+        ...state,
+        smoothSwitch: action.smoothSwitch
       }
 
     default: return state;

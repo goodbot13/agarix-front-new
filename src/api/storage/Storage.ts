@@ -1,10 +1,8 @@
-import { AppStateType, TStore } from "redux/store";
+import { AppStateType } from "redux/store";
 import initState from "./initState";
 
 export default new class Storage {
   private readonly name: string = 'AGARIX:DATA';
-  private readonly backupName: string = 'AGARIX:DATA:BACKUP';
-  private cache: string = "";
 
   private swap(str: string): string {
     const left = str.slice(0, str.length / 2);
@@ -17,7 +15,17 @@ export default new class Storage {
     const storage = localStorage.getItem(this.name) as string;
  
     if (storage) {
-      return JSON.parse(atob(this.swap(storage)));
+      try {
+        const swapped = this.swap(storage);
+
+        // will throw exception if it has invalid format
+        const decoded = JSON.parse(atob(swapped)) as AppStateType;
+        
+        return decoded;
+      } catch {
+        // decoding failed, valid format
+        return JSON.parse(storage);
+      }
     }
 
     return initState;
@@ -26,24 +34,19 @@ export default new class Storage {
   public save(state: AppStateType) {
     const { profiles, game, settings } = state;
 
-    this.cache = btoa(JSON.stringify({
-      profiles, 
-      game,
-      settings
-    } as TStorage));
+    const newState = JSON.stringify({ profiles, game, settings });
 
-    this.cache = this.swap(this.cache);
-
-    localStorage.setItem(this.name, this.cache);
+    localStorage.setItem(this.name, newState);
   }
 
   public reset() {
-    localStorage.setItem(this.backupName, this.cache);
     localStorage.removeItem(this.name);
   }
 
   public init(state: AppStateType) {
     if (!localStorage.getItem(this.name)) {
+      console.log('Front-end: first launch');
+      
       this.save(state);
       return;
     }

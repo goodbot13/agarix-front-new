@@ -24,12 +24,12 @@ import {
 } from "./types";
 
 const initState: IUIState = {
-  gameLoaded: false,
+  gameLoaded: true,
   gameLoaderStatus: 'Receiving game version...',
-  menuShown: false,
+  menuShown: true,
   blured: false,
-  settingsShown: false,
-  settingsType: 'HOTKEYS',
+  settingsShown: true,
+  settingsType: 'GAME',
   gameSettingsSubmenu: 'GAME_GAMEPLAY',
   themingSettingsSubmenu: 'THEMING_CELLS',
   hotkeysSettingsSubmenu: 'HOTKEYS_KEYBOARD',

@@ -7,6 +7,7 @@ export const MULTIBOX_CHANGE_RING_COLOR = 'MULTIBOX_CHANGE_RING_COLOR';
 export const MULTIBOX_CHANGE_CELL_COLOR = 'MULTIBOX_CHANGE_CELL_COLOR';
 export const MULTIBOX_HIDE_OWN_SKINS = 'MULTIBOX_HIDE_OWN_SKINS';
 export const MULTIBOX_STATIC_COLOR = 'MULTIBOX_STATIC_COLOR';
+export const MULTIBOX_SMOOTH_SWITCH = 'MULTIBOX_SMOOTH_SWITCH';
 
 export interface IGameMultiboxState {
   enabled: boolean,
@@ -14,7 +15,8 @@ export interface IGameMultiboxState {
   changeRingColor: boolean,
   changeCellColor: boolean,
   hideOwnSkins: boolean,
-  staticColor: boolean
+  staticColor: boolean,
+  smoothSwitch: boolean
 }
 
 interface MultiboxEnabledAction {
@@ -47,7 +49,13 @@ interface MultiboxStaticColorAction {
   staticColor: boolean
 }
 
+interface MultiboxSmoothSwitch {
+  type: typeof MULTIBOX_SMOOTH_SWITCH,
+  smoothSwitch: boolean
+}
+
 export type GameMultiboxActionTypes = MultiboxEnabledAction | MultiboxRingAction | MultiboxChangeRingColorAction |
-                                      MultiboxChangeCellColorAction | MultiboxHideOwnSkinsAction | MultiboxStaticColorAction;
+                                      MultiboxChangeCellColorAction | MultiboxHideOwnSkinsAction | MultiboxStaticColorAction |
+                                      MultiboxSmoothSwitch;
 
 export type GameMultiboxThunkActionTypes = ThunkAction<void, AppStateType, unknown, GameMultiboxActionTypes>;

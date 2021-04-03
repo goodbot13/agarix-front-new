@@ -5,7 +5,8 @@ import {
   setMultiboxEnabled,
   setMultiboxHideOwnSkins,
   setMultiboxStaticColor,
-  setMultiboxRing
+  setMultiboxRing,
+  setMultiboxSmoothSwitch
 } from "./actions";
 
 import GameMultiboxSettings from "api/settings/Game/GameMultiboxSettings";
@@ -38,4 +39,9 @@ export const thunkSetMultiboxHideOwnSkins = (hideOwnSkins: boolean): GameMultibo
 export const thunkSetMultiboxStaticColor = (staticColor: boolean): GameMultiboxThunkActionTypes => (dispatch) => {
   dispatch(setMultiboxStaticColor(staticColor));
   GameMultiboxSettings.setMultiboxStaticColor(staticColor);
+}
+
+export const thunkSetMultiboxSmoothSwitch = (smoothSwitch: boolean): GameMultiboxThunkActionTypes => (dispatch) => {
+  dispatch(setMultiboxSmoothSwitch(smoothSwitch));
+  GameMultiboxSettings.setMultiboxSmoothSwitch(smoothSwitch); 
 }

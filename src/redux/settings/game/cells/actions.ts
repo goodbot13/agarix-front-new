@@ -1,5 +1,4 @@
 import {
-  FadeSpeedType,
   GameCellsActionTypes,
   RingsType,
   SET_AUTO_HIDE_MASS_AND_NICKS,
@@ -16,7 +15,6 @@ import {
   SET_SOAK_SPEED,
   ShadowType,
   SkinsType,
-  SoakSpeedType
 } from "./types";
 
 export const setShowMass = (mass: boolean): GameCellsActionTypes => ({
@@ -59,12 +57,12 @@ export const setRingsSpinning = (ringsSpinning: boolean): GameCellsActionTypes =
   ringsSpinning
 });
 
-export const setSoakSpeed = (soakSpeed: SoakSpeedType): GameCellsActionTypes => ({
+export const setSoakSpeed = (soakSpeed: number): GameCellsActionTypes => ({
   type: SET_SOAK_SPEED,
   soakSpeed
 });
 
-export const setFadeSpeed = (fadeSpeed: FadeSpeedType): GameCellsActionTypes => ({
+export const setFadeSpeed = (fadeSpeed: number): GameCellsActionTypes => ({
   type: SET_FADE_SPEED,
   fadeSpeed
 });

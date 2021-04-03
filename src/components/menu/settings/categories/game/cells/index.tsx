@@ -2,9 +2,9 @@ import { FC } from "react";
 
 import { connect } from "react-redux";
 
-import { AUTO_HIDE_MASS_AND_NICKS_HINT } from "redux/settings/game/cells/hints";
+import { AUTO_HIDE_MASS_AND_NICKS_HINT, RANGE_ZERO_HINT } from "redux/settings/game/cells/hints";
 
-import { FadeSpeedType, RingsType, ShadowType, SkinsType, SoakSpeedType } from "redux/settings/game/cells/types";
+import { RingsType, ShadowType, SkinsType } from "redux/settings/game/cells/types";
 import { AppStateType, ThunkRootDispatchType } from "redux/store";
 import { 
   thunkSetAutoHideMassAndNicks, 
@@ -24,6 +24,7 @@ import {
 import Switch from "components/menu/settings/basic/switch";
 
 import Select from "components/menu/settings/basic/select";
+import Range from "components/menu/settings/basic/range";
 
 const Cells: FC<CellsType> = ({
   mass,
@@ -97,16 +98,20 @@ const Cells: FC<CellsType> = ({
         onChange={setRingsSpinning}
         disabled={ringsType === 'Disabled'}
       />
-      <Select 
+      <Range 
         text="Soak animation speed"
-        items={['Disabled', '1', '2', '3', '4', '5'] as Array<SoakSpeedType>}
-        selectedItem={soakSpeed}
+        hint={RANGE_ZERO_HINT}
+        from={0}
+        to={250}
+        value={soakSpeed}
         onChange={setSoakSpeed}
       />
-      <Select 
-        text="Fade in/out speed"
-        items={['Disabled', '1', '2', '3', '4', '5'] as Array<FadeSpeedType>}
-        selectedItem={fadeSpeed}
+      <Range 
+        text="Soak animation speed"
+        hint={RANGE_ZERO_HINT}
+        from={0}
+        to={250}
+        value={fadeSpeed}
         onChange={setFadeSpeed}
       />
       <Switch 
@@ -137,8 +142,8 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setSkinsType: (type: SkinsType) => dispatch(thunkSetSkinsType(type)),
   setRingsType: (type: RingsType) => dispatch(thunkSetRingsType(type)),
   setRingsSpinning: (value: boolean) => dispatch(thunkSetRingsSpinning(value)),
-  setSoakSpeed: (type: SoakSpeedType) => dispatch(thunkSetSoakSpeed(type)),
-  setFadeSpeed: (type: FadeSpeedType) => dispatch(thunkSetFadeSpeed(type)),
+  setSoakSpeed: (type: number) => dispatch(thunkSetSoakSpeed(type)),
+  setFadeSpeed: (type: number) => dispatch(thunkSetFadeSpeed(type)),
   setOneColored: (value: boolean) => dispatch(thunkSetOneColored(value)),
   setShadow: (shadow: ShadowType) => dispatch(thunkSetShadow(shadow))
 });

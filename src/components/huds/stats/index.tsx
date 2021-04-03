@@ -2,7 +2,6 @@ import { rgbToCssString } from "api/utils";
 import { FC } from "react";
 import { connect } from "react-redux";
 import { AppStateType } from "redux/store";
-import { transform } from "typescript";
 import Frametime from "./frametime";
 import css from './index.module.scss';
 

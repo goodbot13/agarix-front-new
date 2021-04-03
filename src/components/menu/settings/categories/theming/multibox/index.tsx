@@ -16,10 +16,9 @@ import {
   thunkSetMultiboxRingStyle 
 } from "redux/settings/theming/multibox/thunks";
 
-import { MULTIBOX_LINED_RING_SIZE_VALUES } from "redux/settings/theming/multibox/values";
-
 import Select from "components/menu/settings/basic/select";
 import Colorpick from "components/menu/settings/basic/colorpick";
+import Range from "components/menu/settings/basic/range";
 
 const Multibox: FC<MultiboxType> = ({
   ringStyle,
@@ -43,10 +42,11 @@ const Multibox: FC<MultiboxType> = ({
         selectedItem={ringStyle}
         onChange={setMultiboxRingStyle}
       />
-      <Select 
+      <Range
         text="Lined ring size"
-        items={MULTIBOX_LINED_RING_SIZE_VALUES}
-        selectedItem={linedRingSize}
+        from={5}
+        to={160}
+        value={linedRingSize}
         onChange={setMultiboxLinderRingSize}
         disabled={ringStyle !== 'Line'}
       />

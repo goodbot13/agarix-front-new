@@ -1,4 +1,4 @@
-import { FadeSpeedType, RingsType, ShadowType, SkinsType, SoakSpeedType } from "redux/settings/game/cells/types";
+import { RingsType, ShadowType, SkinsType } from "redux/settings/game/cells/types";
 
 export default class GameCellsSettings {
   static setShowMass(value: boolean) {
@@ -33,11 +33,11 @@ export default class GameCellsSettings {
     window.GameSettings.all.settings.game.cells.ringsSpinning = value;
   }
 
-  static setSoakSpeed(value: SoakSpeedType) {
+  static setSoakSpeed(value: number) {
     window.GameSettings.all.settings.game.cells.soakSpeed = value;
   }
 
-  static setFadeSpeed(value: FadeSpeedType) {
+  static setFadeSpeed(value: number) {
     window.GameSettings.all.settings.game.cells.fadeSpeed = value;
   }
 

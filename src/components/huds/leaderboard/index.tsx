@@ -34,6 +34,8 @@ const Leaderboard: FC<LeaderboardType> = ({
       return playerMe;
     }
 
+    return null;
+
   }).filter((player) => player).slice(0, displayAmount + 1);
 
   return (

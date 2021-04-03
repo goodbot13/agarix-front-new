@@ -15,10 +15,8 @@ import {
   thunkSetMinimapTopOneViewportColor 
 } from "redux/settings/theming/minimap/thunks";
 
-import { MINIMAP_PLAYER_SIZE_VALUES, MINIMAP_SIZE_VALUES } from "redux/settings/theming/minimap/values";
-
 import Colorpick from "components/menu/settings/basic/colorpick";
-import Select from "components/menu/settings/basic/select";
+import Range from "components/menu/settings/basic/range";
 
 const Minimap: FC<MinimapType> = ({
   backgroundColor,
@@ -44,10 +42,11 @@ const Minimap: FC<MinimapType> = ({
         onChange={setMinimapBackgroundColor} 
         useAlpha={true}
       />
-      <Select 
+      <Range 
         text="Size (width and height)"
-        selectedItem={size}
-        items={MINIMAP_SIZE_VALUES}
+        from={150}
+        to={350}
+        value={size}
         onChange={setMinimapSize}
       />
       <Colorpick
@@ -62,10 +61,11 @@ const Minimap: FC<MinimapType> = ({
         onChange={setMinimapTopOneViewportColor} 
         useAlpha={true}
       />
-      <Select 
+      <Range 
         text="Player size"
-        selectedItem={playerSize}
-        items={MINIMAP_PLAYER_SIZE_VALUES}
+        from={6}
+        to={16}
+        value={playerSize}
         onChange={setMinimapPlayerSize}
       />
       <Colorpick

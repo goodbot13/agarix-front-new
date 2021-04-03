@@ -21,11 +21,9 @@ import {
   thunkSetShadowStrength 
 } from "redux/settings/theming/cells/thunks";
 
-import Select from "components/menu/settings/basic/select";
-
 import { ADAPTIVE_SHADOW_HINT, ONE_COLORED_STATS_COLOR_HINT } from "redux/settings/theming/cells/hints";
-import { CELLS_COLOR_LIGHTEN_VALUES, CELLS_SHADOW_DISTANCE_VALUES, CELLS_SHADOW_STRENGTH_VALUES, CELLS_TRANSPARENCY_VALUES } from "redux/settings/theming/cells/values";
 import Switch from "components/menu/settings/basic/switch";
+import Range from "components/menu/settings/basic/range";
 
 const Cells: FC<CellsType> = ({
   oneColoredColor,
@@ -75,16 +73,18 @@ const Cells: FC<CellsType> = ({
         color={shadowColor}
         onChange={setShadowColor}
       />
-      <Select 
+      <Range 
         text='Shadow distance'
-        items={CELLS_SHADOW_DISTANCE_VALUES}
-        selectedItem={shadowDistance}
+        from={5}
+        to={100}
+        value={shadowDistance}
         onChange={setShadowDistance}
       />
-      <Select 
+      <Range 
         text='Shadow strength'
-        items={CELLS_SHADOW_STRENGTH_VALUES}
-        selectedItem={shadowStrength}
+        from={1}
+        to={10}
+        value={shadowStrength}
         onChange={setShadowStrength}
       />
       <Colorpick 
@@ -92,28 +92,32 @@ const Cells: FC<CellsType> = ({
         color={myShadowColor}
         onChange={setMyShadowColor}
       />
-      <Select 
+      <Range
         text='My cell shadow distance'
-        items={CELLS_SHADOW_DISTANCE_VALUES}
-        selectedItem={myShadowDistance}
+        from={5}
+        to={100}
+        value={myShadowDistance}
         onChange={setMyShadowDistance}
       />
-      <Select 
+      <Range 
         text='My cell shadow strength'
-        items={CELLS_SHADOW_STRENGTH_VALUES}
-        selectedItem={myShadowStrength}
+        from={1}
+        to={10}
+        value={myShadowStrength}
         onChange={setMyShadowStrength}
       />
-      <Select 
+      <Range 
         text='Transparency'
-        items={CELLS_TRANSPARENCY_VALUES}
-        selectedItem={transparency}
+        from={0.1}
+        to={1}
+        value={transparency}
         onChange={setCellsTransparency}
       />
-      <Select
+      <Range
         text="Color lighten"
-        items={CELLS_COLOR_LIGHTEN_VALUES}
-        selectedItem={colorLighten}
+        from={10}
+        to={160}
+        value={colorLighten}
         onChange={setCellsColorLighten} 
       />
     </>

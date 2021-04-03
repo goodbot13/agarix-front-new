@@ -19,10 +19,10 @@ import {
   thunkSetFoodSize, 
   thunkSetFoodTopOneTabEnabled
 } from "redux/settings/theming/food/thunks";
+
 import Switch from "components/menu/settings/basic/switch";
-import Select from "components/menu/settings/basic/select";
 import Colorpick from "components/menu/settings/basic/colorpick";
-import { FOOD_GLOW_DISTANCE_VALUES, FOOD_GLOW_STRENGTH_VALUES, FOOD_SIZE_VALUES } from "redux/settings/theming/food/values";
+import Range from "components/menu/settings/basic/range";
 
 
 const Food: FC<FoodType> = ({
@@ -75,10 +75,11 @@ const Food: FC<FoodType> = ({
         onChange={setFoodTopOneTabEnabled}
         disabled={!enabled}
       />
-      <Select 
+      <Range 
         text="Food size"
-        items={FOOD_SIZE_VALUES}
-        selectedItem={size}
+        from={8}
+        to={24}
+        value={size}
         onChange={setFoodSize}
         disabled={!enabled}
       />
@@ -100,17 +101,19 @@ const Food: FC<FoodType> = ({
         onChange={setFoodGlowColor}
         disabled={!glow || !enabled}
       />
-      <Select 
+      <Range 
         text="Glow distance"
-        selectedItem={glowDistance}
-        items={FOOD_GLOW_DISTANCE_VALUES}
+        from={10}
+        to={150}
+        value={glowDistance}
         onChange={setFoodGlowDistance}
         disabled={!glow || !enabled}
       />
-      <Select 
+      <Range 
         text="Glow strength"
-        selectedItem={glowStrength}
-        items={FOOD_GLOW_STRENGTH_VALUES}
+        from={1}
+        to={24}
+        value={glowStrength}
         onChange={setFoodGlowStrength}
         disabled={!glow || !enabled}
       />

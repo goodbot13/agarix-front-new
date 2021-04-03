@@ -23,4 +23,8 @@ export default class GameMultiboxSettings {
   static setMultiboxStaticColor(value: boolean) {
     window.GameSettings.all.settings.game.multibox.staticColor = value;
   }
+
+  static setMultiboxSmoothSwitch(value: boolean) {
+    window.GameSettings.all.settings.game.multibox.smoothSwitch = value;
+  }
 }

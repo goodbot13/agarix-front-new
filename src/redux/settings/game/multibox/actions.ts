@@ -5,6 +5,7 @@ import {
   MULTIBOX_ENABLED,
   MULTIBOX_HIDE_OWN_SKINS,
   MULTIBOX_RING,
+  MULTIBOX_SMOOTH_SWITCH,
   MULTIBOX_STATIC_COLOR
 } from "./types";
 
@@ -36,4 +37,9 @@ export const setMultiboxHideOwnSkins = (hideOwnSkins: boolean): GameMultiboxActi
 export const setMultiboxStaticColor = (staticColor: boolean): GameMultiboxActionTypes => ({
   type: MULTIBOX_STATIC_COLOR,
   staticColor
+});
+
+export const setMultiboxSmoothSwitch = (smoothSwitch: boolean): GameMultiboxActionTypes => ({
+  type: MULTIBOX_SMOOTH_SWITCH,
+  smoothSwitch
 });

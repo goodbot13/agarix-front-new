@@ -18,17 +18,13 @@ import {
 } from "redux/settings/theming/viruses/thunks";
 
 import { VirusMassType } from "redux/settings/theming/viruses/types";
-import { 
-  VIRUS_BORDER_WIDTH_VALUES, 
-  VIRUS_GLOW_DISTANCE_VALUES, 
-  VIRUS_TRANSPARENCY_VALUES 
-} from "redux/settings/theming/viruses/values";
 
 import { AppStateType, ThunkRootDispatchType } from "redux/store";
 
 import Colorpick from "components/menu/settings/basic/colorpick";
 import Select from "components/menu/settings/basic/select";
 import Switch from "components/menu/settings/basic/switch";
+import Range from "components/menu/settings/basic/range";
 
 const Viruses: FC<VirusesType> = ({
   color,
@@ -65,10 +61,11 @@ const Viruses: FC<VirusesType> = ({
         color={borderColor}
         onChange={setVirusBorderColor}
       />
-      <Select 
+      <Range 
         text="Border width"
-        items={VIRUS_BORDER_WIDTH_VALUES}
-        selectedItem={borderWidth}
+        from={5}
+        to={20}
+        value={borderWidth}
         onChange={setVirusBorderWidth}
       />
       <Switch 
@@ -82,10 +79,11 @@ const Viruses: FC<VirusesType> = ({
         onChange={setVirusGlowColor}
         disabled={!glow}
       />
-      <Select 
+      <Range 
         text="Glow distance"
-        items={VIRUS_GLOW_DISTANCE_VALUES}
-        selectedItem={glowDistance}
+        from={2}
+        to={20}
+        value={glowDistance}
         onChange={setVirusGlowDistance}
         disabled={!glow}
       />
@@ -96,10 +94,11 @@ const Viruses: FC<VirusesType> = ({
         onChange={setVirusGlowStrength}
         disabled={!glow}
       />
-      <Select 
+      <Range 
         text="Transparency"
-        items={VIRUS_TRANSPARENCY_VALUES}
-        selectedItem={transparency}
+        from={0.1}
+        to={1}
+        value={transparency}
         onChange={setVirusTransparency}
       />
       <Select 

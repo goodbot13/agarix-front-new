@@ -3,7 +3,6 @@ import css from './index.module.scss';
 
 import { AppStateType, ThunkRootDispatchType } from 'redux/store';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import { setGameSocketConnecting } from 'redux/UI/actions';
 
 import classNames from 'classnames';

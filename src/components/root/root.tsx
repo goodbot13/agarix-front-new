@@ -1,7 +1,7 @@
-import React, { FC, useEffect } from 'react';
+import { FC } from 'react';
 
 import Menu from 'components/menu';
-import GameLoader from '../game-laoder';
+import GameLoader from '../game-loader';
 
 import { AppStateType } from 'redux/store';
 import { connect } from 'react-redux';

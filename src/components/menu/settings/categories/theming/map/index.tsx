@@ -24,17 +24,12 @@ import {
   thunkSetMapGlobalBackgroundImageUrl 
 } from "redux/settings/theming/map/thunks";
 
-import { 
-  MAP_BORDER_GLOW_DISTANCE_VALUES, 
-  MAP_BORDER_GLOW_STRENGTH_VALUES, 
-  MAP_BORDER_ROUNDNESS_VALUES, 
-  MAP_BORDER_WIDTH_VALUES 
-} from "redux/settings/theming/map/values";
-
 import Select from "components/menu/settings/basic/select";
 import Colorpick from "components/menu/settings/basic/colorpick";
 import Switch from "components/menu/settings/basic/switch";
 import Input from "components/menu/settings/basic/input";
+import Range from "components/menu/settings/basic/range";
+import { RANGE_ZERO_HINT } from "redux/settings/game/cells/hints";
 
 const MapComponent: FC<MapComponentType> = ({
   borderType,
@@ -78,16 +73,19 @@ const MapComponent: FC<MapComponentType> = ({
         items={['Disabled', 'Common', 'Common (anim)', 'RGB', 'RGB (anim)'] as Array<MapBorderType>}
         onChange={setMapBorderType}
       />
-      <Select
+      <Range
         text="Border roundness"
-        selectedItem={borderRoundness}
-        items={MAP_BORDER_ROUNDNESS_VALUES}
+        hint={RANGE_ZERO_HINT}
+        from={0}
+        to={140}
+        value={borderRoundness}
         onChange={setMapBorderRoundness}
       />
-      <Select
+      <Range
         text="Border width"
-        selectedItem={borderWidth}
-        items={MAP_BORDER_WIDTH_VALUES}
+        from={10}
+        to={80}
+        value={borderWidth}
         onChange={setMapBorderWidth}
       />
       <Colorpick
@@ -106,17 +104,19 @@ const MapComponent: FC<MapComponentType> = ({
         onChange={setMapBorderGlowColor} 
         disabled={!borderGlow}
       />
-      <Select
+      <Range
         text="Border glow distance"
-        selectedItem={borderGlowDistance}
-        items={MAP_BORDER_GLOW_DISTANCE_VALUES}
+        from={20}
+        to={350}
+        value={borderGlowDistance}
         onChange={setMapBorderGlowDistance}
         disabled={!borderGlow}
       />
-      <Select
+      <Range
         text="Border glow strength"
-        selectedItem={borderGlowStrength}
-        items={MAP_BORDER_GLOW_STRENGTH_VALUES}
+        from={2}
+        to={20}
+        value={borderGlowStrength}
         onChange={setMapBorderGlowStrength}
         disabled={!borderGlow}
       />

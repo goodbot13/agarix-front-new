@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import css from './index.module.scss';
 
-import { faCircle, faDiceTwo, faMapMarked, faPlay, faRocket, faServer, faTint, faVirus } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faDiceTwo, faMapMarked, faPlay, faRocket, faTint } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { connect } from 'react-redux';
