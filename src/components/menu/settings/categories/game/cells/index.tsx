@@ -9,10 +9,12 @@ import { AppStateType, ThunkRootDispatchType } from "redux/store";
 import { 
   thunkSetAutoHideMassAndNicks, 
   thunkSetFadeSpeed, 
+  thunkSetMassUpdateDelay, 
   thunkSetOneColored, 
   thunkSetRingsSpinning, 
   thunkSetRingsType, 
   thunkSetShadow, 
+  thunkSetShortMass, 
   thunkSetShowMass, 
   thunkSetShowMassMyCell, 
   thunkSetShowNickMyCell, 
@@ -32,6 +34,8 @@ const Cells: FC<CellsType> = ({
   nicks,
   myNick,
   autoHideMassAndNicks,
+  shortMass,
+  massUpdateDelay,
   skinsType,
   ringsType,
   ringsSpinning,
@@ -44,6 +48,8 @@ const Cells: FC<CellsType> = ({
   setShowMassMyCell,
   setShowNickMyCell,
   setAutoHideMassAndNicks,
+  setShortMass,
+  setMassUpdateDelay,
   setSkinsType,
   setRingsType,
   setRingsSpinning,
@@ -79,6 +85,18 @@ const Cells: FC<CellsType> = ({
         hint={AUTO_HIDE_MASS_AND_NICKS_HINT}
         enabled={autoHideMassAndNicks} 
         onChange={setAutoHideMassAndNicks}
+      />
+      <Switch 
+        text="Short mass (k)" 
+        enabled={shortMass} 
+        onChange={setShortMass}
+      />
+      <Range 
+        text="Mass update (refresh) delay"
+        from={1}
+        to={30}
+        value={massUpdateDelay}
+        onChange={setMassUpdateDelay}
       />
       <Select 
         text="Skins"
@@ -139,6 +157,8 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setShowNicks: (value: boolean) => dispatch(thunkSetShowNicks(value)),
   setShowNickMyCell: (value: boolean) => dispatch(thunkSetShowNickMyCell(value)),
   setAutoHideMassAndNicks: (value: boolean) => dispatch(thunkSetAutoHideMassAndNicks(value)),
+  setShortMass: (value: boolean) => dispatch(thunkSetShortMass(value)),
+  setMassUpdateDelay: (value: number) => dispatch(thunkSetMassUpdateDelay(value)),
   setSkinsType: (type: SkinsType) => dispatch(thunkSetSkinsType(type)),
   setRingsType: (type: RingsType) => dispatch(thunkSetRingsType(type)),
   setRingsSpinning: (value: boolean) => dispatch(thunkSetRingsSpinning(value)),

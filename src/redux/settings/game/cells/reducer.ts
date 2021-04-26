@@ -4,10 +4,12 @@ import {
   IGameCellsState, 
   SET_AUTO_HIDE_MASS_AND_NICKS, 
   SET_FADE_SPEED, 
+  SET_MASS_UPDATE_DELAY, 
   SET_ONE_COLORED, 
   SET_RINGS_SPINNING, 
   SET_RINGS_TYPE, 
   SET_SHADOW, 
+  SET_SHORT_MASS, 
   SET_SHOW_MASS, 
   SET_SHOW_MASS_MY_CELL, 
   SET_SHOW_NICKS, 
@@ -48,6 +50,18 @@ export const gameCellsReducer = (state = initState, action: GameCellsActionTypes
       return {
         ...state,
         autoHideMassAndNicks: action.autoHideMassAndNicks
+      }
+
+    case SET_SHORT_MASS:
+      return {
+        ...state,
+        shortMass: action.shortMass
+      }
+
+    case SET_MASS_UPDATE_DELAY:
+      return {
+        ...state,
+        massUpdateDelay: action.massUpdateDelay
       }
 
     case SET_SKINS_TYPE:

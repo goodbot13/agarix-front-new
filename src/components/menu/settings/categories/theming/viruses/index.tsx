@@ -64,7 +64,7 @@ const Viruses: FC<VirusesType> = ({
       <Range 
         text="Border width"
         from={5}
-        to={20}
+        to={25}
         value={borderWidth}
         onChange={setVirusBorderWidth}
       />
@@ -90,7 +90,7 @@ const Viruses: FC<VirusesType> = ({
       <Range 
         text="Glow strength"
         from={2}
-        to={20}
+        to={22}
         value={glowStrength}
         onChange={setVirusGlowStrength}
         disabled={!glow}

@@ -1,0 +1,60 @@
+.resetOutWrapper {
+  .reset {
+    color: rgb(255, 153, 153);
+    padding-right: 14px;
+  }
+  
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transition: .2s;
+  padding-right: 2px;
+  padding-left: 2px;
+
+  &.resetClicked {
+    width: 140px;
+    background: rgba(216, 89, 89, 0.9);
+
+    span {
+      margin: 0 10px;
+    }
+
+    button {  
+      height: 100%;
+      padding: 14px 8px;
+
+      svg {
+        color: white;
+      }
+
+      &:hover {
+        background: transparent;
+
+        svg {
+          transform: scale(1.1) translateX(0);
+        }
+      }
+    }
+  }
+}
+
+.resetWrap {
+  background: rgba(40, 40, 40, .5);
+  padding-left: 14px;
+  color: rgb(255, 153, 153);
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+
+  button {
+    &:last-child {
+      padding-right: 14px;
+    }
+
+    &:hover svg {
+      margin-right: 2px;
+    }
+  }
+}

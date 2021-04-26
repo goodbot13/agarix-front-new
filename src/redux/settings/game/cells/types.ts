@@ -6,6 +6,8 @@ export const SET_SHOW_NICKS = 'SET_SHOW_NICKS';
 export const SET_SHOW_MASS_MY_CELL = 'SET_SHOW_MASS_MY_CELL';
 export const SET_SHOW_NICK_MY_CELL = 'SET_SHOW_NICK_MY_CELL';
 export const SET_AUTO_HIDE_MASS_AND_NICKS = 'SET_AUTO_HIDE_MASS_AND_NICKS';
+export const SET_SHORT_MASS = 'SET_SHORT_MASS';
+export const SET_MASS_UPDATE_DELAY = 'SET_MASS_UPDATE_DELAY';
 export const SET_SKINS_TYPE = 'SET_SKINS_TYPE';
 export const SET_RINGS_TYPE = 'SET_RINGS_TYPE';
 export const SET_RINGS_SPINNING = 'SET_RINGS_SPINNING';
@@ -24,6 +26,8 @@ export interface IGameCellsState {
   myMass: boolean,
   myNick: boolean,
   autoHideMassAndNicks: boolean,
+  shortMass: boolean,
+  massUpdateDelay: number,
   skinsType: SkinsType,
   ringsType: RingsType,
   ringsSpinning: boolean,
@@ -56,6 +60,16 @@ interface SetShowNickMyCellAction {
 interface SetAutoHideMassAndNicksAction {
   type: typeof SET_AUTO_HIDE_MASS_AND_NICKS,
   autoHideMassAndNicks: boolean
+}
+
+interface SetShortMassAction {
+  type: typeof SET_SHORT_MASS,
+  shortMass: boolean
+}
+
+interface SetMassUpdateDelayAction {
+  type: typeof SET_MASS_UPDATE_DELAY,
+  massUpdateDelay: number
 }
 
 interface SetSkinsTypeAction {
@@ -96,6 +110,6 @@ interface SetShadowAction {
 export type GameCellsActionTypes = SetShowMassAction | SetShowNicksAction | SetShowMassMyCellAction |
                                    SetShowNickMyCellAction | SetAutoHideMassAndNicksAction | SetSkinsTypeAction |
                                    SetRingsTypeAction | SetRingsSpinningAction | SetSoakSpeedAction | SetFadeSpeedAction |
-                                   SetOneColoredAction | SetShadowAction;
+                                   SetOneColoredAction | SetShadowAction | SetShortMassAction | SetMassUpdateDelayAction;
 
 export type GameCellsThunkActionTypes = ThunkAction<void, AppStateType, unknown, GameCellsActionTypes>;

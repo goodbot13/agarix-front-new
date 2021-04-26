@@ -1,22 +1,17 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import css from './index.module.scss';
 
-import { faArrowDown, faArrowUp, faCheck, faRedo, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faArrowUp, faCheck  } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { connect } from 'react-redux';
 
-import classNames from 'classnames';
-
 import { thunkSetSettingsShown } from 'redux/UI/thunks';
 import { ThunkRootDispatchType } from 'redux/store';
-import Storage from 'api/storage/Storage';
+
+import Reset from './reset';
 
 const SaveExportImportReset: FC<SaveExportImportResetType> = ({ setSettingsShown }) => {
-  const [resetClicked, setResetClicked] = useState(false);
-
-  
-
   return (
     <section className={css.wrap}>
       <button 
@@ -31,32 +26,7 @@ const SaveExportImportReset: FC<SaveExportImportResetType> = ({ setSettingsShown
       <button style={{ opacity: 0.33, pointerEvents: 'none' }}>
         <FontAwesomeIcon icon={faArrowDown} /> Export
       </button>
-      <div className={classNames({
-        [css.resetOutWrapper]: true,
-        [css.resetClicked]: resetClicked
-      })}>
-        {!resetClicked ? (
-          <button 
-            onClick={() => setResetClicked(true)}
-            className={css.reset}
-          >
-            <FontAwesomeIcon icon={faRedo} /> Reset
-          </button>
-        ) : (
-          <>
-            <span>Reset?</span>
-            <button onClick={() => {
-              Storage.reset();
-              window.location.reload();
-            }}>
-              <FontAwesomeIcon icon={faCheck}/>
-            </button>
-            <button onClick={() => setResetClicked(false)}>
-              <FontAwesomeIcon icon={faTimes}/>
-            </button>
-          </>
-        )}
-      </div>
+      <Reset />
     </section>
   )
 }

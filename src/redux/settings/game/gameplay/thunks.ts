@@ -1,4 +1,5 @@
 import GameGameplaySettings from "api/settings/Game/GameGameplaySettings";
+import { thunkSetSpectateType } from "redux/UI/thunks";
 
 import {
   setAnimationSpeed,
@@ -38,6 +39,8 @@ export const thunkSetCameraStyle = (cameraStyle: CameraStyleType): GameGameplayT
 
 export const thunkSetSpectatorMode = (spectatorMode: SpectatorModeType): GameGameplayThunkActionTypes => (dispatch) => {
   dispatch(setSpectatorMode(spectatorMode));
+  dispatch(thunkSetSpectateType('CENTER'));
+
   GameGameplaySettings.setSpectatorMode(spectatorMode);
 }
 

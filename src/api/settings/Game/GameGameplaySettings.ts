@@ -28,7 +28,6 @@ export default class GameGameplaySettings {
 
       case 'Top one':
         window.GameAPI?.setTopOneView(true);
-        window.GameAPI?.setFullMapView(false);
         break;
 
       case 'Full map':

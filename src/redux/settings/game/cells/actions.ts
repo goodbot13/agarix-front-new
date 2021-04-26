@@ -3,10 +3,12 @@ import {
   RingsType,
   SET_AUTO_HIDE_MASS_AND_NICKS,
   SET_FADE_SPEED,
+  SET_MASS_UPDATE_DELAY,
   SET_ONE_COLORED,
   SET_RINGS_SPINNING,
   SET_RINGS_TYPE,
   SET_SHADOW,
+  SET_SHORT_MASS,
   SET_SHOW_MASS,
   SET_SHOW_MASS_MY_CELL,
   SET_SHOW_NICKS,
@@ -40,6 +42,16 @@ export const setShowNickMyCell = (myNick: boolean): GameCellsActionTypes => ({
 export const setAutoHideMassAndNicks = (autoHideMassAndNicks: boolean): GameCellsActionTypes => ({
   type: SET_AUTO_HIDE_MASS_AND_NICKS,
   autoHideMassAndNicks
+});
+
+export const setShortMass = (shortMass: boolean): GameCellsActionTypes => ({
+  type: SET_SHORT_MASS,
+  shortMass
+});
+
+export const setMassUpdateDelay = (massUpdateDelay: number): GameCellsActionTypes => ({
+  type: SET_MASS_UPDATE_DELAY,
+  massUpdateDelay
 });
 
 export const setSkinsType = (skinsType: SkinsType): GameCellsActionTypes => ({

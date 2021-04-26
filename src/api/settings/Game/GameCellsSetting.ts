@@ -21,6 +21,14 @@ export default class GameCellsSettings {
     window.GameSettings.all.settings.game.cells.autoHideMassAndNicks = value;
   }
 
+  static setShortMass(value: boolean) {
+    window.GameSettings.all.settings.game.cells.shortMass = value;
+  }
+
+  static setMassUpdateDelay(value: number) {
+    window.GameSettings.all.settings.game.cells.massUpdateDelay = value;
+  }
+
   static setSkinsType(value: SkinsType) {
     window.GameSettings.all.settings.game.cells.skinsType = value;
   }

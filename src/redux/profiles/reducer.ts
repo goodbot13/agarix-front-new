@@ -58,7 +58,6 @@ export const profilesReducer = (state = initState, action: ProfilesActionTypes):
       }
 
     case SET_RIGHT_PROFILE_NICK:
-      console.log(action.nick);
       return { 
         ...state,
         rightProfiles: [...state.rightProfiles].map((profile, i) => {

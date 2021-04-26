@@ -3,10 +3,12 @@ import GameCellsSettings from "api/settings/Game/GameCellsSetting";
 import {
   setAutoHideMassAndNicks,
   setFadeSpeed,
+  setMassUpdateDelay,
   setOneColored,
   setRingsSpinning,
   setRingsType,
   setShadow,
+  setShortMass,
   setShowMass,
   setShowMassMyCell,
   setShowNickMyCell,
@@ -40,6 +42,16 @@ export const thunkSetShowNickMyCell = (myNick: boolean): GameCellsThunkActionTyp
 export const thunkSetAutoHideMassAndNicks = (autoHideMassAndNicks: boolean): GameCellsThunkActionTypes => (dispatch) => {
   dispatch(setAutoHideMassAndNicks(autoHideMassAndNicks));
   GameCellsSettings.setAutoHideMassAndNicks(autoHideMassAndNicks);
+}
+
+export const thunkSetShortMass = (shortMass: boolean): GameCellsThunkActionTypes => (dispatch) => {
+  dispatch(setShortMass(shortMass));
+  GameCellsSettings.setShortMass(shortMass);
+}
+
+export const thunkSetMassUpdateDelay = (massUpdateDelay: number): GameCellsThunkActionTypes => (dispatch) => {
+  dispatch(setMassUpdateDelay(massUpdateDelay));
+  GameCellsSettings.setMassUpdateDelay(massUpdateDelay);
 }
 
 export const thunkSetSkinsType = (skinsType: SkinsType): GameCellsThunkActionTypes => (dispatch) => {

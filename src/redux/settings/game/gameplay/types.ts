@@ -1,5 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { AppStateType } from "redux/store";
+import { UIActionTypes } from "redux/UI/types";
 
 export const SET_ANIMATION_SPEED = 'SET_ANIMATION_SPEED';
 export const SET_ZOOM_SPEED = 'SET_ZOOM_SPEED';
@@ -54,4 +55,4 @@ interface SetViewportAction {
 export type GameGameplayActionTypes = SetAnimationSpeedAction | SetZoomSpeedAction | SetCameraSpeedAction |
                                       SetCameraStyleAction | SetSpectatorModeAction | SetViewportAction;
 
-export type GameGameplayThunkActionTypes = ThunkAction<void, AppStateType, unknown, GameGameplayActionTypes>;
+export type GameGameplayThunkActionTypes = ThunkAction<void, AppStateType, unknown, GameGameplayActionTypes | UIActionTypes>;
