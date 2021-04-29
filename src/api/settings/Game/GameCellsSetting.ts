@@ -1,4 +1,4 @@
-import { RingsType, ShadowType, SkinsType } from "redux/settings/game/cells/types";
+import { RingsType, ShadowType, SkinsType } from 'redux/settings/game/cells/types';
 
 export default class GameCellsSettings {
   static setShowMass(value: boolean) {

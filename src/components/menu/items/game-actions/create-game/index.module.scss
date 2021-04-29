@@ -6,21 +6,21 @@
     margin-right: 65px;
     margin-left: -2px;
     font-weight: 500;
-    transition: .15s linear;
+    transition: 0.15s linear;
     cursor: pointer;
     position: relative;
-  
+
     &:hover,
     &.active {
-      opacity: .6 !important;
-      color: white
+      opacity: 0.6 !important;
+      color: white;
     }
 
     div {
       position: absolute;
       left: 18px;
       top: 49px;
-      transition: .15s transform;
+      transition: 0.15s transform;
     }
 
     .cancelText {

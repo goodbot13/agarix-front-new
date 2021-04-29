@@ -1,10 +1,18 @@
-import Keyboard from "api/Keyboard/Keyboard";
-import { setGameLoaded, setMenuShown, setSettingsShown, setSettingsType, setSpectateType } from "./actions";
-import { SettingsType, SpectateType, UIThunkActionTypes } from "./types";
+import Keyboard from 'api/Keyboard/Keyboard';
+import {
+  setGameLoaded,
+  setMenuShown,
+  setSettingsShown,
+  setSettingsType,
+  setSpectateType,
+} from './actions';
+import { SettingsType, SpectateType, UIThunkActionTypes } from './types';
 
-export const thunkSetSettingsShown = (shown: boolean, type?: SettingsType): UIThunkActionTypes => (dispatch) => {
+export const thunkSetSettingsShown = (shown: boolean, type?: SettingsType): UIThunkActionTypes => (
+  dispatch,
+) => {
   dispatch(setSettingsShown(shown));
-  
+
   if (type) {
     dispatch(setSettingsType(type));
   }
@@ -18,7 +26,7 @@ export const thunkSetSettingsShown = (shown: boolean, type?: SettingsType): UITh
   } else {
     window.GameAPI?.setSceneBlurred(true, false);
   }
-}
+};
 
 export const thunkSetSettingsType = (type: SettingsType): UIThunkActionTypes => (dispatch) => {
   dispatch(setSettingsType(type));
@@ -28,7 +36,7 @@ export const thunkSetSettingsType = (type: SettingsType): UIThunkActionTypes => 
   } else {
     window.GameAPI?.setSceneBlurred(true, false);
   }
-}
+};
 
 export const thunkSetMenuShown = (shown: boolean): UIThunkActionTypes => (dispatch, getState) => {
   dispatch(setMenuShown(shown));
@@ -47,16 +55,18 @@ export const thunkSetMenuShown = (shown: boolean): UIThunkActionTypes => (dispat
     window.GameAPI?.setSceneBlurred(false, true);
     Keyboard.block = false;
   }
-}
+};
 
 export const thunkSetGameLoaderShown = (loaderShown: boolean): UIThunkActionTypes => (dispatch) => {
   dispatch(setGameLoaded(!loaderShown));
   dispatch(setMenuShown(!loaderShown));
-}
+};
 
-export const thunkSetSpectateType = (spectateType: SpectateType): UIThunkActionTypes => (dispatch) => {
+export const thunkSetSpectateType = (spectateType: SpectateType): UIThunkActionTypes => (
+  dispatch,
+) => {
   dispatch(setSpectateType(spectateType));
-  
+
   switch (spectateType) {
     case 'CENTER':
       window.GameAPI?.spectateCenter();
@@ -74,4 +84,4 @@ export const thunkSetSpectateType = (spectateType: SpectateType): UIThunkActionT
       window.GameAPI?.spectateTopOne();
       break;
   }
-}
+};

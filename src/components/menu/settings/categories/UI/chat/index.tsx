@@ -1,29 +1,28 @@
-import { FC } from "react";
+import { FC } from 'react';
 
+import Colorpick from 'components/menu/settings/basic/colorpick';
+import Switch from 'components/menu/settings/basic/switch';
 
-import Colorpick from "components/menu/settings/basic/colorpick";
-import Switch from "components/menu/settings/basic/switch";
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { RGB } from 'redux/settings/theming/types';
+import {
+  setChatBackgroundColor,
+  setChatCommandMessageBackgroundColor,
+  setChatCommandMessageFontColor,
+  setChatEnabled,
+  setChatFontColor,
+  setChatGameMessageBackgroundColor,
+  setChatGameMessageFontColor,
+  setChatHeight,
+  setChatType,
+} from 'redux/settings/UI/chat/actions';
 
-import { RGB } from "redux/settings/theming/types";
-import { 
-  setChatBackgroundColor, 
-  setChatCommandMessageBackgroundColor, 
-  setChatCommandMessageFontColor, 
-  setChatEnabled, 
-  setChatFontColor, 
-  setChatGameMessageBackgroundColor, 
-  setChatGameMessageFontColor, 
-  setChatHeight, 
-  setChatType 
-} from "redux/settings/UI/chat/actions";
-
-import { ChatType } from "redux/settings/UI/chat/types";
-import { AppStateType } from "redux/store";
-import Select from "components/menu/settings/basic/select";
-import { CHAT_HEIGHT_VALUES } from "redux/settings/UI/chat/values";
+import { ChatType } from 'redux/settings/UI/chat/types';
+import { AppStateType } from 'redux/store';
+import Select from 'components/menu/settings/basic/select';
+import { CHAT_HEIGHT_VALUES } from 'redux/settings/UI/chat/values';
 
 const Chat: FC<TChat> = ({
   enabled,
@@ -43,44 +42,30 @@ const Chat: FC<TChat> = ({
   setCommandMessageBackgroundColor,
   setCommandMessageFontColor,
   setGameMessageBackgroundColor,
-  setGameMessageFontColor
+  setGameMessageFontColor,
 }) => {
   return (
     <>
-      <Switch
-        text="Enabled"
-        enabled={enabled}
-        onChange={setEnabled}
-        main 
-      />
-      <Select 
+      <Switch text="Enabled" enabled={enabled} onChange={setEnabled} main />
+      <Select
         text="Type"
         items={['CHATBOX', 'POPUP'] as Array<ChatType>}
         selectedItem={chatType}
         onChange={setType}
       />
-      <Select 
-        text="Height"
-        items={CHAT_HEIGHT_VALUES}
-        selectedItem={height}
-        onChange={setHeight}
-      />
+      <Select text="Height" items={CHAT_HEIGHT_VALUES} selectedItem={height} onChange={setHeight} />
       <Colorpick
         text="Background color"
         color={backgroundColor}
         onChange={setBackgroundColor}
-        useAlpha 
+        useAlpha
       />
-      <Colorpick
-        text="Font color"
-        color={fontColor}
-        onChange={setFontColor}
-      />
+      <Colorpick text="Font color" color={fontColor} onChange={setFontColor} />
       <Colorpick
         text="Commander message background color"
         color={commandMessageBackgroundColor}
         onChange={setCommandMessageBackgroundColor}
-        useAlpha 
+        useAlpha
       />
       <Colorpick
         text="Commander message font color"
@@ -91,7 +76,7 @@ const Chat: FC<TChat> = ({
         text="Game (system) message background color"
         color={gameMessageBackgroundColor}
         onChange={setGameMessageBackgroundColor}
-        useAlpha 
+        useAlpha
       />
       <Colorpick
         text="Game (system) message font color"
@@ -99,11 +84,11 @@ const Chat: FC<TChat> = ({
         onChange={setGameMessageFontColor}
       />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ settings }: AppStateType) => ({
-  ...settings.UI.chat
+  ...settings.UI.chat,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -112,10 +97,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   setBackgroundColor: (color: RGB) => dispatch(setChatBackgroundColor(color)),
   setFontColor: (color: RGB) => dispatch(setChatFontColor(color)),
   setHeight: (value: number) => dispatch(setChatHeight(value)),
-  setCommandMessageBackgroundColor: (color: RGB) => dispatch(setChatCommandMessageBackgroundColor(color)),
+  setCommandMessageBackgroundColor: (color: RGB) =>
+    dispatch(setChatCommandMessageBackgroundColor(color)),
   setCommandMessageFontColor: (color: RGB) => dispatch(setChatCommandMessageFontColor(color)),
   setGameMessageBackgroundColor: (color: RGB) => dispatch(setChatGameMessageBackgroundColor(color)),
-  setGameMessageFontColor: (color: RGB) => dispatch(setChatGameMessageFontColor(color))
+  setGameMessageFontColor: (color: RGB) => dispatch(setChatGameMessageFontColor(color)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

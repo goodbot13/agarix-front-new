@@ -7,7 +7,7 @@
   height: 100%;
   padding: 100px 0;
   box-sizing: border-box;
-  background: rgba(32, 32, 32, .1);
+  background: rgba(32, 32, 32, 0.1);
 
   button {
     background: transparent;
@@ -17,23 +17,23 @@
     border: none;
     font-weight: 400;
     width: 100%;
-    transition: .15s;
+    transition: 0.15s;
     padding: 11px;
     cursor: pointer;
     text-transform: uppercase;
     box-sizing: border-box;
-    border-top: 1px solid rgba(40, 40, 40, .9);
+    border-top: 1px solid rgba(40, 40, 40, 0.9);
 
     & svg {
       margin-right: 2px;
     }
 
     &:last-child {
-      border-bottom: 1px solid rgba(40, 40, 40, .9);
+      border-bottom: 1px solid rgba(40, 40, 40, 0.9);
     }
 
     &:hover {
-      background: rgba(30, 30, 30, .9);
+      background: rgba(30, 30, 30, 0.9);
     }
   }
 }

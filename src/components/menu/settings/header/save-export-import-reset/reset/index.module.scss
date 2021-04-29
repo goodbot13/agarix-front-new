@@ -3,13 +3,13 @@
     color: rgb(255, 153, 153);
     padding-right: 14px;
   }
-  
+
   width: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  transition: .2s;
+  transition: 0.2s;
   padding-right: 2px;
   padding-left: 2px;
 
@@ -21,7 +21,7 @@
       margin: 0 10px;
     }
 
-    button {  
+    button {
       height: 100%;
       padding: 14px 8px;
 
@@ -41,7 +41,7 @@
 }
 
 .resetWrap {
-  background: rgba(40, 40, 40, .5);
+  background: rgba(40, 40, 40, 0.5);
   padding-left: 14px;
   color: rgb(255, 153, 153);
   display: flex;

@@ -11,7 +11,13 @@ import { changeGameServerToken, changeGameToken } from 'redux/game/actions';
 import { thunkSetSpectateType } from 'redux/UI/thunks';
 import { SpectateType } from 'redux/UI/types';
 
-const CreateGame: FC<CreateGameType> = ({ connecting, setConnecting, setToken, setServerToken, setSpectateType }) => {
+const CreateGame: FC<CreateGameType> = ({
+  connecting,
+  setConnecting,
+  setToken,
+  setServerToken,
+  setSpectateType,
+}) => {
   const [creating, setCreating] = useState(false);
 
   const disabled = connecting && !creating;
@@ -32,36 +38,34 @@ const CreateGame: FC<CreateGameType> = ({ connecting, setConnecting, setToken, s
       setConnecting(true);
       setCreating(true);
 
-      window.GameAPI?.join().then((tokens) => {
+      window.GameAPI?.join()
+        .then((tokens) => {
+          if (!tokens) {
+            setToken('');
+            setServerToken('');
+          } else {
+            setToken(tokens.split('%')[0]);
+            setServerToken(tokens.split('%')[1]);
+          }
 
-        if (!tokens) {
+          setConnecting(false);
+        })
+        .catch(() => {
           setToken('');
           setServerToken('');
-        } else {
-          setToken(tokens.split('%')[0]);
-          setServerToken(tokens.split('%')[1]);
-        }
 
-        setConnecting(false);
-
-      }).catch(() => {
-
-        setToken('');
-        setServerToken('');
-
-        setConnecting(false);
-        
-      });
+          setConnecting(false);
+        });
     }
-  }
+  };
 
   return (
     <div className={css.wrap}>
-      <button 
+      <button
         className={classNames({ [css.create]: true, [css.creating]: creating })}
-        style={{ 
+        style={{
           pointerEvents: disabled ? 'none' : 'auto',
-          opacity: disabled ? 0.4 : 1 
+          opacity: disabled ? 0.4 : 1,
         }}
         onClick={getTokens}
       >
@@ -69,18 +73,18 @@ const CreateGame: FC<CreateGameType> = ({ connecting, setConnecting, setToken, s
         <div className={css.cancelText}>Cancel</div>
       </button>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ UI }: AppStateType) => ({
-  connecting: UI.gameSocketConnecting
+  connecting: UI.gameSocketConnecting,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setConnecting: (value: boolean) => dispatch(setGameSocketConnecting(value)),
   setToken: (value: string) => dispatch(changeGameToken(value)),
   setServerToken: (value: string) => dispatch(changeGameServerToken(value)),
-  setSpectateType: (type: SpectateType) => dispatch(thunkSetSpectateType(type))
+  setSpectateType: (type: SpectateType) => dispatch(thunkSetSpectateType(type)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateGame);

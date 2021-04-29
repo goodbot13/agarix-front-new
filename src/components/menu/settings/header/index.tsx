@@ -17,44 +17,45 @@ const SettingsHeader: FC<SettingsHeaderType> = ({ settingsType, setSettingsType 
   return (
     <header className={css.categories}>
       <section>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsType === 'GAME' })}
           onClick={() => setSettingsType('GAME')}
         >
-          <FontAwesomeIcon icon={faGamepad}/> Game
+          <FontAwesomeIcon icon={faGamepad} /> Game
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsType === 'THEMING' })}
           onClick={() => setSettingsType('THEMING')}
         >
-          <FontAwesomeIcon icon={faPalette}/> Theming
+          <FontAwesomeIcon icon={faPalette} /> Theming
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsType === 'HOTKEYS' })}
           onClick={() => setSettingsType('HOTKEYS')}
         >
-          <FontAwesomeIcon icon={faKeyboard}/> Hotkeys
+          <FontAwesomeIcon icon={faKeyboard} /> Hotkeys
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsType === 'UI' })}
           onClick={() => setSettingsType('UI')}
         >
-          <FontAwesomeIcon icon={faPaw}/> Interface
+          <FontAwesomeIcon icon={faPaw} /> Interface
         </button>
       </section>
       <SaveExportImportReset />
     </header>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ UI }: AppStateType) => ({
-  settingsType: UI.settingsType
+  settingsType: UI.settingsType,
 });
 
 const mapDistpatchToProps = (dispatch: ThunkRootDispatchType) => ({
-  setSettingsType: (type: SettingsType) => dispatch(thunkSetSettingsType(type))
+  setSettingsType: (type: SettingsType) => dispatch(thunkSetSettingsType(type)),
 });
 
 export default connect(mapStateToProps, mapDistpatchToProps)(SettingsHeader);
 
-type SettingsHeaderType = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDistpatchToProps>;
+type SettingsHeaderType = ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDistpatchToProps>;

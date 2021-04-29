@@ -1,3 +1,3 @@
-export type GameCategoryType = { 
-  shown: boolean
-}
+export type GameCategoryType = {
+  shown: boolean;
+};

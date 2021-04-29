@@ -1,19 +1,19 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { connect } from "react-redux";
-import { AppStateType, ThunkRootDispatchType } from "redux/store";
+import { connect } from 'react-redux';
+import { AppStateType, ThunkRootDispatchType } from 'redux/store';
 
-import { 
-  thunkSetMultiboxChangeCellColor, 
-  thunkSetMultiboxChangeRingColor, 
-  thunkSetMultiboxEnabled, 
-  thunkSetMultiboxHideOwnSkins, 
-  thunkSetMultiboxRing, 
-  thunkSetMultiboxSmoothSwitch, 
-  thunkSetMultiboxStaticColor 
-} from "redux/settings/game/multibox/thunks";
+import {
+  thunkSetMultiboxChangeCellColor,
+  thunkSetMultiboxChangeRingColor,
+  thunkSetMultiboxEnabled,
+  thunkSetMultiboxHideOwnSkins,
+  thunkSetMultiboxRing,
+  thunkSetMultiboxSmoothSwitch,
+  thunkSetMultiboxStaticColor,
+} from 'redux/settings/game/multibox/thunks';
 
-import Switch from "components/menu/settings/basic/switch";
+import Switch from 'components/menu/settings/basic/switch';
 
 const Multibox: FC<MultiboxType> = ({
   enabled,
@@ -29,22 +29,12 @@ const Multibox: FC<MultiboxType> = ({
   setChangeCellColor,
   setHideOwnSkins,
   setStaticColor,
-  setSmoothSwitch
+  setSmoothSwitch,
 }) => {
   return (
     <>
-      <Switch
-        text="Enabled"
-        enabled={enabled}
-        onChange={setEnabled}
-        main
-      />
-      <Switch
-        text="Use ring"
-        enabled={ring}
-        onChange={setRing}
-        disabled={!enabled}
-      />
+      <Switch text="Enabled" enabled={enabled} onChange={setEnabled} main />
+      <Switch text="Use ring" enabled={ring} onChange={setRing} disabled={!enabled} />
       <Switch
         text="Change ring color on focus"
         enabled={changeRingColor}
@@ -76,11 +66,11 @@ const Multibox: FC<MultiboxType> = ({
         disabled={!enabled}
       />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ settings }: AppStateType) => ({
-  ...settings.game.multibox
+  ...settings.game.multibox,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
@@ -90,7 +80,7 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setChangeCellColor: (value: boolean) => dispatch(thunkSetMultiboxChangeCellColor(value)),
   setHideOwnSkins: (value: boolean) => dispatch(thunkSetMultiboxHideOwnSkins(value)),
   setStaticColor: (value: boolean) => dispatch(thunkSetMultiboxStaticColor(value)),
-  setSmoothSwitch: (value: boolean) => dispatch(thunkSetMultiboxSmoothSwitch(value))
+  setSmoothSwitch: (value: boolean) => dispatch(thunkSetMultiboxSmoothSwitch(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Multibox);

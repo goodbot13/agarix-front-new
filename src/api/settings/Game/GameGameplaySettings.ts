@@ -1,4 +1,8 @@
-import { CameraStyleType, SpectatorModeType, ViewportType } from "redux/settings/game/gameplay/types";
+import {
+  CameraStyleType,
+  SpectatorModeType,
+  ViewportType,
+} from 'redux/settings/game/gameplay/types';
 
 export default class GameGameplaySettings {
   static setAnimationSpeed(value: number) {

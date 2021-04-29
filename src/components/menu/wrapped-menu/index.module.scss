@@ -1,11 +1,11 @@
 .menuWrap {
   display: flex;
   flex-direction: column;
-  transition: .2s;
+  transition: 0.2s;
   opacity: 0;
 
   &.menuShown {
-    animation: animateMenuShown .2s;
+    animation: animateMenuShown 0.2s;
     opacity: 1;
   }
 
@@ -38,7 +38,7 @@
 }
 
 @keyframes animateMenuShown {
-  from { 
+  from {
     transform: scale(1.33);
   }
 

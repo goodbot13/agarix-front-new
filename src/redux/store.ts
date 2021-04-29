@@ -16,6 +16,7 @@ import { gameGameplayReducer } from './settings/game/gameplay/reducer';
 import { gameMultiboxReducer } from './settings/game/multibox/reducer';
 import { gameMinimapReducer } from './settings/game/minimap/reducer';
 import { gameEffectsReducer } from './settings/game/effects/reducer';
+import { gameBotsReducer } from './settings/game/bots/reducer';
 
 import { themingCellsReducer } from './settings/theming/cells/reducer';
 import { themingFoodReducer } from './settings/theming/food/reducer';
@@ -44,7 +45,8 @@ const rootReducer = combineReducers({
       gameplay: gameGameplayReducer,
       multibox: gameMultiboxReducer,
       minimap: gameMinimapReducer,
-      effects: gameEffectsReducer
+      effects: gameEffectsReducer,
+      bots: gameBotsReducer,
     }),
     theming: combineReducers({
       cells: themingCellsReducer,
@@ -52,28 +54,32 @@ const rootReducer = combineReducers({
       map: themingMapReducer,
       minimap: themingMinimapReducer,
       multibox: themingMultiboxReducer,
-      viruses: themingVirusReducer
+      viruses: themingVirusReducer,
     }),
     hotkeys: combineReducers({
-      keyboard: hotkeysKeyboardReducer
+      keyboard: hotkeysKeyboardReducer,
     }),
     UI: combineReducers({
       leaderboard: settingsLeaderboardReducer,
       stats: settingsStatsReducer,
       topTeam: settingsTopTeamReducer,
       spectate: settingsSpectateReducer,
-      chat: settingsChatReducer
-    })
-  })
+      chat: settingsChatReducer,
+    }),
+  }),
 });
 
 const configuredStore = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
 });
 
 export default configuredStore;
 
 export type TStore = typeof configuredStore;
 export type AppStateType = ReturnType<typeof rootReducer>;
-export type RootActionsType = UIActionTypes | ProfilesActionTypes | GameActionTypes | SettingsActionTypes;
+export type RootActionsType =
+  | UIActionTypes
+  | ProfilesActionTypes
+  | GameActionTypes
+  | SettingsActionTypes;
 export type ThunkRootDispatchType = ThunkDispatch<AppStateType, unknown, RootActionsType>;

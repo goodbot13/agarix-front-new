@@ -1,5 +1,5 @@
-import { MultiboxRingStyleType } from "redux/settings/theming/multibox/types";
-import { RGB } from "redux/settings/theming/types";
+import { MultiboxRingStyleType } from 'redux/settings/theming/multibox/types';
+import { RGB } from 'redux/settings/theming/types';
 
 export default class ThemingSettingsMultibox {
   static setMultiboxRingStyle(value: MultiboxRingStyleType) {

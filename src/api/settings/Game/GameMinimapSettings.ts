@@ -1,7 +1,7 @@
-import { ViewportType } from "redux/settings/game/minimap/types";
+import { ViewportType } from 'redux/settings/game/minimap/types';
 
 export default class GameMinimapSettings {
-  static setMinimaEnabled(value: boolean) {
+  static setMinimapEnabled(value: boolean) {
     window.GameSettings.all.settings.game.minimap.enabled = value;
   }
 

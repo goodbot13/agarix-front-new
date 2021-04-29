@@ -2,19 +2,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, .09);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
   padding: 12px 0;
   font-size: 17px;
   color: #eee;
-  transition: .15s;
+  transition: 0.15s;
 
   &:first-child {
     padding-top: 0;
   }
-  
+
   &.disabled {
     pointer-events: none;
-    opacity: .33;
+    opacity: 0.33;
   }
 
   input {
@@ -22,18 +22,18 @@
     border: none;
     color: #ccc;
     padding: 6px;
-    transition: .15s;
+    transition: 0.15s;
     width: 200px;
     font-size: 14px;
     text-align: right;
     border-radius: 3px;
 
     &:hover {
-      background: rgba(50, 50, 50, .9);
+      background: rgba(50, 50, 50, 0.9);
     }
 
     &:focus {
-      background: rgba(50, 50, 50, .9);
+      background: rgba(50, 50, 50, 0.9);
       text-align: left;
       color: #eee;
     }

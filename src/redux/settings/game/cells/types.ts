@@ -1,5 +1,5 @@
-import { ThunkAction } from "redux-thunk";
-import { AppStateType } from "redux/store";
+import { ThunkAction } from 'redux-thunk';
+import { AppStateType } from 'redux/store';
 
 export const SET_SHOW_MASS = 'SET_SHOW_MASS';
 export const SET_SHOW_NICKS = 'SET_SHOW_NICKS';
@@ -21,95 +21,111 @@ export type RingsType = 'Disabled' | '2CL' | 'Acimazis' | 'Yue';
 export type ShadowType = 'Disabled' | 'Only me' | 'All';
 
 export interface IGameCellsState {
-  mass: boolean,
-  nicks: boolean,
-  myMass: boolean,
-  myNick: boolean,
-  autoHideMassAndNicks: boolean,
-  shortMass: boolean,
-  massUpdateDelay: number,
-  skinsType: SkinsType,
-  ringsType: RingsType,
-  ringsSpinning: boolean,
-  soakSpeed: number,
-  fadeSpeed: number,
-  oneColored: boolean,
-  shadow: ShadowType
+  mass: boolean;
+  nicks: boolean;
+  myMass: boolean;
+  myNick: boolean;
+  autoHideMassAndNicks: boolean;
+  shortMass: boolean;
+  massUpdateDelay: number;
+  skinsType: SkinsType;
+  ringsType: RingsType;
+  ringsSpinning: boolean;
+  soakSpeed: number;
+  fadeSpeed: number;
+  oneColored: boolean;
+  shadow: ShadowType;
 }
 
 interface SetShowMassAction {
-  type: typeof SET_SHOW_MASS,
-  mass: boolean
+  type: typeof SET_SHOW_MASS;
+  mass: boolean;
 }
 
 interface SetShowNicksAction {
-  type: typeof SET_SHOW_NICKS,
-  nicks: boolean
+  type: typeof SET_SHOW_NICKS;
+  nicks: boolean;
 }
 
 interface SetShowMassMyCellAction {
-  type: typeof SET_SHOW_MASS_MY_CELL,
-  myMass: boolean
+  type: typeof SET_SHOW_MASS_MY_CELL;
+  myMass: boolean;
 }
 
 interface SetShowNickMyCellAction {
-  type: typeof SET_SHOW_NICK_MY_CELL,
-  myNick: boolean
+  type: typeof SET_SHOW_NICK_MY_CELL;
+  myNick: boolean;
 }
 
 interface SetAutoHideMassAndNicksAction {
-  type: typeof SET_AUTO_HIDE_MASS_AND_NICKS,
-  autoHideMassAndNicks: boolean
+  type: typeof SET_AUTO_HIDE_MASS_AND_NICKS;
+  autoHideMassAndNicks: boolean;
 }
 
 interface SetShortMassAction {
-  type: typeof SET_SHORT_MASS,
-  shortMass: boolean
+  type: typeof SET_SHORT_MASS;
+  shortMass: boolean;
 }
 
 interface SetMassUpdateDelayAction {
-  type: typeof SET_MASS_UPDATE_DELAY,
-  massUpdateDelay: number
+  type: typeof SET_MASS_UPDATE_DELAY;
+  massUpdateDelay: number;
 }
 
 interface SetSkinsTypeAction {
-  type: typeof SET_SKINS_TYPE,
-  skinsType: SkinsType
+  type: typeof SET_SKINS_TYPE;
+  skinsType: SkinsType;
 }
 
 interface SetRingsTypeAction {
-  type: typeof SET_RINGS_TYPE,
-  ringsType: RingsType
+  type: typeof SET_RINGS_TYPE;
+  ringsType: RingsType;
 }
 
 interface SetRingsSpinningAction {
-  type: typeof SET_RINGS_SPINNING,
-  ringsSpinning: boolean
+  type: typeof SET_RINGS_SPINNING;
+  ringsSpinning: boolean;
 }
 
 interface SetSoakSpeedAction {
-  type: typeof SET_SOAK_SPEED,
-  soakSpeed: number
+  type: typeof SET_SOAK_SPEED;
+  soakSpeed: number;
 }
 
 interface SetFadeSpeedAction {
-  type: typeof SET_FADE_SPEED,
-  fadeSpeed: number
+  type: typeof SET_FADE_SPEED;
+  fadeSpeed: number;
 }
 
 interface SetOneColoredAction {
-  type: typeof SET_ONE_COLORED,
-  oneColored: boolean
+  type: typeof SET_ONE_COLORED;
+  oneColored: boolean;
 }
 
 interface SetShadowAction {
-  type: typeof SET_SHADOW,
-  shadow: ShadowType
+  type: typeof SET_SHADOW;
+  shadow: ShadowType;
 }
 
-export type GameCellsActionTypes = SetShowMassAction | SetShowNicksAction | SetShowMassMyCellAction |
-                                   SetShowNickMyCellAction | SetAutoHideMassAndNicksAction | SetSkinsTypeAction |
-                                   SetRingsTypeAction | SetRingsSpinningAction | SetSoakSpeedAction | SetFadeSpeedAction |
-                                   SetOneColoredAction | SetShadowAction | SetShortMassAction | SetMassUpdateDelayAction;
+export type GameCellsActionTypes =
+  | SetShowMassAction
+  | SetShowNicksAction
+  | SetShowMassMyCellAction
+  | SetShowNickMyCellAction
+  | SetAutoHideMassAndNicksAction
+  | SetSkinsTypeAction
+  | SetRingsTypeAction
+  | SetRingsSpinningAction
+  | SetSoakSpeedAction
+  | SetFadeSpeedAction
+  | SetOneColoredAction
+  | SetShadowAction
+  | SetShortMassAction
+  | SetMassUpdateDelayAction;
 
-export type GameCellsThunkActionTypes = ThunkAction<void, AppStateType, unknown, GameCellsActionTypes>;
+export type GameCellsThunkActionTypes = ThunkAction<
+  void,
+  AppStateType,
+  unknown,
+  GameCellsActionTypes
+>;

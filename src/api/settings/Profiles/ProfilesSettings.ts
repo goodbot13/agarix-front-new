@@ -1,4 +1,4 @@
-import { TLoginType } from "redux/profiles/types";
+import { TLoginType } from 'redux/profiles/types';
 
 export default class ProfilesSettings {
   static setLeftProfileNick(nick: string) {

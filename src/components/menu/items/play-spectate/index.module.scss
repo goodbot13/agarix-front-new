@@ -8,8 +8,8 @@
     border-radius: 50%;
     width: 93px;
     height: 93px;
-    box-shadow: 0 0 6px rgba(255, 255, 255, .3);
-    transition: .15s linear;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+    transition: 0.15s linear;
     cursor: pointer;
 
     &:first-of-type {
@@ -18,7 +18,7 @@
 
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 6px rgba(255, 255, 255, .8);
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
     }
 
     &.active {
@@ -37,7 +37,13 @@
 }
 
 @keyframes active {
-  from { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  to { transform: scale(1); }
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
 }

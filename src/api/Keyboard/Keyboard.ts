@@ -1,4 +1,4 @@
-import KeyboardEvents from "./Listener";
+import KeyboardEvents from './Listener';
 
 class Keyboard {
   private events: KeyboardEvents;
@@ -22,13 +22,18 @@ class Keyboard {
   private untransformKey(key: string): TUntransformedKey {
     return {
       event: key.split(':')[0] as TKeyBindEvent,
-      key: key.split(':')[1]
+      key: key.split(':')[1],
     };
   }
 
-  private isValidUntransformedKey(keyToUntransform: string, e: TKeyBindEvent, keyboardKey: string, functionToExecute: any): boolean {
+  private isValidUntransformedKey(
+    keyToUntransform: string,
+    e: TKeyBindEvent,
+    keyboardKey: string,
+    functionToExecute: any,
+  ): boolean {
     const { event, key } = this.untransformKey(keyToUntransform);
-    return event === e && keyboardKey === key && typeof functionToExecute === 'function'; 
+    return event === e && keyboardKey === key && typeof functionToExecute === 'function';
   }
 
   private handleEvent(keyboardKey: string, preventDefault: () => void, event: TKeyBindEvent) {
@@ -75,10 +80,10 @@ class Keyboard {
   }
 }
 
-export default new Keyboard;
+export default new Keyboard();
 
 export type TKeyBindEvent = 'down' | 'up' | 'press';
 export type TUntransformedKey = {
-  event: TKeyBindEvent,
-  key: string
-}
+  event: TKeyBindEvent;
+  key: string;
+};

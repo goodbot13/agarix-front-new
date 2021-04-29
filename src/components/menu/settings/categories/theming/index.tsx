@@ -7,7 +7,13 @@ import { Dispatch } from 'redux';
 import { AppStateType } from 'redux/store';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowsAlt, faCircle, faDiceTwo, faMapMarked, faVirus } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowsAlt,
+  faCircle,
+  faDiceTwo,
+  faMapMarked,
+  faVirus,
+} from '@fortawesome/free-solid-svg-icons';
 import { faDotCircle, faSquare } from '@fortawesome/free-regular-svg-icons';
 
 import { SettingsThemingType } from 'redux/settings/theming/types';
@@ -29,47 +35,47 @@ const Theming: FC<ThemingType> = ({ settingsShown, settingsSubmenu, setSettingsS
   return (
     <>
       <Left>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'THEMING_CELLS' })}
           onClick={() => setSettingsSubmenu('THEMING_CELLS')}
         >
-          <FontAwesomeIcon icon={faCircle}/> Cells
+          <FontAwesomeIcon icon={faCircle} /> Cells
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'THEMING_VIRUSES' })}
           onClick={() => setSettingsSubmenu('THEMING_VIRUSES')}
         >
-          <FontAwesomeIcon icon={faVirus}/> Viruses
+          <FontAwesomeIcon icon={faVirus} /> Viruses
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'THEMING_FOOD' })}
           onClick={() => setSettingsSubmenu('THEMING_FOOD')}
         >
-          <FontAwesomeIcon icon={faDotCircle}/> Food
+          <FontAwesomeIcon icon={faDotCircle} /> Food
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'THEMING_MAP' })}
           onClick={() => setSettingsSubmenu('THEMING_MAP')}
         >
-          <FontAwesomeIcon icon={faSquare}/> Map
+          <FontAwesomeIcon icon={faSquare} /> Map
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'THEMING_MINIMAP' })}
           onClick={() => setSettingsSubmenu('THEMING_MINIMAP')}
         >
-          <FontAwesomeIcon icon={faMapMarked}/> Minimap
+          <FontAwesomeIcon icon={faMapMarked} /> Minimap
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'THEMING_MULTIBOX' })}
           onClick={() => setSettingsSubmenu('THEMING_MULTIBOX')}
         >
-          <FontAwesomeIcon icon={faDiceTwo}/> Multibox
+          <FontAwesomeIcon icon={faDiceTwo} /> Multibox
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'THEMING_VIEWPORTS' })}
           onClick={() => setSettingsSubmenu('THEMING_VIEWPORTS')}
         >
-          <FontAwesomeIcon icon={faArrowsAlt}/> Viewports
+          <FontAwesomeIcon icon={faArrowsAlt} /> Viewports
         </button>
       </Left>
       <Right>
@@ -93,16 +99,17 @@ const Theming: FC<ThemingType> = ({ settingsShown, settingsSubmenu, setSettingsS
         </CategoryWrapper>
       </Right>
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ UI }: AppStateType) => ({
   settingsSubmenu: UI.themingSettingsSubmenu,
-  settingsShown: UI.settingsShown
+  settingsShown: UI.settingsShown,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setSettingsSubmenu: (submenu: SettingsThemingType) => dispatch(setThemingSettingsSubmenu(submenu)),
+  setSettingsSubmenu: (submenu: SettingsThemingType) =>
+    dispatch(setThemingSettingsSubmenu(submenu)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Theming);

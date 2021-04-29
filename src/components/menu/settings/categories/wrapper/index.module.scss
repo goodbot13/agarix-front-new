@@ -6,7 +6,7 @@
   bottom: 0;
   overflow-y: auto;
   opacity: 1;
-  transition: .1s;
+  transition: 0.1s;
   visibility: visible;
   padding: 40px;
 
@@ -14,27 +14,28 @@
     opacity: 0;
     animation: animateVisibilityHidden 0s;
     animation-fill-mode: forwards;
-    animation-delay: .1s;
+    animation-delay: 0.1s;
   }
 
   &::-webkit-scrollbar {
     width: 12px;
   }
-  
+
   &::-webkit-scrollbar-track {
-    background: rgba(27, 27, 27, 0.9);  
+    background: rgba(27, 27, 27, 0.9);
   }
-  
+
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(20, 20, 20, .9);
+    background-color: rgba(20, 20, 20, 0.9);
     border-radius: 8px;
-    border: 2px solid rgba(32, 32, 32, .9);
+    border: 2px solid rgba(32, 32, 32, 0.9);
   }
 }
 
 @keyframes animateVisibilityHidden {
-  from { }
-  to { 
-    visibility: hidden; 
+  from {
+  }
+  to {
+    visibility: hidden;
   }
 }

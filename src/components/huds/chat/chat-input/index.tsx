@@ -1,13 +1,12 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from 'react';
 import css from './index.module.scss';
 
-import { connect } from "react-redux";
-import { AppStateType } from "redux/store";
+import { connect } from 'react-redux';
+import { AppStateType } from 'redux/store';
 
 import classNames from 'classnames';
 
 const ChatInput: FC<TChatInput> = ({ shown }) => {
-
   const ref = useRef<HTMLInputElement>(null);
   const [text, setText] = useState('');
 
@@ -23,24 +22,24 @@ const ChatInput: FC<TChatInput> = ({ shown }) => {
       setText('');
       ref.current?.blur();
     }
-  }, [shown]);
+  }, [shown, text]);
 
   return (
-    <div 
+    <div
       className={classNames({
         [css.wrap]: true,
-        [css.shown]: shown
+        [css.shown]: shown,
       })}
     >
-      <input 
-        ref={ref} 
+      <input
+        ref={ref}
         maxLength={80}
         value={text}
         onChange={(e) => setText(e.target.value)}
       ></input>
     </div>
-  )
-} 
+  );
+};
 
 const mapStateToProps = ({ UI }: AppStateType) => ({
   shown: UI.inputMessageShown,

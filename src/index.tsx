@@ -14,7 +14,7 @@ ReactDOM.render(
       <Root />
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 initializeApp(store);

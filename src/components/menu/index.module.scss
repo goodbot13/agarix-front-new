@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(12, 12, 12, .975);
-  transition: .2s;
+  background-color: rgba(12, 12, 12, 0.975);
+  transition: 0.2s;
   position: absolute;
   top: 0;
   left: 0;
@@ -17,13 +17,13 @@
 
   &.hidden {
     opacity: 0;
-    animation: hidden .2s;
+    animation: hidden 0.2s;
     z-index: 0;
   }
 
   .innerWrap {
     transform: scale(0.88);
-    transition: .1s;
+    transition: 0.1s;
     position: absolute;
   }
 }

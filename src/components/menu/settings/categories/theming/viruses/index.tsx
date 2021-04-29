@@ -1,30 +1,29 @@
-import { FC } from "react";
-import { connect } from "react-redux";
+import { FC } from 'react';
+import { connect } from 'react-redux';
 
-import { FOOD_GLOW_STRENGTH_VALUES } from "redux/settings/theming/food/values";
-import { RGB } from "redux/settings/theming/types";
+import { RGB } from 'redux/settings/theming/types';
 
-import { 
-  thunkSetFillCircleColor, 
-  thunkSetVirusBorderColor, 
-  thunkSetVirusBorderWidth, 
-  thunkSetVirusColor, 
-  thunkSetVirusGloDistance, 
-  thunkSetVirusGlow, 
-  thunkSetVirusGlowColor, 
-  thunkSetVirusGlowStrength, 
-  thunkSetVirusMassType, 
-  thunkSetVirusTransparency 
-} from "redux/settings/theming/viruses/thunks";
+import {
+  thunkSetFillCircleColor,
+  thunkSetVirusBorderColor,
+  thunkSetVirusBorderWidth,
+  thunkSetVirusColor,
+  thunkSetVirusGloDistance,
+  thunkSetVirusGlow,
+  thunkSetVirusGlowColor,
+  thunkSetVirusGlowStrength,
+  thunkSetVirusMassType,
+  thunkSetVirusTransparency,
+} from 'redux/settings/theming/viruses/thunks';
 
-import { VirusMassType } from "redux/settings/theming/viruses/types";
+import { VirusMassType } from 'redux/settings/theming/viruses/types';
 
-import { AppStateType, ThunkRootDispatchType } from "redux/store";
+import { AppStateType, ThunkRootDispatchType } from 'redux/store';
 
-import Colorpick from "components/menu/settings/basic/colorpick";
-import Select from "components/menu/settings/basic/select";
-import Switch from "components/menu/settings/basic/switch";
-import Range from "components/menu/settings/basic/range";
+import Colorpick from 'components/menu/settings/basic/colorpick';
+import Select from 'components/menu/settings/basic/select';
+import Switch from 'components/menu/settings/basic/switch';
+import Range from 'components/menu/settings/basic/range';
 
 const Viruses: FC<VirusesType> = ({
   color,
@@ -50,36 +49,23 @@ const Viruses: FC<VirusesType> = ({
 }) => {
   return (
     <>
-      <Colorpick 
-        text="Color"
-        color={color}
-        onChange={setVirusColor}
-        useAlpha={true}
-      />
-      <Colorpick 
-        text="Border color"
-        color={borderColor}
-        onChange={setVirusBorderColor}
-      />
-      <Range 
+      <Colorpick text="Color" color={color} onChange={setVirusColor} useAlpha={true} />
+      <Colorpick text="Border color" color={borderColor} onChange={setVirusBorderColor} />
+      <Range
         text="Border width"
         from={5}
         to={25}
         value={borderWidth}
         onChange={setVirusBorderWidth}
       />
-      <Switch 
-        text="Glow"
-        enabled={glow}
-        onChange={setVirusGlow}
-      />
-      <Colorpick 
+      <Switch text="Glow" enabled={glow} onChange={setVirusGlow} />
+      <Colorpick
         text="Glow color"
         color={glowColor}
         onChange={setVirusGlowColor}
         disabled={!glow}
       />
-      <Range 
+      <Range
         text="Glow distance"
         from={20}
         to={150}
@@ -87,7 +73,7 @@ const Viruses: FC<VirusesType> = ({
         onChange={setVirusGlowDistance}
         disabled={!glow}
       />
-      <Range 
+      <Range
         text="Glow strength"
         from={2}
         to={22}
@@ -95,20 +81,20 @@ const Viruses: FC<VirusesType> = ({
         onChange={setVirusGlowStrength}
         disabled={!glow}
       />
-      <Range 
+      <Range
         text="Transparency"
         from={0.1}
         to={1}
         value={transparency}
         onChange={setVirusTransparency}
       />
-      <Select 
+      <Select
         text="Mass type"
         items={['Disabled', 'Full mass', 'Shots amount', 'Fill circle'] as Array<VirusMassType>}
         selectedItem={massType}
         onChange={setVirusMassType}
       />
-      <Colorpick 
+      <Colorpick
         text="Fill circle color"
         color={fillCircleColor}
         onChange={setFillCircleColor}
@@ -116,11 +102,11 @@ const Viruses: FC<VirusesType> = ({
         useAlpha={true}
       />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ settings }: AppStateType) => ({
-  ...settings.theming.viruses
+  ...settings.theming.viruses,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
@@ -133,7 +119,7 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setVirusGlowStrength: (value: number) => dispatch(thunkSetVirusGlowStrength(value)),
   setVirusTransparency: (value: number) => dispatch(thunkSetVirusTransparency(value)),
   setVirusMassType: (type: VirusMassType) => dispatch(thunkSetVirusMassType(type)),
-  setFillCircleColor: (color: RGB) => dispatch(thunkSetFillCircleColor(color))
+  setFillCircleColor: (color: RGB) => dispatch(thunkSetFillCircleColor(color)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Viruses);

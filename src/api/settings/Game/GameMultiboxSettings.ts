@@ -3,7 +3,7 @@ export default class GameMultiboxSettings {
     window.GameSettings.all.settings.game.multibox.enabled = value;
     window.GameAPI?.setMultiboxEnabled(value);
   }
-  
+
   static setMultiboxRing(value: boolean) {
     window.GameSettings.all.settings.game.multibox.ring = value;
   }

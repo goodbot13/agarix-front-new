@@ -1,5 +1,5 @@
 import css from './index.module.scss';
-import { FC } from "react";
+import { FC } from 'react';
 
 import { AppStateType } from 'redux/store';
 import { connect } from 'react-redux';
@@ -15,28 +15,30 @@ import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 const GameLoader: FC<GameLoaderType> = ({ gameLoaded, status }) => {
   return (
     <DelayedRenderComponent rendered={!gameLoaded} hideDelayMs={800}>
-      <div className={classNames({
-        [css.wrap]: true,
-        [css.hidden]: gameLoaded
-      })}>
+      <div
+        className={classNames({
+          [css.wrap]: true,
+          [css.hidden]: gameLoaded,
+        })}
+      >
         <div className={css.status}>
-          <img src={spinner}></img> 
+          <img src={spinner} alt="Loading..."></img>
           <span className={css.text}>{status}</span>
         </div>
         <div className={css.discord}>
-          <FontAwesomeIcon icon={faDiscord}/> 
-          <a href="https://discord.gg/XX5sVwpqfa" target="_blank">
-            Discord 
+          <FontAwesomeIcon icon={faDiscord} />
+          <a href="https://discord.gg/XX5sVwpqfa" target="_blank" rel="noreferrer">
+            Discord
           </a>
         </div>
       </div>
     </DelayedRenderComponent>
-  )
-}
+  );
+};
 
-const mapStateToProps = ({ UI }: AppStateType) => ({ 
+const mapStateToProps = ({ UI }: AppStateType) => ({
   gameLoaded: UI.gameLoaded,
-  status: UI.gameLoaderStatus
+  status: UI.gameLoaderStatus,
 });
 
 export default connect(mapStateToProps)(GameLoader);

@@ -1,13 +1,24 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import Select from "components/menu/settings/basic/select";
+import Select from 'components/menu/settings/basic/select';
 
-import { connect } from "react-redux";
-import { thunkSetAnimationSpeed, thunkSetCameraSpeed, thunkSetCameraStyle, thunkSetSpectatorMode, thunkSetViewport, thunkSetZoomSpeed } from "redux/settings/game/gameplay/thunks";
-import { CameraStyleType, SpectatorModeType, ViewportType } from "redux/settings/game/gameplay/types";
-import { AppStateType, ThunkRootDispatchType } from "redux/store";
-import { SPECTATOR_MODE_HINT } from "redux/settings/game/gameplay/hints";
-import Range from "components/menu/settings/basic/range";
+import { connect } from 'react-redux';
+import {
+  thunkSetAnimationSpeed,
+  thunkSetCameraSpeed,
+  thunkSetCameraStyle,
+  thunkSetSpectatorMode,
+  thunkSetViewport,
+  thunkSetZoomSpeed,
+} from 'redux/settings/game/gameplay/thunks';
+import {
+  CameraStyleType,
+  SpectatorModeType,
+  ViewportType,
+} from 'redux/settings/game/gameplay/types';
+import { AppStateType, ThunkRootDispatchType } from 'redux/store';
+import { SPECTATOR_MODE_HINT } from 'redux/settings/game/gameplay/hints';
+import Range from 'components/menu/settings/basic/range';
 
 const Gameplay: FC<GameplayType> = ({
   animationSpeed,
@@ -21,45 +32,33 @@ const Gameplay: FC<GameplayType> = ({
   setCameraSpeed,
   setCameraStyle,
   setSpectatorMode,
-  setViewport
+  setViewport,
 }) => {
   return (
     <>
       <Range
         text="Animation speed"
-        value={animationSpeed} 
+        value={animationSpeed}
         from={25}
         to={300}
         onChange={setAnimationSpeed}
       />
-      <Range
-        text="Zoom speed"
-        value={zoomSpeed} 
-        from={1}
-        to={25}
-        onChange={setZoomSpeed}
-      />
-      <Range 
-        text="Camera speed"
-        from={1}
-        to={21}
-        value={cameraSpeed}
-        onChange={setCameraSpeed}
-      />
-      <Select 
+      <Range text="Zoom speed" value={zoomSpeed} from={1} to={25} onChange={setZoomSpeed} />
+      <Range text="Camera speed" from={1} to={21} value={cameraSpeed} onChange={setCameraSpeed} />
+      <Select
         text="Camera style"
         items={['Default', 'Smooth'] as Array<CameraStyleType>}
         selectedItem={cameraStyle}
         onChange={setCameraStyle}
       />
-      <Select 
+      <Select
         text="Spectator mode"
         items={['Disabled', 'Top one', 'Full map'] as Array<SpectatorModeType>}
         selectedItem={spectatorMode}
         onChange={setSpectatorMode}
         hint={SPECTATOR_MODE_HINT}
       />
-      <Select 
+      <Select
         text="Show viewport"
         items={['Disabled', 'Main tab', 'Second tab', 'Top one tab', 'All'] as Array<ViewportType>}
         selectedItem={viewport}
@@ -67,11 +66,11 @@ const Gameplay: FC<GameplayType> = ({
         disabled
       />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ settings }: AppStateType) => ({
-  ...settings.game.gameplay
+  ...settings.game.gameplay,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
@@ -80,7 +79,7 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setCameraSpeed: (value: number) => dispatch(thunkSetCameraSpeed(value)),
   setCameraStyle: (type: CameraStyleType) => dispatch(thunkSetCameraStyle(type)),
   setSpectatorMode: (type: SpectatorModeType) => dispatch(thunkSetSpectatorMode(type)),
-  setViewport: (type: ViewportType) => dispatch(thunkSetViewport(type))
+  setViewport: (type: ViewportType) => dispatch(thunkSetViewport(type)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gameplay);

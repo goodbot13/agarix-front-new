@@ -4,20 +4,20 @@
     width: 104px;
     height: 103px;
     font-weight: 500;
-    transition: .15s linear;
+    transition: 0.15s linear;
     cursor: pointer;
     position: relative;
 
     &:hover {
-      opacity: .6 !important;
-      color: white
+      opacity: 0.6 !important;
+      color: white;
     }
 
     div {
       position: absolute;
       left: 43px;
       top: 49px;
-      transition: .15s transform;
+      transition: 0.15s transform;
     }
 
     .cancelText {

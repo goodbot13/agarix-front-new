@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, .09);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
   padding: 16px 0;
   font-size: 17px;
   color: #eee;
-  transition: .33s;
+  transition: 0.33s;
 
   &:first-child {
     padding-top: 0;
@@ -14,7 +14,7 @@
 
   &.disabled {
     pointer-events: none;
-    opacity: .33;
+    opacity: 0.33;
   }
 
   .hint {
@@ -29,16 +29,15 @@
     font-size: 16px;
     color: #eee;
     cursor: pointer;
-    
 
     svg {
-      transition: .15s;
+      transition: 0.15s;
     }
 
     &:hover {
       svg {
         transform: scale(1.15);
-        opacity: .7;
+        opacity: 0.7;
       }
     }
   }
@@ -54,12 +53,12 @@
 
       .values {
         position: relative;
-        transition: .33s;
+        transition: 0.33s;
 
         .value {
           width: 125px;
           position: absolute;
-          transition: .15s;
+          transition: 0.15s;
         }
       }
     }

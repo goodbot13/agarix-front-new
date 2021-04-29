@@ -1,11 +1,11 @@
-import { 
-  SET_ADDITIONAL_PROFILES_LIST_SHOWN, 
-  SET_GAME_LOADED, 
-  SET_MENU_SHOWN, 
-  SET_SETTINGS_SHOWN, 
-  SET_SETTINGS_TYPE, 
-  SET_UI_BLURED, 
-  UIActionTypes, 
+import {
+  SET_ADDITIONAL_PROFILES_LIST_SHOWN,
+  SET_GAME_LOADED,
+  SET_MENU_SHOWN,
+  SET_SETTINGS_SHOWN,
+  SET_SETTINGS_TYPE,
+  SET_UI_BLURED,
+  UIActionTypes,
   IUIState,
   SET_GAME_SETTINGS_SUBMENU,
   SET_THEMING_SETTINGS_SUBMENU,
@@ -20,8 +20,8 @@ import {
   SET_SPECTATE_TYPE,
   SET_IS_PLAYER_PLAYING,
   ADD_CHAT_MESSAGE,
-  SET_INPUT_MESSAGE_SHOWN, 
-} from "./types";
+  SET_INPUT_MESSAGE_SHOWN,
+} from './types';
 
 const initState: IUIState = {
   gameLoaded: false,
@@ -36,7 +36,7 @@ const initState: IUIState = {
   uiSettingsSubmenu: 'UI_LEADERBOARD',
   additionalProfilesListShown: false,
   leaderboardPlayers: [
-/*     { nick: 'Player test #1', isMe: false, position: 1, accountId: 555 },
+    /*     { nick: 'Player test #1', isMe: false, position: 1, accountId: 555 },
     { nick: 'Player test #2', isMe: false, position: 2, accountId: 5512353 },
     { nick: 'Player test #3', isMe: false, position: 3, accountId: 5534554 },
     { nick: 'Player test #4', isMe: false, position: 4, accountId: 5546755 },
@@ -54,7 +54,7 @@ const initState: IUIState = {
     { nick: 'Player test #16', isMe: false, position: 16, accountId: 55857 }, */
   ],
   topTeamPlayers: [
-/*     { nick: 'Player test abc', mass: 6498, isAlive: false, id: 111 },
+    /*     { nick: 'Player test abc', mass: 6498, isAlive: false, id: 111 },
     { nick: 'Player test 1', mass: 4882, isAlive: false, id: 1112 },
     { nick: 'Some other player', mass: 8174, isAlive: false, id: 1113 },
     { nick: 'Very nice player', mass: 1630, isAlive: false, id: 1114 },
@@ -65,127 +65,125 @@ const initState: IUIState = {
   ],
   gameSocketConnecting: false,
   hudsShown: false,
-  stats: { 
-    fps: 0, 
-    loss: 0 
+  stats: {
+    fps: 0,
+    loss: 0,
   },
   spectateType: 'CENTER',
   isPlayerPlaying: false,
   chatMessages: [],
-  inputMessageShown: false
-}
+  inputMessageShown: false,
+};
 
 export const UIReducer = (state = initState, action: UIActionTypes): IUIState => {
   switch (action.type) {
-
-    case SET_GAME_LOADED: 
+    case SET_GAME_LOADED:
       return {
         ...state,
-        gameLoaded: action.gameLoaded
-      }
+        gameLoaded: action.gameLoaded,
+      };
 
     case SET_GAME_LOADER_STATUS:
       return {
         ...state,
-        gameLoaderStatus: action.gameLoaderStatus
-      }
+        gameLoaderStatus: action.gameLoaderStatus,
+      };
 
     case SET_MENU_SHOWN:
       return {
         ...state,
-        menuShown: action.menuShown
-      }
+        menuShown: action.menuShown,
+      };
 
     case SET_UI_BLURED:
       return {
         ...state,
-        blured: action.blured
-      }
+        blured: action.blured,
+      };
 
     case SET_SETTINGS_SHOWN:
       return {
         ...state,
-        settingsShown: action.settingsShown
-      }
+        settingsShown: action.settingsShown,
+      };
 
     case SET_SETTINGS_TYPE:
       return {
         ...state,
-        settingsType: action.settingsType
-      }
+        settingsType: action.settingsType,
+      };
 
     case SET_GAME_SETTINGS_SUBMENU:
       return {
         ...state,
-        gameSettingsSubmenu: action.gameSettingsSubmenu
-      }
+        gameSettingsSubmenu: action.gameSettingsSubmenu,
+      };
 
     case SET_THEMING_SETTINGS_SUBMENU:
       return {
         ...state,
-        themingSettingsSubmenu: action.themingSettingsSubmenu
-      }
+        themingSettingsSubmenu: action.themingSettingsSubmenu,
+      };
 
     case SET_HOTKEYS_SETTINGS_SUBMENU:
       return {
         ...state,
-        hotkeysSettingsSubmenu: action.hotkeysSettingsSubmenu
-      }
+        hotkeysSettingsSubmenu: action.hotkeysSettingsSubmenu,
+      };
 
     case SET_UI_SETTINGS_SUBMENU:
       return {
         ...state,
-        uiSettingsSubmenu: action.uiSettingsSubmenu
-      }
+        uiSettingsSubmenu: action.uiSettingsSubmenu,
+      };
 
     case SET_ADDITIONAL_PROFILES_LIST_SHOWN:
       return {
         ...state,
-        additionalProfilesListShown: action.additionalProfilesListShown
-      }
+        additionalProfilesListShown: action.additionalProfilesListShown,
+      };
 
     case SET_LEADERBOARD_PLAYERS:
       return {
         ...state,
-        leaderboardPlayers: action.leaderboardPlayers
-      }
+        leaderboardPlayers: action.leaderboardPlayers,
+      };
 
     case SET_GAME_SOCKET_CONNECTING:
       return {
         ...state,
-        gameSocketConnecting: action.gameSocketConnecting
-      }
+        gameSocketConnecting: action.gameSocketConnecting,
+      };
 
     case SET_TOP_TEAM_PLAYERS:
       return {
         ...state,
-        topTeamPlayers: action.topTeamPlayers
-      }
-    
+        topTeamPlayers: action.topTeamPlayers,
+      };
+
     case SET_STATS:
       return {
         ...state,
-        stats: action.stats
-      }
+        stats: action.stats,
+      };
 
     case SET_HUDS_SHOWN:
       return {
         ...state,
-        hudsShown: action.hudsShown
-      }
+        hudsShown: action.hudsShown,
+      };
 
     case SET_SPECTATE_TYPE:
       return {
         ...state,
-        spectateType: action.spectateType
-      }
+        spectateType: action.spectateType,
+      };
 
     case SET_IS_PLAYER_PLAYING:
       return {
         ...state,
-        isPlayerPlaying: action.isPlayerPlaying
-      }
-
+        isPlayerPlaying: action.isPlayerPlaying,
+      };
 
     case ADD_CHAT_MESSAGE:
       const messages = [...state.chatMessages];
@@ -193,15 +191,16 @@ export const UIReducer = (state = initState, action: UIActionTypes): IUIState =>
 
       return {
         ...state,
-        chatMessages: messages
-      }
+        chatMessages: messages,
+      };
 
     case SET_INPUT_MESSAGE_SHOWN:
       return {
         ...state,
-        inputMessageShown: action.inputMessageShown
-      }
-    
-    default: return state;
+        inputMessageShown: action.inputMessageShown,
+      };
+
+    default:
+      return state;
   }
-}
+};

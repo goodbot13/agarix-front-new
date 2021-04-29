@@ -1,59 +1,65 @@
-import { RGB } from "redux/settings/theming/types";
-import { 
+import { RGB } from 'redux/settings/theming/types';
+import {
   ChatType,
-  SET_CHAT_BACKGROUND_COLOR, 
-  SET_CHAT_COMMAND_MESSAGE_BACKGROUND_COLOR, 
-  SET_CHAT_COMMAND_MESSAGE_FONT_COLOR, 
-  SET_CHAT_ENABLED, 
-  SET_CHAT_FONT_COLOR, 
-  SET_CHAT_GAME_MESSAGE_BACKGROUND_COLOR, 
-  SET_CHAT_GAME_MESSAGE_FONT_COLOR, 
-  SET_CHAT_HEIGHT, 
-  SET_CHAT_TYPE, 
-  UIChatActionTypes 
-} from "./types";
+  SET_CHAT_BACKGROUND_COLOR,
+  SET_CHAT_COMMAND_MESSAGE_BACKGROUND_COLOR,
+  SET_CHAT_COMMAND_MESSAGE_FONT_COLOR,
+  SET_CHAT_ENABLED,
+  SET_CHAT_FONT_COLOR,
+  SET_CHAT_GAME_MESSAGE_BACKGROUND_COLOR,
+  SET_CHAT_GAME_MESSAGE_FONT_COLOR,
+  SET_CHAT_HEIGHT,
+  SET_CHAT_TYPE,
+  UIChatActionTypes,
+} from './types';
 
 export const setChatEnabled = (enabled: boolean): UIChatActionTypes => ({
   type: SET_CHAT_ENABLED,
-  enabled
+  enabled,
 });
 
 export const setChatHeight = (height: number): UIChatActionTypes => ({
   type: SET_CHAT_HEIGHT,
-  height
+  height,
 });
 
 export const setChatType = (chatType: ChatType): UIChatActionTypes => ({
   type: SET_CHAT_TYPE,
-  chatType
+  chatType,
 });
 
 export const setChatBackgroundColor = (backgroundColor: RGB): UIChatActionTypes => ({
   type: SET_CHAT_BACKGROUND_COLOR,
-  backgroundColor
+  backgroundColor,
 });
 
 export const setChatFontColor = (fontColor: RGB): UIChatActionTypes => ({
   type: SET_CHAT_FONT_COLOR,
-  fontColor
+  fontColor,
 });
 
-export const setChatCommandMessageBackgroundColor = (commandMessageBackgroundColor: RGB): UIChatActionTypes => ({
+export const setChatCommandMessageBackgroundColor = (
+  commandMessageBackgroundColor: RGB,
+): UIChatActionTypes => ({
   type: SET_CHAT_COMMAND_MESSAGE_BACKGROUND_COLOR,
-  commandMessageBackgroundColor
+  commandMessageBackgroundColor,
 });
 
-export const setChatCommandMessageFontColor = (commandMessageFontColor: RGB): UIChatActionTypes => ({
+export const setChatCommandMessageFontColor = (
+  commandMessageFontColor: RGB,
+): UIChatActionTypes => ({
   type: SET_CHAT_COMMAND_MESSAGE_FONT_COLOR,
-  commandMessageFontColor
+  commandMessageFontColor,
 });
 
-export const setChatGameMessageBackgroundColor = (gameMessageBackgroundColor: RGB): UIChatActionTypes => ({
+export const setChatGameMessageBackgroundColor = (
+  gameMessageBackgroundColor: RGB,
+): UIChatActionTypes => ({
   type: SET_CHAT_GAME_MESSAGE_BACKGROUND_COLOR,
-  gameMessageBackgroundColor
+  gameMessageBackgroundColor,
 });
 
 export const setChatGameMessageFontColor = (gameMessageFontColor: RGB): UIChatActionTypes => ({
   type: SET_CHAT_GAME_MESSAGE_FONT_COLOR,
-  gameMessageFontColor
+  gameMessageFontColor,
 });

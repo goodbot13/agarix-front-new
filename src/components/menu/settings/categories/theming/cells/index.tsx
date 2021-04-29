@@ -1,29 +1,32 @@
-import Colorpick from "components/menu/settings/basic/colorpick";
+import Colorpick from 'components/menu/settings/basic/colorpick';
 
-import { FC } from "react";
+import { FC } from 'react';
 
-import { RGB } from "redux/settings/theming/types";
+import { RGB } from 'redux/settings/theming/types';
 
-import { connect } from "react-redux";
-import { AppStateType, ThunkRootDispatchType } from "redux/store";
+import { connect } from 'react-redux';
+import { AppStateType, ThunkRootDispatchType } from 'redux/store';
 
-import { 
+import {
   thunkSetAdaptiveShadow,
   thunkSetCellsColorLighten,
-  thunkSetCellsTransparency, 
-  thunkSetMyShadowColor, 
-  thunkSetMyShadowDistance, 
-  thunkSetMyShadowStrength, 
-  thunkSetOneColoredColor, 
-  thunkSetOneColoredStatsColor, 
-  thunkSetShadowColor, 
-  thunkSetShadowDistance, 
-  thunkSetShadowStrength 
-} from "redux/settings/theming/cells/thunks";
+  thunkSetCellsTransparency,
+  thunkSetMyShadowColor,
+  thunkSetMyShadowDistance,
+  thunkSetMyShadowStrength,
+  thunkSetOneColoredColor,
+  thunkSetOneColoredStatsColor,
+  thunkSetShadowColor,
+  thunkSetShadowDistance,
+  thunkSetShadowStrength,
+} from 'redux/settings/theming/cells/thunks';
 
-import { ADAPTIVE_SHADOW_HINT, ONE_COLORED_STATS_COLOR_HINT } from "redux/settings/theming/cells/hints";
-import Switch from "components/menu/settings/basic/switch";
-import Range from "components/menu/settings/basic/range";
+import {
+  ADAPTIVE_SHADOW_HINT,
+  ONE_COLORED_STATS_COLOR_HINT,
+} from 'redux/settings/theming/cells/hints';
+import Switch from 'components/menu/settings/basic/switch';
+import Range from 'components/menu/settings/basic/range';
 
 const Cells: FC<CellsType> = ({
   oneColoredColor,
@@ -47,67 +50,59 @@ const Cells: FC<CellsType> = ({
   setMyShadowStrength,
   setCellsTransparency,
   setCellsColorLighten,
-  setAdaptiveShadow
+  setAdaptiveShadow,
 }) => {
   return (
     <>
-      <Colorpick 
-        text='One colored cells color'
+      <Colorpick
+        text="One colored cells color"
         color={oneColoredColor}
         onChange={setOneColoredColor}
       />
-      <Colorpick 
-        text='One colored stats color'
+      <Colorpick
+        text="One colored stats color"
         color={oneColoredStatsColor}
         onChange={setOneColoredStatsColor}
         hint={ONE_COLORED_STATS_COLOR_HINT}
       />
-      <Switch 
+      <Switch
         text="Adaptive shadow"
         hint={ADAPTIVE_SHADOW_HINT}
         enabled={adaptiveShadow}
         onChange={setAdaptiveShadow}
       />
-      <Colorpick 
-        text='Shadow color'
-        color={shadowColor}
-        onChange={setShadowColor}
-      />
-      <Range 
-        text='Shadow distance'
+      <Colorpick text="Shadow color" color={shadowColor} onChange={setShadowColor} />
+      <Range
+        text="Shadow distance"
         from={5}
         to={100}
         value={shadowDistance}
         onChange={setShadowDistance}
       />
-      <Range 
-        text='Shadow strength'
+      <Range
+        text="Shadow strength"
         from={1}
         to={10}
         value={shadowStrength}
         onChange={setShadowStrength}
       />
-      <Colorpick 
-        text='My cell shadow color'
-        color={myShadowColor}
-        onChange={setMyShadowColor}
-      />
+      <Colorpick text="My cell shadow color" color={myShadowColor} onChange={setMyShadowColor} />
       <Range
-        text='My cell shadow distance'
+        text="My cell shadow distance"
         from={5}
         to={100}
         value={myShadowDistance}
         onChange={setMyShadowDistance}
       />
-      <Range 
-        text='My cell shadow strength'
+      <Range
+        text="My cell shadow strength"
         from={1}
         to={10}
         value={myShadowStrength}
         onChange={setMyShadowStrength}
       />
-      <Range 
-        text='Transparency'
+      <Range
+        text="Transparency"
         from={0.1}
         to={1}
         value={transparency}
@@ -118,14 +113,14 @@ const Cells: FC<CellsType> = ({
         from={10}
         to={160}
         value={colorLighten}
-        onChange={setCellsColorLighten} 
+        onChange={setCellsColorLighten}
       />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ settings }: AppStateType) => ({
-  ...settings.theming.cells
+  ...settings.theming.cells,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
@@ -139,9 +134,8 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setMyShadowStrength: (value: number) => dispatch(thunkSetMyShadowStrength(value)),
   setCellsTransparency: (value: number) => dispatch(thunkSetCellsTransparency(value)),
   setCellsColorLighten: (value: number) => dispatch(thunkSetCellsColorLighten(value)),
-  setAdaptiveShadow: (value: boolean) => dispatch(thunkSetAdaptiveShadow(value))
+  setAdaptiveShadow: (value: boolean) => dispatch(thunkSetAdaptiveShadow(value)),
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cells);
 

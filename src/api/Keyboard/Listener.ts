@@ -1,4 +1,9 @@
-export const transformCode = (code: string, ctrlKey: boolean, altKey: boolean, shiftKey: boolean): string => {
+export const transformCode = (
+  code: string,
+  ctrlKey: boolean,
+  altKey: boolean,
+  shiftKey: boolean,
+): string => {
   const ctrl = ctrlKey ? 'CTRL+' : '';
   const alt = altKey ? 'ALT+' : '';
   const shift = shiftKey ? 'SHIFT+' : '';
@@ -12,7 +17,7 @@ export const transformCode = (code: string, ctrlKey: boolean, altKey: boolean, s
   }
 
   return ctrl + alt + shift + code.replace('Key', '');
-}
+};
 
 export default class KeyboardEvents {
   private onKeyDownSubscribers = [] as Array<TSubscriber>;
@@ -26,10 +31,7 @@ export default class KeyboardEvents {
       const { code, ctrlKey, altKey, shiftKey, preventDefault } = e;
 
       this.onKeyDownSubscribers.forEach((subscriber) => {
-        subscriber(
-          transformCode(code, ctrlKey, altKey, shiftKey), 
-          preventDefault.bind(e)
-        );
+        subscriber(transformCode(code, ctrlKey, altKey, shiftKey), preventDefault.bind(e));
       });
     });
   }
@@ -41,10 +43,7 @@ export default class KeyboardEvents {
       const { code, ctrlKey, altKey, shiftKey, preventDefault } = e;
 
       this.onKeyUpSubscribers.forEach((subscriber) => {
-        subscriber(
-          transformCode(code, ctrlKey, altKey, shiftKey), 
-          preventDefault.bind(e)
-        );
+        subscriber(transformCode(code, ctrlKey, altKey, shiftKey), preventDefault.bind(e));
       });
     });
   }
@@ -55,17 +54,11 @@ export default class KeyboardEvents {
     window.addEventListener('keypress', (e) => {
       this.onKeyPressSubscribers.forEach((subscriber) => {
         const { code, ctrlKey, altKey, shiftKey, preventDefault } = e;
-        
-        subscriber(
-          transformCode(code, ctrlKey, altKey, shiftKey), 
-          preventDefault.bind(e)
-        );
+
+        subscriber(transformCode(code, ctrlKey, altKey, shiftKey), preventDefault.bind(e));
       });
     });
   }
 }
 
-export type TSubscriber = (
-  key: string, 
-  preventDefault: () => void
-) => void;
+export type TSubscriber = (key: string, preventDefault: () => void) => void;

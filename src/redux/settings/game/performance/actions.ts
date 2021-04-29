@@ -8,35 +8,39 @@ import {
   SET_FOOD_PERFORMANCE_MODE,
   SET_FPS_LOCK_TYPE,
   SET_GLOW_FILTER_SHADER_TYPE,
-  SET_RENDER_MODE
-} from "./types";
+  SET_RENDER_MODE,
+} from './types';
 
 export const setRenderMode = (renderMode: RenderModeType): GamePerformanceActionTypes => ({
   type: SET_RENDER_MODE,
-  renderMode
+  renderMode,
 });
 
 export const setAntialiasing = (antialiasing: boolean): GamePerformanceActionTypes => ({
   type: SET_ANTIALIASING,
-  antialiasing
+  antialiasing,
 });
 
 export const setCulling = (culling: boolean): GamePerformanceActionTypes => ({
   type: SET_CULLING,
-  culling
+  culling,
 });
 
-export const setFoodPerformanceMode = (foodPerformanceMode: boolean): GamePerformanceActionTypes => ({
+export const setFoodPerformanceMode = (
+  foodPerformanceMode: boolean,
+): GamePerformanceActionTypes => ({
   type: SET_FOOD_PERFORMANCE_MODE,
-  foodPerformanceMode
+  foodPerformanceMode,
 });
 
-export const setGlowFilterShaderType = (glowFilterShaderType: GlowFilterShaderType): GamePerformanceActionTypes => ({
+export const setGlowFilterShaderType = (
+  glowFilterShaderType: GlowFilterShaderType,
+): GamePerformanceActionTypes => ({
   type: SET_GLOW_FILTER_SHADER_TYPE,
-  glowFilterShaderType
+  glowFilterShaderType,
 });
 
 export const setFpsLockType = (fpsLockType: FpsLockType): GamePerformanceActionTypes => ({
   type: SET_FPS_LOCK_TYPE,
-  fpsLockType
+  fpsLockType,
 });

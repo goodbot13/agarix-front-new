@@ -1,4 +1,3 @@
-
 import KeyboardGameplay from 'api/Keyboard/Gameplay/KeyboardGameplay';
 import Storage from 'api/storage/Storage';
 import Keyboard from 'api/Keyboard/Keyboard';
@@ -8,7 +7,7 @@ import { initFrontCommunicationService } from './FrontCommunicationService/Front
 import StoreLink from './StoreLink';
 import { setInputMessageShown } from 'redux/UI/actions';
 
-export default (store: TStore): void => {
+const initializeApp = (store: TStore): void => {
   // check storage
   Storage.init(store.getState());
 
@@ -26,7 +25,9 @@ export default (store: TStore): void => {
 
   // start game client initialization
   initGameClient();
-}
+};
+
+export default initializeApp;
 
 const initKeyboardInteractions = (store: TStore) => {
   const kb = store.getState().settings.hotkeys.keyboard;
@@ -46,7 +47,7 @@ const initKeyboardInteractions = (store: TStore) => {
     switchTabsKey: kb.switchTabs,
     toggleFoodRenderKey: kb.toggleFoodRender,
     toggleSpectatorModeKey: kb.toggleSpectatorMode,
-    toggleHudsKey: kb.toggleHuds
+    toggleHudsKey: kb.toggleHuds,
   });
 
   // init menu intraction using keyboard
@@ -64,7 +65,7 @@ const initKeyboardInteractions = (store: TStore) => {
     store.dispatch(setInputMessageShown(!inputMessageShown));
     Keyboard.block = !inputMessageShown;
   });
-}
+};
 
 const initGameClient = () => {
   const checker = setInterval(() => {
@@ -73,4 +74,4 @@ const initGameClient = () => {
       window.GameAPI.init();
     }
   }, 100);
-}
+};

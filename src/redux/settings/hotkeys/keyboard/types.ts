@@ -1,5 +1,5 @@
-import { ThunkAction } from "redux-thunk";
-import { AppStateType } from "redux/store";
+import { ThunkAction } from 'redux-thunk';
+import { AppStateType } from 'redux/store';
 
 export const SET_FEED = 'SET_FEED';
 export const SET_MACRO_FEED = 'SET_MACRO_FEED';
@@ -18,102 +18,118 @@ export const SET_TOGGLE_SPECTATOR_MODE = 'SET_TOGGLE_SPECTATOR_MODE';
 export const SET_TOGGLE_HUDS = 'SET_TOGGLE_HUDS';
 
 export interface IHotkeysKeyboard {
-  feed: string,
-  macroFeed: string,
-  split: string,
-  doubleSplit: string,
-  tripleSplit: string,
-  splitSixteen: string,
-  quickRespawn: string,
-  pauseCell: string,
-  toggleCellHelpers: string,
-  toggleCellSkins: string,
-  toggleCellRings: string,
-  switchTabs: string,
-  toggleFoodRender: string,
-  toggleSpectatorMode: string,
-  toggleHuds: string
+  feed: string;
+  macroFeed: string;
+  split: string;
+  doubleSplit: string;
+  tripleSplit: string;
+  splitSixteen: string;
+  quickRespawn: string;
+  pauseCell: string;
+  toggleCellHelpers: string;
+  toggleCellSkins: string;
+  toggleCellRings: string;
+  switchTabs: string;
+  toggleFoodRender: string;
+  toggleSpectatorMode: string;
+  toggleHuds: string;
 }
 
 interface SetFeedAction {
-  type: typeof SET_FEED,
-  feed: string
+  type: typeof SET_FEED;
+  feed: string;
 }
 
 interface SetMacroFeedAction {
-  type: typeof SET_MACRO_FEED,
-  macroFeed: string
+  type: typeof SET_MACRO_FEED;
+  macroFeed: string;
 }
 
 interface SetSplitAction {
-  type: typeof SET_SPLIT,
-  split: string 
+  type: typeof SET_SPLIT;
+  split: string;
 }
 
 interface SetDoubleSplitAction {
-  type: typeof SET_DOUBLE_SPLIT,
-  doubleSplit: string 
+  type: typeof SET_DOUBLE_SPLIT;
+  doubleSplit: string;
 }
 
 interface SetTripleSplitAction {
-  type: typeof SET_TRIPLE_SPLIT,
-  tripleSplit: string 
+  type: typeof SET_TRIPLE_SPLIT;
+  tripleSplit: string;
 }
 
 interface SetSplitSixteenAction {
-  type: typeof SET_SPLIT_SIXTEEN,
-  splitSixteen: string 
+  type: typeof SET_SPLIT_SIXTEEN;
+  splitSixteen: string;
 }
 
 interface SetQuickRespawnAction {
-  type: typeof SET_QUICK_RESPAWN,
-  quickRespawn: string 
+  type: typeof SET_QUICK_RESPAWN;
+  quickRespawn: string;
 }
 
 interface SetPauseCellAction {
-  type: typeof SET_PAUSE_CELL,
-  pauseCell: string 
+  type: typeof SET_PAUSE_CELL;
+  pauseCell: string;
 }
 
 interface SetToggleCellHelpersAction {
-  type: typeof SET_TOGGLE_CELL_HELPERS,
-  toggleCellHelpers: string 
+  type: typeof SET_TOGGLE_CELL_HELPERS;
+  toggleCellHelpers: string;
 }
 
 interface SetToggleCellSkinsAction {
-  type: typeof SET_TOGGLE_CELL_SKINS,
-  toggleCellSkins: string 
+  type: typeof SET_TOGGLE_CELL_SKINS;
+  toggleCellSkins: string;
 }
 
 interface SetToggleCellRingsAction {
-  type: typeof SET_TOGGLE_CELL_RINGS,
-  toggleCellRings: string 
+  type: typeof SET_TOGGLE_CELL_RINGS;
+  toggleCellRings: string;
 }
 
 interface SetSwitchTabsAction {
-  type: typeof SET_SWITCH_TABS,
-  switchTabs: string 
+  type: typeof SET_SWITCH_TABS;
+  switchTabs: string;
 }
 
 interface SetToggleFoodRenderAction {
-  type: typeof SET_TOGGLE_FOOD_RENDER,
-  toggleFoodRender: string 
+  type: typeof SET_TOGGLE_FOOD_RENDER;
+  toggleFoodRender: string;
 }
 
 interface SetToggleSpectatorModeAction {
-  type: typeof SET_TOGGLE_SPECTATOR_MODE,
-  toggleSpectatorMode: string 
+  type: typeof SET_TOGGLE_SPECTATOR_MODE;
+  toggleSpectatorMode: string;
 }
 
 interface SetToggleHudsAction {
-  type: typeof SET_TOGGLE_HUDS,
-  toggleHuds: string 
+  type: typeof SET_TOGGLE_HUDS;
+  toggleHuds: string;
 }
 
-export type HotkeysKeyboardActionTypes = SetFeedAction | SetMacroFeedAction | SetSplitAction | SetDoubleSplitAction |
-                                                 SetTripleSplitAction | SetSplitSixteenAction | SetQuickRespawnAction | SetPauseCellAction |
-                                                 SetToggleCellHelpersAction | SetToggleCellSkinsAction | SetToggleCellRingsAction |
-                                                 SetSwitchTabsAction | SetToggleFoodRenderAction | SetToggleSpectatorModeAction |
-                                                 SetToggleHudsAction;
+export type HotkeysKeyboardActionTypes =
+  | SetFeedAction
+  | SetMacroFeedAction
+  | SetSplitAction
+  | SetDoubleSplitAction
+  | SetTripleSplitAction
+  | SetSplitSixteenAction
+  | SetQuickRespawnAction
+  | SetPauseCellAction
+  | SetToggleCellHelpersAction
+  | SetToggleCellSkinsAction
+  | SetToggleCellRingsAction
+  | SetSwitchTabsAction
+  | SetToggleFoodRenderAction
+  | SetToggleSpectatorModeAction
+  | SetToggleHudsAction;
 
-export type HotkeysKeyboardThunkActionTypes = ThunkAction<void, AppStateType, unknown, HotkeysKeyboardActionTypes>;
+export type HotkeysKeyboardThunkActionTypes = ThunkAction<
+  void,
+  AppStateType,
+  unknown,
+  HotkeysKeyboardActionTypes
+>;

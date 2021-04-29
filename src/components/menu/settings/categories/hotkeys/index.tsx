@@ -1,43 +1,43 @@
-import { FC } from "react";
+import { FC } from 'react';
 import css from './index.module.scss';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import { setHotkeysSettingsSubmenu } from "redux/UI/actions";
-import { SettingsHotkeysType } from "redux/settings/hotkeys/types";
-import { AppStateType, ThunkRootDispatchType } from "redux/store";
+import { setHotkeysSettingsSubmenu } from 'redux/UI/actions';
+import { SettingsHotkeysType } from 'redux/settings/hotkeys/types';
+import { AppStateType, ThunkRootDispatchType } from 'redux/store';
 
-import Left from "../../left";
-import Right from "../../right";
+import Left from '../../left';
+import Right from '../../right';
 
 import classNames from 'classnames';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCommentAlt, faKeyboard, faMouse } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCommentAlt, faKeyboard, faMouse } from '@fortawesome/free-solid-svg-icons';
 
-import CategoryWrapper from "../wrapper";
-import Keyboard from "./keyboard";
+import CategoryWrapper from '../wrapper';
+import Keyboard from './keyboard';
 
 const Hotkeys: FC<HotkeysType> = ({ settingsSubmenu, settingsShown, setSettingsSubmenu }) => {
   return (
     <>
       <Left>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'HOTKEYS_KEYBOARD' })}
           onClick={() => setSettingsSubmenu('HOTKEYS_KEYBOARD')}
         >
-          <FontAwesomeIcon icon={faKeyboard}/> Keyboard
+          <FontAwesomeIcon icon={faKeyboard} /> Keyboard
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'HOTKEY_MOUSE' })}
           onClick={() => setSettingsSubmenu('HOTKEY_MOUSE')}
         >
-          <FontAwesomeIcon icon={faMouse}/> Mouse
+          <FontAwesomeIcon icon={faMouse} /> Mouse
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'HOTKEYS_COMMANDS' })}
           onClick={() => setSettingsSubmenu('HOTKEYS_COMMANDS')}
         >
-          <FontAwesomeIcon icon={faCommentAlt}/> Commands
+          <FontAwesomeIcon icon={faCommentAlt} /> Commands
         </button>
       </Left>
       <Right>
@@ -46,16 +46,17 @@ const Hotkeys: FC<HotkeysType> = ({ settingsSubmenu, settingsShown, setSettingsS
         </CategoryWrapper>
       </Right>
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ UI }: AppStateType) => ({
   settingsSubmenu: UI.hotkeysSettingsSubmenu,
-  settingsShown: UI.settingsShown
+  settingsShown: UI.settingsShown,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
-  setSettingsSubmenu: (submenu: SettingsHotkeysType) => dispatch(setHotkeysSettingsSubmenu(submenu)),
+  setSettingsSubmenu: (submenu: SettingsHotkeysType) =>
+    dispatch(setHotkeysSettingsSubmenu(submenu)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Hotkeys);

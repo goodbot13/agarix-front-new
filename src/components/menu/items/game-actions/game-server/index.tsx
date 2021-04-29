@@ -14,12 +14,16 @@ const GameServer: FC<GameServerType> = ({ servers, currentServerIndex, changeGam
 
   const transformServerName = (name: GameServerLocationTypes): string => {
     switch (name) {
-      case 'North America': return 'NA';
-      case 'South America': return 'SA';
-      case 'East Asia': return 'EA';
-      default: return name;
+      case 'North America':
+        return 'NA';
+      case 'South America':
+        return 'SA';
+      case 'East Asia':
+        return 'EA';
+      default:
+        return name;
     }
-  }
+  };
 
   return (
     <>
@@ -37,30 +41,32 @@ const GameServer: FC<GameServerType> = ({ servers, currentServerIndex, changeGam
         </div>
       </button>
       <DelayedRenderComponent rendered={selectGameServer} hideDelayMs={150}>
-        <SelectList 
-          itemsList={servers.map((server) => `${server.location} (${server.playersAmount} players)`)}
+        <SelectList
+          itemsList={servers.map(
+            (server) => `${server.location} (${server.playersAmount} players)`,
+          )}
           selectedIndex={currentServerIndex}
           shown={selectGameServer}
           onChange={(name, index) => changeGameServer(index as number)}
         />
       </DelayedRenderComponent>
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ game }: AppStateType) => ({
   servers: game.servers,
-  currentServerIndex: game.currentServerIndex
+  currentServerIndex: game.currentServerIndex,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
-  changeGameServer: (index: number) => dispatch(thunkChangeGameServer(index))
+  changeGameServer: (index: number) => dispatch(thunkChangeGameServer(index)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameServer);
 
 type GameServerType = {
-  servers: Array<IGameServer>,
-  currentServerIndex: number,
-  changeGameServer: (index: number) => void
-}
+  servers: Array<IGameServer>;
+  currentServerIndex: number;
+  changeGameServer: (index: number) => void;
+};

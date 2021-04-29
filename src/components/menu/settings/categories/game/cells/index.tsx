@@ -1,32 +1,32 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import { AUTO_HIDE_MASS_AND_NICKS_HINT, RANGE_ZERO_HINT } from "redux/settings/game/cells/hints";
+import { AUTO_HIDE_MASS_AND_NICKS_HINT, RANGE_ZERO_HINT } from 'redux/settings/game/cells/hints';
 
-import { RingsType, ShadowType, SkinsType } from "redux/settings/game/cells/types";
-import { AppStateType, ThunkRootDispatchType } from "redux/store";
-import { 
-  thunkSetAutoHideMassAndNicks, 
-  thunkSetFadeSpeed, 
-  thunkSetMassUpdateDelay, 
-  thunkSetOneColored, 
-  thunkSetRingsSpinning, 
-  thunkSetRingsType, 
-  thunkSetShadow, 
-  thunkSetShortMass, 
-  thunkSetShowMass, 
-  thunkSetShowMassMyCell, 
-  thunkSetShowNickMyCell, 
-  thunkSetShowNicks, 
-  thunkSetSkinsType, 
-  thunkSetSoakSpeed 
-} from "redux/settings/game/cells/thunks";
+import { RingsType, ShadowType, SkinsType } from 'redux/settings/game/cells/types';
+import { AppStateType, ThunkRootDispatchType } from 'redux/store';
+import {
+  thunkSetAutoHideMassAndNicks,
+  thunkSetFadeSpeed,
+  thunkSetMassUpdateDelay,
+  thunkSetOneColored,
+  thunkSetRingsSpinning,
+  thunkSetRingsType,
+  thunkSetShadow,
+  thunkSetShortMass,
+  thunkSetShowMass,
+  thunkSetShowMassMyCell,
+  thunkSetShowNickMyCell,
+  thunkSetShowNicks,
+  thunkSetSkinsType,
+  thunkSetSoakSpeed,
+} from 'redux/settings/game/cells/thunks';
 
-import Switch from "components/menu/settings/basic/switch";
+import Switch from 'components/menu/settings/basic/switch';
 
-import Select from "components/menu/settings/basic/select";
-import Range from "components/menu/settings/basic/range";
+import Select from 'components/menu/settings/basic/select';
+import Range from 'components/menu/settings/basic/range';
 
 const Cells: FC<CellsType> = ({
   mass,
@@ -56,67 +56,47 @@ const Cells: FC<CellsType> = ({
   setSoakSpeed,
   setFadeSpeed,
   setOneColored,
-  setShadow
+  setShadow,
 }) => {
   return (
     <>
-      <Switch 
-        text="Show mass" 
-        enabled={mass} 
-        onChange={setShowMass}
-      />
-      <Switch 
-        text="Show mass my cell" 
-        enabled={myMass} 
-        onChange={setShowMassMyCell}
-      />
-      <Switch 
-        text="Show nicks" 
-        enabled={nicks} 
-        onChange={setShowNicks}
-      />
-      <Switch 
-        text="Show nick my cell" 
-        enabled={myNick} 
-        onChange={setShowNickMyCell}
-      />
-      <Switch 
-        text="Auto-hide mass and nicks" 
+      <Switch text="Show mass" enabled={mass} onChange={setShowMass} />
+      <Switch text="Show mass my cell" enabled={myMass} onChange={setShowMassMyCell} />
+      <Switch text="Show nicks" enabled={nicks} onChange={setShowNicks} />
+      <Switch text="Show nick my cell" enabled={myNick} onChange={setShowNickMyCell} />
+      <Switch
+        text="Auto-hide mass and nicks"
         hint={AUTO_HIDE_MASS_AND_NICKS_HINT}
-        enabled={autoHideMassAndNicks} 
+        enabled={autoHideMassAndNicks}
         onChange={setAutoHideMassAndNicks}
       />
-      <Switch 
-        text="Short mass (k)" 
-        enabled={shortMass} 
-        onChange={setShortMass}
-      />
-      <Range 
+      <Switch text="Short mass (k)" enabled={shortMass} onChange={setShortMass} />
+      <Range
         text="Mass update (refresh) delay"
         from={1}
         to={30}
         value={massUpdateDelay}
         onChange={setMassUpdateDelay}
       />
-      <Select 
+      <Select
         text="Skins"
         items={['Disabled', 'Custom', 'Vanilla', 'All'] as Array<SkinsType>}
         selectedItem={skinsType}
         onChange={setSkinsType}
       />
-      <Select 
+      <Select
         text="Rings"
         items={['Disabled', '2CL', 'Yue', 'Acimazis'] as Array<RingsType>}
         selectedItem={ringsType}
         onChange={setRingsType}
       />
-      <Switch 
+      <Switch
         text="Spinning rings"
-        enabled={ringsSpinning} 
+        enabled={ringsSpinning}
         onChange={setRingsSpinning}
         disabled={ringsType === 'Disabled'}
       />
-      <Range 
+      <Range
         text="Soak animation speed"
         hint={RANGE_ZERO_HINT}
         from={0}
@@ -124,7 +104,7 @@ const Cells: FC<CellsType> = ({
         value={soakSpeed}
         onChange={setSoakSpeed}
       />
-      <Range 
+      <Range
         text="Fade animation speed"
         hint={RANGE_ZERO_HINT}
         from={0}
@@ -132,23 +112,19 @@ const Cells: FC<CellsType> = ({
         value={fadeSpeed}
         onChange={setFadeSpeed}
       />
-      <Switch 
-        text="One-colored" 
-        enabled={oneColored} 
-        onChange={setOneColored}
-      />
-      <Select 
+      <Switch text="One-colored" enabled={oneColored} onChange={setOneColored} />
+      <Select
         text="Shadow"
         items={['Disabled', 'Only me', 'All'] as Array<ShadowType>}
         selectedItem={shadow}
         onChange={setShadow}
       />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ settings }: AppStateType) => ({
-  ...settings.game.cells
+  ...settings.game.cells,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
@@ -165,7 +141,7 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setSoakSpeed: (type: number) => dispatch(thunkSetSoakSpeed(type)),
   setFadeSpeed: (type: number) => dispatch(thunkSetFadeSpeed(type)),
   setOneColored: (value: boolean) => dispatch(thunkSetOneColored(value)),
-  setShadow: (shadow: ShadowType) => dispatch(thunkSetShadow(shadow))
+  setShadow: (shadow: ShadowType) => dispatch(thunkSetShadow(shadow)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cells);

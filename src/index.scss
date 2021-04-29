@@ -9,11 +9,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  * { 
-    font-family: 'Tajawal', sans-serif; 
+  * {
+    font-family: 'Tajawal', sans-serif;
   }
 
-  button, img, input {
+  button,
+  img,
+  input {
     vertical-align: middle;
     outline: none;
   }

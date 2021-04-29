@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import css from './index.module.scss';
 
-import { faArrowDown, faArrowUp, faCheck  } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faArrowUp, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { connect } from 'react-redux';
@@ -14,10 +14,7 @@ import Reset from './reset';
 const SaveExportImportReset: FC<SaveExportImportResetType> = ({ setSettingsShown }) => {
   return (
     <section className={css.wrap}>
-      <button 
-        onClick={() => setSettingsShown(false)}
-        className={css.save}
-      >
+      <button onClick={() => setSettingsShown(false)} className={css.save}>
         <FontAwesomeIcon icon={faCheck} /> Save
       </button>
       <button style={{ opacity: 0.33, pointerEvents: 'none' }}>
@@ -28,11 +25,11 @@ const SaveExportImportReset: FC<SaveExportImportResetType> = ({ setSettingsShown
       </button>
       <Reset />
     </section>
-  )
-}
+  );
+};
 
 const mapDistpatchToProps = (dispatch: ThunkRootDispatchType) => ({
-  setSettingsShown: (shown: boolean) => dispatch(thunkSetSettingsShown(shown))
+  setSettingsShown: (shown: boolean) => dispatch(thunkSetSettingsShown(shown)),
 });
 
 export default connect(null, mapDistpatchToProps)(SaveExportImportReset);

@@ -2,15 +2,15 @@
   background: url(../../../../../assets/menu/server.png);
   width: 104px;
   height: 105px;
-  transition: .15s linear;
+  transition: 0.15s linear;
   cursor: pointer;
   padding: 0 2px 16px 16px;
   word-wrap: break-word;
 
   &:hover,
   &.active {
-    opacity: .6;
-    color: white
+    opacity: 0.6;
+    color: white;
   }
 
   svg {

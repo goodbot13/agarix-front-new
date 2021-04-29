@@ -8,14 +8,14 @@
   top: 24px;
   left: calc(50% - 346px / 2);
   overflow: hidden;
-  transition: .2s linear;
+  transition: 0.2s linear;
 }
 
 .wrap.hidden {
   opacity: 0;
   animation: setVisibilityHidden 0s;
   animation-fill-mode: forwards;
-  animation-delay: .2s;
+  animation-delay: 0.2s;
 }
 
 .wrap.targetMode {
@@ -24,7 +24,7 @@
 
 .wrap > .target {
   opacity: 0;
-  transition: .4s;
+  transition: 0.4s;
   margin-top: 8px;
   width: 100%;
   text-align: center;
@@ -40,9 +40,9 @@
   height: 30px;
   width: 80px;
   border: none;
-  border-right: 1px solid rgba(25, 25, 25, .5);
+  border-right: 1px solid rgba(25, 25, 25, 0.5);
   color: white;
-  transition: .2s;
+  transition: 0.2s;
   outline: none;
   cursor: pointer;
 }

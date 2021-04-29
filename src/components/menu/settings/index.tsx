@@ -15,46 +15,51 @@ import ThemingUI from './categories/UI';
 
 const Settings: FC<SettingsComponentType> = ({ shown, settingsType, menuShown }) => {
   return (
-    <div 
-      className={classNames({ [css.wrap]: true, [css.shown]: shown && menuShown })}
-    >
+    <div className={classNames({ [css.wrap]: true, [css.shown]: shown && menuShown })}>
       <SettingsHeader />
       <div className={css.content}>
-        <div className={classNames({ 
-          [css.category]: true,
-          [css.hidden]: settingsType !== 'GAME' 
-        })}>
+        <div
+          className={classNames({
+            [css.category]: true,
+            [css.hidden]: settingsType !== 'GAME',
+          })}
+        >
           <Game />
         </div>
-        <div className={classNames({ 
-          [css.category]: true,
-          [css.hidden]: settingsType !== 'THEMING' 
-        })}>
+        <div
+          className={classNames({
+            [css.category]: true,
+            [css.hidden]: settingsType !== 'THEMING',
+          })}
+        >
           <Theming />
         </div>
-        <div className={classNames({ 
-          [css.category]: true,
-          [css.hidden]: settingsType !== 'HOTKEYS' 
-        })}>
+        <div
+          className={classNames({
+            [css.category]: true,
+            [css.hidden]: settingsType !== 'HOTKEYS',
+          })}
+        >
           <Hotkeys />
         </div>
-        <div className={classNames({ 
-          [css.category]: true,
-          [css.hidden]: settingsType !== 'UI' 
-        })}>
+        <div
+          className={classNames({
+            [css.category]: true,
+            [css.hidden]: settingsType !== 'UI',
+          })}
+        >
           <ThemingUI />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ UI }: AppStateType) => ({
   shown: UI.settingsShown,
   settingsType: UI.settingsType,
   menuShown: UI.menuShown,
 });
-
 
 export default connect(mapStateToProps)(Settings);
 

@@ -1,7 +1,7 @@
-import { AppStateType } from "redux/store";
-import initState from "./initState";
+import { AppStateType } from 'redux/store';
+import initState from './initState';
 
-export default new class Storage {
+export default new (class Storage {
   private readonly name: string = 'AGARIX:DATA';
 
   private swap(str: string): string {
@@ -13,14 +13,14 @@ export default new class Storage {
 
   public get(): TStorage {
     const storage = localStorage.getItem(this.name) as string;
- 
+
     if (storage) {
       try {
         const swapped = this.swap(storage);
 
         // will throw exception if it has invalid format
         const decoded = JSON.parse(atob(swapped)) as AppStateType;
-        
+
         return decoded;
       } catch {
         // decoding failed, valid format
@@ -46,11 +46,11 @@ export default new class Storage {
   public init(state: AppStateType) {
     if (!localStorage.getItem(this.name)) {
       console.log('Front-end: first launch');
-      
+
       this.save(state);
       return;
     }
   }
-}
+})();
 
 export type TStorage = Omit<AppStateType, 'UI'>;

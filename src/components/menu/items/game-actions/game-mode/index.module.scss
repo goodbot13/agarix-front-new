@@ -4,7 +4,7 @@
   height: 105px;
   margin-right: 65px;
   margin-left: -2px;
-  transition: .15s linear;
+  transition: 0.15s linear;
   cursor: pointer;
   padding: 0 30px 16px 14px;
   word-wrap: break-word;
@@ -12,7 +12,7 @@
 
   &:hover,
   &.active {
-    opacity: .6;
-    color: white
+    opacity: 0.6;
+    color: white;
   }
 }

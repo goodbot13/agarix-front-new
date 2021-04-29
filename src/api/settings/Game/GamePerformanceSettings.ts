@@ -1,4 +1,8 @@
-import { FpsLockType, GlowFilterShaderType, RenderModeType } from "redux/settings/game/performance/types";
+import {
+  FpsLockType,
+  GlowFilterShaderType,
+  RenderModeType,
+} from 'redux/settings/game/performance/types';
 
 export default class GamePerformanceSettings {
   static setRenderMode(value: RenderModeType) {

@@ -17,74 +17,74 @@ import {
   SET_SOAK_SPEED,
   ShadowType,
   SkinsType,
-} from "./types";
+} from './types';
 
 export const setShowMass = (mass: boolean): GameCellsActionTypes => ({
   type: SET_SHOW_MASS,
-  mass
+  mass,
 });
 
 export const setShowNicks = (nicks: boolean): GameCellsActionTypes => ({
   type: SET_SHOW_NICKS,
-  nicks
+  nicks,
 });
 
 export const setShowMassMyCell = (myMass: boolean): GameCellsActionTypes => ({
   type: SET_SHOW_MASS_MY_CELL,
-  myMass
+  myMass,
 });
 
 export const setShowNickMyCell = (myNick: boolean): GameCellsActionTypes => ({
   type: SET_SHOW_NICK_MY_CELL,
-  myNick
+  myNick,
 });
 
 export const setAutoHideMassAndNicks = (autoHideMassAndNicks: boolean): GameCellsActionTypes => ({
   type: SET_AUTO_HIDE_MASS_AND_NICKS,
-  autoHideMassAndNicks
+  autoHideMassAndNicks,
 });
 
 export const setShortMass = (shortMass: boolean): GameCellsActionTypes => ({
   type: SET_SHORT_MASS,
-  shortMass
+  shortMass,
 });
 
 export const setMassUpdateDelay = (massUpdateDelay: number): GameCellsActionTypes => ({
   type: SET_MASS_UPDATE_DELAY,
-  massUpdateDelay
+  massUpdateDelay,
 });
 
 export const setSkinsType = (skinsType: SkinsType): GameCellsActionTypes => ({
   type: SET_SKINS_TYPE,
-  skinsType
+  skinsType,
 });
 
 export const setRingsType = (ringsType: RingsType): GameCellsActionTypes => ({
   type: SET_RINGS_TYPE,
-  ringsType
+  ringsType,
 });
 
 export const setRingsSpinning = (ringsSpinning: boolean): GameCellsActionTypes => ({
   type: SET_RINGS_SPINNING,
-  ringsSpinning
+  ringsSpinning,
 });
 
 export const setSoakSpeed = (soakSpeed: number): GameCellsActionTypes => ({
   type: SET_SOAK_SPEED,
-  soakSpeed
+  soakSpeed,
 });
 
 export const setFadeSpeed = (fadeSpeed: number): GameCellsActionTypes => ({
   type: SET_FADE_SPEED,
-  fadeSpeed
+  fadeSpeed,
 });
 
 export const setOneColored = (oneColored: boolean): GameCellsActionTypes => ({
   type: SET_ONE_COLORED,
-  oneColored
+  oneColored,
 });
 
 export const setShadow = (shadow: ShadowType): GameCellsActionTypes => ({
   type: SET_SHADOW,
-  shadow
+  shadow,
 });

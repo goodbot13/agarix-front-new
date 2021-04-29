@@ -16,7 +16,7 @@ const Select: FC<SelectType> = ({ items, selectedItem, onChange, text, hint, dis
     }
 
     onChange(items[index - 1]);
-  }
+  };
 
   const onRightClick = () => {
     // max right position reached
@@ -25,49 +25,42 @@ const Select: FC<SelectType> = ({ items, selectedItem, onChange, text, hint, dis
     }
 
     onChange(items[index + 1]);
-  }
+  };
 
   return (
     <div className={classNames({ [css.wrap]: true, [css.disabled]: disabled })}>
       <div className={css.text}>
         {text}
         {hint && <span className={css.hint}>{hint}</span>}
-      </div>  
+      </div>
       <div className={css.right}>
         <button onClick={onLeftClick}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <div className={css.valuesWrap}>
-          <div 
-            className={css.values}
-            style={{ marginLeft: -125 * index }}
-          >
+          <div className={css.values} style={{ marginLeft: -125 * index }}>
             {items.map((item, i) => (
-              <div 
-                key={item}
-                style={{ left: 125 * i }}
-                className={css.value}
-              >
+              <div key={item} style={{ left: 125 * i }} className={css.value}>
                 {item}
               </div>
             ))}
           </div>
         </div>
-        <button onClick={onRightClick} >
+        <button onClick={onRightClick}>
           <FontAwesomeIcon icon={faArrowRight} />
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Select;
 
 type SelectType = {
-  items: Array<any>,
-  selectedItem: any,
-  onChange: (value: any) => void,
-  text: string,
-  hint?: string,
-  disabled?: boolean
-}
+  items: Array<any>;
+  selectedItem: any;
+  onChange: (value: any) => void;
+  text: string;
+  hint?: string;
+  disabled?: boolean;
+};

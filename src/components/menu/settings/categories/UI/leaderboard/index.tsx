@@ -1,26 +1,26 @@
-import { FC } from "react";
-import { 
-  setLeaderboardBackdropBlur, 
-  setLeaderboardBackgroundColor, 
-  setLeaderboardDisplayAmount, 
-  setLeaderboardDisplayPosition, 
-  setLeaderboardMeColor, 
-  setLeaderboardShowMass, 
-  setLeaderboardShown 
-} from "redux/settings/UI/leaderboard/actions";
+import { FC } from 'react';
+import {
+  setLeaderboardBackdropBlur,
+  setLeaderboardBackgroundColor,
+  setLeaderboardDisplayAmount,
+  setLeaderboardDisplayPosition,
+  setLeaderboardMeColor,
+  setLeaderboardShowMass,
+  setLeaderboardShown,
+} from 'redux/settings/UI/leaderboard/actions';
 
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
-import { AppStateType } from "redux/store";
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { AppStateType } from 'redux/store';
 
-import { RGB } from "redux/settings/theming/types";
+import { RGB } from 'redux/settings/theming/types';
 
-import Switch from "components/menu/settings/basic/switch";
-import Select from "components/menu/settings/basic/select";
-import Colorpick from "components/menu/settings/basic/colorpick";
+import Switch from 'components/menu/settings/basic/switch';
+import Select from 'components/menu/settings/basic/select';
+import Colorpick from 'components/menu/settings/basic/colorpick';
 
-import { LEADERBOARD_DISPLAY_AMOUNT_VALUES } from "redux/settings/UI/leaderboard/values";
-import { LEADERBOARD_BACKDROP_BLUR_HINT } from "redux/settings/UI/leaderboard/hints";
+import { LEADERBOARD_DISPLAY_AMOUNT_VALUES } from 'redux/settings/UI/leaderboard/values';
+import { LEADERBOARD_BACKDROP_BLUR_HINT } from 'redux/settings/UI/leaderboard/hints';
 
 const Leaderboard: FC<LeaderboardType> = ({
   shown,
@@ -36,61 +36,46 @@ const Leaderboard: FC<LeaderboardType> = ({
   setLbShowMass,
   setLbBackdropBlur,
   setLbBackgroundColor,
-  setLbMeColor
+  setLbMeColor,
 }) => {
   return (
     <>
-      <Switch 
-        text="Enabled"
-        enabled={shown}
-        onChange={setLbShown}
-        main
-      />
+      <Switch text="Enabled" enabled={shown} onChange={setLbShown} main />
       <Colorpick
         text="Background color"
-        color={backgroundColor} 
+        color={backgroundColor}
         onChange={setLbBackgroundColor}
         disabled={!shown}
         useAlpha
       />
-      <Switch 
+      <Switch
         text="Backdrop blur"
         enabled={backdropBlur}
         onChange={setLbBackdropBlur}
         hint={LEADERBOARD_BACKDROP_BLUR_HINT}
         disabled={!shown}
       />
-      <Colorpick
-        text="My color"
-        color={meColor} 
-        onChange={setLbMeColor}
-        disabled={!shown}
-      />
+      <Colorpick text="My color" color={meColor} onChange={setLbMeColor} disabled={!shown} />
       <Select
         text="Players amount"
         items={LEADERBOARD_DISPLAY_AMOUNT_VALUES}
-        selectedItem={displayAmount} 
+        selectedItem={displayAmount}
         onChange={setLbDisplayAmount}
         disabled={!shown}
       />
-      <Switch 
+      <Switch
         text="Players position"
         enabled={displayPosition}
         onChange={setLbDisplayPosition}
         disabled={!shown}
       />
-      <Switch 
-        text="Show mass"
-        enabled={showMass}
-        onChange={setLbShowMass}
-        disabled={!shown}
-      />
+      <Switch text="Show mass" enabled={showMass} onChange={setLbShowMass} disabled={!shown} />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ settings }: AppStateType) => ({
-  ...settings.UI.leaderboard
+  ...settings.UI.leaderboard,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -100,7 +85,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   setLbShowMass: (value: boolean) => dispatch(setLeaderboardShowMass(value)),
   setLbBackdropBlur: (value: boolean) => dispatch(setLeaderboardBackdropBlur(value)),
   setLbBackgroundColor: (value: RGB) => dispatch(setLeaderboardBackgroundColor(value)),
-  setLbMeColor: (value: RGB) => dispatch(setLeaderboardMeColor(value))
+  setLbMeColor: (value: RGB) => dispatch(setLeaderboardMeColor(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard);

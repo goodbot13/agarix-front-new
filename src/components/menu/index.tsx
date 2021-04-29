@@ -12,11 +12,11 @@ import { thunkSetMenuShown, thunkSetSettingsShown } from 'redux/UI/thunks';
 
 const Menu: FC<MenuType> = ({ menuShown, settingsType, settingsShown }) => {
   return (
-    <div 
-      className={classNames({ 
+    <div
+      className={classNames({
         [css.wrap]: true,
         [css.hidden]: !menuShown,
-        [css.theming]: settingsShown && (settingsType === 'THEMING' || settingsType === 'UI')
+        [css.theming]: settingsShown && (settingsType === 'THEMING' || settingsType === 'UI'),
       })}
     >
       <div className={classNames({ [css.innerWrap]: true })}>
@@ -24,18 +24,18 @@ const Menu: FC<MenuType> = ({ menuShown, settingsType, settingsShown }) => {
         <Settings />
       </div>
     </div>
-  )
-}
+  );
+};
 
-const mapStateToProps = ({ UI }: AppStateType) => ({ 
+const mapStateToProps = ({ UI }: AppStateType) => ({
   menuShown: UI.menuShown,
   settingsShown: UI.settingsShown,
-  settingsType: UI.settingsType
+  settingsType: UI.settingsType,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setSettingsShown: (shown: boolean) => dispatch(thunkSetSettingsShown(shown)),
-  setMenuShown: (shown: boolean) => dispatch(thunkSetMenuShown(shown))
+  setMenuShown: (shown: boolean) => dispatch(thunkSetMenuShown(shown)),
 });
 
 type MenuType = ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>;

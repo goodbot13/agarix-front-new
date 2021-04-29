@@ -1,8 +1,8 @@
-import { rgbToCssString } from "api/utils";
-import { FC } from "react";
-import { connect } from "react-redux";
-import { AppStateType } from "redux/store";
-import Frametime from "./frametime";
+import { rgbToCssString } from 'api/utils';
+import { FC } from 'react';
+import { connect } from 'react-redux';
+import { AppStateType } from 'redux/store';
+import Frametime from './frametime';
 import css from './index.module.scss';
 
 const Stats: FC<StatsType> = ({
@@ -13,9 +13,8 @@ const Stats: FC<StatsType> = ({
   backgroundColor,
   backdropBlur,
   position,
-  statsValues
+  statsValues,
 }) => {
-
   const pos = {
     left: '0',
     bottom: '0',
@@ -24,7 +23,7 @@ const Stats: FC<StatsType> = ({
     borderTopRightRadius: '0',
     borderBottomLeftRadius: '0',
     borderBottomRightRadius: '0',
-  }
+  };
 
   if (position === 'BOTTOM LEFT') {
     pos.transform = '';
@@ -35,51 +34,46 @@ const Stats: FC<StatsType> = ({
     pos.borderTopLeftRadius = '4px';
     pos.borderTopRightRadius = '4px';
   } else if (position === 'LEADERBOARD') {
-
   }
 
-  return (
-    shown ? <div 
+  return shown ? (
+    <div
       className={css.wrap}
       style={{
         backgroundColor: rgbToCssString(backgroundColor),
         boxShadow: `0 0 4px ${rgbToCssString(backgroundColor)}`,
         backdropFilter: backdropBlur ? `blur(7px)` : '',
-        ...pos
+        ...pos,
       }}
     >
       {frametime && <Frametime />}
       {fps && (
-        <div 
+        <div
           className={css.fps}
           style={{
-            color: statsValues.fps < 30 ? '#FA8072' 
-              : statsValues.fps < 50 ? '#faf172' 
-              : 'white'
+            color: statsValues.fps < 30 ? '#FA8072' : statsValues.fps < 50 ? '#faf172' : 'white',
           }}
         >
           FPS: {statsValues.fps}
         </div>
       )}
       {loss && (
-        <div 
+        <div
           className={css.loss}
           style={{
-            color: statsValues.loss > 32 ? '#FA8072' 
-              : statsValues.loss > 8 ? '#faf172' 
-              : 'white'
+            color: statsValues.loss > 32 ? '#FA8072' : statsValues.loss > 8 ? '#faf172' : 'white',
           }}
         >
           LOSS: {statsValues.loss}%
         </div>
       )}
-    </div> : null
-  )
-}
+    </div>
+  ) : null;
+};
 
 const mapStateToProps = ({ settings, UI }: AppStateType) => ({
   ...settings.UI.stats,
-  statsValues: UI.stats
+  statsValues: UI.stats,
 });
 
 export default connect(mapStateToProps)(Stats);

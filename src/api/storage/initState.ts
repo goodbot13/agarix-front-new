@@ -3,7 +3,7 @@ import { TStorage } from './Storage';
 const initStorage: TStorage = {
   settings: {
     game: {
-      cells : {
+      cells: {
         mass: true,
         myMass: true,
         nicks: true,
@@ -17,13 +17,13 @@ const initStorage: TStorage = {
         soakSpeed: 2,
         fadeSpeed: 40,
         oneColored: false,
-        shadow: 'Only me'
+        shadow: 'Only me',
       },
       effects: {
         cellRemoveAnimation: 'Yue',
         cellRemoveAnimationForHiddenSpectator: false,
         spawnAnimation: 'Acimazis',
-        wtfRgbMode: false
+        wtfRgbMode: false,
       },
       gameplay: {
         animationSpeed: 150,
@@ -31,7 +31,7 @@ const initStorage: TStorage = {
         cameraSpeed: 19,
         cameraStyle: 'Default',
         spectatorMode: 'Top one',
-        viewport: 'Disabled'
+        viewport: 'Disabled',
       },
       minimap: {
         enabled: true,
@@ -40,7 +40,7 @@ const initStorage: TStorage = {
         realPlayersCells: false,
         mass: false,
         nicks: true,
-        playerPosition: true
+        playerPosition: true,
       },
       multibox: {
         enabled: false,
@@ -49,7 +49,7 @@ const initStorage: TStorage = {
         changeCellColor: false,
         hideOwnSkins: true,
         staticColor: true,
-        smoothSwitch: true
+        smoothSwitch: true,
       },
       performance: {
         renderMode: 'GPU (Pixi)',
@@ -57,8 +57,12 @@ const initStorage: TStorage = {
         culling: false,
         foodPerformanceMode: false,
         glowFilterShaderType: 'GPU-1',
-        fpsLockType: 'Screen-hz'
-      }
+        fpsLockType: 'Screen-hz',
+      },
+      bots: {
+        enabled: false,
+        provider: 'AGARBOT.OVH',
+      },
     },
     hotkeys: {
       keyboard: {
@@ -76,8 +80,8 @@ const initStorage: TStorage = {
         switchTabs: 'Tab',
         toggleFoodRender: 'F',
         toggleSpectatorMode: '',
-        toggleHuds: ''
-      }
+        toggleHuds: '',
+      },
     },
     theming: {
       cells: {
@@ -91,8 +95,8 @@ const initStorage: TStorage = {
         myShadowDistance: 50,
         adaptiveShadow: true,
         transparency: 1,
-        colorLighten: 80
-      }, 
+        colorLighten: 80,
+      },
       food: {
         enabled: true,
         firstTabEnabled: true,
@@ -104,7 +108,7 @@ const initStorage: TStorage = {
         glowColor: { red: 125, green: 115, blue: 255 },
         glowDistance: 50,
         glowStrength: 10,
-        crisp: true
+        crisp: true,
       },
       map: {
         borderType: 'Common',
@@ -122,16 +126,16 @@ const initStorage: TStorage = {
         globalBackgroundImage: true,
         globalBackgroundImageUrl: 'https://i.imgur.com/zjKAsyK.png',
         globalBackgroundImageTint: { red: 120, green: 45, blue: 255 },
-        globalBackgroundImageLiveEffectStrength: 'Disabled'
+        globalBackgroundImageLiveEffectStrength: 'Disabled',
       },
       minimap: {
-        backgroundColor: { red: 16, green: 16, blue: 16, alpha: .75 },
+        backgroundColor: { red: 16, green: 16, blue: 16, alpha: 0.75 },
         size: 240,
-        myViewportColor: { red: 66, green: 175, blue: 255, alpha: .5 },
-        topOneViewportColor: { red: 100, green: 190, blue: 255, alpha: .5 },
+        myViewportColor: { red: 66, green: 175, blue: 255, alpha: 0.5 },
+        topOneViewportColor: { red: 100, green: 190, blue: 255, alpha: 0.5 },
         playerSize: 10,
         playerColor: { red: 255, green: 255, blue: 255 },
-        ghostCellsColor: { red: 157, green: 217, blue: 255 }
+        ghostCellsColor: { red: 157, green: 217, blue: 255 },
       },
       multibox: {
         ringStyle: 'Line',
@@ -139,7 +143,7 @@ const initStorage: TStorage = {
         initialRingColor: { red: 255, green: 255, blue: 255 },
         focusedRingColor: { red: 60, green: 80, blue: 170 },
         initialStaticCellColor: { red: 255, green: 255, blue: 255 },
-        focusedStaticCellColor: { red: 255, green: 255, blue: 255 }
+        focusedStaticCellColor: { red: 255, green: 255, blue: 255 },
       },
       viruses: {
         color: { red: 85, green: 190, blue: 255 },
@@ -152,7 +156,7 @@ const initStorage: TStorage = {
         transparency: 0.2,
         massType: 'Fill circle',
         fillCircleColor: { red: 255, green: 255, blue: 255 },
-      }
+      },
     },
     UI: {
       leaderboard: {
@@ -172,7 +176,7 @@ const initStorage: TStorage = {
         loss: true,
         backgroundColor: { red: 24, green: 24, blue: 24, alpha: 0.5 },
         backdropBlur: false,
-        frametime: true
+        frametime: true,
       },
       topTeam: {
         shown: true,
@@ -198,9 +202,9 @@ const initStorage: TStorage = {
         commandMessageBackgroundColor: { red: 210, green: 110, blue: 110, alpha: 0.75 },
         commandMessageFontColor: { red: 255, green: 255, blue: 255 },
         gameMessageBackgroundColor: { red: 32, green: 32, blue: 32, alpha: 0.75 },
-        gameMessageFontColor: { red: 240, green: 240, blue: 240 }
-      }  
-    }
+        gameMessageFontColor: { red: 240, green: 240, blue: 240 },
+      },
+    },
   },
   game: {
     servers: [
@@ -211,14 +215,14 @@ const initStorage: TStorage = {
       { location: 'Oceania', playersAmount: 0 },
       { location: 'Russia', playersAmount: 0 },
       { location: 'South America', playersAmount: 9724 },
-      { location: 'Turkey', playersAmount: 0 }
+      { location: 'Turkey', playersAmount: 0 },
     ],
     currentServerIndex: 2,
     mode: ':party',
     tag: '',
     token: '',
     gameServerToken: '',
-    selectedGameTokenType: "PARTY"
+    selectedGameTokenType: 'PARTY',
   },
   profiles: {
     leftProfiles: [
@@ -231,7 +235,7 @@ const initStorage: TStorage = {
       { nick: 'Profile #7', skinUrl: '', tag: '' },
       { nick: 'Profile #8', skinUrl: '', tag: '' },
       { nick: 'Profile #9', skinUrl: '', tag: '' },
-      { nick: 'Profile #10', skinUrl: '', tag: '' }
+      { nick: 'Profile #10', skinUrl: '', tag: '' },
     ],
     rightProfiles: [
       { nick: 'Profile #11', skinUrl: '', tag: '' },
@@ -243,15 +247,15 @@ const initStorage: TStorage = {
       { nick: 'Profile #17', skinUrl: '', tag: '' },
       { nick: 'Profile #18', skinUrl: '', tag: '' },
       { nick: 'Profile #19', skinUrl: '', tag: '' },
-      { nick: 'Profile #20', skinUrl: '', tag: '' }
+      { nick: 'Profile #20', skinUrl: '', tag: '' },
     ],
     leftSelectedIndex: 0,
     rightSelectedIndex: 0,
     leftProfileLoginType: 'FACEBOOK',
     rightProfileLoginType: 'GOOGLE',
     googleLoggedIn: false,
-    facebookLoggedIn: false
-  }
+    facebookLoggedIn: false,
+  },
 };
 
 export default initStorage;

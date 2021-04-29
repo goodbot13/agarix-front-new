@@ -1,24 +1,24 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import { RGB } from "redux/settings/theming/types";
-import { AppStateType } from "redux/store";
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { RGB } from 'redux/settings/theming/types';
+import { AppStateType } from 'redux/store';
 
-import { 
+import {
   setTopTeamBackdropBlur,
-  setTopTeamBackgroundColor, 
-  setTopTeamDisplayAmount, 
-  setTopTeamDisplayPlayerMass, 
-  setTopTeamDisplayTotalMass, 
-  setTopTeamShortMass, 
-  setTopTeamShown, 
-  setTopTeamTotalPlayers 
-} from "redux/settings/UI/top-team/actions";
-import Switch from "components/menu/settings/basic/switch";
-import Select from "components/menu/settings/basic/select";
-import { TOP_TEAM_DISPLAY_AMOUNT_VALUES } from "redux/settings/UI/top-team/values";
-import Colorpick from "components/menu/settings/basic/colorpick";
+  setTopTeamBackgroundColor,
+  setTopTeamDisplayAmount,
+  setTopTeamDisplayPlayerMass,
+  setTopTeamDisplayTotalMass,
+  setTopTeamShortMass,
+  setTopTeamShown,
+  setTopTeamTotalPlayers,
+} from 'redux/settings/UI/top-team/actions';
+import Switch from 'components/menu/settings/basic/switch';
+import Select from 'components/menu/settings/basic/select';
+import { TOP_TEAM_DISPLAY_AMOUNT_VALUES } from 'redux/settings/UI/top-team/values';
+import Colorpick from 'components/menu/settings/basic/colorpick';
 
 const TopTeam: FC<TopTeamType> = ({
   shown,
@@ -36,29 +36,24 @@ const TopTeam: FC<TopTeamType> = ({
   setShortMass,
   setTotalPlayers,
   setBackgroundColor,
-  setBackdropBlur
+  setBackdropBlur,
 }) => {
   return (
     <>
-      <Switch
-        text='Enabled'
-        enabled={shown}
-        onChange={setShown} 
-        main
-      />
-      <Colorpick 
+      <Switch text="Enabled" enabled={shown} onChange={setShown} main />
+      <Colorpick
         text="Background color"
         color={backgroundColor}
         onChange={setBackgroundColor}
         useAlpha
       />
       <Switch
-        text='Backdrop blur'
+        text="Backdrop blur"
         enabled={backdropBlur}
-        onChange={setBackdropBlur} 
+        onChange={setBackdropBlur}
         disabled={!shown}
       />
-      <Select 
+      <Select
         text="Players amount to display"
         selectedItem={displayAmount}
         items={TOP_TEAM_DISPLAY_AMOUNT_VALUES}
@@ -66,35 +61,30 @@ const TopTeam: FC<TopTeamType> = ({
         disabled={!shown}
       />
       <Switch
-        text='Show players mass'
+        text="Show players mass"
         enabled={displayPlayerMass}
-        onChange={setDisplayPlayerMass} 
+        onChange={setDisplayPlayerMass}
         disabled={!shown}
       />
       <Switch
-        text='Show total mass'
+        text="Show total mass"
         enabled={totalMass}
-        onChange={setDisplayTotalMass} 
+        onChange={setDisplayTotalMass}
         disabled={!shown}
       />
+      <Switch text="Short mass (k)" enabled={shortMass} onChange={setShortMass} disabled={!shown} />
       <Switch
-        text='Short mass (k)'
-        enabled={shortMass}
-        onChange={setShortMass} 
-        disabled={!shown}
-      />
-      <Switch
-        text='Show total players'
+        text="Show total players"
         enabled={totalPlayers}
-        onChange={setTotalPlayers} 
+        onChange={setTotalPlayers}
         disabled={!shown}
       />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ settings }: AppStateType) => ({
-  ...settings.UI.topTeam
+  ...settings.UI.topTeam,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -105,7 +95,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   setShortMass: (value: boolean) => dispatch(setTopTeamShortMass(value)),
   setTotalPlayers: (value: boolean) => dispatch(setTopTeamTotalPlayers(value)),
   setBackgroundColor: (value: RGB) => dispatch(setTopTeamBackgroundColor(value)),
-  setBackdropBlur: (value: boolean) => dispatch(setTopTeamBackdropBlur(value))
+  setBackdropBlur: (value: boolean) => dispatch(setTopTeamBackdropBlur(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopTeam);

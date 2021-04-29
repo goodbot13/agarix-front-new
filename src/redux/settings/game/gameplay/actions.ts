@@ -8,35 +8,35 @@ import {
   SET_VIEWPORT,
   SET_ZOOM_SPEED,
   SpectatorModeType,
-  ViewportType
-} from "./types";
+  ViewportType,
+} from './types';
 
 export const setAnimationSpeed = (animationSpeed: number): GameGameplayActionTypes => ({
   type: SET_ANIMATION_SPEED,
-  animationSpeed
+  animationSpeed,
 });
 
 export const zetZoomSpeed = (zoomSpeed: number): GameGameplayActionTypes => ({
   type: SET_ZOOM_SPEED,
-  zoomSpeed
+  zoomSpeed,
 });
 
 export const setCameraSpeed = (cameraSpeed: number): GameGameplayActionTypes => ({
   type: SET_CAMERA_SPEED,
-  cameraSpeed
+  cameraSpeed,
 });
 
 export const setCameraStyle = (cameraStyle: CameraStyleType): GameGameplayActionTypes => ({
   type: SET_CAMERA_STYLE,
-  cameraStyle
+  cameraStyle,
 });
 
 export const setSpectatorMode = (spectatorMode: SpectatorModeType): GameGameplayActionTypes => ({
   type: SET_SPECTATOR_MODE,
-  spectatorMode
+  spectatorMode,
 });
 
 export const setViewport = (viewport: ViewportType): GameGameplayActionTypes => ({
   type: SET_VIEWPORT,
-  viewport
-})
+  viewport,
+});

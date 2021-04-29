@@ -1,24 +1,24 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import { RGB } from "redux/settings/theming/types";
+import { RGB } from 'redux/settings/theming/types';
 
-import { MultiboxRingStyleType } from "redux/settings/theming/multibox/types";
-import { AppStateType, ThunkRootDispatchType } from "redux/store";
+import { MultiboxRingStyleType } from 'redux/settings/theming/multibox/types';
+import { AppStateType, ThunkRootDispatchType } from 'redux/store';
 
-import { 
-  thunkSetMultiboxFocusedRingColor, 
-  thunkSetMultiboxFocusedStaticCellColor, 
-  thunkSetMultiboxInitialRingColor, 
-  thunkSetMultiboxInitialStaticCellColor, 
-  thunkSetMultiboxLinedRingSize, 
-  thunkSetMultiboxRingStyle 
-} from "redux/settings/theming/multibox/thunks";
+import {
+  thunkSetMultiboxFocusedRingColor,
+  thunkSetMultiboxFocusedStaticCellColor,
+  thunkSetMultiboxInitialRingColor,
+  thunkSetMultiboxInitialStaticCellColor,
+  thunkSetMultiboxLinedRingSize,
+  thunkSetMultiboxRingStyle,
+} from 'redux/settings/theming/multibox/thunks';
 
-import Select from "components/menu/settings/basic/select";
-import Colorpick from "components/menu/settings/basic/colorpick";
-import Range from "components/menu/settings/basic/range";
+import Select from 'components/menu/settings/basic/select';
+import Colorpick from 'components/menu/settings/basic/colorpick';
+import Range from 'components/menu/settings/basic/range';
 
 const Multibox: FC<MultiboxType> = ({
   ringStyle,
@@ -32,11 +32,11 @@ const Multibox: FC<MultiboxType> = ({
   setMultiboxInitialRingColor,
   setMultiboxFocusedRingColor,
   setMultiboxInitialStaticCellColor,
-  setMultiboxFocusedStaticCellColor
+  setMultiboxFocusedStaticCellColor,
 }) => {
   return (
     <>
-      <Select 
+      <Select
         text="Ring style"
         items={['Author', 'Line'] as Array<MultiboxRingStyleType>}
         selectedItem={ringStyle}
@@ -50,32 +50,32 @@ const Multibox: FC<MultiboxType> = ({
         onChange={setMultiboxLinderRingSize}
         disabled={ringStyle !== 'Line'}
       />
-      <Colorpick 
+      <Colorpick
         text="Initial ring color"
         color={initialRingColor}
         onChange={setMultiboxInitialRingColor}
       />
-      <Colorpick 
+      <Colorpick
         text="Focused ring color"
         color={focusedRingColor}
         onChange={setMultiboxFocusedRingColor}
       />
-      <Colorpick 
+      <Colorpick
         text="Initial static cell color"
         color={initialStaticCellColor}
         onChange={setMultiboxInitialStaticCellColor}
       />
-      <Colorpick 
+      <Colorpick
         text="Focused static cell color"
         color={focusedStaticCellColor}
         onChange={setMultiboxFocusedStaticCellColor}
       />
     </>
-  )
-} 
+  );
+};
 
 const mapStateToProps = ({ settings }: AppStateType) => ({
-  ...settings.theming.multibox
+  ...settings.theming.multibox,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
@@ -83,8 +83,10 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setMultiboxLinderRingSize: (value: number) => dispatch(thunkSetMultiboxLinedRingSize(value)),
   setMultiboxInitialRingColor: (color: RGB) => dispatch(thunkSetMultiboxInitialRingColor(color)),
   setMultiboxFocusedRingColor: (color: RGB) => dispatch(thunkSetMultiboxFocusedRingColor(color)),
-  setMultiboxInitialStaticCellColor: (color: RGB) => dispatch(thunkSetMultiboxInitialStaticCellColor(color)),
-  setMultiboxFocusedStaticCellColor: (color: RGB) => dispatch(thunkSetMultiboxFocusedStaticCellColor(color))
+  setMultiboxInitialStaticCellColor: (color: RGB) =>
+    dispatch(thunkSetMultiboxInitialStaticCellColor(color)),
+  setMultiboxFocusedStaticCellColor: (color: RGB) =>
+    dispatch(thunkSetMultiboxFocusedStaticCellColor(color)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Multibox);

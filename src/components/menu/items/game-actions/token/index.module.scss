@@ -1,8 +1,8 @@
-.token, 
+.token,
 .serverToken {
   &:not(:placeholder-shown).blured {
     color: transparent !important;
-    text-shadow: 0 0 10px rgba(255, 255, 255, .5);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     pointer-events: none;
   }
 }
@@ -11,7 +11,7 @@
 .serverToken {
   position: absolute;
   z-index: 1;
-  transition: .2s;
+  transition: 0.2s;
   font-size: 14px;
   font-weight: 500;
   background: transparent;
@@ -35,7 +35,7 @@
 
 .selected {
   top: 0;
-  border: 3px solid rgba(255, 255, 255, .3);
+  border: 3px solid rgba(255, 255, 255, 0.3);
   color: #aaa;
   cursor: auto;
 }

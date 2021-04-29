@@ -1,5 +1,5 @@
-import { MapBorderType, MapLiveEffectStrengthType } from "redux/settings/theming/map/types";
-import { RGB } from "redux/settings/theming/types";
+import { MapBorderType, MapLiveEffectStrengthType } from 'redux/settings/theming/map/types';
+import { RGB } from 'redux/settings/theming/types';
 
 export default class ThemingSettingsMap {
   static setMapBorderType(value: MapBorderType) {
@@ -35,7 +35,7 @@ export default class ThemingSettingsMap {
     window.GameSettings.all.settings.theming.map.borderGlowDistance = value;
     window.GameSettings.updateThemingMap('Border');
   }
-  
+
   static setMapBorderGlowStrength(value: number) {
     window.GameSettings.all.settings.theming.map.borderGlowStrength = value;
     window.GameSettings.updateThemingMap('Border');

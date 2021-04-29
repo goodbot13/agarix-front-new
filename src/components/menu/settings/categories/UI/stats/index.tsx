@@ -1,26 +1,26 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import { RGB } from "redux/settings/theming/types";
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { RGB } from 'redux/settings/theming/types';
 
-import { 
-  setStatsBackdropBlur, 
-  setStatsBackgroundColor, 
-  setStatsFpsShown, 
-  setStatsFrametime, 
-  setStatsLossShown, 
-  setStatsPosition, 
-  setStatsShown 
-} from "redux/settings/UI/stats/actions";
+import {
+  setStatsBackdropBlur,
+  setStatsBackgroundColor,
+  setStatsFpsShown,
+  setStatsFrametime,
+  setStatsLossShown,
+  setStatsPosition,
+  setStatsShown,
+} from 'redux/settings/UI/stats/actions';
 
-import { AppStateType } from "redux/store";
+import { AppStateType } from 'redux/store';
 
-import Switch from "components/menu/settings/basic/switch";
-import Colorpick from "components/menu/settings/basic/colorpick";
-import { STATS_BACKDROP_BLUR_HINT } from "redux/settings/UI/stats/hints";
-import { TStatsPosition } from "redux/settings/UI/stats/types";
-import Select from "components/menu/settings/basic/select";
+import Switch from 'components/menu/settings/basic/switch';
+import Colorpick from 'components/menu/settings/basic/colorpick';
+import { STATS_BACKDROP_BLUR_HINT } from 'redux/settings/UI/stats/hints';
+import { TStatsPosition } from 'redux/settings/UI/stats/types';
+import Select from 'components/menu/settings/basic/select';
 
 const Stats: FC<StatsType> = ({
   shown,
@@ -36,61 +36,41 @@ const Stats: FC<StatsType> = ({
   setBackgroundColor,
   setBackdropBlur,
   setFrametime,
-  setPosition
+  setPosition,
 }) => {
   return (
     <>
-      <Switch 
-        text="Enabled"
-        enabled={shown}
-        onChange={setShown}
-        main
-      />
-      <Select 
+      <Switch text="Enabled" enabled={shown} onChange={setShown} main />
+      <Select
         text="Position"
         items={['BOTTOM LEFT', 'BOTTOM CENTER', 'LEADERBOARD'] as Array<TStatsPosition>}
         selectedItem={position}
         onChange={setPosition}
         disabled={!shown}
       />
-      <Colorpick 
+      <Colorpick
         text="Background color"
         color={backgroundColor}
         onChange={setBackgroundColor}
         disabled={!shown}
         useAlpha
       />
-      <Switch 
+      <Switch
         text="Backdrop blur"
         hint={STATS_BACKDROP_BLUR_HINT}
         enabled={backdropBlur}
         onChange={setBackdropBlur}
         disabled={!shown}
       />
-      <Switch 
-        text="Show FPS"
-        enabled={fps}
-        onChange={setFps}
-        disabled={!shown}
-      />
-      <Switch 
-        text="Show frametime"
-        enabled={frametime}
-        onChange={setFrametime}
-        disabled={!shown}
-      />
-      <Switch 
-        text="Show LOSS"
-        enabled={loss}
-        onChange={setLoss}
-        disabled={!shown}
-      />
+      <Switch text="Show FPS" enabled={fps} onChange={setFps} disabled={!shown} />
+      <Switch text="Show frametime" enabled={frametime} onChange={setFrametime} disabled={!shown} />
+      <Switch text="Show LOSS" enabled={loss} onChange={setLoss} disabled={!shown} />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ settings }: AppStateType) => ({
-  ...settings.UI.stats
+  ...settings.UI.stats,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -100,7 +80,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   setBackgroundColor: (value: RGB) => dispatch(setStatsBackgroundColor(value)),
   setBackdropBlur: (value: boolean) => dispatch(setStatsBackdropBlur(value)),
   setFrametime: (value: boolean) => dispatch(setStatsFrametime(value)),
-  setPosition: (value: TStatsPosition) => dispatch(setStatsPosition(value))
+  setPosition: (value: TStatsPosition) => dispatch(setStatsPosition(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stats);

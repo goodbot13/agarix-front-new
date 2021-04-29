@@ -1,7 +1,15 @@
 import { FC } from 'react';
 import css from './index.module.scss';
 
-import { faCircle, faDiceTwo, faMapMarked, faPlay, faRocket, faTint } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircle,
+  faDiceTwo,
+  faMapMarked,
+  faPlay,
+  faRobot,
+  faRocket,
+  faTint,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { connect } from 'react-redux';
@@ -18,6 +26,7 @@ import Gameplay from './gameplay';
 import Multibox from './multibox';
 import Minimap from './minimap';
 import Effects from './effects';
+import Bots from './bots';
 import { setGameSettingsSubmenu } from 'redux/UI/actions';
 import { SettingsGameType } from 'redux/settings/game/types';
 
@@ -25,70 +34,79 @@ const Game: FC<GameType> = ({ settingsSubmenu, setSettingsSubmenu, settingsShown
   return (
     <>
       <Left>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'GAME_PERFORMANCE' })}
           onClick={() => setSettingsSubmenu('GAME_PERFORMANCE')}
         >
-          <FontAwesomeIcon icon={faRocket}/> Performance
+          <FontAwesomeIcon icon={faRocket} /> Performance
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'GAME_CELLS' })}
           onClick={() => setSettingsSubmenu('GAME_CELLS')}
         >
-          <FontAwesomeIcon icon={faCircle}/> Cells
+          <FontAwesomeIcon icon={faCircle} /> Cells
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'GAME_GAMEPLAY' })}
           onClick={() => setSettingsSubmenu('GAME_GAMEPLAY')}
         >
-          <FontAwesomeIcon icon={faPlay}/> Gameplay
+          <FontAwesomeIcon icon={faPlay} /> Gameplay
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'GAME_MULTIBOX' })}
           onClick={() => setSettingsSubmenu('GAME_MULTIBOX')}
         >
-          <FontAwesomeIcon icon={faDiceTwo}/> Multibox
+          <FontAwesomeIcon icon={faDiceTwo} /> Multibox
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'GAME_MINIMAP' })}
           onClick={() => setSettingsSubmenu('GAME_MINIMAP')}
         >
-          <FontAwesomeIcon icon={faMapMarked}/> Minimap
+          <FontAwesomeIcon icon={faMapMarked} /> Minimap
         </button>
-        <button 
+        <button
           className={classNames({ [css.selected]: settingsSubmenu === 'GAME_EFFECTS' })}
           onClick={() => setSettingsSubmenu('GAME_EFFECTS')}
         >
-          <FontAwesomeIcon icon={faTint}/> Effects
+          <FontAwesomeIcon icon={faTint} /> Effects
+        </button>
+        <button
+          className={classNames({ [css.selected]: settingsSubmenu === 'GAME_BOTS' })}
+          onClick={() => setSettingsSubmenu('GAME_BOTS')}
+        >
+          <FontAwesomeIcon icon={faRobot} /> Bots
         </button>
       </Left>
       <Right>
-        <CategoryWrapper shown={settingsSubmenu === 'GAME_PERFORMANCE' && settingsShown }>
+        <CategoryWrapper shown={settingsSubmenu === 'GAME_PERFORMANCE' && settingsShown}>
           <Performance />
         </CategoryWrapper>
-        <CategoryWrapper shown={settingsSubmenu === 'GAME_CELLS' && settingsShown }>
+        <CategoryWrapper shown={settingsSubmenu === 'GAME_CELLS' && settingsShown}>
           <Cells />
         </CategoryWrapper>
-        <CategoryWrapper shown={settingsSubmenu === 'GAME_GAMEPLAY' && settingsShown }>
+        <CategoryWrapper shown={settingsSubmenu === 'GAME_GAMEPLAY' && settingsShown}>
           <Gameplay />
         </CategoryWrapper>
-        <CategoryWrapper shown={settingsSubmenu === 'GAME_MULTIBOX' && settingsShown }>
+        <CategoryWrapper shown={settingsSubmenu === 'GAME_MULTIBOX' && settingsShown}>
           <Multibox />
         </CategoryWrapper>
-        <CategoryWrapper shown={settingsSubmenu === 'GAME_MINIMAP' && settingsShown }>
+        <CategoryWrapper shown={settingsSubmenu === 'GAME_MINIMAP' && settingsShown}>
           <Minimap />
         </CategoryWrapper>
-        <CategoryWrapper shown={settingsSubmenu === 'GAME_EFFECTS' && settingsShown }>
+        <CategoryWrapper shown={settingsSubmenu === 'GAME_EFFECTS' && settingsShown}>
           <Effects />
+        </CategoryWrapper>
+        <CategoryWrapper shown={settingsSubmenu === 'GAME_BOTS' && settingsShown}>
+          <Bots />
         </CategoryWrapper>
       </Right>
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ UI }: AppStateType) => ({
   settingsSubmenu: UI.gameSettingsSubmenu,
-  settingsShown: UI.settingsShown
+  settingsShown: UI.settingsShown,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({

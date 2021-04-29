@@ -1,23 +1,23 @@
-import { 
-  doubleSplit, 
-  feed, 
-  macroFeed, 
-  pauseCell, 
-  quickRespawn, 
-  split, 
-  splitSixteen, 
-  stopMacroFeed, 
-  switchTabs, 
-  toggleCellHelpers, 
-  toggleCellRings, 
-  toggleCellSkins, 
-  toggleFoodRender, 
-  toggleHuds, 
-  toggleSpectatorMode, 
-  tripleSplit 
-} from "./GameEvents";
+import {
+  doubleSplit,
+  feed,
+  macroFeed,
+  pauseCell,
+  quickRespawn,
+  split,
+  splitSixteen,
+  stopMacroFeed,
+  switchTabs,
+  toggleCellHelpers,
+  toggleCellRings,
+  toggleCellSkins,
+  toggleFoodRender,
+  toggleHuds,
+  toggleSpectatorMode,
+  tripleSplit,
+} from './GameEvents';
 
-import Keyboard, { TKeyBindEvent } from "../Keyboard";
+import Keyboard, { TKeyBindEvent } from '../Keyboard';
 
 class KeyboardGameEvens {
   private prevBindedKeys: GameEventsObjectType = {
@@ -35,7 +35,7 @@ class KeyboardGameEvens {
     switchTabsKey: '-not-set-',
     toggleFoodRenderKey: '-not-set-',
     toggleSpectatorModeKey: '-not-set-',
-    toggleHudsKey: '-not-set-'
+    toggleHudsKey: '-not-set-',
   };
 
   private rebind(prevKey: string, key: string, event: TKeyBindEvent, func: () => void) {
@@ -166,24 +166,24 @@ class KeyboardGameEvens {
       this.prevBindedKeys.toggleHudsKey = key;
     }
   }
-} 
+}
 
-export default new KeyboardGameEvens;
+export default new KeyboardGameEvens();
 
 type GameEventsObjectType = {
-  feedKey: string,
-  macroFeedKey: string,
-  splitKey: string,
-  doubleSplitKey: string,
-  tripleSplitKey: string,
-  splitSixteenKey: string,
-  quickRespawnKey: string,
-  pauseCellKey: string,
-  toggleCellHelpersKey: string,
-  toggleCellRingsKey: string,
-  toggleCellSkinsKey: string,
-  switchTabsKey: string,
-  toggleFoodRenderKey: string,
-  toggleSpectatorModeKey: string,
-  toggleHudsKey: string
-}
+  feedKey: string;
+  macroFeedKey: string;
+  splitKey: string;
+  doubleSplitKey: string;
+  tripleSplitKey: string;
+  splitSixteenKey: string;
+  quickRespawnKey: string;
+  pauseCellKey: string;
+  toggleCellHelpersKey: string;
+  toggleCellRingsKey: string;
+  toggleCellSkinsKey: string;
+  switchTabsKey: string;
+  toggleFoodRenderKey: string;
+  toggleSpectatorModeKey: string;
+  toggleHudsKey: string;
+};

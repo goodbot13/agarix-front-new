@@ -11,18 +11,18 @@ const Root: FC<RootType> = ({ gameLoaded }) => {
   return (
     <>
       <GameLoader />
-      {gameLoaded && 
+      {gameLoaded && (
         <>
           <Menu />
-          <Huds /> 
+          <Huds />
         </>
-      }
+      )}
     </>
   );
-}
+};
 
 const mapStateToProps = ({ UI }: AppStateType) => ({
-  gameLoaded: UI.gameLoaded
+  gameLoaded: UI.gameLoaded,
 });
 
 export default connect(mapStateToProps)(Root);

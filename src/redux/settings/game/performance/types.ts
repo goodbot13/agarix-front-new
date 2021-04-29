@@ -1,5 +1,5 @@
-import { ThunkAction } from "redux-thunk";
-import { AppStateType } from "redux/store";
+import { ThunkAction } from 'redux-thunk';
+import { AppStateType } from 'redux/store';
 
 export const SET_RENDER_MODE = 'SET_RENDER_MODE';
 export const SET_ANTIALIASING = 'SET_ANTIALIASING';
@@ -10,48 +10,58 @@ export const SET_FPS_LOCK_TYPE = 'SET_FPS_LOCK_TYPE';
 
 export type RenderModeType = 'Default (CPU)' | 'GPU (Pixi)';
 export type GlowFilterShaderType = 'Canvas' | 'GPU-1' | 'GPU-2';
-export type FpsLockType = '30' | '60' | '120'| '144' | '240' | 'Screen-hz';
+export type FpsLockType = '30' | '60' | '120' | '144' | '240' | 'Screen-hz';
 
 export interface IGamePerformanceState {
-  renderMode: RenderModeType,
-  antialiasing: boolean,
-  culling: boolean,
-  foodPerformanceMode: boolean,
-  glowFilterShaderType: GlowFilterShaderType,
-  fpsLockType: FpsLockType
+  renderMode: RenderModeType;
+  antialiasing: boolean;
+  culling: boolean;
+  foodPerformanceMode: boolean;
+  glowFilterShaderType: GlowFilterShaderType;
+  fpsLockType: FpsLockType;
 }
 
 interface SetRenderModeAction {
-  type: typeof SET_RENDER_MODE,
-  renderMode: RenderModeType
+  type: typeof SET_RENDER_MODE;
+  renderMode: RenderModeType;
 }
 
 interface SetAntialiasingAction {
-  type: typeof SET_ANTIALIASING,
-  antialiasing: boolean
+  type: typeof SET_ANTIALIASING;
+  antialiasing: boolean;
 }
 
 interface SetCullingAction {
-  type: typeof SET_CULLING,
-  culling: boolean
+  type: typeof SET_CULLING;
+  culling: boolean;
 }
 
 interface SetFoodPerformanceModeAction {
-  type: typeof SET_FOOD_PERFORMANCE_MODE,
-  foodPerformanceMode: boolean
+  type: typeof SET_FOOD_PERFORMANCE_MODE;
+  foodPerformanceMode: boolean;
 }
 
 interface SetGlowFilterShadowTypeAction {
-  type: typeof SET_GLOW_FILTER_SHADER_TYPE,
-  glowFilterShaderType: GlowFilterShaderType
+  type: typeof SET_GLOW_FILTER_SHADER_TYPE;
+  glowFilterShaderType: GlowFilterShaderType;
 }
 
 interface SetFpsLockTypeAction {
-  type: typeof SET_FPS_LOCK_TYPE,
-  fpsLockType: FpsLockType
+  type: typeof SET_FPS_LOCK_TYPE;
+  fpsLockType: FpsLockType;
 }
 
-export type GamePerformanceActionTypes = SetRenderModeAction | SetAntialiasingAction | SetFoodPerformanceModeAction | 
-                                         SetGlowFilterShadowTypeAction | SetFpsLockTypeAction | SetCullingAction;
+export type GamePerformanceActionTypes =
+  | SetRenderModeAction
+  | SetAntialiasingAction
+  | SetFoodPerformanceModeAction
+  | SetGlowFilterShadowTypeAction
+  | SetFpsLockTypeAction
+  | SetCullingAction;
 
-export type GamePerformanceThunkActionTypes = ThunkAction<void, AppStateType, unknown, GamePerformanceActionTypes>;
+export type GamePerformanceThunkActionTypes = ThunkAction<
+  void,
+  AppStateType,
+  unknown,
+  GamePerformanceActionTypes
+>;

@@ -21,7 +21,7 @@ const GameActions = () => {
         <JoinGame />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default GameActions; 
+export default GameActions;

@@ -14,35 +14,27 @@ import { SettingsType } from 'redux/UI/types';
 const Customization: FC<CustomizationType> = ({ blured, setUIBlured, setSettingsShown }) => {
   return (
     <div className={css.wrap}>
-      <button 
-        className={css.settings}
-        onClick={() => setSettingsShown(true, 'GAME')}
-      ></button>
-      <button 
-        className={css.hotkeys}
-        onClick={() => setSettingsShown(true, 'HOTKEYS')}
-      ></button>
-      <button 
-        className={css.theming}
-        onClick={() => setSettingsShown(true, 'THEMING')}
-      ></button>
-      <button 
+      <button className={css.settings} onClick={() => setSettingsShown(true, 'GAME')}></button>
+      <button className={css.hotkeys} onClick={() => setSettingsShown(true, 'HOTKEYS')}></button>
+      <button className={css.theming} onClick={() => setSettingsShown(true, 'THEMING')}></button>
+      <button
         className={`${css.blur} ${blured ? css.active : ''}`}
         onClick={() => setUIBlured(!blured)}
       >
-        <FontAwesomeIcon icon={faEyeSlash}/>
+        <FontAwesomeIcon icon={faEyeSlash} />
       </button>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ UI }: AppStateType) => ({
-  blured: UI.blured
+  blured: UI.blured,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setUIBlured: (blured: boolean) => dispatch(setUIBlured(blured)),
-  setSettingsShown: (shown: boolean, type: SettingsType) => dispatch(thunkSetSettingsShown(shown, type))
+  setSettingsShown: (shown: boolean, type: SettingsType) =>
+    dispatch(thunkSetSettingsShown(shown, type)),
 });
 
 type CustomizationType = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;

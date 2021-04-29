@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react';
 import css from './index.module.scss';
 
 import classNames from 'classnames';
@@ -11,11 +11,11 @@ const Range: FC<TRange> = ({ text, value, hint, disabled, onChange, from, to }) 
       <div className={css.text}>
         {text}
         {hint && <span className={css.hint}>{hint}</span>}
-      </div> 
+      </div>
       <div className={css.right}>
         <div className={css.value}>{value}</div>
         <div className={css.rangeWrap}>
-          <input 
+          <input
             className={css.input}
             type="range"
             min={from}
@@ -27,17 +27,17 @@ const Range: FC<TRange> = ({ text, value, hint, disabled, onChange, from, to }) 
         </div>
       </div>
     </div>
-  )
-} 
+  );
+};
 
 export default Range;
 
 type TRange = {
-  text: string,
-  value: number,
-  disabled?: boolean,
-  hint?: string,
-  from: number,
-  to: number,
-  onChange: (newValue: number) => void
-}
+  text: string;
+  value: number;
+  disabled?: boolean;
+  hint?: string;
+  from: number;
+  to: number;
+  onChange: (newValue: number) => void;
+};

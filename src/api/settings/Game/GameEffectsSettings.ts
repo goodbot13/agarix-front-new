@@ -1,4 +1,4 @@
-import { CellRemoveAnimationType, SpawnAnimationType } from "redux/settings/game/effects/types";
+import { CellRemoveAnimationType, SpawnAnimationType } from 'redux/settings/game/effects/types';
 
 export default class GameEffectsSettings {
   static setCellRemoveAnimation(value: CellRemoveAnimationType) {
@@ -16,4 +16,4 @@ export default class GameEffectsSettings {
   static setWtfRgbMode(value: boolean) {
     window.GameSettings.all.settings.game.effects.wtfRgbMode = value;
   }
-} 
+}

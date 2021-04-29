@@ -22,16 +22,16 @@ const Colorpick: FC<ColorpickType> = ({ text, disabled, hint, color, onChange, u
         red: rgb.r,
         green: rgb.g,
         blue: rgb.b,
-        alpha: rgb.a
-      }
+        alpha: rgb.a,
+      };
     } else {
       return {
         red: rgb.r,
         green: rgb.g,
         blue: rgb.b,
-      }
+      };
     }
-  }
+  };
 
   useEffect(() => {
     if (disabled) {
@@ -44,47 +44,48 @@ const Colorpick: FC<ColorpickType> = ({ text, disabled, hint, color, onChange, u
       <div className={css.text}>
         {text}
         {hint && <span className={css.hint}>{hint}</span>}
-      </div>  
+      </div>
       <div className={classNames({ [css.picker]: true, [css.picking]: pickColor })}>
-        <button 
+        <button
           className={css.colorButton}
           onClick={() => setPickColor(true)}
-          style={{ backgroundColor: rgbToCssString(color)}}
+          style={{ backgroundColor: rgbToCssString(color) }}
         ></button>
         <div className={css.chromePickerWrapper}>
-          <ChromePicker 
-            color={useAlpha ? {
-              r: localColor.red, 
-              g: localColor.green,  
-              b: localColor.blue,
-              a: localColor.alpha
-            } : {
-              r: localColor.red, 
-              g: localColor.green, 
-              b: localColor.blue 
-            }}
+          <ChromePicker
+            color={
+              useAlpha
+                ? {
+                    r: localColor.red,
+                    g: localColor.green,
+                    b: localColor.blue,
+                    a: localColor.alpha,
+                  }
+                : {
+                    r: localColor.red,
+                    g: localColor.green,
+                    b: localColor.blue,
+                  }
+            }
             onChange={(rgb) => setLocalColor(getColor(rgb))}
             onChangeComplete={(rgb) => onChange(getColor(rgb))}
           />
-          <button 
-            className={css.pickerSave}
-            onClick={() => setPickColor(false)}
-          >
-            <FontAwesomeIcon icon={faCheck}/> Save
+          <button className={css.pickerSave} onClick={() => setPickColor(false)}>
+            <FontAwesomeIcon icon={faCheck} /> Save
           </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Colorpick;
 
 type ColorpickType = {
-  text: string,
-  disabled?: boolean,
-  hint?: string,
-  color: RGB,
-  useAlpha?: boolean,
-  onChange: (color: RGB) => void
-}
+  text: string;
+  disabled?: boolean;
+  hint?: string;
+  color: RGB;
+  useAlpha?: boolean;
+  onChange: (color: RGB) => void;
+};

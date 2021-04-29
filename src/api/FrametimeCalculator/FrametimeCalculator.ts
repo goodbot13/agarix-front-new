@@ -1,4 +1,4 @@
-export default new class FrametimeCalculator {
+export default new (class FrametimeCalculator {
   private canvas: HTMLCanvasElement | null = null;
   private ctx: CanvasRenderingContext2D | null = null;
   private isStopped: boolean = true;
@@ -67,4 +67,4 @@ export default new class FrametimeCalculator {
       ctx.stroke();
     }
   }
-}
+})();

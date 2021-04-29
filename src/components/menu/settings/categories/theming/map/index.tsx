@@ -1,35 +1,35 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { connect } from "react-redux";
-import { MapBorderType, MapLiveEffectStrengthType } from "redux/settings/theming/map/types";
-import { RGB } from "redux/settings/theming/types";
-import { AppStateType, ThunkRootDispatchType } from "redux/store";
+import { connect } from 'react-redux';
+import { MapBorderType, MapLiveEffectStrengthType } from 'redux/settings/theming/map/types';
+import { RGB } from 'redux/settings/theming/types';
+import { AppStateType, ThunkRootDispatchType } from 'redux/store';
 
-import { 
-  thunkSetMapBackgroundImage, 
-  thunkSetMapBackgroundImageliveEffectStrength, 
-  thunkSetMapBackgroundImageUrl, 
-  thunkSetMapBackgroundTint, 
-  thunkSetMapBorderColor, 
-  thunkSetMapBorderGlow, 
-  thunkSetMapBorderGlowColor, 
-  thunkSetMapBorderGlowDistance, 
-  thunkSetMapBorderRoundness, 
-  thunkSetMapBordersGlowStrength, 
-  thunkSetMapBorderType, 
-  thunkSetMapBorderWidth, 
-  thunkSetMapGlobalBackgroundImage, 
+import {
+  thunkSetMapBackgroundImage,
+  thunkSetMapBackgroundImageliveEffectStrength,
+  thunkSetMapBackgroundImageUrl,
+  thunkSetMapBackgroundTint,
+  thunkSetMapBorderColor,
+  thunkSetMapBorderGlow,
+  thunkSetMapBorderGlowColor,
+  thunkSetMapBorderGlowDistance,
+  thunkSetMapBorderRoundness,
+  thunkSetMapBordersGlowStrength,
+  thunkSetMapBorderType,
+  thunkSetMapBorderWidth,
+  thunkSetMapGlobalBackgroundImage,
   thunkSetMapGlobalBackgroundImageLiveEffectStrength,
-  thunkSetMapGlobalBackgroundImageTint, 
-  thunkSetMapGlobalBackgroundImageUrl 
-} from "redux/settings/theming/map/thunks";
+  thunkSetMapGlobalBackgroundImageTint,
+  thunkSetMapGlobalBackgroundImageUrl,
+} from 'redux/settings/theming/map/thunks';
 
-import Select from "components/menu/settings/basic/select";
-import Colorpick from "components/menu/settings/basic/colorpick";
-import Switch from "components/menu/settings/basic/switch";
-import Input from "components/menu/settings/basic/input";
-import Range from "components/menu/settings/basic/range";
-import { RANGE_ZERO_HINT } from "redux/settings/game/cells/hints";
+import Select from 'components/menu/settings/basic/select';
+import Colorpick from 'components/menu/settings/basic/colorpick';
+import Switch from 'components/menu/settings/basic/switch';
+import Input from 'components/menu/settings/basic/input';
+import Range from 'components/menu/settings/basic/range';
+import { RANGE_ZERO_HINT } from 'redux/settings/game/cells/hints';
 
 const MapComponent: FC<MapComponentType> = ({
   borderType,
@@ -63,11 +63,11 @@ const MapComponent: FC<MapComponentType> = ({
   setMapGlobalBackgroundImage,
   setMapGlobalBackgroundImageUrl,
   setMapGlobalBackgroundImageTint,
-  setMapGlobalBackgroundImageLiveEffectStrength
+  setMapGlobalBackgroundImageLiveEffectStrength,
 }) => {
   return (
     <>
-      <Select 
+      <Select
         text="Border type"
         selectedItem={borderType}
         items={['Disabled', 'Common', 'Common (anim)', 'RGB', 'RGB (anim)'] as Array<MapBorderType>}
@@ -88,20 +88,12 @@ const MapComponent: FC<MapComponentType> = ({
         value={borderWidth}
         onChange={setMapBorderWidth}
       />
-      <Colorpick
-        text="Border color"
-        color={borderColor}
-        onChange={setMapBorderColor} 
-      />
-      <Switch
-        text="Border glow"
-        enabled={borderGlow}
-        onChange={setMapBorderGlow} 
-      />
+      <Colorpick text="Border color" color={borderColor} onChange={setMapBorderColor} />
+      <Switch text="Border glow" enabled={borderGlow} onChange={setMapBorderGlow} />
       <Colorpick
         text="Border glow color"
         color={borderGlowColor}
-        onChange={setMapBorderGlowColor} 
+        onChange={setMapBorderGlowColor}
         disabled={!borderGlow}
       />
       <Range
@@ -120,20 +112,12 @@ const MapComponent: FC<MapComponentType> = ({
         onChange={setMapBorderGlowStrength}
         disabled={!borderGlow}
       />
-      <Colorpick
-        text="Background tint"
-        color={backgroundTint}
-        onChange={setMapBackgroundTint} 
-      />
-      <Switch
-        text="Background image"
-        enabled={backgroundImage}
-        onChange={setMapBackgroundImage} 
-      />
+      <Colorpick text="Background tint" color={backgroundTint} onChange={setMapBackgroundTint} />
+      <Switch text="Background image" enabled={backgroundImage} onChange={setMapBackgroundImage} />
       <Input
         text="Background image URL"
         value={backgroundImageUrl}
-        onChange={setMapBackgroundImageUrl} 
+        onChange={setMapBackgroundImageUrl}
         disabled={!backgroundImage}
       />
       <Select
@@ -146,18 +130,18 @@ const MapComponent: FC<MapComponentType> = ({
       <Switch
         text="Global background image"
         enabled={globalBackgroundImage}
-        onChange={setMapGlobalBackgroundImage} 
+        onChange={setMapGlobalBackgroundImage}
       />
       <Input
         text="Global background image URL"
         value={globalBackgroundImageUrl}
-        onChange={setMapGlobalBackgroundImageUrl} 
+        onChange={setMapGlobalBackgroundImageUrl}
         disabled={!globalBackgroundImage}
       />
       <Colorpick
         text="Global background image tint"
         color={globalBackgroundImageTint}
-        onChange={setMapGlobalBackgroundImageTint} 
+        onChange={setMapGlobalBackgroundImageTint}
         disabled={!globalBackgroundImage}
       />
       <Select
@@ -168,15 +152,15 @@ const MapComponent: FC<MapComponentType> = ({
         disabled={!globalBackgroundImage}
       />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ settings }: AppStateType) => ({
-  ...settings.theming.map
+  ...settings.theming.map,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
-  setMapBorderType: (type: MapBorderType) => dispatch(thunkSetMapBorderType(type)), 
+  setMapBorderType: (type: MapBorderType) => dispatch(thunkSetMapBorderType(type)),
   setMapBorderRoundness: (value: number) => dispatch(thunkSetMapBorderRoundness(value)),
   setMapBorderWidth: (value: number) => dispatch(thunkSetMapBorderWidth(value)),
   setMapBorderColor: (color: RGB) => dispatch(thunkSetMapBorderColor(color)),
@@ -187,11 +171,16 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setMapBackgroundTint: (color: RGB) => dispatch(thunkSetMapBackgroundTint(color)),
   setMapBackgroundImage: (value: boolean) => dispatch(thunkSetMapBackgroundImage(value)),
   setMapBackgroundImageUrl: (value: string) => dispatch(thunkSetMapBackgroundImageUrl(value)),
-  setMapBackgroundImageLiveEffectStrength: (value: MapLiveEffectStrengthType) => dispatch(thunkSetMapBackgroundImageliveEffectStrength(value)),
-  setMapGlobalBackgroundImage: (value: boolean) => dispatch(thunkSetMapGlobalBackgroundImage(value)),
-  setMapGlobalBackgroundImageUrl: (value: string) => dispatch(thunkSetMapGlobalBackgroundImageUrl(value)),
-  setMapGlobalBackgroundImageTint: (color: RGB) => dispatch(thunkSetMapGlobalBackgroundImageTint(color)),
-  setMapGlobalBackgroundImageLiveEffectStrength: (value: MapLiveEffectStrengthType) => dispatch(thunkSetMapGlobalBackgroundImageLiveEffectStrength(value))
+  setMapBackgroundImageLiveEffectStrength: (value: MapLiveEffectStrengthType) =>
+    dispatch(thunkSetMapBackgroundImageliveEffectStrength(value)),
+  setMapGlobalBackgroundImage: (value: boolean) =>
+    dispatch(thunkSetMapGlobalBackgroundImage(value)),
+  setMapGlobalBackgroundImageUrl: (value: string) =>
+    dispatch(thunkSetMapGlobalBackgroundImageUrl(value)),
+  setMapGlobalBackgroundImageTint: (color: RGB) =>
+    dispatch(thunkSetMapGlobalBackgroundImageTint(color)),
+  setMapGlobalBackgroundImageLiveEffectStrength: (value: MapLiveEffectStrengthType) =>
+    dispatch(thunkSetMapGlobalBackgroundImageLiveEffectStrength(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapComponent);

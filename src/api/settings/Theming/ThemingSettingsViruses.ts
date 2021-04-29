@@ -1,5 +1,5 @@
-import { RGB } from "redux/settings/theming/types";
-import { VirusMassType } from "redux/settings/theming/viruses/types";
+import { RGB } from 'redux/settings/theming/types';
+import { VirusMassType } from 'redux/settings/theming/viruses/types';
 
 export default class ThemingSettingsViruses {
   static setVirusColor(value: RGB) {

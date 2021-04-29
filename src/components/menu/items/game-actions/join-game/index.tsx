@@ -10,15 +10,15 @@ import { changeGameServerToken, changeGameToken } from 'redux/game/actions';
 import { thunkSetSpectateType } from 'redux/UI/thunks';
 import { SpectateType } from 'redux/UI/types';
 
-const JoinGame: FC<JoinGameType> = ({ 
-  connecting, 
-  setConnecting, 
-  selectedTokenType, 
-  serverToken, 
-  partyToken, 
-  setToken, 
+const JoinGame: FC<JoinGameType> = ({
+  connecting,
+  setConnecting,
+  selectedTokenType,
+  serverToken,
+  partyToken,
+  setToken,
   setServerToken,
-  setSpectateType 
+  setSpectateType,
 }) => {
   const [joining, setJoining] = useState(false);
 
@@ -31,7 +31,6 @@ const JoinGame: FC<JoinGameType> = ({
   }, [connecting]);
 
   const join = () => {
-    
     if (selectedTokenType === 'PARTY' && partyToken.length !== 6) {
       return;
     }
@@ -41,7 +40,7 @@ const JoinGame: FC<JoinGameType> = ({
     }
 
     setSpectateType('CENTER');
-    
+
     let token: string = '';
 
     if (selectedTokenType === 'PARTY') {
@@ -57,23 +56,25 @@ const JoinGame: FC<JoinGameType> = ({
       setConnecting(true);
       setJoining(true);
 
-      window.GameAPI?.join(token, selectedTokenType === 'SERVER').then((tokens) => {
-        setConnecting(false);
-        setToken(tokens.split('%')[0]);
-        setServerToken(tokens.split('%')[1]);
-      }).catch(() => {
-        setConnecting(false);
-      });
+      window.GameAPI?.join(token, selectedTokenType === 'SERVER')
+        .then((tokens) => {
+          setConnecting(false);
+          setToken(tokens.split('%')[0]);
+          setServerToken(tokens.split('%')[1]);
+        })
+        .catch(() => {
+          setConnecting(false);
+        });
     }
-  }
+  };
 
   return (
     <div className={css.wrap}>
-      <button 
+      <button
         className={classNames({ [css.joinGame]: true, [css.joining]: joining })}
-        style={{ 
+        style={{
           pointerEvents: disabled ? 'none' : 'auto',
-          opacity: disabled ? 0.4 : 1 
+          opacity: disabled ? 0.4 : 1,
         }}
         onClick={join}
       >
@@ -81,21 +82,21 @@ const JoinGame: FC<JoinGameType> = ({
         <div className={css.cancelText}>Cancel</div>
       </button>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ UI, game }: AppStateType) => ({
   connecting: UI.gameSocketConnecting,
   selectedTokenType: game.selectedGameTokenType,
   partyToken: game.token,
-  serverToken: game.gameServerToken
+  serverToken: game.gameServerToken,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setConnecting: (value: boolean) => dispatch(setGameSocketConnecting(value)),
   setToken: (value: string) => dispatch(changeGameToken(value)),
   setServerToken: (value: string) => dispatch(changeGameServerToken(value)),
-  setSpectateType: (type: SpectateType) => dispatch(thunkSetSpectateType(type))
+  setSpectateType: (type: SpectateType) => dispatch(thunkSetSpectateType(type)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(JoinGame);

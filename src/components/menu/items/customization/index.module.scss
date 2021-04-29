@@ -7,10 +7,10 @@
   button {
     outline: none;
     border: none;
-    transition: .15s linear;
+    transition: 0.15s linear;
     cursor: pointer;
     background: transparent;
-    color: rgba(255, 255, 255, .3);
+    color: rgba(255, 255, 255, 0.3);
 
     &:hover {
       transform: scale(1.15);
@@ -55,24 +55,24 @@
     }
 
     &:hover {
-      color: rgba(255, 255, 255, .5);
+      color: rgba(255, 255, 255, 0.5);
     }
   }
 }
 
 @keyframes blurActive {
-  from { 
+  from {
     transform: scale(1);
-    color: rgba(255, 255, 255, .3);
+    color: rgba(255, 255, 255, 0.3);
   }
 
   50% {
     transform: scale(1.15);
-    color: rgba(255, 255, 255, .75);
+    color: rgba(255, 255, 255, 0.75);
   }
 
   to {
     transform: scale(1);
-    color: rgba(255, 255, 255, .3);
+    color: rgba(255, 255, 255, 0.3);
   }
 }

@@ -4,8 +4,8 @@
   overflow: hidden;
   width: 60px;
   height: 60px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, .1);
-  background: rgba(40, 40, 40, .33);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  background: rgba(40, 40, 40, 0.33);
   margin-top: 8px;
   border: none;
   padding: 0;
@@ -23,7 +23,7 @@
     margin-left: 0 !important;
     color: rgb(180, 180, 180);
     opacity: 0;
-    transition: .2s ease-in-out;
+    transition: 0.2s ease-in-out;
   }
 
   &.errored {
@@ -42,6 +42,6 @@
     left: -2px;
     width: 64px;
     height: 64px;
-    transition: .2s linear;
+    transition: 0.2s linear;
   }
-} 
+}

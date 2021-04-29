@@ -1,10 +1,10 @@
-import { RGB } from "redux/settings/theming/types";
+import { RGB } from 'redux/settings/theming/types';
 
 export default class ThemingSettingsCells {
   static setOneColoredColor(value: RGB) {
     window.GameSettings.all.settings.theming.cells.oneColoredColor = value;
   }
-  
+
   static setOneColoredStatsColor(value: RGB) {
     window.GameSettings.all.settings.theming.cells.oneColoredStatsColor = value;
   }
@@ -40,7 +40,7 @@ export default class ThemingSettingsCells {
   static setCellsTransparency(value: number) {
     window.GameSettings.all.settings.theming.cells.transparency = value;
   }
-  
+
   static setCellsColorLighten(value: number) {
     window.GameSettings.all.settings.theming.cells.colorLighten = value;
   }

@@ -1,4 +1,4 @@
-import { RGB } from "redux/settings/theming/types";
+import { RGB } from 'redux/settings/theming/types';
 
 export default class ThemingSettingsMinimap {
   static setMinimapBackgroundColor(value: RGB) {

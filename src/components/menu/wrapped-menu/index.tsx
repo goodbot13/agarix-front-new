@@ -11,25 +11,23 @@ import { connect } from 'react-redux';
 import { AppStateType, ThunkRootDispatchType } from 'redux/store';
 
 import classNames from 'classnames';
-import { 
-  thunkSetLeftProfileNick, 
+import {
+  thunkSetLeftProfileNick,
   thunkSetLeftProfileSelectedIndex,
-   thunkSetLeftProfileSkinUrl, 
-   thunkSetRightProfileNick, 
-   thunkSetRightProfileSelectedIndex, 
-   thunkSetRightProfileSkinUrl, 
-   thunkSetTag
-  } from 'redux/profiles/thunks';
-
-
+  thunkSetLeftProfileSkinUrl,
+  thunkSetRightProfileNick,
+  thunkSetRightProfileSelectedIndex,
+  thunkSetRightProfileSkinUrl,
+  thunkSetTag,
+} from 'redux/profiles/thunks';
 
 const WrappedMenu: FC<WrappedMenuType> = ({
-  setLeftProfileNick, 
-  setLeftProfileSelectedIndex, 
+  setLeftProfileNick,
+  setLeftProfileSelectedIndex,
   setLeftProfileSkinUrl,
-  setRightProfileNick, 
-  setRightProfileSelectedIndex, 
-  setRightProfileSkinUrl, 
+  setRightProfileNick,
+  setRightProfileSelectedIndex,
+  setRightProfileSkinUrl,
   setTag,
   settingsShown,
   blured,
@@ -39,19 +37,20 @@ const WrappedMenu: FC<WrappedMenuType> = ({
   rightProfiles,
   rightSelectedIndex,
   menuShown,
-  multiboxEnabled
+  multiboxEnabled,
 }) => {
-
   return (
-    <div className={classNames({
-      [css.menuWrap]: true,
-      [css.settingsShown]: settingsShown,
-      [css.menuShown]: menuShown,
-    })}>
+    <div
+      className={classNames({
+        [css.menuWrap]: true,
+        [css.settingsShown]: settingsShown,
+        [css.menuShown]: menuShown,
+      })}
+    >
       <div className={css.top}>
         <div className={css.left}>
-          <Profile 
-            main 
+          <Profile
+            main
             blured={blured}
             onNickChange={setLeftProfileNick}
             onSkinUrlChange={setLeftProfileSkinUrl}
@@ -74,7 +73,7 @@ const WrappedMenu: FC<WrappedMenuType> = ({
           </div>
         </div>
         <div className={css.right}>
-          <Profile 
+          <Profile
             blured={blured}
             profilesList={rightProfiles}
             onNickChange={setRightProfileNick}
@@ -90,8 +89,8 @@ const WrappedMenu: FC<WrappedMenuType> = ({
         <GameActions />
       </div>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ UI, profiles, settings }: AppStateType) => ({
   ...profiles,
@@ -99,7 +98,7 @@ const mapStateToProps = ({ UI, profiles, settings }: AppStateType) => ({
   menuShown: UI.menuShown,
   settingsShown: UI.settingsShown,
   additionalProfilesListShown: UI.additionalProfilesListShown,
-  multiboxEnabled: settings.game.multibox.enabled
+  multiboxEnabled: settings.game.multibox.enabled,
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
@@ -108,7 +107,8 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setLeftProfileSelectedIndex: (index: number) => dispatch(thunkSetLeftProfileSelectedIndex(index)),
   setRightProfileNick: (nick: string) => dispatch(thunkSetRightProfileNick(nick)),
   setRightProfileSkinUrl: (skinUrl: string) => dispatch(thunkSetRightProfileSkinUrl(skinUrl)),
-  setRightProfileSelectedIndex: (index: number) => dispatch(thunkSetRightProfileSelectedIndex(index)),
+  setRightProfileSelectedIndex: (index: number) =>
+    dispatch(thunkSetRightProfileSelectedIndex(index)),
   setTag: (tag: string) => dispatch(thunkSetTag(tag)),
 });
 
