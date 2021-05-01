@@ -1,5 +1,11 @@
 import Storage from 'api/storage/Storage';
-import { GameBotsActionTypes, IGameBotsState, SET_BOTS_ENABLED, SET_BOTS_PROVIDER } from './types';
+import {
+  GameBotsActionTypes,
+  IGameBotsState,
+  SET_BOTS_ENABLED,
+  SET_BOTS_PROVIDER,
+  SET_BOTS_STARTED,
+} from './types';
 
 const initState: IGameBotsState = Storage.get().settings.game.bots;
 
@@ -15,6 +21,12 @@ export const gameBotsReducer = (state = initState, action: GameBotsActionTypes):
       return {
         ...state,
         provider: action.provider,
+      };
+
+    case SET_BOTS_STARTED:
+      return {
+        ...state,
+        started: action.started,
       };
 
     default:

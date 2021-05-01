@@ -61,6 +61,7 @@ const initStorage: TStorage = {
       },
       bots: {
         enabled: false,
+        started: false,
         provider: 'AGARBOT.OVH',
       },
     },

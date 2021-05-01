@@ -8,6 +8,7 @@ import Leaderboard from './leaderboard';
 import Spectate from './spectate';
 import Stats from './stats';
 import TopTeam from './top-team';
+import Bots from './bots';
 
 import css from './index.module.scss';
 
@@ -36,6 +37,7 @@ const Huds: FC<HudsType> = ({ menuShown, settingsShown, settingsType, hudsShown 
         <Leaderboard />
         <Stats />
         <TopTeam />
+        <Bots />
         <Spectate />
       </div>
     </>
