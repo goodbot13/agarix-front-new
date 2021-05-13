@@ -52,7 +52,7 @@ export interface ITopTeamPlayer {
 
 export interface IStats {
   fps: number,
-  loss: number
+  loss: number,
 }
 
 export interface IUIState {

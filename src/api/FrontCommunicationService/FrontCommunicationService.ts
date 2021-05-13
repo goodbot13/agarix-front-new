@@ -1,9 +1,11 @@
 import FrametimeCalculator from "api/FrametimeCalculator/FrametimeCalculator";
-import { updateGameServersList } from "redux/game/actions";
+import { changeGameServerToken, changeGameToken, updateGameServersList } from "redux/game/actions";
 import { IGameServer } from "redux/game/types";
 import { setFacebookLoggedIn, setGoogleLoggedIn } from "redux/profiles/actions";
+import { setFirstTabStatus, setSecondTabStatus, setSpectatorTabStatus } from "redux/settings/UI/stats/actions";
+import { TStatsTabStatus } from "redux/settings/UI/stats/types";
 import { TStore } from "redux/store";
-import { addChatMessage, setGameLoaderStatus, setIsPlayerPlaying, setLeaderboardPlayers, setStats, setTopTeamPlayers } from "redux/UI/actions";
+import { addChatMessage, setGameLoaderStatus, setGameSocketConnecting, setIsPlayerPlaying, setLeaderboardPlayers, setStats, setTopTeamPlayers } from "redux/UI/actions";
 import { thunkSetGameLoaderShown } from "redux/UI/thunks";
 import { ILeaderboardPlayer, ITopTeamPlayer, TChatMessageType } from "redux/UI/types";
 
@@ -54,6 +56,30 @@ export const initFrontCommunicationService = (store: TStore) => {
   window.FrontAPI.addChatMessage = (nick, message, type, key) => {
     store.dispatch(addChatMessage({ nick, message, type, key }))
   }
+
+  window.FrontAPI.setToken = (value) => {
+    store.dispatch(changeGameToken(value));
+  }
+
+  window.FrontAPI.setServerToken = (value) => {
+    store.dispatch(changeGameServerToken(value));
+  }
+
+  window.FrontAPI.setSocketConnecting = (value) => {
+    store.dispatch(setGameSocketConnecting(value));
+  }
+
+  window.FrontAPI.setFirstTabStatus = (value) => {
+    store.dispatch(setFirstTabStatus(value));
+  }
+
+  window.FrontAPI.setSecondTabStatus = (value) => {
+    store.dispatch(setSecondTabStatus(value));
+  }
+
+  window.FrontAPI.setSpectatorTabStatus = (value) => {
+    store.dispatch(setSpectatorTabStatus(value));
+  }
 }
 
 
@@ -80,6 +106,14 @@ declare global {
       setSupportProtoVersion: (value: string) => void,
       setServerStatus: (value: string) => void,
       setServerVersion: (value: string) => void,
+
+      setToken: (value: string) => void,
+      setServerToken: (value: string) => void,
+      setSocketConnecting: (value: boolean) => void,
+
+      setFirstTabStatus: (value: TStatsTabStatus) => void,
+      setSecondTabStatus: (value: TStatsTabStatus) => void,
+      setSpectatorTabStatus: (value: TStatsTabStatus) => void,
     }
   }
 }

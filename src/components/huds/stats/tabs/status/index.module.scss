@@ -1,0 +1,28 @@
+.wrap {
+  display: flex;
+  margin-right: 12px !important;
+
+  .status {
+    display: flex;
+    align-items: center;
+    width: 16px;
+  }
+
+  .reconnect {
+    cursor: pointer;
+
+    svg {
+      transition: .25s;
+    }
+
+    &:hover {
+      svg {
+        transform: rotate(90deg) scale(1.125);
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -27,6 +27,10 @@ declare global {
       logInWithGoogle(): void,
       logOutWithGoogle(): void,
 
+      reconnectFirstTab(): void,
+      reconnectSecondTab(): void,
+      reconnectSpectator(): void,
+
       init(): void,
       
       hotkeys: IGameAPIHotkeys

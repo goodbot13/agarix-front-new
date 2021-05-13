@@ -172,7 +172,11 @@ const initStorage: TStorage = {
         loss: true,
         backgroundColor: { red: 24, green: 24, blue: 24, alpha: 0.5 },
         backdropBlur: false,
-        frametime: true
+        frametime: true,
+        tabs: true,
+        firstTabStatus: 'DISCONNECTED',
+        secondTabStatus: 'DISCONNECTED',
+        spectatorTabStatus: 'DISCONNECTED'
       },
       topTeam: {
         shown: true,

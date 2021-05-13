@@ -1,6 +1,9 @@
 import Storage from "api/storage/Storage";
 import { 
   IUIStatsState, 
+  SET_FIRST_TAB_STATUS, 
+  SET_SECOND_TAB_STATUS, 
+  SET_SPECTATOR_TAB_STATUS, 
   SET_STATS_BACKDROP_BLUR, 
   SET_STATS_BACKGROUND_COLOR, 
   SET_STATS_FPS_SHOWN, 
@@ -8,6 +11,7 @@ import {
   SET_STATS_LOSS_SHOWN, 
   SET_STATS_POSITION, 
   SET_STATS_SHOWN, 
+  SET_STATS_TABS, 
   UIStatusActionTypes 
 } from "./types";
 
@@ -55,6 +59,30 @@ export const settingsStatsReducer = (state = initState, action: UIStatusActionTy
       return {
         ...state,
         position: action.position
+      }
+
+    case SET_STATS_TABS:
+      return {
+        ...state,
+        tabs: action.tabs
+      }
+
+    case SET_FIRST_TAB_STATUS:
+      return {
+        ...state,
+        firstTabStatus: action.firstTabStatus
+      }
+
+    case SET_SECOND_TAB_STATUS:
+      return {
+        ...state,
+        secondTabStatus: action.secondTabStatus
+      }
+
+    case SET_SPECTATOR_TAB_STATUS: 
+      return {
+        ...state, 
+        spectatorTabStatus: action.spectatorTabStatus
       }
 
     default: return state;

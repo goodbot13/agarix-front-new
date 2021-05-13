@@ -22,11 +22,7 @@ const PlaySpectate: FC<PlaySpectateState> = ({ connecting, setConnecting, setTok
     setConnecting(true);
 
     window.GameAPI?.play().then((tokens) => {
-
-      if (!tokens) {
-        setToken('');
-        setServerToken('');
-      } else {
+      if (tokens) {
         setToken(tokens.split('%')[0]);
         setServerToken(tokens.split('%')[1]);
         hideMenuAndUnblur();
@@ -36,8 +32,6 @@ const PlaySpectate: FC<PlaySpectateState> = ({ connecting, setConnecting, setTok
 
     }).catch(() => {
       setConnecting(false);
-      setToken('');
-      setServerToken('');
     });
   }
 

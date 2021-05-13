@@ -11,7 +11,8 @@ import {
   setStatsFrametime, 
   setStatsLossShown, 
   setStatsPosition, 
-  setStatsShown 
+  setStatsShown, 
+  setStatsTabs
 } from "redux/settings/UI/stats/actions";
 
 import { AppStateType } from "redux/store";
@@ -30,13 +31,15 @@ const Stats: FC<StatsType> = ({
   backdropBlur,
   frametime,
   position,
+  tabs,
   setShown,
   setFps,
   setLoss,
   setBackgroundColor,
   setBackdropBlur,
   setFrametime,
-  setPosition
+  setPosition,
+  setTabs
 }) => {
   return (
     <>
@@ -85,6 +88,12 @@ const Stats: FC<StatsType> = ({
         onChange={setLoss}
         disabled={!shown}
       />
+      <Switch 
+        text="Show tabs status"
+        enabled={tabs}
+        onChange={setTabs}
+        disabled={!shown}
+      />
     </>
   )
 }
@@ -100,7 +109,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   setBackgroundColor: (value: RGB) => dispatch(setStatsBackgroundColor(value)),
   setBackdropBlur: (value: boolean) => dispatch(setStatsBackdropBlur(value)),
   setFrametime: (value: boolean) => dispatch(setStatsFrametime(value)),
-  setPosition: (value: TStatsPosition) => dispatch(setStatsPosition(value))
+  setPosition: (value: TStatsPosition) => dispatch(setStatsPosition(value)),
+  setTabs: (value: boolean) => dispatch(setStatsTabs(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stats);

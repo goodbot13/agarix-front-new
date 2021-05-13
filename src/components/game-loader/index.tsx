@@ -16,7 +16,7 @@ const GameLoader: FC<GameLoaderType> = ({ gameLoaded, status }) => {
   return (
     <DelayedRenderComponent 
       rendered={!gameLoaded} 
-      hideDelayMs={500}
+      hideDelayMs={800}
     >
       <div className={classNames({
         [css.wrap]: true,
@@ -25,11 +25,14 @@ const GameLoader: FC<GameLoaderType> = ({ gameLoaded, status }) => {
         <div className={css.statusWrapper}>
           <Status/>
         </div>
-        <div className={css.discord}>
-          <FontAwesomeIcon icon={faDiscord}/> 
-          <a href="https://discord.gg/XX5sVwpqfa" target="_blank" rel="noreferrer">
-            Discord 
-          </a>
+        <div className={css.infoWrapper}>
+          <div className={css.version}>{status}</div>
+          <div className={css.discord}>
+            <FontAwesomeIcon icon={faDiscord}/> 
+            <a href="https://discord.gg/XX5sVwpqfa" target="_blank" rel="noreferrer">
+              Discord 
+            </a>
+          </div>
         </div>
       </div>
     </DelayedRenderComponent>

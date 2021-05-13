@@ -7,8 +7,13 @@ export const SET_STATS_LOSS_SHOWN = 'SET_STATS_LOSS_SHOWN';
 export const SET_STATS_BACKGROUND_COLOR = 'SET_STATS_BACKGROUND_COLOR';
 export const SET_STATS_BACKDROP_BLUR = 'SET_STATS_BACKDROP_BLUR';
 export const SET_STATS_FRAMETIME = 'SET_STATS_FRAMETIME';
+export const SET_STATS_TABS = 'SET_STATS_TABS';
+export const SET_FIRST_TAB_STATUS = 'SET_FIRST_TAB_STATUS';
+export const SET_SECOND_TAB_STATUS = 'SET_SECOND_TAB_STATUS';
+export const SET_SPECTATOR_TAB_STATUS = 'SET_SPECTATOR_TAB_STATUS';
 
 export type TStatsPosition = 'BOTTOM LEFT' | 'BOTTOM CENTER' | 'LEADERBOARD';
+export type TStatsTabStatus = 'CONNECTED' | 'DISCONNECTED' | 'CONNECTING';
 
 export interface IUIStatsState {
   shown: boolean,
@@ -17,7 +22,11 @@ export interface IUIStatsState {
   backgroundColor: RGB,
   backdropBlur: boolean,
   frametime: boolean,
-  position: TStatsPosition
+  position: TStatsPosition,
+  tabs: boolean,
+  firstTabStatus: TStatsTabStatus,
+  secondTabStatus: TStatsTabStatus,
+  spectatorTabStatus: TStatsTabStatus
 }
 
 interface SetStatsShownAction {
@@ -55,6 +64,26 @@ interface SetStatsPosition {
   position: TStatsPosition
 }
 
+interface SetStatsTabs {
+  type: typeof SET_STATS_TABS,
+  tabs: boolean
+}
+
+interface SetStatsFirstTabStatus {
+  type: typeof SET_FIRST_TAB_STATUS,
+  firstTabStatus: TStatsTabStatus
+}
+
+interface SetStatsSecondTabStatus {
+  type: typeof SET_SECOND_TAB_STATUS,
+  secondTabStatus: TStatsTabStatus
+}
+
+interface SetStatsSpectatorTabStatus {
+  type: typeof SET_SPECTATOR_TAB_STATUS,
+  spectatorTabStatus: TStatsTabStatus
+}
+
 export type UIStatusActionTypes = SetStatsShownAction | SetStatsFpsShownAction | SetStatsLossShownAction |
                                   SetStatsBackgroundColorAction | SetStatsBackdropBlurAction | SetStatsFrametime |
-                                  SetStatsPosition;
+                                  SetStatsPosition | SetStatsTabs | SetStatsFirstTabStatus | SetStatsSecondTabStatus | SetStatsSpectatorTabStatus;

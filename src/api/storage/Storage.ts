@@ -1,6 +1,14 @@
 import { AppStateType } from "redux/store";
 import initState from "./initState";
 
+const checkStorageForUpdate = (storage: TStorage): TStorage => {
+  if (!storage.settings.UI.stats.tabs) {
+    storage.settings.UI.stats.tabs = true;
+  }
+
+  return storage;
+}
+
 export default new class Storage {
   private readonly name: string = 'AGARIX:DATA';
 
@@ -24,7 +32,7 @@ export default new class Storage {
         return decoded;
       } catch {
         // decoding failed, valid format
-        return JSON.parse(storage);
+        return checkStorageForUpdate(JSON.parse(storage));
       }
     }
 

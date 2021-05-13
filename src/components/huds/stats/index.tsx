@@ -1,42 +1,54 @@
 import { rgbToCssString } from "api/utils";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { AppStateType } from "redux/store";
 import Frametime from "./frametime";
 import css from './index.module.scss';
+import Tabs from "./tabs";
 
 const Stats: FC<StatsType> = ({
   shown,
   fps,
   frametime,
   loss,
+  tabs,
   backgroundColor,
   backdropBlur,
   position,
-  statsValues
+  statsValues,
+  firstTabStatus,
+  secondTabStatus,
+  spectatorTabStatus,
+  multiboxEnabled
 }) => {
 
-  const pos = {
-    left: '0',
-    bottom: '0',
-    transform: '',
-    borderTopLeftRadius: '0',
-    borderTopRightRadius: '0',
-    borderBottomLeftRadius: '0',
-    borderBottomRightRadius: '0',
-  }
+  const [_position, _setPosition] = useState({ });
 
-  if (position === 'BOTTOM LEFT') {
-    pos.transform = '';
-    pos.borderTopRightRadius = '4px';
-  } else if (position === 'BOTTOM CENTER') {
-    pos.left = '50%';
-    pos.transform = 'translateX(-50%)';
-    pos.borderTopLeftRadius = '4px';
-    pos.borderTopRightRadius = '4px';
-  } else if (position === 'LEADERBOARD') {
+  useEffect(() => {
+    const pos = {
+      left: '0',
+      bottom: '0',
+      transform: '',
+      borderTopLeftRadius: '0',
+      borderTopRightRadius: '0',
+      borderBottomLeftRadius: '0',
+      borderBottomRightRadius: '0',
+    }
+  
+    if (position === 'BOTTOM LEFT') {
+      pos.transform = '';
+      pos.borderTopRightRadius = '4px';
+    } else if (position === 'BOTTOM CENTER') {
+      pos.left = '50%';
+      pos.transform = 'translateX(-50%)';
+      pos.borderTopLeftRadius = '4px';
+      pos.borderTopRightRadius = '4px';
+    } else if (position === 'LEADERBOARD') {
+  
+    }
 
-  }
+    _setPosition(pos);
+  }, [position]);
 
   return (
     shown ? <div 
@@ -45,7 +57,7 @@ const Stats: FC<StatsType> = ({
         backgroundColor: rgbToCssString(backgroundColor),
         boxShadow: `0 0 4px ${rgbToCssString(backgroundColor)}`,
         backdropFilter: backdropBlur ? `blur(7px)` : '',
-        ...pos
+        ..._position
       }}
     >
       {frametime && <Frametime />}
@@ -73,13 +85,22 @@ const Stats: FC<StatsType> = ({
           LOSS: {statsValues.loss}%
         </div>
       )}
+      {tabs && (
+        <Tabs 
+          first={firstTabStatus}
+          second={secondTabStatus}
+          spectator={spectatorTabStatus}
+          multiboxEnabled={multiboxEnabled}
+        />
+      )}
     </div> : null
   )
 }
 
 const mapStateToProps = ({ settings, UI }: AppStateType) => ({
   ...settings.UI.stats,
-  statsValues: UI.stats
+  statsValues: UI.stats,
+  multiboxEnabled: settings.game.multibox.enabled,
 });
 
 export default connect(mapStateToProps)(Stats);
