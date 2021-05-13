@@ -61,7 +61,7 @@ const ChatBox: FC<TChatBox> = ({
 
   const getChatBackgroundColor = useCallback((color: RGB): string =>{
     return rgbToCssString(color);
-  }, [backgroundColor]);
+  }, []);
 
   const endRef = useRef(null);
 
@@ -92,12 +92,22 @@ const ChatBox: FC<TChatBox> = ({
               style={{
                 backgroundColor: getBackgroundColor(type),
                 color: getFontColor(type),
-                fontWeight: type !== 'PLAYER' ? 600 : 'initial',
                 borderBottom: `1px solid ${getBorderBottomColor(type)}`
               }}
             >
-              <span className={css.nick}>
-                {type === 'GAME' ? <FontAwesomeIcon icon={faGamepad}/> : `${nick.trim()}:`}
+              <span 
+                className={css.nick}
+              >
+                {
+                  type === 'GAME' ? (
+                    <>
+                      <FontAwesomeIcon icon={faGamepad}/>
+                      {nick && ` ${nick.trim()}:`}
+                    </>
+                  ) : (
+                    `${nick.trim()}:`
+                  )
+                }
               </span>
               <span className={css.message}>{message}</span>
             </div>

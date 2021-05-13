@@ -6,26 +6,28 @@ import { connect } from 'react-redux';
 
 import DelayedRenderComponent from '../StandartComponents/DelayedRenderCompnent';
 
-import spinner from 'assets/loader-spinner.svg';
-
 import classNames from 'classnames';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import Status from './status';
 
 const GameLoader: FC<GameLoaderType> = ({ gameLoaded, status }) => {
   return (
-    <DelayedRenderComponent rendered={!gameLoaded} hideDelayMs={800}>
+    <DelayedRenderComponent 
+      rendered={!gameLoaded} 
+      hideDelayMs={500}
+    >
       <div className={classNames({
         [css.wrap]: true,
         [css.hidden]: gameLoaded
       })}>
-        <div className={css.status}>
-          <img src={spinner}></img> 
-          <span className={css.text}>{status}</span>
+        <div className={css.statusWrapper}>
+          <Status/>
         </div>
         <div className={css.discord}>
           <FontAwesomeIcon icon={faDiscord}/> 
-          <a href="https://discord.gg/XX5sVwpqfa" target="_blank">
+          <a href="https://discord.gg/XX5sVwpqfa" target="_blank" rel="noreferrer">
             Discord 
           </a>
         </div>

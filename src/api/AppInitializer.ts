@@ -8,7 +8,7 @@ import { initFrontCommunicationService } from './FrontCommunicationService/Front
 import StoreLink from './StoreLink';
 import { setInputMessageShown } from 'redux/UI/actions';
 
-export default (store: TStore): void => {
+const init = (store: TStore): void => {
   // check storage
   Storage.init(store.getState());
 
@@ -74,3 +74,5 @@ const initGameClient = () => {
     }
   }, 100);
 }
+
+export default init;

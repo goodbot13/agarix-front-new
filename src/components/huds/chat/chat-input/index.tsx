@@ -23,7 +23,7 @@ const ChatInput: FC<TChatInput> = ({ shown }) => {
       setText('');
       ref.current?.blur();
     }
-  }, [shown]);
+  }, [shown, text]);
 
   return (
     <div 

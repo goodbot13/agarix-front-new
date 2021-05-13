@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { connect } from "react-redux";
 
-import { FOOD_GLOW_STRENGTH_VALUES } from "redux/settings/theming/food/values";
 import { RGB } from "redux/settings/theming/types";
 
 import { 

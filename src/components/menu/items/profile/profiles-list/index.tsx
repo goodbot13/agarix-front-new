@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import css from './index.module.scss';
 
 import classNames from 'classnames';
@@ -8,19 +8,19 @@ import { IProfile } from 'redux/profiles/types';
 import Profile from './profile';
 
 const ProfilesList: FC<ProfileListType> = ({ left, isMain, items, currentSelectedIndex, onProfileSelect }) => {
-  let offset = 0;
+  const offset = useRef(0);
 
   useEffect(() => {
     if (isMain) {
       if (!left) {
-        offset = 5;
+        offset.current = 5;
       }
     } else {
       if (left) {
-        offset = 5;
+        offset.current = 5;
       }
     } 
-  });
+  }, [isMain, left]);
 
   return (
     <div className={classNames({
@@ -31,11 +31,11 @@ const ProfilesList: FC<ProfileListType> = ({ left, isMain, items, currentSelecte
       {items.map(({ skinUrl }, i) => {
         return (
           <Profile 
-            key={i + offset}
-            index={i + offset}
+            key={i + offset.current}
+            index={i + offset.current}
             currentSelectedIndex={currentSelectedIndex}
             skinUrl={skinUrl}
-            onSelect={() => onProfileSelect(i + offset)}
+            onSelect={() => onProfileSelect(i + offset.current)}
           />
         )
       })}

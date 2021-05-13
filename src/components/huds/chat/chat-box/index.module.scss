@@ -1,7 +1,7 @@
 .wrap {
   position: fixed;
   bottom: 0;
-  width: 320px;
+  width: 340px;
   box-sizing: border-box;
   transition: .33s;
   border-top-right-radius: 4px;
@@ -29,6 +29,10 @@
       font-weight: 600;
       margin-top: -1.5px;
       margin-right: 6px;
+
+      svg {
+        margin-bottom: -1px;
+      }
     }
   }
 }

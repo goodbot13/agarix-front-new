@@ -71,7 +71,15 @@ declare global {
       setIsPlayerPlaying: (value: boolean) => void,
       setGoogleLoggedIn: (value: boolean) => void,
       setFacebookLoggedIn: (value: boolean) => void,
-      addChatMessage: (nick: string, message: string, type: TChatMessageType, key: number) => void
+      addChatMessage: (nick: string, message: string, type: TChatMessageType, key: number) => void,
+
+      // location: ./src/components/game-loader/status
+      setTextureName: (value: string) => void,
+      setClientVersion: (value: number) => void,
+      setProtocolVersion: (value: number) => void,
+      setSupportProtoVersion: (value: string) => void,
+      setServerStatus: (value: string) => void,
+      setServerVersion: (value: string) => void,
     }
   }
 }
