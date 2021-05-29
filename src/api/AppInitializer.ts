@@ -7,6 +7,7 @@ import { TStore } from 'redux/store';
 import { initFrontCommunicationService } from './FrontCommunicationService/FrontCommunicationService';
 import StoreLink from './StoreLink';
 import { setInputMessageShown } from 'redux/UI/actions';
+import Mouse from './Mouse/Mouse';
 
 const init = (store: TStore): void => {
   // check storage
@@ -14,6 +15,9 @@ const init = (store: TStore): void => {
 
   // init keyboard
   initKeyboardInteractions(store);
+
+  // init mouse
+  initMouseInteractions(store);
 
   // init CLIENT -> FRONT communication
   initFrontCommunicationService(store);
@@ -26,6 +30,12 @@ const init = (store: TStore): void => {
 
   // start game client initialization
   initGameClient();
+}
+
+const initMouseInteractions = (store: TStore) => {
+  const mouse = store.getState().settings.hotkeys.mouse;
+
+  Mouse.init({ ...mouse });
 }
 
 const initKeyboardInteractions = (store: TStore) => {

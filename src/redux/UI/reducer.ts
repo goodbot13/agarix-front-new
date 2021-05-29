@@ -24,15 +24,15 @@ import {
 } from "./types";
 
 const initState: IUIState = {
-  gameLoaded: false,
+  gameLoaded: true,
   gameLoaderStatus: 'Receiving game version...',
-  menuShown: false,
+  menuShown: true,
   blured: false,
-  settingsShown: false,
-  settingsType: 'GAME',
+  settingsShown: true,
+  settingsType: 'HOTKEYS',
   gameSettingsSubmenu: 'GAME_GAMEPLAY',
   themingSettingsSubmenu: 'THEMING_CELLS',
-  hotkeysSettingsSubmenu: 'HOTKEYS_KEYBOARD',
+  hotkeysSettingsSubmenu: 'HOTKEY_MOUSE',
   uiSettingsSubmenu: 'UI_LEADERBOARD',
   additionalProfilesListShown: false,
   leaderboardPlayers: [],

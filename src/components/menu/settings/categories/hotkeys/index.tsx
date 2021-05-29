@@ -16,6 +16,7 @@ import { faCommentAlt, faKeyboard, faMouse } from "@fortawesome/free-solid-svg-i
 
 import CategoryWrapper from "../wrapper";
 import Keyboard from "./keyboard";
+import Mouse from './mouse';
 
 const Hotkeys: FC<HotkeysType> = ({ settingsSubmenu, settingsShown, setSettingsSubmenu }) => {
   return (
@@ -43,6 +44,9 @@ const Hotkeys: FC<HotkeysType> = ({ settingsSubmenu, settingsShown, setSettingsS
       <Right>
         <CategoryWrapper shown={settingsSubmenu === 'HOTKEYS_KEYBOARD' && settingsShown}>
           <Keyboard />
+        </CategoryWrapper>
+        <CategoryWrapper shown={settingsSubmenu === 'HOTKEY_MOUSE' && settingsShown}>
+          <Mouse />
         </CategoryWrapper>
       </Right>
     </>

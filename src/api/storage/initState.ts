@@ -77,6 +77,11 @@ const initStorage: TStorage = {
         toggleFoodRender: 'F',
         toggleSpectatorMode: '',
         toggleHuds: ''
+      },
+      mouse: {
+        left: '[NOT SET]',
+        right: '[NOT SET]',
+        middle: '[NOT SET]'
       }
     },
     theming: {

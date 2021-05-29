@@ -1,4 +1,5 @@
 import Keyboard from "api/Keyboard/Keyboard";
+import Mouse from "api/Mouse/Mouse";
 import { setGameLoaded, setMenuShown, setSettingsShown, setSettingsType, setSpectateType } from "./actions";
 import { SettingsType, SpectateType, UIThunkActionTypes } from "./types";
 
@@ -43,9 +44,11 @@ export const thunkSetMenuShown = (shown: boolean): UIThunkActionTypes => (dispat
     }
 
     Keyboard.block = true;
+    Mouse.block = true;
   } else {
     window.GameAPI?.setSceneBlurred(false, true);
     Keyboard.block = false;
+    Mouse.block = false;
   }
 }
 

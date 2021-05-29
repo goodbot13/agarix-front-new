@@ -65,3 +65,22 @@ export const toggleFoodRender = () => {
 export const toggleHuds = () => {
   StoreLink.store.dispatch(setHudsShown(!StoreLink.store.getState().UI.hudsShown));
 }
+
+export const GAME_EVENTS = {
+  feed,
+  macroFeed,
+  stopMacroFeed,
+  split,
+  doubleSplit,
+  tripleSplit,
+  splitSixteen,
+  quickRespawn,
+  pauseCell,
+  toggleCellHelpers,
+  toggleCellSkins,
+  toggleCellRings,
+  switchTabs,
+  toggleSpectatorMode,
+  toggleFoodRender,
+  toggleHuds
+}

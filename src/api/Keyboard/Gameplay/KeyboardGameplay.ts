@@ -15,7 +15,7 @@ import {
   toggleHuds, 
   toggleSpectatorMode, 
   tripleSplit 
-} from "./GameEvents";
+} from "../../GameEvents";
 
 import Keyboard, { TKeyBindEvent } from "../Keyboard";
 
