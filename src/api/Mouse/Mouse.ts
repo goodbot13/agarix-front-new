@@ -20,7 +20,7 @@ export default new class Mouse {
   }
 
   private getFunctionToExecute(name: TGameActionName): () => void {
-    if (name === '[NOT SET]' || this.block) {
+    if (name === '[NOT SET]') {
       return () => {};
     }
 
@@ -56,6 +56,10 @@ export default new class Mouse {
   }
 
   private listenMouseDown(e: MouseEvent): void {
+    if (this.block) {
+      return;
+    }
+
     switch (e.button) {
       case LEFT_BUTTON:
         this.executeLeft(e);
