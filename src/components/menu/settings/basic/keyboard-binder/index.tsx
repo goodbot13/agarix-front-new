@@ -1,10 +1,14 @@
+import DOMManipulations from "api/DOM/DOMManipulations";
 import { transformCode } from "api/Keyboard/Listener";
 import { FC, KeyboardEvent } from "react";
 import css from './index.module.scss';
 
 const KeyboardBinder: FC<KeyboardBinderType> = ({ text, hint, value, onChage }) => {
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     e.preventDefault();
+
+    // @ts-ignore
+    DOMManipulations.lastUsedElementForUnfocus = e.target;
     
     // @ts-ignore
     const { code, ctrlKey, altKey, shiftKey } = e;
@@ -26,10 +30,10 @@ const KeyboardBinder: FC<KeyboardBinderType> = ({ text, hint, value, onChage }) 
 
   return (
     <div className={css.wrap}>
-      <div className={css.text}>
+      {text && <div className={css.text}>
         {text}
         {hint && <span className={css.hint}>{hint}</span>}
-      </div> 
+      </div>}
       <input 
         value={value ? value : '[NOT SET]'}
         onKeyDown={handleKeyDown}

@@ -58,6 +58,10 @@ export const toggleSpectatorMode = () => {
   window.GameAPI?.hotkeys.toggleFullmapViewRender();
 }
 
+export const sendCommand = (message: string) => {
+  window.GameAPI?.sendCommand(message);
+}
+
 export const toggleFoodRender = () => {
   StoreLink.store.dispatch(thunkSetFoodEnabled(!StoreLink.store.getState().settings.theming.food.enabled));
 }
@@ -65,6 +69,8 @@ export const toggleFoodRender = () => {
 export const toggleHuds = () => {
   StoreLink.store.dispatch(setHudsShown(!StoreLink.store.getState().UI.hudsShown));
 }
+
+
 
 export const GAME_EVENTS = {
   feed,

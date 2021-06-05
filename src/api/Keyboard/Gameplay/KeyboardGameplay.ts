@@ -1,9 +1,11 @@
+import { IHotkeysCommands } from "redux/settings/hotkeys/commands/types";
 import { 
   doubleSplit, 
   feed, 
   macroFeed, 
   pauseCell, 
   quickRespawn, 
+  sendCommand, 
   split, 
   splitSixteen, 
   stopMacroFeed, 
@@ -20,6 +22,29 @@ import {
 import Keyboard, { TKeyBindEvent } from "../Keyboard";
 
 class KeyboardGameEvens {
+  private prevBindedCommands: IHotkeysCommands = [
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' },
+    { key: '-not-set-', message: '' }
+  ];
+
   private prevBindedKeys: GameEventsObjectType = {
     feedKey: '-not-set-',
     macroFeedKey: '-not-set-',
@@ -35,13 +60,9 @@ class KeyboardGameEvens {
     switchTabsKey: '-not-set-',
     toggleFoodRenderKey: '-not-set-',
     toggleSpectatorModeKey: '-not-set-',
-    toggleHudsKey: '-not-set-'
+    toggleHudsKey: '-not-set-',
+    commands: this.prevBindedCommands
   };
-
-  private rebind(prevKey: string, key: string, event: TKeyBindEvent, func: () => void) {
-    Keyboard.removeBinded(event, prevKey);
-    Keyboard.bindFunctionToKey(event, key, func);
-  }
 
   public init(keys: GameEventsObjectType) {
     this.bindFeed(keys.feedKey);
@@ -59,6 +80,47 @@ class KeyboardGameEvens {
     this.bindToggleFoodRenderKey(keys.toggleFoodRenderKey);
     this.bindToggleSpectatorModeKey(keys.toggleSpectatorModeKey);
     this.bindToggleHuds(keys.toggleHudsKey);
+
+    keys.commands.forEach((command, index) => {
+      this.bindCommand(index, command.key, command.message);
+    });
+  }
+
+  public isUsedByKeyboard(key: string): boolean {
+    let isUsed = false;
+
+    for (const usedBy in this.prevBindedKeys) {
+      // @ts-ignore
+      const usedKey = this.prevBindedKeys[usedBy];
+
+      if (typeof usedKey === 'string') {
+        if (usedKey === '-not-set-' || usedKey === '') {
+          continue;
+        }
+
+        if (usedKey === key) {
+          isUsed = true;
+        }
+      }
+    }
+
+    return isUsed;
+  }
+
+  private rebind(prevKey: string, key: string, event: TKeyBindEvent, func: () => void) {
+    Keyboard.removeBinded(event, prevKey);
+    Keyboard.bindFunctionToKey(event, key, func);
+  }
+
+  public bindCommand(id: number, key: string, message: string): void {
+    if (this.prevBindedCommands[id].key !== key || this.prevBindedCommands[id].message !== message) {
+      this.rebind(this.prevBindedCommands[id].key, key, 'down', () => {
+        sendCommand(message);
+      });
+
+      this.prevBindedCommands[id].key = key;
+      this.prevBindedCommands[id].message = message;
+    }
   }
 
   public bindFeed(key: string) {
@@ -185,5 +247,6 @@ type GameEventsObjectType = {
   switchTabsKey: string,
   toggleFoodRenderKey: string,
   toggleSpectatorModeKey: string,
-  toggleHudsKey: string
+  toggleHudsKey: string,
+  commands: IHotkeysCommands
 }

@@ -82,7 +82,29 @@ const initStorage: TStorage = {
         left: '[NOT SET]',
         right: '[NOT SET]',
         middle: '[NOT SET]'
-      }
+      },
+      commands: [
+        { key: 'Digit1', message: 'Feed me!' },
+        { key: 'Digit2', message: 'Split into me!' },
+        { key: 'Digit3', message: 'Need backup!' },
+        { key: 'Digit4', message: 'Need a teammate' },
+        { key: 'Digit5', message: 'Tank the virus!' },
+        { key: 'Digit6', message: 'Eat the virus!' },
+        { key: 'Digit7', message: 'Fake tricksplit!' },
+        { key: 'ALT+Digit1', message: 'Fuck!' },
+        { key: 'ALT+Digit2', message: 'Shit!' },
+        { key: 'ArrowLeft', message: 'Left!' },
+        { key: 'ArrowRight', message: 'Right!' },
+        { key: 'ArrowDown', message: 'Bottom!' },
+        { key: 'ArrowUp', message: 'Up!' },
+        { key: '', message: '' },
+        { key: '', message: '' },
+        { key: '', message: '' },
+        { key: '', message: '' },
+        { key: '', message: '' },
+        { key: '', message: '' },
+        { key: '', message: '' }
+      ]
     },
     theming: {
       cells: {

@@ -8,6 +8,7 @@ import { initFrontCommunicationService } from './FrontCommunicationService/Front
 import StoreLink from './StoreLink';
 import { setInputMessageShown } from 'redux/UI/actions';
 import Mouse from './Mouse/Mouse';
+import DOMManipulations from './DOM/DOMManipulations';
 
 const init = (store: TStore): void => {
   // check storage
@@ -40,6 +41,7 @@ const initMouseInteractions = (store: TStore) => {
 
 const initKeyboardInteractions = (store: TStore) => {
   const kb = store.getState().settings.hotkeys.keyboard;
+  const commands = store.getState().settings.hotkeys.commands;
 
   KeyboardGameplay.init({
     feedKey: kb.feed,
@@ -56,12 +58,17 @@ const initKeyboardInteractions = (store: TStore) => {
     switchTabsKey: kb.switchTabs,
     toggleFoodRenderKey: kb.toggleFoodRender,
     toggleSpectatorModeKey: kb.toggleSpectatorMode,
-    toggleHudsKey: kb.toggleHuds
+    toggleHudsKey: kb.toggleHuds,
+    commands
   });
 
   // init menu intraction using keyboard
   Keyboard.bindFunctionToKey('down', 'Escape', () => {
-    store.dispatch(thunkSetMenuShown(!store.getState().UI.menuShown));
+    const shown = !store.getState().UI.menuShown;
+
+    store.dispatch(thunkSetMenuShown(shown));
+
+    DOMManipulations.lastUsedElementForUnfocus?.blur();
   });
 
   Keyboard.bindFunctionToKey('down', 'Enter', () => {

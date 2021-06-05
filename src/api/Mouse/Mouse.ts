@@ -16,7 +16,7 @@ export default new class Mouse {
   constructor() {
     window.addEventListener('mousedown', (e) => this.listenMouseDown(e));
     window.addEventListener('mouseup', (e) => this.listenMouseUp(e));
-    window.addEventListener('contextmenu', (e) => e.preventDefault());
+    /* window.addEventListener('contextmenu', (e) => e.preventDefault()); */
   }
 
   private getFunctionToExecute(name: TGameActionName): () => void {

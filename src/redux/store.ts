@@ -33,6 +33,7 @@ import { settingsTopTeamReducer } from './settings/UI/top-team/reducer';
 import { settingsSpectateReducer } from './settings/UI/spectate/reducer';
 import { settingsChatReducer } from './settings/UI/chat/reducer';
 import { hotkeysMouseReducer } from './settings/hotkeys/mouse/reducer';
+import { hotkeysCommandsReducer } from './settings/hotkeys/commands/reducer';
 
 const rootReducer = combineReducers({
   UI: UIReducer,
@@ -57,7 +58,8 @@ const rootReducer = combineReducers({
     }),
     hotkeys: combineReducers({
       keyboard: hotkeysKeyboardReducer,
-      mouse: hotkeysMouseReducer
+      mouse: hotkeysMouseReducer,
+      commands: hotkeysCommandsReducer
     }),
     UI: combineReducers({
       leaderboard: settingsLeaderboardReducer,

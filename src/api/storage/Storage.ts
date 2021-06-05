@@ -1,4 +1,3 @@
-import { stopMacroFeed } from "api/GameEvents";
 import { AppStateType } from "redux/store";
 import initState from "./initState";
 
@@ -11,6 +10,12 @@ const checkStorageForUpdate = (storage: TStorage): TStorage => {
     storage.settings.hotkeys.mouse = {
       ...initState.settings.hotkeys.mouse
     }
+  }
+
+  if (!storage.settings.hotkeys.commands) {
+    storage.settings.hotkeys.commands = [
+      ...initState.settings.hotkeys.commands
+    ]
   }
 
   return storage;

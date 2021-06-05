@@ -12,7 +12,10 @@ declare global {
       spectateTarget(): void,
       spectateCenter(): void,
       spectateTopOne(): void,
+
       sendMessage(message: string): void,
+      sendCommand(message: string): void,
+
       setSecondTabSkin(): void,
       setSecondTabNick(): void,
       setFirstTabSkin(): void,
