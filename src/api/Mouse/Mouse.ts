@@ -17,7 +17,7 @@ export default new class Mouse {
     window.addEventListener('mousedown', (e) => this.listenMouseDown(e));
     window.addEventListener('mouseup', (e) => this.listenMouseUp(e));
     
-    if (location.origin.includes('agar')) {
+    if (window.location.origin.includes('agar')) {
       window.addEventListener('contextmenu', (e) => e.preventDefault());
     }
   }
