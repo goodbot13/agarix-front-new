@@ -16,7 +16,10 @@ export default new class Mouse {
   constructor() {
     window.addEventListener('mousedown', (e) => this.listenMouseDown(e));
     window.addEventListener('mouseup', (e) => this.listenMouseUp(e));
-    /* window.addEventListener('contextmenu', (e) => e.preventDefault()); */
+    
+    if (location.origin.includes('agar')) {
+      window.addEventListener('contextmenu', (e) => e.preventDefault());
+    }
   }
 
   private getFunctionToExecute(name: TGameActionName): () => void {
@@ -37,21 +40,9 @@ export default new class Mouse {
     return () => {};
   }
 
-  private executeLeft(e: MouseEvent): void {
+  private execute(e: MouseEvent, action: TGameActionName): void {
     e.preventDefault();
-    const functionToExecute = this.getFunctionToExecute(this.leftActionName);
-    functionToExecute();
-  }
-
-  private executeRight(e: MouseEvent): void {
-    e.preventDefault();
-    const functionToExecute = this.getFunctionToExecute(this.rightActionName);
-    functionToExecute();
-  }
-
-  private executeMiddle(e: MouseEvent): void {
-    e.preventDefault();
-    const functionToExecute = this.getFunctionToExecute(this.middleMouseActionName);
+    const functionToExecute = this.getFunctionToExecute(action);
     functionToExecute();
   }
 
@@ -62,15 +53,15 @@ export default new class Mouse {
 
     switch (e.button) {
       case LEFT_BUTTON:
-        this.executeLeft(e);
+        this.execute(e, this.leftActionName);
         break;
 
       case RIGHT_BUTTON:
-        this.executeRight(e);
+        this.execute(e, this.rightActionName);
         break;
 
       case MIDDLE_BUTTON:
-        this.executeMiddle(e);
+        this.execute(e, this.middleMouseActionName);
         break;
     }
   }
