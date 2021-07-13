@@ -24,11 +24,11 @@ import {
 } from "./types";
 
 const initState: IUIState = {
-  gameLoaded: false,
+  gameLoaded: (window as any).isDev ? true : false,
   gameLoaderStatus: 'Receiving game version...',
-  menuShown: false,
+  menuShown: (window as any).isDev ? true : false,
   blured: false,
-  settingsShown: false,
+  settingsShown: true,
   settingsType: 'GAME',
   gameSettingsSubmenu: 'GAME_GAMEPLAY',
   themingSettingsSubmenu: 'THEMING_CELLS',

@@ -20,10 +20,10 @@ const SaveExportImportReset: FC<SaveExportImportResetType> = ({ setSettingsShown
       >
         <FontAwesomeIcon icon={faCheck} /> Save
       </button>
-      <button style={{ opacity: 0.33, pointerEvents: 'none' }}>
+      <button>
         <FontAwesomeIcon icon={faArrowUp} /> Import
       </button>
-      <button style={{ opacity: 0.33, pointerEvents: 'none' }}>
+      <button>
         <FontAwesomeIcon icon={faArrowDown} /> Export
       </button>
       <Reset />

@@ -3,7 +3,7 @@ import initState from "./initState";
 
 const checkStorageForUpdate = (storage: TStorage): TStorage => {
   if (!storage.settings.UI.stats.tabs) {
-    storage.settings.UI.stats.tabs = storage.settings.UI.stats.tabs;
+    storage.settings.UI.stats.tabs = initState.settings.UI.stats.tabs;
   }
 
   if (!storage.settings.hotkeys.mouse) {
