@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import css from './index.module.scss';
 
 import { faCookieBite, faEye, faUsers } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +8,7 @@ import { numberToK, rgbToCssString } from 'api/utils';
 
 import { connect } from 'react-redux';
 import { AppStateType } from 'redux/store';
+import { ITopTeamPlayer } from 'redux/UI/types';
 
 const TopTeam: FC<TopTeamType> = ({ 
   shown, 
@@ -21,9 +22,21 @@ const TopTeam: FC<TopTeamType> = ({
   players 
 }) => {
 
-  const totalMassValue = players.length 
-    ? players.map((player) => player.mass).reduce((prev, current) => prev + current) 
-    : 0;
+  const [totalMassValue, setTotalMassValue] = useState(0 as number);
+  const [_players, _setPlayers] = useState([] as ITopTeamPlayer[]);
+
+  useEffect(() => {
+    const mass = players.length 
+      ? players.map((player) => player.mass).reduce((prev, current) => prev + current) 
+      : 0;
+
+    const tmp = players.filter((player) => player.isAlive)
+                        .slice(0, displayAmount)
+                        .sort((a, b) => b.mass - a.mass);
+
+    _setPlayers(tmp);
+    setTotalMassValue(mass);
+  }, [players]);
 
   return (
     shown ? (
@@ -57,11 +70,7 @@ const TopTeam: FC<TopTeamType> = ({
           </div>
         )}
         <div className={css.players}>
-          {players
-            .filter((player) => player.isAlive)
-            .slice(0, displayAmount)
-            .sort((a, b) => b.mass - a.mass)
-            .map((player) => (
+          {_players.length ? _players.map((player) => (
               <div
                 className={css.player}
                 key={player.id}
@@ -74,6 +83,8 @@ const TopTeam: FC<TopTeamType> = ({
                 <div className={css.nick}>{player.nick}</div>
               </div>
             )
+          ) : (
+            <div className={css.noPlayers}>No players</div>
           )}
         </div>
       </div>
