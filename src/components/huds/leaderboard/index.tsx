@@ -55,7 +55,7 @@ const Leaderboard: FC<LeaderboardType> = ({
       }}
     >
       <div className={css.players}>
-        {_players.length && _players.map((player) => (
+        {_players.length ? _players.map((player) => (
           <div 
             className={css.player}
             style={{ color: player.isMe ? `rgb(${meColor.red}, ${meColor.green}, ${meColor.blue})` : 'white'}}
@@ -64,10 +64,9 @@ const Leaderboard: FC<LeaderboardType> = ({
             {displayPosition && <div className={css.position}>{player.position}</div>}
             <div className={css.nick}>{player.nick}</div>
           </div>
-        ))}
-        {!_players.length && (
+        )) : (
           <div className={css.noPlayers}>
-
+            Empty server
           </div>
         )}
       </div>

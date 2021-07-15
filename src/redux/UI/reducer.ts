@@ -26,9 +26,9 @@ import {
 const initState: IUIState = {
   gameLoaded: (window as any).isDev ? true : false,
   gameLoaderStatus: 'Receiving game version...',
-  menuShown: (window as any).isDev ? true : false,
+  menuShown: /* (window as any).isDev ? true : false, */ false,
   blured: false,
-  settingsShown: true,
+  settingsShown: false,
   settingsType: 'GAME',
   gameSettingsSubmenu: 'GAME_GAMEPLAY',
   themingSettingsSubmenu: 'THEMING_CELLS',
