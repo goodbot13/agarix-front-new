@@ -1,9 +1,10 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import css from './index.module.scss';
 
 import { AppStateType } from "redux/store";
 import { connect } from "react-redux";
 import { rgbToCssString } from "api/utils";
+import { ILeaderboardPlayer } from "redux/UI/types";
 
 const Leaderboard: FC<LeaderboardType> = ({ 
   shown, 
@@ -16,27 +17,33 @@ const Leaderboard: FC<LeaderboardType> = ({
   meColor
 }) => {
 
-  let me = false;
-  const playerMe = players.filter((player) => player.isMe)[0];
+  const [_players, _setPlayers] = useState([] as ILeaderboardPlayer[]);
 
-  // @ts-ignore
-  players = players.map((player, i) => {
-
-    if (i < displayAmount) {
-      if (player.isMe) {
-        me = true;
+  useEffect(() => {
+    let me = false;
+    const playerMe = players.filter((player) => player.isMe)[0];
+  
+    // @ts-ignore
+    players = players.map((player, i) => {
+  
+      if (i < displayAmount) {
+        if (player.isMe) {
+          me = true;
+        }
+  
+        return player;
       }
+  
+      if (!me) {
+        return playerMe;
+      }
+  
+      return null;
+  
+    }).filter((player) => player).slice(0, displayAmount + 1);
 
-      return player;
-    }
-
-    if (!me) {
-      return playerMe;
-    }
-
-    return null;
-
-  }).filter((player) => player).slice(0, displayAmount + 1);
+    _setPlayers(players);
+  }, [players]);
 
   return (
     shown ? <div 
@@ -48,7 +55,7 @@ const Leaderboard: FC<LeaderboardType> = ({
       }}
     >
       <div className={css.players}>
-        {players.map((player) => (
+        {_players.length && _players.map((player) => (
           <div 
             className={css.player}
             style={{ color: player.isMe ? `rgb(${meColor.red}, ${meColor.green}, ${meColor.blue})` : 'white'}}
@@ -58,6 +65,11 @@ const Leaderboard: FC<LeaderboardType> = ({
             <div className={css.nick}>{player.nick}</div>
           </div>
         ))}
+        {!_players.length && (
+          <div className={css.noPlayers}>
+
+          </div>
+        )}
       </div>
     </div> : null
   )
