@@ -26,9 +26,9 @@ const TopTeam: FC<TopTeamType> = ({
   const [_players, _setPlayers] = useState([] as ITopTeamPlayer[]);
 
   useEffect(() => {
-    const mass = players.length 
-      ? players.map((player) => player.mass).reduce((prev, current) => prev + current) 
-      : 0;
+    const mass = players.map((player) => player.mass).reduce((prev, current) => {
+      return prev + current;
+    }, 0);
 
     const tmp = players.filter((player) => player.isAlive)
                         .slice(0, displayAmount)
