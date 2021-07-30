@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import css from './index.module.scss';
 
 import { connect } from "react-redux"
@@ -13,24 +13,34 @@ import { thunkSetSpectateType } from "redux/UI/thunks";
 
 const Spectate: FC<TSpectate> = ({ shown, backdropBlur, backgroundColor, spectateType, setSpectateType, isPlayerPlaying }) => {
 
-  const _backgroundColor = rgbToCssString({
-    ...backgroundColor,
-    alpha: 0.9
-  });
+  const [_backgroundColor, _setBackgroundColor] = useState('');
+  const [_buttonColor, _setButtonColor] = useState('');
+  const [_boxShadowColor, _setBoxShadowColor] = useState('');
 
-  const _buttonColor = rgbToCssString({
-    red: backgroundColor.red + 22,
-    green: backgroundColor.green + 22,
-    blue: backgroundColor.blue + 22,
-    alpha: 0.9
-  });
+  useEffect(() => {
+    const bg = rgbToCssString({
+      ...backgroundColor,
+      alpha: 0.9
+    })
 
-  const _boxShadowColor = rgbToCssString({
-    red: backgroundColor.red - 8,
-    green: backgroundColor.green - 8,
-    blue: backgroundColor.blue - 8,
-    alpha: 0.9
-  });
+    const button = rgbToCssString({
+      red: backgroundColor.red + 22,
+      green: backgroundColor.green + 22,
+      blue: backgroundColor.blue + 22,
+      alpha: 0.9
+    });
+
+    const shadow = rgbToCssString({
+      red: backgroundColor.red - 8,
+      green: backgroundColor.green - 8,
+      blue: backgroundColor.blue - 8,
+      alpha: 0.9
+    });
+    
+    _setButtonColor(bg);
+    _setBackgroundColor(button);
+    _setBoxShadowColor(shadow);
+  }, [backgroundColor]);
 
   return (
     shown ? 
