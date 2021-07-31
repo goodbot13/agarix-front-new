@@ -60,4 +60,4 @@ export interface IGameAPIHotkeys {
   feed(): void,
 }
 
-export type TGameMode = ':party' | ':ffa' | ':battleroyale' | ':teams' | ':experimental';
+export type TGameMode = ':party' | ':ffa' | ':battleroyale' | ':teams' | ':experimental' | ':private';

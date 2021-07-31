@@ -9,21 +9,20 @@ import classNames from 'classnames';
 const ChatInput: FC<TChatInput> = ({ shown }) => {
 
   const ref = useRef<HTMLInputElement>(null);
-  const [text, setText] = useState('');
 
   useEffect(() => {
     if (shown) {
       ref.current?.focus();
     } else {
-      if (!text) {
+      if (!ref.current?.value) {
         return;
       }
 
-      window.GameAPI?.sendMessage(text);
-      setText('');
-      ref.current?.blur();
+      window.GameAPI?.sendMessage(ref.current.value);
+      ref.current.value = '';
+      ref.current.blur();
     }
-  }, [shown, text]);
+  }, [shown]);
 
   return (
     <div 
@@ -35,8 +34,6 @@ const ChatInput: FC<TChatInput> = ({ shown }) => {
       <input 
         ref={ref} 
         maxLength={80}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
       ></input>
     </div>
   )

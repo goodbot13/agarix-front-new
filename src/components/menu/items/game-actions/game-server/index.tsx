@@ -1,18 +1,19 @@
 import { faMapMarkerAlt, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TGameMode } from 'api/types';
 import DelayedRenderComponent from 'components/StandartComponents/DelayedRenderCompnent';
 import { FC, useState } from 'react';
 import { connect } from 'react-redux';
 import { thunkChangeGameServer } from 'redux/game/thunks';
-import { GameServerLocationTypes, IGameServer } from 'redux/game/types';
+import { GameServerLocationTypes, IGameServer, MixedGamesServers } from 'redux/game/types';
 import { AppStateType, ThunkRootDispatchType } from 'redux/store';
 import SelectList from '../select-list';
 import css from './index.module.scss';
 
-const GameServer: FC<GameServerType> = ({ servers, currentServerIndex, changeGameServer }) => {
+const GameServer: FC<GameServerType> = ({ servers, currentServerIndex, changeGameServer, gameMode }) => {
   const [selectGameServer, setSelectGameServer] = useState(false);
 
-  const transformServerName = (name: GameServerLocationTypes): string => {
+  const transformServerName = (name: MixedGamesServers): string => {
     switch (name) {
       case 'North America': return 'NA';
       case 'South America': return 'SA';
@@ -20,6 +21,10 @@ const GameServer: FC<GameServerType> = ({ servers, currentServerIndex, changeGam
       default: return name;
     }
   }
+
+  const agarServers: Array<GameServerLocationTypes> = [
+    'China', 'East Asia', 'Europe', 'North America', 'Oceania', 'Russia', 'South America', 'Turkey'
+  ];
 
   return (
     <>
@@ -38,7 +43,16 @@ const GameServer: FC<GameServerType> = ({ servers, currentServerIndex, changeGam
       </button>
       <DelayedRenderComponent rendered={selectGameServer} hideDelayMs={150}>
         <SelectList 
-          itemsList={servers.map((server) => `${server.location} (${server.playersAmount} players)`)}
+          itemsList={servers.filter((server) => {
+            // @ts-ignore
+            return gameMode === ':private' ? !agarServers.includes(server.location) : agarServers.includes(server.location);
+          }).map((server) => {
+            if (gameMode === ':private') {
+              return `${server.location}`;
+            } else {
+              return `${server.location} (${server.playersAmount} players)`;
+            }
+          })}
           selectedIndex={currentServerIndex}
           shown={selectGameServer}
           onChange={(name, index) => changeGameServer(index as number)}
@@ -50,7 +64,8 @@ const GameServer: FC<GameServerType> = ({ servers, currentServerIndex, changeGam
 
 const mapStateToProps = ({ game }: AppStateType) => ({
   servers: game.servers,
-  currentServerIndex: game.currentServerIndex
+  currentServerIndex: game.currentServerIndex,
+  gameMode: game.mode 
 });
 
 const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
@@ -62,5 +77,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(GameServer);
 type GameServerType = {
   servers: Array<IGameServer>,
   currentServerIndex: number,
-  changeGameServer: (index: number) => void
+  changeGameServer: (index: number) => void,
+  gameMode: TGameMode
 }

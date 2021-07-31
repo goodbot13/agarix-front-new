@@ -8,12 +8,14 @@ export const CHANGE_GAME_TOKEN = 'CHANGE_GAME_TOKEN';
 export const CHANGE_GAME_SERVER_TOKEN = 'CHANGE_GAME_SERVER_TOKEN';
 export const CHANGE_SELECTED_GAME_TOKEN_TYPE = 'CHANGE_SELECTED_GAME_TOKEN_TYPE';
 
-export type GameModeTypes = ':party' | ':ffa' | ':battleroyale' | ':teams' | ':experimental';
+export type GameModeTypes = ':party' | ':ffa' | ':battleroyale' | ':teams' | ':experimental' | ':private';
 export type GameServerLocationTypes = 'South America' | 'China' | 'Europe' | 'East Asia' | 'Russia' | 'Oceania' | 'Turkey' | 'North America';
+export type PrivateGameServersTypes = 'Delta FFA' | 'Private Party' | 'N.A. FFA' | 'N.A. Party' | 'FeelForeverAlone' | 'Zimbabwe' | 'Arctida' | 'Dagestan' | 'Rookery';
+export type MixedGamesServers = GameServerLocationTypes | PrivateGameServersTypes;
 export type GameSelectedGameTokenTypes = 'PARTY' | 'SERVER';
 
 export interface IGameServer {
-  location: GameServerLocationTypes,
+  location: MixedGamesServers,
   playersAmount: number,
 }
 

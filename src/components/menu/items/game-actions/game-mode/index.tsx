@@ -19,6 +19,7 @@ const GameMode: FC<GameModeType> = ({ mode, changeMode }) => {
       case ':ffa': return 'FFA';
       case ':experimental': return 'Experimental';
       case ':battleroyale': return 'Battle Royale';
+      case ':private': return 'Private';
     }
   }
 
@@ -29,6 +30,7 @@ const GameMode: FC<GameModeType> = ({ mode, changeMode }) => {
       case 'FFA': return ':ffa';
       case 'Experimental': return ':experimental';
       case 'Battle Royale': return ':battleroyale';
+      case 'Private': return ':private';
     }
   }
 
@@ -43,7 +45,7 @@ const GameMode: FC<GameModeType> = ({ mode, changeMode }) => {
       <DelayedRenderComponent rendered={selectMode} hideDelayMs={150}>
         <SelectList 
           itemsList={
-            ([':party', ':ffa', ':battleroyale', ':teams', ':experimental'] as Array<GameModeTypes>)
+            ([':party', ':ffa', ':battleroyale', ':teams', ':experimental', ':private'] as Array<GameModeTypes>)
             .map((mode) => transfromMode(mode)) 
           }
           selectedName={transfromMode(mode)}
@@ -71,4 +73,4 @@ type GameModeType = {
   changeMode: (mode: GameModeTypes) => void
 }
 
-type TGameModeReadable = 'Party' | 'Teams' | 'FFA' | 'Experimental' | 'Battle Royale';
+type TGameModeReadable = 'Party' | 'Teams' | 'FFA' | 'Experimental' | 'Battle Royale' | 'Private';

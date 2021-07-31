@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { AppStateType } from "redux/store";
 
@@ -12,17 +12,19 @@ import TopTeam from "./top-team";
 import css from './index.module.scss';
 
 const Huds: FC<HudsType> = ({ menuShown, settingsShown, settingsType, hudsShown }) => {
-  let hudsHidden = true;
+  const [hudsHidden, setHudsHidden] = useState(true);
 
-  if (menuShown) {
-    if (settingsShown && settingsType === 'UI') {
-      hudsHidden = false;
+  useEffect(() => {
+    if (menuShown) {
+      if (settingsShown && settingsType === 'UI') {
+        setHudsHidden(false);
+      } else {
+        setHudsHidden(true);
+      }
     } else {
-      hudsHidden = true;
+      setHudsHidden(hudsShown);
     }
-  } else {
-    hudsHidden = hudsShown;
-  }
+  }, [menuShown, settingsShown, settingsType, hudsShown]);
 
   return (
     <>
