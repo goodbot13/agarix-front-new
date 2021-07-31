@@ -17,7 +17,8 @@ const initStorage: TStorage = {
         soakSpeed: 2,
         fadeSpeed: 40,
         oneColored: false,
-        shadow: 'Only me'
+        shadow: 'Only me',
+        soakToEaten: true
       },
       effects: {
         cellRemoveAnimation: 'Yue',

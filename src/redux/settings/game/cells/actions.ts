@@ -15,6 +15,7 @@ import {
   SET_SHOW_NICK_MY_CELL,
   SET_SKINS_TYPE,
   SET_SOAK_SPEED,
+  SET_SOAK_TO_EATEN,
   ShadowType,
   SkinsType,
 } from "./types";
@@ -87,4 +88,9 @@ export const setOneColored = (oneColored: boolean): GameCellsActionTypes => ({
 export const setShadow = (shadow: ShadowType): GameCellsActionTypes => ({
   type: SET_SHADOW,
   shadow
+});
+
+export const setSoakToEaten = (soakToEaten: boolean): GameCellsActionTypes => ({
+  type: SET_SOAK_TO_EATEN,
+  soakToEaten
 });

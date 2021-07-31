@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { connect } from "react-redux";
 
-import { AUTO_HIDE_MASS_AND_NICKS_HINT, RANGE_ZERO_HINT } from "redux/settings/game/cells/hints";
+import { AUTO_HIDE_MASS_AND_NICKS_HINT, RANGE_ZERO_HINT, SOAK_TO_EATEN_HINT } from "redux/settings/game/cells/hints";
 
 import { RingsType, ShadowType, SkinsType } from "redux/settings/game/cells/types";
 import { AppStateType, ThunkRootDispatchType } from "redux/store";
@@ -20,7 +20,8 @@ import {
   thunkSetShowNickMyCell, 
   thunkSetShowNicks, 
   thunkSetSkinsType, 
-  thunkSetSoakSpeed 
+  thunkSetSoakSpeed, 
+  thunkSetSoakToEaten
 } from "redux/settings/game/cells/thunks";
 
 import Switch from "components/menu/settings/basic/switch";
@@ -43,6 +44,7 @@ const Cells: FC<CellsType> = ({
   fadeSpeed,
   oneColored,
   shadow,
+  soakToEaten,
   setShowMass,
   setShowNicks,
   setShowMassMyCell,
@@ -56,7 +58,8 @@ const Cells: FC<CellsType> = ({
   setSoakSpeed,
   setFadeSpeed,
   setOneColored,
-  setShadow
+  setShadow,
+  setSoakToEaten
 }) => {
   return (
     <>
@@ -116,6 +119,12 @@ const Cells: FC<CellsType> = ({
         onChange={setRingsSpinning}
         disabled={ringsType === 'Disabled'}
       />
+      <Switch 
+        text="Animate (move) eaten cell to the center of eater (HSLO style)"
+        hint={SOAK_TO_EATEN_HINT}
+        enabled={soakToEaten} 
+        onChange={setSoakToEaten}
+      />
       <Range 
         text="Soak animation speed"
         hint={RANGE_ZERO_HINT}
@@ -165,7 +174,8 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setSoakSpeed: (type: number) => dispatch(thunkSetSoakSpeed(type)),
   setFadeSpeed: (type: number) => dispatch(thunkSetFadeSpeed(type)),
   setOneColored: (value: boolean) => dispatch(thunkSetOneColored(value)),
-  setShadow: (shadow: ShadowType) => dispatch(thunkSetShadow(shadow))
+  setShadow: (shadow: ShadowType) => dispatch(thunkSetShadow(shadow)),
+  setSoakToEaten: (value: boolean) => dispatch(thunkSetSoakToEaten(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cells);

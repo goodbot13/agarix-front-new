@@ -56,4 +56,8 @@ export default class GameCellsSettings {
   static setShadow(value: ShadowType) {
     window.GameSettings.all.settings.game.cells.shadow = value;
   }
+
+  static setSoakToEaten(value: boolean) {
+    window.GameSettings.all.settings.game.cells.soakToEaten = value;
+  }
 }

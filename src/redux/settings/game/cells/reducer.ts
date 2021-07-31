@@ -15,7 +15,8 @@ import {
   SET_SHOW_NICKS, 
   SET_SHOW_NICK_MY_CELL, 
   SET_SKINS_TYPE, 
-  SET_SOAK_SPEED 
+  SET_SOAK_SPEED, 
+  SET_SOAK_TO_EATEN
 } from "./types";
 
 const initState: IGameCellsState = Storage.get().settings.game.cells;
@@ -104,6 +105,12 @@ export const gameCellsReducer = (state = initState, action: GameCellsActionTypes
       return {
         ...state,
         shadow: action.shadow
+      }
+
+    case SET_SOAK_TO_EATEN:
+      return {
+        ...state,
+        soakToEaten: action.soakToEaten
       }
 
     default: return state;

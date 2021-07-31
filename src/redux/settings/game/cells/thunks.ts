@@ -14,7 +14,8 @@ import {
   setShowNickMyCell,
   setShowNicks,
   setSkinsType,
-  setSoakSpeed
+  setSoakSpeed,
+  setSoakToEaten
 } from "./actions";
 
 import { GameCellsThunkActionTypes, RingsType, ShadowType, SkinsType } from "./types";
@@ -87,4 +88,9 @@ export const thunkSetOneColored = (oneColored: boolean): GameCellsThunkActionTyp
 export const thunkSetShadow = (shadow: ShadowType): GameCellsThunkActionTypes => (dispatch) => {
   dispatch(setShadow(shadow));
   GameCellsSettings.setShadow(shadow);
+}
+
+export const thunkSetSoakToEaten = (soakToEaten: boolean): GameCellsThunkActionTypes => (dispatch) => {
+  dispatch(setSoakToEaten(soakToEaten));
+  GameCellsSettings.setSoakToEaten(soakToEaten);
 }

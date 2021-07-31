@@ -39,4 +39,4 @@ export const setSpectatorMode = (spectatorMode: SpectatorModeType): GameGameplay
 export const setViewport = (viewport: ViewportType): GameGameplayActionTypes => ({
   type: SET_VIEWPORT,
   viewport
-})
+});

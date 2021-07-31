@@ -18,6 +18,10 @@ const checkStorageForUpdate = (storage: TStorage): TStorage => {
     ]
   }
 
+  if (!storage.settings.game.cells.soakToEaten) {
+    storage.settings.game.cells.soakToEaten = initState.settings.game.cells.soakToEaten;
+  }
+
   return storage;
 }
 
