@@ -5,6 +5,7 @@ import {
   setLeaderboardDisplayAmount, 
   setLeaderboardDisplayPosition, 
   setLeaderboardMeColor, 
+  setLeaderboardShortMass, 
   setLeaderboardShowMass, 
   setLeaderboardShown 
 } from "redux/settings/UI/leaderboard/actions";
@@ -30,13 +31,15 @@ const Leaderboard: FC<LeaderboardType> = ({
   backdropBlur,
   backgroundColor,
   meColor,
+  shortMass,
   setLbShown,
   setLbDisplayAmount,
   setLbDisplayPosition,
   setLbShowMass,
   setLbBackdropBlur,
   setLbBackgroundColor,
-  setLbMeColor
+  setLbMeColor,
+  setLbShortMass
 }) => {
   return (
     <>
@@ -85,6 +88,12 @@ const Leaderboard: FC<LeaderboardType> = ({
         onChange={setLbShowMass}
         disabled={!shown}
       />
+        <Switch 
+        text="Short mass (k)"
+        enabled={shortMass}
+        onChange={setLbShortMass}
+        disabled={!shown || !showMass}
+      />
     </>
   )
 }
@@ -100,7 +109,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   setLbShowMass: (value: boolean) => dispatch(setLeaderboardShowMass(value)),
   setLbBackdropBlur: (value: boolean) => dispatch(setLeaderboardBackdropBlur(value)),
   setLbBackgroundColor: (value: RGB) => dispatch(setLeaderboardBackgroundColor(value)),
-  setLbMeColor: (value: RGB) => dispatch(setLeaderboardMeColor(value))
+  setLbMeColor: (value: RGB) => dispatch(setLeaderboardMeColor(value)),
+  setLbShortMass: (value: boolean) => dispatch(setLeaderboardShortMass(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard);

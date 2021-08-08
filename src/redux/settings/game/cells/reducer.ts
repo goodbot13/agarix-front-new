@@ -4,7 +4,9 @@ import {
   IGameCellsState, 
   SET_AUTO_HIDE_MASS_AND_NICKS, 
   SET_FADE_SPEED, 
+  SET_MASS_SCALE, 
   SET_MASS_UPDATE_DELAY, 
+  SET_NICKS_SCALE, 
   SET_ONE_COLORED, 
   SET_RINGS_SPINNING, 
   SET_RINGS_TYPE, 
@@ -111,6 +113,18 @@ export const gameCellsReducer = (state = initState, action: GameCellsActionTypes
       return {
         ...state,
         soakToEaten: action.soakToEaten
+      }
+
+    case SET_MASS_SCALE:
+      return {
+        ...state,
+        massScale: action.massScale
+      }
+
+    case SET_NICKS_SCALE:
+      return {
+        ...state,
+        nicksScale: action.nicksScale
       }
 
     default: return state;

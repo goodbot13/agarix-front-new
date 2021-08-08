@@ -45,7 +45,7 @@ const Multibox: FC<MultiboxType> = ({
       <Range
         text="Lined ring size"
         from={5}
-        to={160}
+        to={200}
         value={linedRingSize}
         onChange={setMultiboxLinderRingSize}
         disabled={ringStyle !== 'Line'}

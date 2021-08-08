@@ -3,8 +3,11 @@ import css from './index.module.scss';
 
 import { AppStateType } from "redux/store";
 import { connect } from "react-redux";
-import { rgbToCssString } from "api/utils";
-import { ILeaderboardPlayer } from "redux/UI/types";
+import { numberToK, rgbToCssString } from "api/utils";
+import { ILeaderboardPlayer, ILeaderboardPlayerMe } from "redux/UI/types";
+import classNames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCookieBite } from "@fortawesome/free-solid-svg-icons";
 
 const Leaderboard: FC<LeaderboardType> = ({ 
   shown, 
@@ -14,10 +17,14 @@ const Leaderboard: FC<LeaderboardType> = ({
   backdropBlur, 
   backgroundColor, 
   players,
-  meColor
+  ghostCells,
+  meColor,
+  shortMass,
+  gameMode,
+  playerMass
 }) => {
 
-  const [_players, _setPlayers] = useState([] as ILeaderboardPlayer[]);
+  const [_players, _setPlayers] = useState([] as Array<ILeaderboardPlayer>);
 
   useEffect(() => {
     let me = false;
@@ -47,7 +54,10 @@ const Leaderboard: FC<LeaderboardType> = ({
 
   return (
     shown ? <div 
-      className={css.wrap}
+      className={classNames({
+        [css.wrap]: true,
+        [css.withMass]: showMass && gameMode !== ':private'
+      })}
       style={{ 
         backgroundColor: rgbToCssString(backgroundColor),
         boxShadow: `0 0 4px ${rgbToCssString(backgroundColor)}`,
@@ -55,12 +65,23 @@ const Leaderboard: FC<LeaderboardType> = ({
       }}
     >
       <div className={css.players}>
-        {_players.length ? _players.map((player) => (
+        {_players.length ? _players.map((player, i) => (
           <div 
             className={css.player}
             style={{ color: player.isMe ? `rgb(${meColor.red}, ${meColor.green}, ${meColor.blue})` : 'white'}}
             key={player.accountId}
           >
+            {gameMode !== ':private' && showMass && ghostCells[i] && (
+              <div className={css.mass}>
+                <FontAwesomeIcon icon={faCookieBite} />
+                <div className={css.massValue}>
+                  {shortMass 
+                    ? numberToK(player.isMe ? playerMass : ghostCells[i].totalMass) 
+                    : player.isMe ? playerMass : ghostCells[i].totalMass
+                  }
+                  </div>
+              </div>
+            )}
             {displayPosition && <div className={css.position}>{player.position}</div>}
             <div className={css.nick}>{player.nick}</div>
           </div>
@@ -74,9 +95,12 @@ const Leaderboard: FC<LeaderboardType> = ({
   )
 }
 
-const mapStateToProps = ({ settings, UI }: AppStateType) => ({
+const mapStateToProps = ({ settings, UI, game }: AppStateType) => ({
   ...settings.UI.leaderboard,
-  players: UI.leaderboardPlayers
+  players: UI.leaderboardPlayers,
+  ghostCells: UI.ghostCells,
+  playerMass: UI.playerMass,
+  gameMode: game.mode
 });
 
 export default connect(mapStateToProps)(Leaderboard);

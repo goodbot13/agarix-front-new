@@ -18,6 +18,8 @@ const GameServer: FC<GameServerType> = ({ servers, currentServerIndex, changeGam
       case 'North America': return 'NA';
       case 'South America': return 'SA';
       case 'East Asia': return 'EA';
+      case 'FeelForeverAlone': return 'Feel F.A';
+      
       default: return name;
     }
   }
@@ -34,11 +36,15 @@ const GameServer: FC<GameServerType> = ({ servers, currentServerIndex, changeGam
       >
         <div className={css.serverName}>
           <FontAwesomeIcon icon={faMapMarkerAlt} />
-          {transformServerName(servers[currentServerIndex].location)}
+          {transformServerName(servers[gameMode === ':private' ? currentServerIndex + agarServers.length : currentServerIndex].location)}
         </div>
         <div className={css.playersAmount}>
-          <FontAwesomeIcon icon={faUsers} />
-          {servers[currentServerIndex].playersAmount}
+          {gameMode === ':private' ? null : (
+            <>
+              <FontAwesomeIcon icon={faUsers} />
+              {servers[currentServerIndex].playersAmount}
+            </>
+          )}
         </div>
       </button>
       <DelayedRenderComponent rendered={selectGameServer} hideDelayMs={150}>

@@ -8,6 +8,7 @@ export const SET_LEADERBOARD_SHOW_MASS = 'SET_LEADERBOARD_SHOW_MASS';
 export const SET_LEADERBOARD_BACKDROP_BLUR = 'SET_LEADERBOARD_BACKDROP_BLUR';
 export const SET_LEADERBOARD_BACKGROUND_COLOR = 'SET_LEADERBOARD_BACKGROUND_COLOR';
 export const SET_LEADERBOARD_ME_COLOR = 'SET_LEADERBOARD_ME_COLOR';
+export const SET_LEADERBOARD_SHORT_MASS = 'SET_LEADERBOARD_SHORT_MASS';
 
 export interface IUILeaderboardState {
   shown: boolean,
@@ -17,7 +18,8 @@ export interface IUILeaderboardState {
   showMass: boolean,
   backdropBlur: boolean,
   backgroundColor: RGB,
-  meColor: RGB
+  meColor: RGB,
+  shortMass: boolean
 }
 
 interface SetShownAction {
@@ -60,6 +62,11 @@ interface SetMeColorAction {
   meColor: RGB
 }
 
+interface SetLeaderboardShortMass {
+  type: typeof SET_LEADERBOARD_SHORT_MASS,
+  shortMass: boolean
+}
+
 export type UILeaderboardActionTypes = SetShownAction | SetDisplayAmountAction | SetScaleAction | 
                                        SetShowMassAction | SetBackdropBlurAction | SetBackgroundColorAction | 
-                                       SetDisplayPositionAction | SetMeColorAction;
+                                       SetDisplayPositionAction | SetMeColorAction | SetLeaderboardShortMass;

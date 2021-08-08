@@ -3,7 +3,9 @@ import GameCellsSettings from "api/settings/Game/GameCellsSetting";
 import {
   setAutoHideMassAndNicks,
   setFadeSpeed,
+  setMassScale,
   setMassUpdateDelay,
+  setNicksScale,
   setOneColored,
   setRingsSpinning,
   setRingsType,
@@ -93,4 +95,14 @@ export const thunkSetShadow = (shadow: ShadowType): GameCellsThunkActionTypes =>
 export const thunkSetSoakToEaten = (soakToEaten: boolean): GameCellsThunkActionTypes => (dispatch) => {
   dispatch(setSoakToEaten(soakToEaten));
   GameCellsSettings.setSoakToEaten(soakToEaten);
+}
+
+export const thunkSetNicksScale = (nicksScale: number): GameCellsThunkActionTypes => (dispatch) => {
+  dispatch(setNicksScale(nicksScale));
+  GameCellsSettings.setNicksScale(nicksScale);
+}
+
+export const thunkSetMassScale = (massScale: number): GameCellsThunkActionTypes => (dispatch) => {
+  dispatch(setMassScale(massScale));
+  GameCellsSettings.setMassScale(massScale);
 }

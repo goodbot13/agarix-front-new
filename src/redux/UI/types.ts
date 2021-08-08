@@ -25,15 +25,25 @@ export const SET_SPECTATE_TYPE = 'SET_SPECTATE_TYPE';
 export const SET_IS_PLAYER_PLAYING = 'SET_IS_PLAYER_PLAYING';
 export const ADD_CHAT_MESSAGE = 'ADD_CHAT_MESSAGE';
 export const SET_INPUT_MESSAGE_SHOWN = 'SET_INPUT_MESSAGE_SHOWN';
+export const SET_GHOST_CELLS = 'SET_GHOST_CELLS';
+export const SET_PLAYER_MASS = 'SET_PLAYER_MASS';
 
 export type SettingsType = 'GAME' | 'HOTKEYS' | 'THEMING' | 'UI';
 export type SpectateType = 'TOP_ONE' | 'CENTER' | 'FREE' | 'TARGET';
 export type TChatMessageType = 'GAME' | 'PLAYER' | 'COMMAND';
+
 export type IChatMessage = {
   nick: string,
   message: string,
   type: TChatMessageType,
   key: number
+}
+
+export interface IGhostCell { 
+  playerX: number, 
+  playerY: number, 
+  totalMass: number, 
+  size: number
 }
 
 export interface ILeaderboardPlayer {
@@ -42,6 +52,10 @@ export interface ILeaderboardPlayer {
   accountId: number,
   isMe: boolean
 } 
+
+export interface ILeaderboardPlayerMe extends ILeaderboardPlayer {
+  mass: number
+}
 
 export interface ITopTeamPlayer {
   mass: number,
@@ -75,7 +89,9 @@ export interface IUIState {
   spectateType: SpectateType,
   isPlayerPlaying: boolean,
   chatMessages: Array<IChatMessage>,
-  inputMessageShown: boolean
+  inputMessageShown: boolean,
+  ghostCells: Array<IGhostCell>,
+  playerMass: number
 }
 
 interface SetGameLoadedAction {
@@ -178,10 +194,21 @@ interface SetInputMessageShown {
   inputMessageShown: boolean
 }
 
+interface SetGhostCells {
+  type: typeof SET_GHOST_CELLS,
+  ghostCells: Array<IGhostCell>
+}
+
+interface SetPlayerMass {
+  type: typeof SET_PLAYER_MASS,
+  playerMass: number
+}
+
 export type UIActionTypes = SetGameLoadedAction | SetGameLoaderStatusAction | SetMenuShownAction | SetUIBluredAction | 
                             SetSettingsShownAction | SetSettingsTypeAction | SetGameSettingsSubmenuAction | SetLeaderboardPlayersAction |
                             SetThemingSettingsSubmenuAction | SetAdditionalProfilesListShownAction | SetHotkeysSettingsSubmenuAction | 
                             SetStatsAction | SetSettingsUIType | SetGameSocketConnectingAction | AddChatMessageAction |
-                            SetTopTeamPlayersAction | SetHudsShown | SetSpectateType | SetIsPlayerPlaying | SetInputMessageShown;
+                            SetTopTeamPlayersAction | SetHudsShown | SetSpectateType | SetIsPlayerPlaying | SetInputMessageShown |
+                            SetGhostCells | SetPlayerMass;
 
 export type UIThunkActionTypes = ThunkAction<void, AppStateType, unknown, UIActionTypes>; 

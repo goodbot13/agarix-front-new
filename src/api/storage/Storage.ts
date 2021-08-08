@@ -22,6 +22,14 @@ const checkStorageForUpdate = (storage: TStorage): TStorage => {
     storage.settings.game.cells.soakToEaten = initState.settings.game.cells.soakToEaten;
   }
 
+  if (!storage.settings.game.cells.massScale) {
+    storage.settings.game.cells.massScale = initState.settings.game.cells.massScale;
+  }
+
+  if (!storage.settings.game.cells.nicksScale) {
+    storage.settings.game.cells.nicksScale = initState.settings.game.cells.nicksScale;
+  }
+
   return storage;
 }
 

@@ -14,10 +14,9 @@
     <div id="ReCaptchaV3"></div>
     <div id="ReCaptchaV2"></div>
     <div id="root"></div>
-<<<<<<< HEAD
     <script>
       const isDev = true;
-      const isDevLocal = false;
+      const loadDevBundle = true;
 
       const appendScript = (src) => {
           const script = document.createElement('script');
@@ -26,8 +25,7 @@
       }
 
       if (isDev) {
-          appendScript('https://agarminty.ucoz.net/game/bundle.js');
-          isDevLocal && (window.isDev = true);
+          loadDevBundle && appendScript('https://agarminty.ucoz.net/game/bundle.js');
       } else {
           appendScript('https://sentinelix-source-agarix.glitch.me/bundle.js');
       }

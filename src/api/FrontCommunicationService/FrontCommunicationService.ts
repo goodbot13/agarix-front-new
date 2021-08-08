@@ -5,9 +5,9 @@ import { setFacebookLoggedIn, setGoogleLoggedIn } from "redux/profiles/actions";
 import { setFirstTabStatus, setSecondTabStatus, setSpectatorTabStatus } from "redux/settings/UI/stats/actions";
 import { TStatsTabStatus } from "redux/settings/UI/stats/types";
 import { TStore } from "redux/store";
-import { addChatMessage, setGameLoaderStatus, setGameSocketConnecting, setIsPlayerPlaying, setLeaderboardPlayers, setStats, setTopTeamPlayers } from "redux/UI/actions";
+import { addChatMessage, setGameLoaderStatus, setGameSocketConnecting, setGhostCells, setIsPlayerPlaying, setLeaderboardPlayers, setPlayerMass, setStats, setTopTeamPlayers } from "redux/UI/actions";
 import { thunkSetGameLoaderShown } from "redux/UI/thunks";
-import { ILeaderboardPlayer, ITopTeamPlayer, TChatMessageType } from "redux/UI/types";
+import { IGhostCell, ILeaderboardPlayer, ITopTeamPlayer, TChatMessageType } from "redux/UI/types";
 
 export const initFrontCommunicationService = (store: TStore) => {
   // @ts-ignore
@@ -27,6 +27,10 @@ export const initFrontCommunicationService = (store: TStore) => {
 
   window.FrontAPI.updateLeaderboard = (leaderboard) => {
     store.dispatch(setLeaderboardPlayers(leaderboard));
+  }
+
+  window.FrontAPI.updateGhostCells = (ghostCells) => {
+    store.dispatch(setGhostCells(ghostCells));
   }
 
   window.FrontAPI.updateTopTeam = (players) => {
@@ -80,6 +84,10 @@ export const initFrontCommunicationService = (store: TStore) => {
   window.FrontAPI.setSpectatorTabStatus = (value) => {
     store.dispatch(setSpectatorTabStatus(value));
   }
+
+  window.FrontAPI.setMyMass = (value) => {
+    store.dispatch(setPlayerMass(value));
+  }
 }
 
 
@@ -91,6 +99,7 @@ declare global {
       setGameLoaded: (value: boolean) => void,
       updateStats: (fps: number, loss: number) => void,
       updateLeaderboard: (leaderboard: Array<ILeaderboardPlayer>) => void,
+      updateGhostCells: (ghostCells: Array<IGhostCell>) => void,
       updateTopTeam: (players: Array<ITopTeamPlayer>) => void,
       setRegions: (regions: Array<IGameServer>) => void,
       setEllapsedFrametime: (ms: number) => void,
@@ -98,22 +107,13 @@ declare global {
       setGoogleLoggedIn: (value: boolean) => void,
       setFacebookLoggedIn: (value: boolean) => void,
       addChatMessage: (nick: string, message: string, type: TChatMessageType, key: number) => void,
-
-      // location: ./src/components/game-loader/status
-      setTextureName: (value: string) => void,
-      setClientVersion: (value: number) => void,
-      setProtocolVersion: (value: number) => void,
-      setSupportProtoVersion: (value: string) => void,
-      setServerStatus: (value: string) => void,
-      setServerVersion: (value: string) => void,
-
       setToken: (value: string) => void,
       setServerToken: (value: string) => void,
       setSocketConnecting: (value: boolean) => void,
-
       setFirstTabStatus: (value: TStatsTabStatus) => void,
       setSecondTabStatus: (value: TStatsTabStatus) => void,
       setSpectatorTabStatus: (value: TStatsTabStatus) => void,
+      setMyMass: (value: number) => void
     }
   }
 }

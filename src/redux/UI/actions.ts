@@ -5,6 +5,7 @@ import { SettingsUIType } from "redux/settings/UI/types";
 import { 
   ADD_CHAT_MESSAGE,
   IChatMessage,
+  IGhostCell,
   ILeaderboardPlayer,
   IStats,
   ITopTeamPlayer,
@@ -14,12 +15,14 @@ import {
   SET_GAME_LOADER_STATUS, 
   SET_GAME_SETTINGS_SUBMENU, 
   SET_GAME_SOCKET_CONNECTING, 
+  SET_GHOST_CELLS, 
   SET_HOTKEYS_SETTINGS_SUBMENU, 
   SET_HUDS_SHOWN, 
   SET_INPUT_MESSAGE_SHOWN, 
   SET_IS_PLAYER_PLAYING, 
   SET_LEADERBOARD_PLAYERS, 
   SET_MENU_SHOWN, 
+  SET_PLAYER_MASS, 
   SET_SETTINGS_SHOWN, 
   SET_SETTINGS_TYPE, 
   SET_SPECTATE_TYPE, 
@@ -130,4 +133,14 @@ export const addChatMessage = (chatMessage: IChatMessage): UIActionTypes => ({
 export const setInputMessageShown = (inputMessageShown: boolean): UIActionTypes => ({
   type: SET_INPUT_MESSAGE_SHOWN,
   inputMessageShown
+});
+
+export const setGhostCells = (ghostCells: Array<IGhostCell>): UIActionTypes => ({
+  type: SET_GHOST_CELLS,
+  ghostCells
+});
+
+export const setPlayerMass = (playerMass: number): UIActionTypes => ({
+  type: SET_PLAYER_MASS,
+  playerMass
 });

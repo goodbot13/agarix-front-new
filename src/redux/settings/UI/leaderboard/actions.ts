@@ -6,6 +6,7 @@ import {
   SET_LEADERBOARD_DISPLAY_POSITION, 
   SET_LEADERBOARD_ME_COLOR, 
   SET_LEADERBOARD_SCALE, 
+  SET_LEADERBOARD_SHORT_MASS, 
   SET_LEADERBOARD_SHOWN, 
   SET_LEADERBOARD_SHOW_MASS, 
   UILeaderboardActionTypes 
@@ -49,4 +50,9 @@ export const setLeaderboardDisplayPosition = (displayPosition: boolean): UILeade
 export const setLeaderboardMeColor = (meColor: RGB): UILeaderboardActionTypes => ({
   type: SET_LEADERBOARD_ME_COLOR,
   meColor
+});
+
+export const setLeaderboardShortMass = (shortMass: boolean): UILeaderboardActionTypes => ({
+  type: SET_LEADERBOARD_SHORT_MASS,
+  shortMass
 });

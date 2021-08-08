@@ -62,6 +62,7 @@ const JoinGame: FC<JoinGameType> = ({
         setToken(tokens.split('%')[0]);
         setServerToken(tokens.split('%')[1]);
       }).catch(() => {
+        setJoining(false);
         setConnecting(false);
       });
     }

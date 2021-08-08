@@ -37,8 +37,8 @@ const Spectate: FC<TSpectate> = ({ shown, backdropBlur, backgroundColor, spectat
       alpha: 0.9
     });
     
-    _setButtonColor(bg);
-    _setBackgroundColor(button);
+    _setButtonColor(button);
+    _setBackgroundColor(bg);
     _setBoxShadowColor(shadow);
   }, [backgroundColor]);
 

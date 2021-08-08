@@ -75,15 +75,15 @@ const Cells: FC<CellsType> = ({
       />
       <Range 
         text='Shadow distance'
-        from={5}
-        to={100}
+        from={10}
+        to={150}
         value={shadowDistance}
         onChange={setShadowDistance}
       />
       <Range 
         text='Shadow strength'
         from={1}
-        to={10}
+        to={20}
         value={shadowStrength}
         onChange={setShadowStrength}
       />
@@ -94,15 +94,15 @@ const Cells: FC<CellsType> = ({
       />
       <Range
         text='My cell shadow distance'
-        from={5}
-        to={100}
+        from={10}
+        to={150}
         value={myShadowDistance}
         onChange={setMyShadowDistance}
       />
       <Range 
         text='My cell shadow strength'
         from={1}
-        to={10}
+        to={20}
         value={myShadowStrength}
         onChange={setMyShadowStrength}
       />
@@ -115,8 +115,8 @@ const Cells: FC<CellsType> = ({
       />
       <Range
         text="Color lighten"
-        from={10}
-        to={160}
+        from={5}
+        to={200}
         value={colorLighten}
         onChange={setCellsColorLighten} 
       />

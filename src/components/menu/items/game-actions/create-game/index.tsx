@@ -48,7 +48,7 @@ const CreateGame: FC<CreateGameType> = ({ connecting, setConnecting, setToken, s
 
         setToken('');
         setServerToken('');
-
+        setCreating(false);
         setConnecting(false);
         
       });

@@ -20,13 +20,15 @@ import {
   SET_SPECTATE_TYPE,
   SET_IS_PLAYER_PLAYING,
   ADD_CHAT_MESSAGE,
-  SET_INPUT_MESSAGE_SHOWN, 
+  SET_INPUT_MESSAGE_SHOWN,
+  SET_GHOST_CELLS,
+  SET_PLAYER_MASS, 
 } from "./types";
 
 const initState: IUIState = {
-  gameLoaded: true,
-  gameLoaderStatus: 'Receiving game version...',
-  menuShown: /* (window as any).isDev ? true : false, */ true,
+  gameLoaded: false,
+  gameLoaderStatus: 'Loading bundle.js...',
+  menuShown: false,
   blured: false,
   settingsShown: false,
   settingsType: 'GAME',
@@ -35,7 +37,21 @@ const initState: IUIState = {
   hotkeysSettingsSubmenu: 'HOTKEYS_KEYBOARD',
   uiSettingsSubmenu: 'UI_LEADERBOARD',
   additionalProfilesListShown: false,
-  leaderboardPlayers: [],
+  leaderboardPlayers: [
+    // { position: 1, nick: 'Nick 11111111', accountId: 1, isMe: false},
+    // { position: 2, nick: 'Nick 23 333', accountId: 12, isMe: false},
+    // { position: 3, nick: 'Nick 32222', accountId: 13, isMe: false},
+    // { position: 4, nick: 'Nick 41 3', accountId: 14, isMe: false},
+    // { position: 5, nick: 'Nick 5 333 3 3 3 3 12212121', accountId: 15, isMe: false}
+  ],
+  ghostCells: [
+    // {playerX: 0, playerY: 0, totalMass: 3000, size: 1500},
+    // {playerX: 0, playerY: 0, totalMass: 300, size: 150},
+    // {playerX: 0, playerY: 0, totalMass: 30, size: 15},
+    // {playerX: 0, playerY: 0, totalMass: 3, size: 1},
+    // {playerX: 0, playerY: 0, totalMass: 1, size: 0}
+  ],
+  playerMass: 0,
   topTeamPlayers: [],
   gameSocketConnecting: false,
   hudsShown: false,
@@ -124,6 +140,12 @@ export const UIReducer = (state = initState, action: UIActionTypes): IUIState =>
         leaderboardPlayers: action.leaderboardPlayers
       }
 
+    case SET_GHOST_CELLS: 
+      return {
+        ...state,
+        ghostCells: action.ghostCells
+      }
+
     case SET_GAME_SOCKET_CONNECTING:
       return {
         ...state,
@@ -176,6 +198,12 @@ export const UIReducer = (state = initState, action: UIActionTypes): IUIState =>
         inputMessageShown: action.inputMessageShown
       }
     
+    case SET_PLAYER_MASS:
+      return {
+        ...state,
+        playerMass: action.playerMass
+      }
+
     default: return state;
   }
 }

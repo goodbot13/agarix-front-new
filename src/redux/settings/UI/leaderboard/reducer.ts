@@ -7,6 +7,7 @@ import {
   SET_LEADERBOARD_DISPLAY_POSITION, 
   SET_LEADERBOARD_ME_COLOR, 
   SET_LEADERBOARD_SCALE, 
+  SET_LEADERBOARD_SHORT_MASS, 
   SET_LEADERBOARD_SHOWN, 
   SET_LEADERBOARD_SHOW_MASS, 
   UILeaderboardActionTypes 
@@ -63,6 +64,12 @@ export const settingsLeaderboardReducer = (state = initState, action: UILeaderbo
       return {
         ...state,
         meColor: action.meColor
+      }
+
+    case SET_LEADERBOARD_SHORT_MASS:
+      return {
+        ...state,
+        shortMass: action.shortMass
       }
 
     default: return state;

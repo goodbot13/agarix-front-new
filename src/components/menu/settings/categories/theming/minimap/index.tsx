@@ -44,8 +44,8 @@ const Minimap: FC<MinimapType> = ({
       />
       <Range 
         text="Size (width and height)"
-        from={150}
-        to={350}
+        from={100}
+        to={400}
         value={size}
         onChange={setMinimapSize}
       />
@@ -63,7 +63,7 @@ const Minimap: FC<MinimapType> = ({
       />
       <Range 
         text="Player size"
-        from={6}
+        from={4}
         to={16}
         value={playerSize}
         onChange={setMinimapPlayerSize}

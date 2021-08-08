@@ -18,7 +18,9 @@ const initStorage: TStorage = {
         fadeSpeed: 40,
         oneColored: false,
         shadow: 'Only me',
-        soakToEaten: true
+        soakToEaten: true,
+        nicksScale: 0.850,
+        massScale: 0.625,
       },
       effects: {
         cellRemoveAnimation: 'Yue',
@@ -192,6 +194,7 @@ const initStorage: TStorage = {
         backdropBlur: false,
         backgroundColor: { red: 24, green: 24, blue: 24, alpha: 0.5 },
         meColor: { red: 60, green: 80, blue: 170 },
+        shortMass: false
       },
       stats: {
         shown: true,

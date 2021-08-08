@@ -83,8 +83,8 @@ const MapComponent: FC<MapComponentType> = ({
       />
       <Range
         text="Border width"
-        from={10}
-        to={80}
+        from={5}
+        to={100}
         value={borderWidth}
         onChange={setMapBorderWidth}
       />
@@ -106,7 +106,7 @@ const MapComponent: FC<MapComponentType> = ({
       />
       <Range
         text="Border glow distance"
-        from={20}
+        from={10}
         to={350}
         value={borderGlowDistance}
         onChange={setMapBorderGlowDistance}
@@ -114,8 +114,8 @@ const MapComponent: FC<MapComponentType> = ({
       />
       <Range
         text="Border glow strength"
-        from={2}
-        to={20}
+        from={1}
+        to={30}
         value={borderGlowStrength}
         onChange={setMapBorderGlowStrength}
         disabled={!borderGlow}

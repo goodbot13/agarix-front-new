@@ -16,6 +16,8 @@ export const SET_FADE_SPEED = 'SET_FADE_SPEED';
 export const SET_ONE_COLORED = 'SET_ONE_COLORED'; // todo
 export const SET_SHADOW = 'SET_SHADOW';
 export const SET_SOAK_TO_EATEN = 'SET_SOAK_TO_EATEN';
+export const SET_NICKS_SCALE = 'SET_NICKS_SCALE';
+export const SET_MASS_SCALE = 'SET_MASS_SCALE';
 
 export type SkinsType = 'Disabled' | 'Custom' | 'Vanilla' | 'All';
 export type RingsType = 'Disabled' | '2CL' | 'Acimazis' | 'Yue';
@@ -36,7 +38,9 @@ export interface IGameCellsState {
   fadeSpeed: number,
   oneColored: boolean,
   shadow: ShadowType,
-  soakToEaten: boolean
+  soakToEaten: boolean,
+  nicksScale: number,
+  massScale: number
 }
 
 interface SetShowMassAction {
@@ -114,10 +118,20 @@ interface SetSoakToEaten {
   soakToEaten: boolean
 }
 
+interface SetNicksScale {
+  type: typeof SET_NICKS_SCALE,
+  nicksScale: number
+}
+
+interface SetMassScale {
+  type: typeof SET_MASS_SCALE,
+  massScale: number
+}
+
 export type GameCellsActionTypes = SetShowMassAction | SetShowNicksAction | SetShowMassMyCellAction |
                                    SetShowNickMyCellAction | SetAutoHideMassAndNicksAction | SetSkinsTypeAction |
                                    SetRingsTypeAction | SetRingsSpinningAction | SetSoakSpeedAction | SetFadeSpeedAction |
                                    SetOneColoredAction | SetShadowAction | SetShortMassAction | SetMassUpdateDelayAction |
-                                   SetSoakToEaten;
+                                   SetSoakToEaten | SetNicksScale | SetMassScale;
 
 export type GameCellsThunkActionTypes = ThunkAction<void, AppStateType, unknown, GameCellsActionTypes>;

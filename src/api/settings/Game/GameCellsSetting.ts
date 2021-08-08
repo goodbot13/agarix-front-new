@@ -60,4 +60,12 @@ export default class GameCellsSettings {
   static setSoakToEaten(value: boolean) {
     window.GameSettings.all.settings.game.cells.soakToEaten = value;
   }
+
+  static setNicksScale(value: number) {
+    window.GameSettings.all.settings.game.cells.nicksScale = value;
+  }
+
+  static setMassScale(value: number) {
+    window.GameSettings.all.settings.game.cells.massScale = value;
+  }
 }

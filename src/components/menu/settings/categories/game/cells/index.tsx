@@ -9,7 +9,9 @@ import { AppStateType, ThunkRootDispatchType } from "redux/store";
 import { 
   thunkSetAutoHideMassAndNicks, 
   thunkSetFadeSpeed, 
+  thunkSetMassScale, 
   thunkSetMassUpdateDelay, 
+  thunkSetNicksScale, 
   thunkSetOneColored, 
   thunkSetRingsSpinning, 
   thunkSetRingsType, 
@@ -45,6 +47,8 @@ const Cells: FC<CellsType> = ({
   oneColored,
   shadow,
   soakToEaten,
+  massScale,
+  nicksScale,
   setShowMass,
   setShowNicks,
   setShowMassMyCell,
@@ -59,7 +63,9 @@ const Cells: FC<CellsType> = ({
   setFadeSpeed,
   setOneColored,
   setShadow,
-  setSoakToEaten
+  setSoakToEaten,
+  setMassScale,
+  setNicksScale
 }) => {
   return (
     <>
@@ -73,6 +79,13 @@ const Cells: FC<CellsType> = ({
         enabled={myMass} 
         onChange={setShowMassMyCell}
       />
+      <Range 
+        text="Mass scale"
+        from={0.3}
+        to={1.5}
+        value={massScale}
+        onChange={setMassScale}
+      />
       <Switch 
         text="Show nicks" 
         enabled={nicks} 
@@ -82,6 +95,13 @@ const Cells: FC<CellsType> = ({
         text="Show nick my cell" 
         enabled={myNick} 
         onChange={setShowNickMyCell}
+      />
+      <Range 
+        text="Nicks scale"
+        from={0.3}
+        to={1.5}
+        value={nicksScale}
+        onChange={setNicksScale}
       />
       <Switch 
         text="Auto-hide mass and nicks" 
@@ -175,7 +195,9 @@ const mapDispatchToProps = (dispatch: ThunkRootDispatchType) => ({
   setFadeSpeed: (type: number) => dispatch(thunkSetFadeSpeed(type)),
   setOneColored: (value: boolean) => dispatch(thunkSetOneColored(value)),
   setShadow: (shadow: ShadowType) => dispatch(thunkSetShadow(shadow)),
-  setSoakToEaten: (value: boolean) => dispatch(thunkSetSoakToEaten(value))
+  setSoakToEaten: (value: boolean) => dispatch(thunkSetSoakToEaten(value)),
+  setMassScale: (value: number) => dispatch(thunkSetMassScale(value)),
+  setNicksScale: (value: number) => dispatch(thunkSetNicksScale(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cells);

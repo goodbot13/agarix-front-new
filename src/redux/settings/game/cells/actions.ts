@@ -3,7 +3,9 @@ import {
   RingsType,
   SET_AUTO_HIDE_MASS_AND_NICKS,
   SET_FADE_SPEED,
+  SET_MASS_SCALE,
   SET_MASS_UPDATE_DELAY,
+  SET_NICKS_SCALE,
   SET_ONE_COLORED,
   SET_RINGS_SPINNING,
   SET_RINGS_TYPE,
@@ -93,4 +95,14 @@ export const setShadow = (shadow: ShadowType): GameCellsActionTypes => ({
 export const setSoakToEaten = (soakToEaten: boolean): GameCellsActionTypes => ({
   type: SET_SOAK_TO_EATEN,
   soakToEaten
+});
+
+export const setNicksScale = (nicksScale: number): GameCellsActionTypes => ({
+  type: SET_NICKS_SCALE,
+  nicksScale
+});
+
+export const setMassScale = (massScale: number): GameCellsActionTypes => ({
+  type: SET_MASS_SCALE,
+  massScale
 });

@@ -77,8 +77,8 @@ const Food: FC<FoodType> = ({
       />
       <Range 
         text="Food size"
-        from={8}
-        to={24}
+        from={2}
+        to={32}
         value={size}
         onChange={setFoodSize}
         disabled={!enabled}
@@ -104,7 +104,7 @@ const Food: FC<FoodType> = ({
       <Range 
         text="Glow distance"
         from={10}
-        to={150}
+        to={250}
         value={glowDistance}
         onChange={setFoodGlowDistance}
         disabled={!glow || !enabled}
@@ -112,7 +112,7 @@ const Food: FC<FoodType> = ({
       <Range 
         text="Glow strength"
         from={1}
-        to={24}
+        to={30}
         value={glowStrength}
         onChange={setFoodGlowStrength}
         disabled={!glow || !enabled}

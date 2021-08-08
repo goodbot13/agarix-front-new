@@ -23,7 +23,6 @@ const Token: FC<TokenType> = ({ blured, token, serverToken, selectedTokenType, c
         value={token}
         onChange={(event) => changeToken(event.target.value)}
         onClick={() => changeSelectedGameTokenType('PARTY')}
-        maxLength={6}
       ></input>
       <input
         className={classNames({ 
@@ -35,7 +34,6 @@ const Token: FC<TokenType> = ({ blured, token, serverToken, selectedTokenType, c
         value={serverToken}
         onChange={(event) => changeServerToken(event.target.value)}
         onClick={() => changeSelectedGameTokenType('SERVER')}
-        maxLength={7}
       ></input>
     </>
   )

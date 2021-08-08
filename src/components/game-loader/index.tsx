@@ -10,7 +10,6 @@ import classNames from 'classnames';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import Status from './status';
 
 const GameLoader: FC<GameLoaderType> = ({ gameLoaded, status }) => {
   return (
@@ -22,9 +21,6 @@ const GameLoader: FC<GameLoaderType> = ({ gameLoaded, status }) => {
         [css.wrap]: true,
         [css.hidden]: gameLoaded
       })}>
-        <div className={css.statusWrapper}>
-          <Status/>
-        </div>
         <div className={css.infoWrapper}>
           <div className={css.version}>{status}</div>
           <div className={css.discord}>
